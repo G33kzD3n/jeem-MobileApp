@@ -5,6 +5,12 @@
     "name": "jeemApp",
     "slug": "jeemApp",
     "version": "1.0.0",
+    "icon": "./src/assets/jeem.png",
+    "splash": {
+      "image": "./src/assets/jeemGrey.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#707270"
+    },
     "assetBundlePatterns": [
       "**/*"
     ]

@@ -6,20 +6,16 @@ import AppSwitch from '../components/AppSwitch'
 import AppButton from '../components/AppButton';
 import TextClick from '../components/TextClick';
 import useKeyboardDetect from '../../hooks/useKeyboardDetect';
-import * as Yup from 'yup';
 import AppFormFeild from '../components/forms/AppFormFeild';
 import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
 import appAlert from '../components/appAlert';
+import validation from '../components/forms/validationSchema';
 
 
 
-const validationSchema =Yup.object().shape({
-    name:Yup.string().required().min(3).label('Name'),
-    email:Yup.string().required().email().label('Email'),
-    password:Yup.string().required().min(4).label('Password')
-})
-const RegisterScreen = () => {
+
+const RegisterScreen = ({navigation}) => {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -34,8 +30,8 @@ const RegisterScreen = () => {
        }
     }
 
-    const handleSignUp = () => {
-        console.log('SignUp')
+    const handleLogin = () => {
+        navigation.navigate('Login')
     }
 
     return (
@@ -49,7 +45,7 @@ const RegisterScreen = () => {
             <View style={styles.secondContainer}>
 
             <AppForm initialValues={{name:'',email:'', password:''}} onSubmit={values=>handleSubmit(values)}
-                     validationSchema={validationSchema}>
+                     validationSchema={validation.validationRegister}>
                 <View style={styles.textBox}  >
                     <AppFormFeild placeholder="Your Name"  name='name'/>
                     <AppFormFeild placeholder="Email" keyboardType='email-address' name='email'/>
@@ -63,15 +59,15 @@ const RegisterScreen = () => {
                
                 <AppText size={15} style={styles.msg}>Or continue with</AppText>
                 <View style={styles.social}>
-                    <AppButton color1='#808cba' color2='#808cba' width='45%' iconColor={colors.white} iconSize={20} icon='facebook' handleClick={handleSignUp} />
-                    <AppButton color1='#f18a77' color2='#f18a77' width='45%' iconColor={colors.white} iconSize={20} icon='google' handleClick={handleSignUp} />
+                    <AppButton color1='#808cba' color2='#808cba' width='45%' iconColor={colors.white} iconSize={20} icon='facebook' handleClick={handleLogin} />
+                    <AppButton color1='#f18a77' color2='#f18a77' width='45%' iconColor={colors.white} iconSize={20} icon='google' handleClick={handleLogin} />
                 </View>
             </View>
 
             {!showKeyboard && <View style={styles.thirdContainer}>
                 <View style={styles.innerThird}>
                     <AppText style={styles.signUp}>Already have an account? </AppText>
-                    <TextClick weight='bold' textDecorationLine='underline' text='Log In' onClick={handleSignUp} size={16} color={colors.white} />
+                    <TextClick weight='bold' textDecorationLine='underline' text='Log In' onClick={handleLogin} size={16} color={colors.white} />
                 </View>
             </View>}
         </ImageBackground>

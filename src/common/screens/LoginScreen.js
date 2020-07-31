@@ -6,17 +6,14 @@ import AppSwitch from '../components/AppSwitch'
 import AppButton from '../components/AppButton';
 import TextClick from '../components/TextClick';
 import useKeyboardDetect from '../../hooks/useKeyboardDetect';
-import * as Yup from 'yup';
 import AppFormFeild from '../components/forms/AppFormFeild';
 import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
+import validation from '../components/forms/validationSchema';
 
 
-const validationSchema =Yup.object().shape({
-    email:Yup.string().required().email().label('Email'),
-    password:Yup.string().required().min(4).label('Password')
-})
-const LoginScreen = () => {
+
+const LoginScreen = ({ navigation }) => {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -27,7 +24,7 @@ const LoginScreen = () => {
     }
 
     const handleSignUp = () => {
-        console.log('SignUp')
+        navigation.navigate('Register')
     }
 
     return (
@@ -40,18 +37,18 @@ const LoginScreen = () => {
 
             <View style={styles.secondContainer}>
 
-            <AppForm initialValues={{email:'', password:''}} onSubmit={values=>console.log(values)}
-                     validationSchema={validationSchema}>
-                <View style={styles.textBox}  >
-                    <AppFormFeild placeholder="Email" keyboardType='email-address' name='email'/>
-                    <AppFormFeild name="password" placeholder="Password" secureTextEntry/>
+                <AppForm initialValues={{ email: '', password: '' }} onSubmit={values => console.log(values)}
+                    validationSchema={validation.validationLogin}>
+                    <View style={styles.textBox}  >
+                        <AppFormFeild placeholder="Email" keyboardType='email-address' name='email' />
+                        <AppFormFeild name="password" placeholder="Password" secureTextEntry />
 
-                </View>
-                <AppSwitch isEnabled={isEnabled} toggleSwitch={toggleSwitch} text='Remember me' />
-                <SubmitButton text='Log In'/>
-                  
-            </AppForm>
-               
+                    </View>
+                    <AppSwitch isEnabled={isEnabled} toggleSwitch={toggleSwitch} text='Remember me' />
+                    <SubmitButton text='Log In' />
+
+                </AppForm>
+
                 <AppText size={15} style={styles.msg}>Or continue with</AppText>
                 <View style={styles.social}>
                     <AppButton color1='#808cba' color2='#808cba' width='45%' iconColor={colors.white} iconSize={20} icon='facebook' handleClick={handleLogin} />

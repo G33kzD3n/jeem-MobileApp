@@ -1,12 +1,15 @@
 
 import React from 'react';
-import LoginScreen from './src/common/screens/LoginScreen';
-import RegisterScreen from './src/common/screens/RegisterScreen';
+import {NavigationContainer} from '@react-navigation/native';
+// import AuthNavigator from './src/navigation/AuthNavigator';
+import AppNavigator from './src/buyer/navigation/AppNavigator'
 
 
 export default function App() {
   return (
-   <RegisterScreen/>
+   <NavigationContainer>
+      <AppNavigator/>
+   </NavigationContainer>
   );
 }
 

@@ -1,14 +1,16 @@
 import React from 'react'
-import { StyleSheet, TouchableHighlight } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback,View } from 'react-native';
 import AppText from './AppText';
 
 const TextClick = ({size=18,color,onClick,text,weight,textDecorationLine='none'}) => {
     return (
-        <TouchableHighlight onPress={onClick} style={styles.touch}>
+        <TouchableWithoutFeedback onPress={onClick} style={styles.touch}>
+        <View>
             <AppText style={{fontSize:size,color:color,fontWeight:weight,textDecorationLine:textDecorationLine}}>
             {text}
             </AppText>
-        </TouchableHighlight>
+        </View>
+        </TouchableWithoutFeedback>
     )
 }
 
@@ -16,7 +18,6 @@ export default TextClick
 
 const styles = StyleSheet.create({
     touch:{
-        // borderColor:'red',
-        // borderWidth:2
+       
     }
 })

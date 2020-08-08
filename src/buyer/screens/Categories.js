@@ -1,17 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-// import {connect} from 'react-redux';
 
-const Home = () => {
+const Categories = () => {
     return (
         <View>
-            <Text>Home Page</Text>
+            <Text>Categories</Text>
         </View>
     )
 }
 
-
-
-export default Home
+export default Categories
 
 const styles = StyleSheet.create({})

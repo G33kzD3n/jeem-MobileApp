@@ -10,10 +10,11 @@ import AppFormFeild from '../components/forms/AppFormFeild';
 import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
 import validation from '../components/forms/validationSchema';
+import {connect} from 'react-redux';
 
 
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation,login }) => {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -37,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
 
             <View style={styles.secondContainer}>
 
-                <AppForm initialValues={{ email: '', password: '' }} onSubmit={values => console.log(values)}
+                <AppForm initialValues={{ email: '', password: '' }} onSubmit={values => login(values)}
                     validationSchema={validation.validationLogin}>
                     <View style={styles.textBox}  >
                         <AppFormFeild placeholder="Email" keyboardType='email-address' name='email' />
@@ -66,7 +67,17 @@ const LoginScreen = ({ navigation }) => {
     )
 }
 
-export default LoginScreen
+const mapDispatchToProps=dispatch=>{
+    return{
+    login:(data)=>dispatch({type:'LOGIN',values:data})
+    }
+}
+const mapStateToProps=state=>{
+    return{
+        loginData:state.login
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(LoginScreen)
 
 const styles = StyleSheet.create({
     innerThird: {

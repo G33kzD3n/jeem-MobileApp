@@ -1,9 +1,9 @@
-import React from 'react'
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import React,{useState} from 'react'
+import { StyleSheet, Text, View, FlatList,TouchableOpacity } from 'react-native'
 import Avatar from '../../common/components/Avatar';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { LinearGradient } from "expo-linear-gradient";
 import colors from '../../config/colors';
+import SubCategoryPicker from '../../common/components/SubCategoryPicker';
 
 const data = [
     {
@@ -40,13 +40,22 @@ const data = [
 
 ]
 
+
 const SubCategories = () => {
+    const [modalVisible, setModalVisible] = useState(false)
+    const handelSubCategory=(item)=>{
+        if(item==='All')
+         setModalVisible(true);
+    }
+
     return (
+        <>
+        <SubCategoryPicker visible={modalVisible} setModalVisible={setModalVisible}/>
         <LinearGradient
             start={[0.8, 0.0]}
             end={[0.8, 0.9]}
             colors={[colors.primaryShade24,colors.primaryShade22, colors.primaryShade24,colors.primaryShade22,colors.primaryShade24]}>
-
+            {console.log('in subCategory')}
             <FlatList
                 data={data}
                 numColumns={4}
@@ -54,7 +63,7 @@ const SubCategories = () => {
                 keyExtractor={data => data.name}
                 renderItem={({ item }) =>
                     <View style={styles.parent}>
-                        <TouchableOpacity onPress={() => console.log(item.name)}>
+                        <TouchableOpacity onPress={()=>handelSubCategory(item.name)}>
                             <Avatar text={item.name} image={item.avatar} />
                         </TouchableOpacity>
                     </View>
@@ -62,6 +71,7 @@ const SubCategories = () => {
                 }
             />
         </LinearGradient>
+        </>
     )
 }
 

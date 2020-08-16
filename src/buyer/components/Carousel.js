@@ -78,7 +78,10 @@ const CarouselDisplay = () => {
     return (
 
         <>
+        
             {useMemo(() => (
+                <>
+                {console.log('in carousel')}
                 <Carousel
                     containerCustomStyle={
                         styles.carousel
@@ -97,6 +100,7 @@ const CarouselDisplay = () => {
                     renderItem={_renderItem}
                     onSnapToItem={index => setActiveIndex(index)}
                 />
+                </>
             ), [_renderItem])}
             <View style={styles.pagination}>
                 {pagination(activeIndex)}
@@ -110,7 +114,7 @@ export default CarouselDisplay
 const styles = StyleSheet.create({
     carousel: {
         flexGrow: 0,
-        height: '55%',
+        height: '50%',
         paddingVertical: 0,
         
     },

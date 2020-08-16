@@ -6,7 +6,7 @@ const Stack=createStackNavigator();
 
 const HomeNavigator=()=>(
     <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="Home" component={Home} options={{ headerShown: false}}/>
     </Stack.Navigator>
 )
 export default HomeNavigator

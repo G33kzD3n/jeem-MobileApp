@@ -9,7 +9,7 @@
     "splash": {
       "image": "./src/assets/jeemGrey.png",
       "resizeMode": "contain",
-      "backgroundColor": "#707270"
+      "backgroundColor": "#6D6D6D"
     },
     "assetBundlePatterns": [
       "**/*"

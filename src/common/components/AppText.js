@@ -5,7 +5,9 @@ import defaultStyles from '../../config/defaultStyles';
 
 const AppText = ({ size = 18, weight = "normal", children, style,color="white" }) => {
     return (
-        <Text style={[defaultStyles.text,{fontSize: size, fontWeight: weight,color:color},style]}>
+        <Text style={[defaultStyles.text,
+        {fontSize: size, fontWeight: weight,color:color,textTransform: 'capitalize'},style
+        ]}>
         {children}
         </Text>
     )

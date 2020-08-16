@@ -1,11 +1,15 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet,View } from 'react-native'
+import Carousel from '../components/Carousel';
+import CarouselDisplay from '../components/Carousel';
+import SubCategories from '../components/SubCategories';
 // import {connect} from 'react-redux';
 
 const Home = () => {
     return (
         <View>
-            <Text>Home Page</Text>
+        <CarouselDisplay/>
+        <SubCategories/>
         </View>
     )
 }

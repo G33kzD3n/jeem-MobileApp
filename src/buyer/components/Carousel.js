@@ -75,6 +75,7 @@ function pagination(activeIndex) {
 
 const CarouselDisplay = () => {
     const [activeIndex, setActiveIndex] = useState(0)
+
     return (
 
         <>
@@ -94,7 +95,7 @@ const CarouselDisplay = () => {
                     autoplayInterval={4000}
                     autoplay
                     loop
-                    
+                    removeClippedSubviews
                     inactiveSlideScale={1}
                     loopClonesPerSide={carouselItems.length}
                     renderItem={_renderItem}
@@ -114,9 +115,8 @@ export default CarouselDisplay
 const styles = StyleSheet.create({
     carousel: {
         flexGrow: 0,
-        height: '50%',
+        height:310,
         paddingVertical: 0,
-        
     },
     dotStyle: {
         width: 8,
@@ -127,8 +127,6 @@ const styles = StyleSheet.create({
     },
     background: {
         flex: 1,
-        // height:'100%',
-
     },
     touchOpacity: {
         borderRadius: 5,

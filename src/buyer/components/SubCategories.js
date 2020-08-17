@@ -8,31 +8,31 @@ import SubCategoryPicker from '../../common/components/SubCategoryPicker';
 const data = [
     {
         name: 'concrete',
-        avatar: 'https://www.concrete2you.com/siteassets/concrete2you/concrete-in-wheelbarrow.jpg?maxwidth=2000&maxheight=1000'
+        avatar: 'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w'
     },
     {
         name: 'brick',
-        avatar: 'https://www.concrete2you.com/siteassets/concrete2you/concrete-in-wheelbarrow.jpg?maxwidth=2000&maxheight=1000'
+        avatar: 'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w'
     },
     {
         name: 'steal',
-        avatar: 'https://www.concrete2you.com/siteassets/concrete2you/concrete-in-wheelbarrow.jpg?maxwidth=2000&maxheight=1000'
+        avatar: 'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w'
     },
     {
         name: 'glass',
-        avatar: 'https://www.concrete2you.com/siteassets/concrete2you/concrete-in-wheelbarrow.jpg?maxwidth=2000&maxheight=1000'
+        avatar: 'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w'
     },
     {
         name: 'windows',
-        avatar: 'https://www.concrete2you.com/siteassets/concrete2you/concrete-in-wheelbarrow.jpg?maxwidth=2000&maxheight=1000'
+        avatar: 'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w'
     },
     {
         name: 'doors',
-        avatar: 'https://www.concrete2you.com/siteassets/concrete2you/concrete-in-wheelbarrow.jpg?maxwidth=2000&maxheight=1000'
+        avatar: 'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w'
     },
     {
         name: 'paint',
-        avatar: 'https://www.concrete2you.com/siteassets/concrete2you/concrete-in-wheelbarrow.jpg?maxwidth=2000&maxheight=1000'
+        avatar: 'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w'
     },
     {
         name: 'All'
@@ -80,6 +80,6 @@ export default SubCategories
 const styles = StyleSheet.create({
     parent: {
         flex: 1,
-        paddingVertical: 6
+        paddingVertical: 6,
     }
 })

@@ -1,8 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View,FlatList,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,FlatList,TouchableWithoutFeedback } from 'react-native'
 import Card from '../../common/components/Card';
-import AppText from '../../common/components/AppText';
-import colors from '../../config/colors';
+import ComponentHeading from '../../common/components/ComponentHeading';
 
 const data = [
     {
@@ -80,7 +79,7 @@ const data = [
 const DealsOfTheDay = () => {
     return (
         <View>
-        <AppText style={styles.heading}>DEALS OF THE DAY</AppText>
+         <ComponentHeading text='DEALS OF THE DAY'/>
            <FlatList
            data={data}
            horizontal
@@ -88,9 +87,9 @@ const DealsOfTheDay = () => {
            keyExtractor={(data,index)=>index.toString()}
            renderItem={({item})=>
            <View style={{paddingHorizontal:5,width:170}}>
-           <TouchableOpacity  onPress={() => console.log(item)}>
+           <TouchableWithoutFeedback  onPress={() => console.log(item)}>
               <Card image={item.image} brand={item.brand} title={item.title} subTitle={item.subTitle}/>
-           </TouchableOpacity>
+           </TouchableWithoutFeedback>
        </View>
            }/>
         </View>
@@ -100,13 +99,4 @@ const DealsOfTheDay = () => {
 export default DealsOfTheDay
 
 const styles = StyleSheet.create({
-    heading:{
-        color:colors.primary2,
-        fontSize:14,
-        paddingTop:13,
-        paddingBottom:7,
-        paddingLeft:8,
-        textTransform:'uppercase'
-
-    }
 })

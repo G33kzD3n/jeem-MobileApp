@@ -9,7 +9,7 @@ const Avatar = ({ text, image,customStyles }) => {
         <View style={styles.parent}>
             {text !== 'All' ? <Image style={[styles.image,customStyles]} source={{ uri: image }} />
                 : <MaterialCommunityIcons style={styles.icon} name="format-list-bulleted" size={37} color="black" />}
-            <AppText style={{ color: colors.primary1, fontSize: 14,textAlign:'center' }}>{text}</AppText>
+            <AppText style={{ color: colors.primary1, fontSize: 12,textAlign:'center' }}>{text}</AppText>
         </View>
     )
 }

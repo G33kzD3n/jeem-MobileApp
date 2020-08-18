@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
        color:colors.primary1,
        fontWeight:'bold',
        paddingTop:15,
-       fontSize:25
+       fontSize:22
     },
     subTitle:{
       color:colors.primaryShade11,
-      fontSize:18,
+      fontSize:13,
       paddingBottom:18
     },
     terms:{

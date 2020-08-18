@@ -102,7 +102,7 @@ export default DealsOfTheDay
 const styles = StyleSheet.create({
     heading:{
         color:colors.primary2,
-        fontSize:15,
+        fontSize:14,
         paddingTop:13,
         paddingBottom:7,
         paddingLeft:8,

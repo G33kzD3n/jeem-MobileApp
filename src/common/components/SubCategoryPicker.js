@@ -92,7 +92,7 @@ const SubCategoryPicker = ({ visible, setModalVisible }) => {
                 style={styles.modal}
                 start={[0.2, 0]}
                 end={[0.8, 0.9]}
-                colors={[colors.primaryShade21, colors.primaryShade24, colors.primaryShade21, colors.primaryShade22, colors.primaryShade24]}>
+                colors={[colors.primaryShade24, colors.primaryShade24, colors.primaryShade22, colors.primaryShade23, colors.primaryShade24]}>
                 <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.touch}>
                     <MaterialCommunityIcons style={styles.icon} name="close" size={20} />
                 </TouchableOpacity>
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     modal: {
         backgroundColor: colors.primary2,
         flex: 1,
-        opacity: 0.9
+        opacity: 0.8
 
     }
 })

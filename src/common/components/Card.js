@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         // width: '100%'
     },
     brand:{
-        fontSize:15,
+        fontSize:13,
         color:colors.primary2,
         paddingTop:2,
         textDecorationLine: 'underline'
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
     subTitle:{
       color:colors.primaryShade11,
-      fontSize:20,
+      fontSize:18,
       paddingBottom:18
     },
     terms:{

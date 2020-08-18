@@ -52,9 +52,9 @@ const SubCategories = () => {
         <>
         <SubCategoryPicker visible={modalVisible} setModalVisible={setModalVisible}/>
         <LinearGradient
-            start={[0.8, 0.0]}
-            end={[0.8, 0.9]}
-            colors={[colors.primaryShade24,colors.primaryShade22, colors.primaryShade24,colors.primaryShade22,colors.primaryShade24]}>
+            start={[0.8, 0.2]}
+            end={[0.7, 1]}
+            colors={[colors.primaryShade24, colors.primaryShade24,colors.primaryShade22,colors.primaryShade24]}>
             {console.log('in subCategory')}
             <FlatList
                 data={data}

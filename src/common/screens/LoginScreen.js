@@ -11,6 +11,8 @@ import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
 import validation from '../components/forms/validationSchema';
 import {connect} from 'react-redux';
+import { loginAction } from '../../../store/actions/authActions';
+import { LOGIN } from '../../../store/actions/actionTypes';
 
 
 
@@ -69,12 +71,13 @@ const LoginScreen = ({ navigation,login }) => {
 
 const mapDispatchToProps=dispatch=>{
     return{
-    login:(data)=>dispatch({type:'LOGIN',values:data})
+    login:(data)=>dispatch(loginAction(LOGIN,data))
     }
 }
 const mapStateToProps=state=>{
+   
     return{
-        loginData:state.login
+        loginData:state.login.login
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(LoginScreen)

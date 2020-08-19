@@ -5,6 +5,7 @@ import SubCategories from '../components/SubCategories';
 import DealsOfTheDay from '../components/DealsOfTheDay';
 import BuysOfTheMoment from '../components/BuysOfTheMoment';
 import FeaturedBrands from '../components/FeaturedBrands';
+import BestBuys from '../components/BestBuys';
 // import {connect} from 'react-redux';
 const sectionList = [
     {
@@ -21,6 +22,9 @@ const sectionList = [
     },
     {
         data:[<FeaturedBrands/>],
+    },
+    {
+        data:[<BestBuys/>],
     },
 ]
 const Home = () => {

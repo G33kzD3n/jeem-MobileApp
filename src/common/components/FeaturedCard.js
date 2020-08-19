@@ -27,18 +27,18 @@ const styles = StyleSheet.create({
         // width: '50%',
         // height: '57%',
         backgroundColor: colors.white,
-        borderRadius: 3
+        borderRadius: 0
     },
     brandImageContainer: {
-        height: 40,
+        height: 45,
 
     },
     brandImage: {
-        height: 40,
+        height: 45,
         width: '100%'
     },
     image: {
-        height: 150,
+        height: 155,
         width: '100%'
     },
     brand: {

@@ -7,43 +7,47 @@ import BuysOfTheMoment from '../components/BuysOfTheMoment';
 import FeaturedBrands from '../components/FeaturedBrands';
 import BestBuys from '../components/BestBuys';
 import LoginScreen from '../../common/screens/LoginScreen';
-// import {connect} from 'react-redux';
-// const sectionList = [
-//     {
-//     data: [<CarouselDisplay />],
-//     },
-//       {
-//       data:[<SubCategories/>],
-//     },
-//     {
-//       data:[<DealsOfTheDay/>],
-//     },
-//     {
-//         data:[<BuysOfTheMoment/>],
-//     },
-//     {
-//         data:[<FeaturedBrands/>],
-//     },
-//     {
-//         data:[<BestBuys/>],
-//     },
-// ]
+import {connect} from 'react-redux';
+import RecommendedForYou from '../components/RecommendedForYou';
+const sectionList = [
+    {
+    data: [<CarouselDisplay />],
+    },
+      {
+      data:[<SubCategories/>],
+    },
+    {
+      data:[<DealsOfTheDay/>],
+    },
+    {
+        data:[<BuysOfTheMoment/>],
+    },
+    {
+        data:[<FeaturedBrands/>],
+    },
+    {
+        data:[<BestBuys/>],
+    },
+    {
+        data:[<RecommendedForYou/>],
+    },
+]
 
 const Home = () => {
-    return <LoginScreen/>
-    // return (
-    //     <View style={{flex:1}}>
-    //         <SectionList
+
+    return (
+        <View style={{flex:1}}>
+            <SectionList
             
-    //     sections={sectionList}
-    //     keyExtractor={(item, index) => item + index}
-    //     renderItem={({ item }) => <>{item}</>}
-    //     // renderSectionHeader={({ section: { title } }) => (
-    //     //    title  &&<Text>{title}</Text>
-    //     // )}
-    // />
-    //     </View>
-    // )
+        sections={sectionList}
+        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <>{item}</>}
+        // renderSectionHeader={({ section: { title } }) => (
+        //    title  &&<Text>{title}</Text>
+        // )}
+    />
+        </View>
+    )
 }
 
 

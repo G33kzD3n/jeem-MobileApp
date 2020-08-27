@@ -74,10 +74,10 @@ const data = [
 
 
 ]
-const title = 'Flat 30% Off'
-const subTitle = 'Limited Time Offer'
-const brandLogo = 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png'
-const image = 'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg'
+// const title = 'Flat 30% Off'
+// const subTitle = 'Limited Time Offer'
+// const brandLogo = 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png'
+// const image = 'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg'
 
 const FeaturedBrands = () => {
     return (
@@ -92,7 +92,7 @@ const FeaturedBrands = () => {
                 renderItem={({ item }) =>
                     <View style={{ paddingHorizontal: 5, width: 210 }}>
                         <TouchableWithoutFeedback onPress={() => console.log(item)}>
-                            <FeaturedCard title={title} subTitle={subTitle} brandLogo={brandLogo} image={image} />
+                            <FeaturedCard title={item.title} subTitle={item.subTitle} brandLogo={item.brandLogo} image={item.image} />
                         </TouchableWithoutFeedback>
                     </View>
                 } />

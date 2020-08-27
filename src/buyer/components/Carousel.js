@@ -93,6 +93,7 @@ const CarouselDisplay = () => {
                     sliderWidth={width}
                     itemWidth={width}
                     autoplayInterval={4000}
+                    // enableSnap={false}
                     autoplay
                     loop
                     removeClippedSubviews

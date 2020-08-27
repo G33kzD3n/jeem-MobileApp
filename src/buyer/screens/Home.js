@@ -9,6 +9,8 @@ import BestBuys from '../components/BestBuys';
 import LoginScreen from '../../common/screens/LoginScreen';
 import {connect} from 'react-redux';
 import RecommendedForYou from '../components/RecommendedForYou';
+import TopTrends from '../components/TopTrends';
+import FeaturedProducts from '../components/FeaturedProducts';
 const sectionList = [
     {
     data: [<CarouselDisplay />],
@@ -31,6 +33,13 @@ const sectionList = [
     {
         data:[<RecommendedForYou/>],
     },
+    {
+        data:[<TopTrends/>],
+    },
+    {
+        data:[<FeaturedProducts/>],
+    },
+    
 ]
 
 const Home = () => {

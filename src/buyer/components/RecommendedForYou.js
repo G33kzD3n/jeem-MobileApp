@@ -7,7 +7,7 @@ const RecommendedForYou = () => {
     return (
         <View>
           <ComponentHeading text="Recommended"/>
-          <RecommendCarousel/>
+          <RecommendCarousel/> 
         </View>
     )
 }

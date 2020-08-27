@@ -7,7 +7,7 @@ import SimpleCard from '../../common/components/SimpleCard';
 const data =
 {
     title: '40-60% Off',
-    brandLogo: 'https://cdn.imgbin.com/24/13/5/imgbin-gold-rgb-color-model-lorem-ipsum-photo-graphy-dJhJARcLgxKvNkqEaWnNjaSVc.jpg',
+    brandLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/500px-Amazon_Web_Services_Logo.svg.png',
     image: 'https://imgmedia.lbb.in/media/2020/04/5ea6933a96c7e66079ec5780_1587974970911.jpg'
 }
 
@@ -17,24 +17,24 @@ const TopTrends = () => {
           <ComponentHeading text='top trends'/>
             <View style={styles.row}>
                 <View style={styles.child}>
-                    <SimpleCard image={data.image} imageStyle={styles.image} brandLogo={data.brandLogo}  title={data.title} />
+                    <SimpleCard image={data.image} logoStyle={styles.logo} imageStyle={styles.image} brandLogo={data.brandLogo}  title={data.title} />
                 </View>
                 <View style={styles.child}>
-                    <SimpleCard image={data.image} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
+                    <SimpleCard image={data.image} logoStyle={styles.logo} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
                 </View>
                 <View style={styles.child}>
-                    <SimpleCard image={data.image} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
+                    <SimpleCard image={data.image} logoStyle={styles.logo} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
                 </View>
             </View>
             <View style={styles.row}>
                 <View style={styles.child}>
-                    <SimpleCard image={data.image} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
+                    <SimpleCard image={data.image} logoStyle={styles.logo} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
                 </View>
                 <View style={styles.child}>
-                    <SimpleCard image={data.image} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
+                    <SimpleCard image={data.image} logoStyle={styles.logo} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
                 </View>
                 <View style={styles.child}>
-                    <SimpleCard image={data.image} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
+                    <SimpleCard image={data.image} logoStyle={styles.logo} imageStyle={styles.image} brandLogo={data.brandLogo} title={data.title} />
                 </View>
             </View>
         </View>
@@ -60,5 +60,9 @@ const styles = StyleSheet.create({
     },
     image:{
         height:120,
+        marginBottom:6
+    },
+    logo:{
+        height:30
     }
 })

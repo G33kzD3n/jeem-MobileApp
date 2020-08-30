@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Avatar from './Avatar';
 import colors from '../../config/colors';
+import { useNavigation } from '@react-navigation/native';
 
 
 const data = [
@@ -84,9 +85,12 @@ const data = [
 ]
 
 const SubCategoryPicker = ({ visible, setModalVisible }) => {
+    const navigation = useNavigation();
+    const handelSubCategory=(item)=>{
+        setModalVisible(false);
+        navigation.navigate('SubCategoryProduct',{subCategoryName:item,total:undefined}) //navigate with params
+    }
     return (
-
-
         <Modal visible={visible} animationType='slide' transparent >
             <LinearGradient
                 style={styles.modal}

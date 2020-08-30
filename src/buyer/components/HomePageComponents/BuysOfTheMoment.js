@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground,TouchableWithoutFeedback } from 'react-native'
-import ComponentHeading from '../../common/components/ComponentHeading';
-import AppText from '../../common/components/AppText';
-import colors from '../../config/colors';
+import ComponentHeading from '../../../common/components/ComponentHeading';
+import AppText from '../../../common/components/AppText';
+import colors from '../../../config/colors';
 
 const item =
 {

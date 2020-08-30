@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import { StyleSheet, Text, View, FlatList,TouchableOpacity } from 'react-native'
-import Avatar from '../../common/components/Avatar';
+import Avatar from '../../../common/components/Avatar';
 import { LinearGradient } from "expo-linear-gradient";
-import colors from '../../config/colors';
-import SubCategoryPicker from '../../common/components/SubCategoryPicker';
-
+import colors from '../../../config/colors';
+import SubCategoryPicker from '../../../common/components/SubCategoryPicker';
+import { useNavigation } from '@react-navigation/native';
 const data = [
     {
         name: 'concrete',
@@ -41,11 +41,15 @@ const data = [
 ]
 
 
-const SubCategories = () => {
+const SubCategories = () => { 
+    const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false)
+
     const handelSubCategory=(item)=>{
         if(item==='All')
          setModalVisible(true);
+         else navigation.navigate('SubCategoryProduct',{subCategoryName:item,total:undefined}) //navigate with params
+           
     }
 
     return (

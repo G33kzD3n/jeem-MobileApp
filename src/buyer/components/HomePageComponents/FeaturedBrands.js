@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, FlatList, TouchableWithoutFeedback } from 'react-native'
-import ComponentHeading from '../../common/components/ComponentHeading';
-import FeaturedCard from '../../common/components/FeaturedCard';
+import ComponentHeading from '../../../common/components/ComponentHeading';
+import FeaturedCard from '../../../common/components/FeaturedCard';
 
 const data = [
     {

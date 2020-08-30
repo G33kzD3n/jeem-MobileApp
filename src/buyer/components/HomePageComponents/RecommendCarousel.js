@@ -2,9 +2,9 @@ import React, { useState, useMemo } from 'react'
 import { StyleSheet, Text, View, Dimensions, ImageBackground } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import AppText from '../../common/components/AppText';
-import colors from '../../config/colors';
-import { scrollInterpolator, animatedStyles } from '../../utils/animation';
+import AppText from '../../../common/components/AppText';
+import colors from '../../../config/colors';
+import { scrollInterpolator, animatedStyles } from '../../../utils/animation';
 
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
@@ -74,7 +74,6 @@ const RecommendCarousel = () => {
                         data={carouselItems}
                         layout={'stack'}
                         renderItem={_renderItemCarousel}
-                        enableMomentum={false}
                         activeSlideAlignment={'end'}
                         sliderWidth={SLIDER_WIDTH}
                         itemWidth={ITEM_WIDTH}

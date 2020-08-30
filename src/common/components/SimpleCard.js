@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import AppText from './AppText';
 import colors from '../../config/colors';
 
-const SimpleCard = ({image,title,subTitle,brandLogo,imageStyle,logoStyle}) => {
+const SimpleCard = ({image,title,subTitle,textStyle,brandLogo,imageStyle,logoStyle}) => {
     return (
         <View style={styles.parent}>
             <Image style={[styles.image,imageStyle]} source={{ uri: image }} />
@@ -11,7 +11,7 @@ const SimpleCard = ({image,title,subTitle,brandLogo,imageStyle,logoStyle}) => {
            {brandLogo&& <View style={styles.brandImage}>
                 <Image style={[styles.brandImage,logoStyle]} resizeMode='contain' source={{ uri: brandLogo }} />
             </View>}
-            <AppText style={styles.title}>{title}</AppText>
+            <AppText style={[styles.title,textStyle]}>{title}</AppText>
            {subTitle&&<AppText style={styles.subTitle}>{subTitle}</AppText>}
             </View>
             

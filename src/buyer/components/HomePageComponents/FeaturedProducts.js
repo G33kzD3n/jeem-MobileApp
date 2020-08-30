@@ -3,10 +3,10 @@ import { Text, View, Dimensions, StyleSheet,TouchableWithoutFeedback,ImageBackgr
 
 import Carousel from 'react-native-snap-carousel'; // Version can be specified in package.json
 
-import { scrollInterpolator, animatedStyles } from '../../utils/animation';
-import ComponentHeading from '../../common/components/ComponentHeading';
-import AppText from '../../common/components/AppText';
-import colors from '../../config/colors';
+import { scrollInterpolator, animatedStyles } from '../../../utils/animation';
+import ComponentHeading from '../../../common/components/ComponentHeading';
+import AppText from '../../../common/components/AppText';
+import colors from '../../../config/colors';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);

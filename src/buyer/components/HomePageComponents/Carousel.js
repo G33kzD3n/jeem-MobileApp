@@ -2,8 +2,8 @@ import React, { useState, useMemo } from 'react'
 import { StyleSheet, Text, View, Dimensions, ImageBackground } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import AppText from '../../common/components/AppText';
-import colors from '../../config/colors';
+import AppText from '../../../common/components/AppText';
+import colors from '../../../config/colors';
 
 
 const width = Dimensions.get('window').width;

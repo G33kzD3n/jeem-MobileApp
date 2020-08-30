@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import SimpleCard from '../../common/components/SimpleCard';
-import ComponentHeading from '../../common/components/ComponentHeading';
-import colors from '../../config/colors';
+import SimpleCard from '../../../common/components/SimpleCard';
+import ComponentHeading from '../../../common/components/ComponentHeading';
+import colors from '../../../config/colors';
 
 const data =
 {

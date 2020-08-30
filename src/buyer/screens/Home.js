@@ -1,16 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, FlatList, SectionList, View } from 'react-native'
-import CarouselDisplay from '../components/Carousel';
-import SubCategories from '../components/SubCategories';
-import DealsOfTheDay from '../components/DealsOfTheDay';
-import BuysOfTheMoment from '../components/BuysOfTheMoment';
-import FeaturedBrands from '../components/FeaturedBrands';
-import BestBuys from '../components/BestBuys';
+import CarouselDisplay from '../components/HomePageComponents/Carousel';
+import SubCategories from '../components/HomePageComponents/SubCategories';
+import DealsOfTheDay from '../components/HomePageComponents/DealsOfTheDay';
+import BuysOfTheMoment from '../components/HomePageComponents/BuysOfTheMoment';
+import FeaturedBrands from '../components/HomePageComponents/FeaturedBrands';
+import BestBuys from '../components/HomePageComponents/BestBuys';
 import LoginScreen from '../../common/screens/LoginScreen';
 import {connect} from 'react-redux';
-import RecommendedForYou from '../components/RecommendedForYou';
-import TopTrends from '../components/TopTrends';
-import FeaturedProducts from '../components/FeaturedProducts';
+import RecommendedForYou from '../components/HomePageComponents/RecommendedForYou';
+import TopTrends from '../components/HomePageComponents/TopTrends';
+import FeaturedProducts from '../components/HomePageComponents/FeaturedProducts';
 const sectionList = [
     {
     data: [<CarouselDisplay />],

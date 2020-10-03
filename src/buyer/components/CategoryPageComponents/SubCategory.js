@@ -27,7 +27,7 @@ const SubCategory = ({ category, subCategoryItems, subSubCategoryItems }) => {
             <React.Fragment key={items.id}>
               <SubCategoryCard
                 items={items}
-                collapsedSubsubCat={collapsedSubsubCat}
+                collapsedSubsubCat={{collapseCat:collapsedSubsubCat,cat:subsubCategory}}
                 toggleExpandedCat={toggleExpandedCat}
                 hasSubSubCat={subSubCategoryItems.find(item=>item.sellerCategoryName===category)}
               />

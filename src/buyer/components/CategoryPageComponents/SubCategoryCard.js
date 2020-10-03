@@ -27,12 +27,19 @@ const SubCategoryCard = ({
       <View style={styles.outerContainer}>
         <AppText style={styles.text}>{items.productCategoryName}</AppText>
         {hasSubSubCat && (
-          <MaterialCommunityIcons
-            style={styles.icon}
-            name={collapsedSubsubCat ? "chevron-down" : "chevron-up"}
-            size={30}
-            color={colors.primaryShade12}
-          />
+            !collapsedSubsubCat.collapseCat && collapsedSubsubCat.cat === items.productCategoryName  ?
+              <MaterialCommunityIcons
+                style={styles.icon}
+                name= "chevron-up"
+                size={35}
+                color={colors.primaryShade11}
+              />:
+              <MaterialCommunityIcons
+              style={styles.icon}
+              name= "chevron-down"
+              size={32}
+              color={colors.primaryShade11}
+            />
         )}
       </View>
     </TouchableOpacity>

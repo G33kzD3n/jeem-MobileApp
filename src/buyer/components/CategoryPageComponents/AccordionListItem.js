@@ -165,11 +165,11 @@ const AccordionListItem = () => {
         flexGrow: 1,
         justifyContent: "space-between",
       }}
-    >
+    > 
       {dummyData.map((data) => (
         <React.Fragment key={data.id}>
           <CategoryCard
-            collapsedSubCat={collapsedSubCat}
+            collapsedSubCat={{collapseCat:collapsedSubCat,cat:category}}
             toggleExpanded={toggleExpanded}
             data={data}
           />

@@ -12,12 +12,12 @@ const CategoryNavigator=()=>(
         headerTintColor: colors.primary1
       }}>
         <Stack.Screen name="Categories" component={Categories} options={{ headerShown: false}}/>
-        <Stack.Screen name="SubCategoryProduct" component={SubCategoryProducts}
+       <Stack.Screen name="SubCategoryProduct" component={SubCategoryProducts}
         options={({ route })=>({ headerTitle: props => <HeaderTitle 
                                      name={route.params.subCategoryName} 
                                      totalItems={route.params.total}
                                {...props} /> })}
-        />
+        /> 
     </Stack.Navigator>
 )
 export default CategoryNavigator

@@ -2,20 +2,27 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native'
 import colors from '../../config/colors';
 import AppText from './AppText';
+import { useNavigation } from '@react-navigation/native';
 
-const ProductCard = ({ image, heading, subHeading, price, orginalPrice, discount }) => {
+const ProductCard = ({item}) => {
+    const navigation = useNavigation();
+    const displayProduct=(item)=>{
+        // console.log(item,'>>>>>>>>>>>>>>>>>>>>>');
+        navigation.navigate('ProductDetails',{item})
+   } 
     return (
+        
 
-        <TouchableWithoutFeedback onPress={() => console.log(heading)}>
+        <TouchableWithoutFeedback onPress={() => displayProduct(item)}>
             <View style={styles.parent}>
-                <Image source={{ uri: image }} style={styles.image} />
+                <Image source={{ uri: item.image[0] }} style={styles.image} />
                 <View style={styles.dataContainer}>
-                    <AppText style={styles.heading}>{heading}</AppText>
-                    <AppText style={styles.subHeading}>{subHeading}</AppText>
+                    <AppText style={styles.heading}>{item.title}</AppText>
+                    <AppText style={styles.subHeading}>{item.subTitle}</AppText>
                     <View style={styles.priceContainer}>
-                        <AppText style={styles.mainPrice}>${price}  </AppText>
-                        <AppText style={styles.orginalPrice}>${orginalPrice}</AppText>
-                        <AppText style={styles.discount}>  {discount}% OFF</AppText>
+                        <AppText style={styles.mainPrice}>${item.price}  </AppText>
+                        <AppText style={styles.orginalPrice}>${item.orginalPrice}</AppText>
+                        <AppText style={styles.discount}>  {item.discount}% OFF</AppText>
                     </View>
                 </View>
             </View>

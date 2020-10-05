@@ -6,6 +6,7 @@ import { createStore } from 'redux';
 // import AuthNavigator from './src/navigation/AuthNavigator';
 import TabNavigator from './src/navigation/TabNavigator'
 import rootReducer from './store/reducers';
+import HomeNavigator from './src/navigation/HomeNavigator';
 
 const store = createStore(rootReducer)
 
@@ -13,7 +14,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <TabNavigator />
+        {/* <TabNavigator /> */}
+        <HomeNavigator/>
       </NavigationContainer>
     </Provider>
   );

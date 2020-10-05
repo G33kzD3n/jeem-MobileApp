@@ -5,10 +5,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Explore from '../buyer/screens/Explore';
 import Profile from '../buyer/screens/Profile';
 import colors from '../config/colors';
-import HomeNavigator from './HomeNavigator';
+// import HomeNavigator from './HomeNavigator';
 import CategoryNavigator from './CategoryNavigator';
+import Home from '../buyer/screens/Home';
 
-
+ 
 
 const Tab = createBottomTabNavigator()
 
@@ -19,7 +20,7 @@ const TabNavigator = () => (
         inactiveBackgroundColor: colors.primaryShade24,
         inactiveTintColor: colors.primary2
     }}>
-        <Tab.Screen name='Home' component={HomeNavigator} options={{
+        <Tab.Screen name='Home'component={Home} options={{
             tabBarIcon: ({color,size}) => <MaterialCommunityIcons
                 name="home" size={size} color={color} />
         }}

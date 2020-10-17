@@ -5,15 +5,17 @@ import AppScreen from "../../common/components/AppScreen";
 import colors from "../../config/colors";
 import AppText from "../../common/components/AppText";
 import AppButton from "../../common/components/AppButton";
+import TextCard from "../../common/components/TextCard";
+import Ratings from "../../common/components/Ratings";
 
 const ProductView = ({ route }) => {
   const data = route.params.item;
-  // console.log(data);
+  console.log(data);
   return (
     <AppScreen>
-      <ScrollView>
+      <ScrollView style={{backgroundColor:colors.primaryShade24}}>
         <AppCarousel height={styles.carouselHeight} data={data.image} />
-
+       <View style={{backgroundColor:colors.white,marginBottom:8}}>
         <View style={styles.dataContainer}>
           <AppText style={styles.heading}>
             {data.title}
@@ -25,9 +27,16 @@ const ProductView = ({ route }) => {
             <AppText style={styles.orginalPrice}>${data.orginalPrice}</AppText>
             <AppText style={styles.discount}> ({data.discount}% OFF)</AppText>
           </View>
-          
+
           <AppText style={styles.taxesMessage}>inclusive of all taxes</AppText>
+          <View style={styles.priceContainer}>
+            <AppText style={{ color: colors.primary2,fontSize:16 }}>Seller:</AppText>
+            <AppText style={{ color: colors.primary1,fontSize:15,alignSelf:'center' }}> {data.seller}</AppText>
+          </View>
         </View>
+        </View>
+        <TextCard heading={"Product Details"} details={data.details} />
+        <Ratings/>
       </ScrollView>
       <AppButton
         color1={colors.primaryShade11}
@@ -54,6 +63,7 @@ const styles = StyleSheet.create({
   },
   dataContainer: {
     padding: 10,
+    paddingBottom:5,
     flex: 1,
     //  justifyContent:'space-around'
   },
@@ -74,6 +84,7 @@ const styles = StyleSheet.create({
   },
   priceContainer: {
     flexDirection: "row",
+    // alignItems:'center'
   },
   subHeading: {
     color: colors.primary2,

@@ -12,9 +12,11 @@ const data = [
     ],
     title: "DressBerry",
     subTitle: "Colors for only you",
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     price: 679,
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -25,8 +27,10 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -37,8 +41,10 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -49,8 +55,10 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -61,8 +69,10 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -73,8 +83,10 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -85,8 +97,10 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -97,8 +111,10 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
     image: [
@@ -109,16 +125,24 @@ const data = [
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
   {
-    image: "https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg",
+    image: [
+      "https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg",
+      "https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg",
+      "https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg",
+    ],
     title: "DressBerry",
     subTitle: "Colors for only you",
     price: 679,
+    details:'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.', 
     orginalPrice: 1049,
     discount: 60,
+    seller:'Jeem Solutions'
   },
 ];
 

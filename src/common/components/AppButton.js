@@ -6,9 +6,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-const AppButton = ({borderRadius=20,handleClick,color1=colors.primaryShade12, color2, textColor='black',text,icon,width='100%',iconSize=24,iconColor='white'}) => {
+const AppButton = ({customStyle,borderRadius=20,handleClick,color1=colors.primaryShade12, color2, textColor='black',text,icon,width='100%',iconSize=24,iconColor='white'}) => {
     return (
-        <TouchableOpacity onPress={handleClick}  style={{width:width}}>
+        <TouchableOpacity onPress={handleClick}  style={[customStyle,{width:width}]}>
       
          <LinearGradient
          style={[styles.touchableOpacity,{borderRadius:borderRadius}]}

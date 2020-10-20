@@ -8,6 +8,7 @@ import colors from '../config/colors';
 // import CategoryNavigator from './CategoryNavigator';
 import Home from '../buyer/screens/Home';
 import Categories from '../buyer/screens/Categories';
+import ProfileNavigator from './ProfileNavigator';
 
  
 
@@ -30,12 +31,12 @@ const TabNavigator = () => (
                 name="view-list" size={size}  color={color}/>
         }}
         />
-        <Tab.Screen name='Explore' component={Explore} options={{
+        <Tab.Screen name='Cart' component={Explore} options={{
             tabBarIcon: ({color,size}) => <MaterialCommunityIcons
-                name="cube-scan" size={size} color={color} />
+                name="cart" size={size} color={color} />
         }}
         />
-        <Tab.Screen name='Profile' component={Profile} options={{
+        <Tab.Screen name='Profile' component={ProfileNavigator} options={{
             tabBarIcon: ({color,size}) => <MaterialCommunityIcons
                 name="account" size={size} color={color} />
         }}

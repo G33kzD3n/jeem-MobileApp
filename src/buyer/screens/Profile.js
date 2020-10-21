@@ -3,7 +3,9 @@ import { StyleSheet, Text, View ,ScrollView} from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 import AppScreen from '../../common/components/AppScreen'
 import colors from '../../config/colors'
+import AppVersion from '../components/ProfilePageComponents/AppVersion'
 import SecondSection from '../components/ProfilePageComponents/SecondSection'
+import ThirdSection from '../components/ProfilePageComponents/ThirdSection'
 import TopSections from '../components/ProfilePageComponents/TopSections'
 
 const Profile = () => {
@@ -13,6 +15,8 @@ const Profile = () => {
               <View>
               <TopSections/>
               <SecondSection/>
+              <ThirdSection/>
+              <AppVersion/>
               </View>
             </ScrollView>
       // </AppScreen>

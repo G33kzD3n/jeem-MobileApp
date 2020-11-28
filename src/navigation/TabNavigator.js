@@ -3,11 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Profile from '../buyer/screens/Profile';
 import colors from '../config/colors';
-// import HomeNavigator from './HomeNavigator';
-// import CategoryNavigator from './CategoryNavigator';
 import Home from '../buyer/screens/Home';
 import Categories from '../buyer/screens/Categories';
-import ProfileNavigator from './ProfileNavigator';
 import Cart from '../buyer/screens/Cart';
 
 const Tab = createBottomTabNavigator();
@@ -31,7 +28,7 @@ const TabNavigator = () => (
 			}}
 		/>
 		<Tab.Screen
-			name="Category"
+			name="Categories"
 			component={Categories}
 			options={{
 				tabBarIcon: ({ color, size }) => (
@@ -50,7 +47,7 @@ const TabNavigator = () => (
 		/>
 		<Tab.Screen
 			name="Profile"
-			component={ProfileNavigator}
+			component={Profile}
 			options={{
 				tabBarIcon: ({ color, size }) => (
 					<MaterialCommunityIcons name="account" size={size} color={color} />

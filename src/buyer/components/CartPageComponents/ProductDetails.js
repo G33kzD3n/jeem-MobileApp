@@ -56,7 +56,6 @@ const ProductDetails = ({ data }) => {
 		</>
 	);
 };
-
 export default ProductDetails;
 
 const styles = StyleSheet.create({

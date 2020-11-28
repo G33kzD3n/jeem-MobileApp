@@ -3,8 +3,13 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import AppButton from '../../../common/components/AppButton';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
+import { useNavigation } from '@react-navigation/native';
 
 const PlaceOrderBar = ({ scrollViewRef }) => {
+	const navigation = useNavigation();
+	const handleOrder = () => {
+		navigation.navigate('SelectAddress');
+	};
 	return (
 		<View style={styles.parentContainer}>
 			<View style={styles.containerLeft}>
@@ -23,6 +28,7 @@ const PlaceOrderBar = ({ scrollViewRef }) => {
 					borderRadius={3}
 					textColor={colors.white}
 					paddingText="2%"
+					handleClick={() => handleOrder()}
 				/>
 			</View>
 		</View>

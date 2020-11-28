@@ -1,23 +1,18 @@
-
 import React from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStore } from 'redux';
-// import AuthNavigator from './src/navigation/AuthNavigator';
-import TabNavigator from './src/navigation/TabNavigator'
 import rootReducer from './store/reducers';
-import HomeNavigator from './src/navigation/HomeNavigator';
+import AppNavigator from './src/navigation/AppNavigator';
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer);
 
 export default function App() {
-  return (
-    <Provider store={store}>
-      <NavigationContainer>
-        {/* <TabNavigator /> */}
-        <HomeNavigator/>
-      </NavigationContainer>
-    </Provider>
-  );
+	return (
+		<Provider store={store}>
+			<NavigationContainer>
+				<AppNavigator />
+			</NavigationContainer>
+		</Provider>
+	);
 }
-

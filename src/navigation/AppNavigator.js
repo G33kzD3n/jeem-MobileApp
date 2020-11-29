@@ -6,6 +6,7 @@ import ProductView from '../buyer/screens/ProductView';
 import SelectAddress from '../buyer/screens/SelectAddress';
 import HeaderTitle from '../common/components/HeaderTitle';
 import colors from '../config/colors';
+import Payments from '../buyer/screens/Payments';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -41,7 +42,12 @@ function AppNavigator() {
 			<Stack.Screen
 				name="SelectAddress"
 				component={SelectAddress}
-				options={{ title: 'SELECT ADDRESS' }}
+				options={{ title: 'ADDRESS' }}
+			/>
+			<Stack.Screen
+				name="Payments"
+				component={Payments}
+				options={{ title: 'PAYMENT' }}
 			/>
 		</Stack.Navigator>
 	);

@@ -5,15 +5,15 @@ import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
 
-const PlaceOrderBar = ({ scrollViewRef }) => {
+const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress, total }) => {
 	const navigation = useNavigation();
 	const handleOrder = () => {
-		navigation.navigate('SelectAddress');
+		navigation.navigate(navigationAddress);
 	};
 	return (
 		<View style={styles.parentContainer}>
 			<View style={styles.containerLeft}>
-				<AppText style={styles.price}>$ 1024</AppText>
+				<AppText style={styles.price}>$ {total}</AppText>
 				<TouchableOpacity
 					onPress={() => scrollViewRef.current.scrollToEnd({ animated: true })}
 				>
@@ -24,7 +24,7 @@ const PlaceOrderBar = ({ scrollViewRef }) => {
 				<AppButton
 					color1={colors.primaryShade11}
 					color2={colors.primaryShade13}
-					text="PLACE ORDER"
+					text={text}
 					borderRadius={3}
 					textColor={colors.white}
 					paddingText="2%"
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 		height: '10%',
 		paddingHorizontal: 10,
 		backgroundColor: colors.white,
-		marginBottom: 8,
+		// marginBottom: 8,
 	},
 	containerLeft: { flex: 1 },
 	containerRight: {

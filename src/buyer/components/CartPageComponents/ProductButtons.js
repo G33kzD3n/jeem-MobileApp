@@ -27,6 +27,6 @@ export default ProductButtons;
 
 const styles = StyleSheet.create({
 	topContainer: {
-		marginBottom: 8,
+		// marginBottom: 8,
 	},
 });

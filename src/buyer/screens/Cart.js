@@ -166,7 +166,12 @@ const Cart = () => {
 	const scrollViewRef = useRef();
 	return (
 		<AppScreen>
-			<PlaceOrderBar scrollViewRef={scrollViewRef} />
+			<PlaceOrderBar
+				scrollViewRef={scrollViewRef}
+				navigationAddress="SelectAddress"
+				total={1024}
+				text="PLACE ORDER"
+			/>
 			<ScrollView style={styles.scroll} ref={scrollViewRef}>
 				{data.map((items, index) => (
 					<React.Fragment key={index}>
@@ -195,7 +200,7 @@ const styles = StyleSheet.create({
 	},
 	topContainer: {
 		backgroundColor: colors.white,
-		marginBottom: 1,
+		marginTop: 8,
 		flexDirection: 'row',
 		flex: 1,
 		height: 200,

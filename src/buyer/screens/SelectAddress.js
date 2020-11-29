@@ -11,6 +11,7 @@ import AppButton from '../../common/components/AppButton';
 import AddressCard from '../components/AddressPageComponents/AddressCard';
 import ComponentHeading from '../../common/components/ComponentHeading';
 import AddressButtons from '../components/AddressPageComponents/AddressButtons';
+import { useNavigation } from '@react-navigation/native';
 
 const data = [
 	{
@@ -77,6 +78,10 @@ const data = [
 
 const SelectAddress = () => {
 	const [selectedItem, onSelectedItem] = useState(1);
+	const navigation = useNavigation();
+	const handlePayment = () => {
+		navigation.navigate('Payments');
+	};
 	return (
 		<>
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
@@ -92,7 +97,7 @@ const SelectAddress = () => {
 						/>
 					</View>
 				</View>
-				<ComponentHeading text="ADDRESS" />
+				<ComponentHeading text="SELECT ADDRESS" />
 				{data.map((item, index) => (
 					<React.Fragment key={index}>
 						<TouchableWithoutFeedback onPress={() => onSelectedItem(item.id)}>
@@ -125,6 +130,7 @@ const SelectAddress = () => {
 					borderRadius={3}
 					textColor={colors.white}
 					textTransform="uppercase"
+					handleClick={() => handlePayment()}
 				/>
 			</View>
 		</>

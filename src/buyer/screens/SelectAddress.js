@@ -1,142 +1,173 @@
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import AppCarousel from '../../common/components/AppCarousel';
-import AppScreen from '../../common/components/AppScreen';
+import React, { useState } from 'react';
+import {
+	StyleSheet,
+	ScrollView,
+	View,
+	TouchableWithoutFeedback,
+} from 'react-native';
 import colors from '../../config/colors';
-import AppText from '../../common/components/AppText';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppButton from '../../common/components/AppButton';
-import TextCard from '../../common/components/TextCard';
-import Ratings from '../../common/components/Ratings';
-const data = {
-	image: [
-		'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-	],
-	title: 'DressBerry',
-	subTitle: 'Colors for only you',
-	details:
-		'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-	price: 679,
-	orginalPrice: 1049,
-	discount: 60,
-	seller: 'Jeem Solutions',
-};
+import AddressCard from '../components/AddressPageComponents/AddressCard';
+import ComponentHeading from '../../common/components/ComponentHeading';
+import AddressButtons from '../components/AddressPageComponents/AddressButtons';
+
+const data = [
+	{
+		id: 1,
+		name: 'Basit Mir',
+		address: 'Naseem Bagh, Habak, Near Masjid yasir',
+		locality: 'Naseem Bagh',
+		city: 'Srinagar',
+		state: 'Jammu & Kashmir',
+		pincode: '190006',
+		mobile: '9858536852',
+	},
+	{
+		id: 2,
+		name: 'Basit Mir',
+		address: 'Naseem Bagh, Habak, Near Masjid yasir',
+		locality: 'Naseem Bagh',
+		city: 'Srinagar',
+		state: 'Jammu & Kashmir',
+		pincode: '190006',
+		mobile: '9858536852',
+	},
+	{
+		id: 3,
+		name: 'Basit Mir',
+		address: 'Naseem Bagh, Habak, Near Masjid yasir',
+		locality: 'Naseem Bagh',
+		city: 'Srinagar',
+		state: 'Jammu & Kashmir',
+		pincode: '190006',
+		mobile: '9858536852',
+	},
+	{
+		id: 4,
+		name: 'Basit Mir',
+		address: 'Naseem Bagh, Habak, Near Masjid yasir',
+		locality: 'Naseem Bagh',
+		city: 'Srinagar',
+		state: 'Jammu & Kashmir',
+		pincode: '190006',
+		mobile: '9858536852',
+	},
+	{
+		id: 5,
+		name: 'Basit Mir',
+		address: 'Naseem Bagh, Habak, Near Masjid yasir',
+		locality: 'Naseem Bagh',
+		city: 'Srinagar',
+		state: 'Jammu & Kashmir',
+		pincode: '190006',
+		mobile: '9858536852',
+	},
+	{
+		id: 6,
+		name: 'Basit Mir',
+		address: 'Naseem Bagh, Habak, Near Masjid yasir',
+		locality: 'Naseem Bagh',
+		city: 'Srinagar',
+		state: 'Jammu & Kashmir',
+		pincode: '190006',
+		mobile: '9858536852',
+	},
+];
 
 const SelectAddress = () => {
+	const [selectedItem, onSelectedItem] = useState(1);
 	return (
-		<AppScreen>
+		<>
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
-				<AppCarousel height={styles.carouselHeight} data={data.image} />
-				<View style={{ backgroundColor: colors.white, marginBottom: 8 }}>
-					<View style={styles.dataContainer}>
-						<AppText style={styles.heading}>
-							{data.title}
-							<AppText style={styles.subHeading}> {data.subTitle}</AppText>
-						</AppText>
-
-						<View style={styles.priceContainer}>
-							<AppText style={styles.mainPrice}>${data.price} </AppText>
-							<AppText style={styles.orginalPrice}>
-								${data.orginalPrice}
-							</AppText>
-							<AppText style={styles.discount}> ({data.discount}% OFF)</AppText>
-						</View>
-
-						<AppText style={styles.taxesMessage}>
-							inclusive of all taxes
-						</AppText>
-						<View style={styles.priceContainer}>
-							<AppText style={{ color: colors.primary2, fontSize: 16 }}>
-								Seller:
-							</AppText>
-							<AppText
-								style={{
-									color: colors.primary1,
-									fontSize: 15,
-									alignSelf: 'center',
-								}}
-							>
-								{' '}
-								{data.seller}
-							</AppText>
-						</View>
+				<View style={styles.addAdressContainer}>
+					<View style={styles.addAdress}>
+						<AppButton
+							color1={colors.white}
+							color2={colors.white}
+							text="Add New Address"
+							textColor={colors.primary1}
+							paddingVertical="2.5%"
+							textTransform="uppercase"
+						/>
 					</View>
 				</View>
-				<TextCard heading={'Product Details'} details={data.details} />
-				<Ratings />
+				<ComponentHeading text="ADDRESS" />
+				{data.map((item, index) => (
+					<React.Fragment key={index}>
+						<TouchableWithoutFeedback onPress={() => onSelectedItem(item.id)}>
+							<View style={styles.topContainer}>
+								<View style={styles.cartImage}>
+									<MaterialCommunityIcons
+										name={
+											selectedItem === item.id
+												? 'radiobox-marked'
+												: 'radiobox-blank'
+										}
+										size={24}
+										color={colors.primary1}
+									/>
+								</View>
+								<View style={styles.dataContainer}>
+									<AddressCard data={item} />
+								</View>
+							</View>
+						</TouchableWithoutFeedback>
+						<AddressButtons />
+					</React.Fragment>
+				))}
 			</ScrollView>
-			<AppButton
-				color1={colors.primaryShade11}
-				color2={colors.primaryShade13}
-				text="Add To Cart"
-				borderRadius={0}
-				textColor={colors.white}
-			/>
-		</AppScreen>
+			<View style={styles.appButton}>
+				<AppButton
+					color1={colors.primaryShade11}
+					color2={colors.primaryShade13}
+					text="CONFIRM"
+					borderRadius={3}
+					textColor={colors.white}
+					textTransform="uppercase"
+				/>
+			</View>
+		</>
 	);
 };
 
 export default SelectAddress;
 
 const styles = StyleSheet.create({
-	taxesMessage: {
-		color: 'green',
-		fontSize: 15,
+	topContainer: {
+		backgroundColor: colors.white,
+		marginBottom: 1,
+		flexDirection: 'row',
+		flex: 1,
+		height: 120,
+		borderColor: 'red',
+		padding: 10,
+		justifyContent: 'space-evenly',
 	},
-	carouselHeight: {
-		height: 550,
-		// height:'80%',
-		// flex:1
+	cartImage: {
+		flex: 1,
+		paddingRight: 10,
+		alignItems: 'center',
+		justifyContent: 'center',
+		// borderColor: colors.primary1,
+		// borderWidth: 1,
 	},
 	dataContainer: {
-		padding: 10,
-		paddingBottom: 5,
-		flex: 1,
+		// paddingBottom: 5,
+		flex: 4,
 		//  justifyContent:'space-around'
 	},
-	discount: {
-		color: 'red',
-		textTransform: 'uppercase',
-		fontSize: 15,
+	addAdressContainer: {
+		padding: 10,
+		backgroundColor: colors.white,
 	},
-	orginalPrice: {
-		color: colors.primary2,
-		fontSize: 15,
-		textDecorationLine: 'line-through',
+	addAdress: {
+		borderColor: colors.primary1,
+		borderWidth: 1,
+		borderRadius: 3,
 	},
-	mainPrice: {
-		color: colors.primary1,
-		fontSize: 18,
-		fontWeight: 'bold',
+	appButton: {
+		padding: 5,
+		backgroundColor: colors.white,
 	},
-	priceContainer: {
-		flexDirection: 'row',
-		// alignItems:'center'
-	},
-	subHeading: {
-		color: colors.primary2,
-		fontSize: 16,
-		paddingBottom: 2,
-	},
-	heading: {
-		color: colors.primary1,
-		fontSize: 18,
-		fontWeight: 'bold',
-		paddingBottom: 2,
-	},
-	// parent: {
-	//     height: 290,
-	//     borderRadius: 5,
-	//     // borderColor: 'green',
-	//     // borderWidth: 1,
-	//     width: '100%',
-	//     overflow: 'hidden',
-	//     backgroundColor:'white'
-	// },
-	// image: {
-	//     height: 200,
-	//     width: '100%',
-
-	// }
 });

@@ -18,6 +18,8 @@ const AppButton = ({
 	iconSize = 24,
 	iconColor = 'white',
 	paddingText,
+	paddingVertical = '3.5%',
+	textTransform = 'capitalize',
 }) => {
 	return (
 		<TouchableOpacity
@@ -25,7 +27,10 @@ const AppButton = ({
 			style={[customStyle, { width: width }]}
 		>
 			<LinearGradient
-				style={[styles.touchableOpacity, { borderRadius: borderRadius }]}
+				style={[
+					styles.touchableOpacity,
+					{ borderRadius: borderRadius, paddingVertical: paddingVertical },
+				]}
 				colors={[color2, color1, color1, color2]}
 				start={[0, 0]}
 				end={[1, 1]}
@@ -35,7 +40,11 @@ const AppButton = ({
 						<AppText
 							style={[
 								styles.appText,
-								{ color: textColor, padding: paddingText },
+								{
+									color: textColor,
+									padding: paddingText,
+									textTransform: textTransform,
+								},
 							]}
 						>
 							{text}
@@ -66,8 +75,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	touchableOpacity: {
-		// borderRadius:20,
-		paddingVertical: '3.5%',
 		justifyContent: 'center',
 	},
 });

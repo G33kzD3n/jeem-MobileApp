@@ -28,6 +28,7 @@ const PlaceOrderBar = ({ scrollViewRef }) => {
 					borderRadius={3}
 					textColor={colors.white}
 					paddingText="2%"
+					textTransform="uppercase"
 					handleClick={() => handleOrder()}
 				/>
 			</View>

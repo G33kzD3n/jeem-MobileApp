@@ -203,11 +203,6 @@ const styles = StyleSheet.create({
 		padding: 10,
 		justifyContent: 'space-evenly',
 	},
-	carouselHeight: {
-		height: 550,
-		// height:'80%',
-		// flex:1
-	},
 	cartImage: {
 		flex: 1,
 		paddingRight: 10,

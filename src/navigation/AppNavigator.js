@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
 import SubCategoryProducts from '../buyer/screens/SubCategoryProducts';
 import ProductView from '../buyer/screens/ProductView';
-import Cart from '../buyer/screens/Cart';
 import SelectAddress from '../buyer/screens/SelectAddress';
 import HeaderTitle from '../common/components/HeaderTitle';
 import colors from '../config/colors';
@@ -40,11 +39,10 @@ function AppNavigator() {
 				options={{ headerShown: false }}
 			/>
 			<Stack.Screen
-				name="Cart"
-				component={Cart}
-				options={{ headerShown: false }}
+				name="SelectAddress"
+				component={SelectAddress}
+				options={{ title: 'SELECT ADDRESS' }}
 			/>
-			<Stack.Screen name="SelectAddress" component={SelectAddress} />
 		</Stack.Navigator>
 	);
 }

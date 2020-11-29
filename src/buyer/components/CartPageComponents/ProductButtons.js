@@ -13,6 +13,7 @@ const ProductButtons = () => {
 				borderRadius={3}
 				textColor={colors.primary2}
 				customStyle={styles.button}
+				textTransform="uppercase"
 			/>
 		</View>
 

@@ -44,7 +44,7 @@ const Payments = () => {
 
 			<PlaceOrderBar
 				scrollViewRef={scrollViewRef}
-				// navigationAddress="SelectAddress"
+				navigationAddress="OrderDetails"
 				total={1024}
 				text="PLACE ORDER"
 			/>

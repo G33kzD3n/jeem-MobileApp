@@ -1,19 +1,17 @@
-import React from 'react'
-import { View } from 'react-native'
+import React from 'react';
+import { View } from 'react-native';
 import colors from '../../config/colors';
 
 const AppDivider = () => {
-    return (
-        <View
-        style={{
-          borderBottomColor: colors.primaryShade23,
-          borderBottomWidth: 1,
-          marginHorizontal:5
-        }}
-      />
-    )
-}
+	return (
+		<View
+			style={{
+				borderBottomColor: colors.primaryShade23,
+				borderBottomWidth: 0.5,
+				marginHorizontal: 5,
+			}}
+		/>
+	);
+};
 
-export default AppDivider
-
-
+export default AppDivider;

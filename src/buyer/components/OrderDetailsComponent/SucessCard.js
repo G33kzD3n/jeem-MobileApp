@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View, BackHandler } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -11,6 +11,16 @@ const SucessCard = () => {
 	const checkStatus = () => {
 		navigation.navigate('ViewOrders');
 	};
+
+	const handleBackButton = () => {
+		navigation.navigate('Home');
+	};
+	useEffect(() => {
+		BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+		return () =>
+			BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+	}, []);
+
 	return (
 		<View style={styles.parent}>
 			<View style={styles.topContainer}>

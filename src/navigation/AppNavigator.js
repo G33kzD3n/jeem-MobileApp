@@ -54,7 +54,11 @@ function AppNavigator() {
 			<Stack.Screen
 				name="OrderDetails"
 				component={OrderDetails}
-				options={{ title: 'ORDER' }}
+				options={{
+					title: 'ORDER',
+					headerTitleStyle: { alignSelf: 'center' },
+					headerLeft: () => null,
+				}}
 			/>
 			<Stack.Screen
 				name="ViewOrders"

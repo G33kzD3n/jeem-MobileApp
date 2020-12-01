@@ -9,6 +9,7 @@ import colors from '../config/colors';
 import Payments from '../buyer/screens/Payments';
 import OrderDetails from '../buyer/screens/OrderDetails';
 import ViewOrders from '../buyer/screens/ViewOrders';
+import AddAddress from '../buyer/components/AddressPageComponents/AddAddress';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -64,6 +65,11 @@ function AppNavigator() {
 				name="ViewOrders"
 				component={ViewOrders}
 				options={{ title: 'MY ORDERS' }}
+			/>
+			<Stack.Screen
+				name="AddAddress"
+				component={AddAddress}
+				options={{ title: 'ADD ADDRESS' }}
 			/>
 		</Stack.Navigator>
 	);

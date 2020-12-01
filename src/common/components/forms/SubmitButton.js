@@ -3,7 +3,7 @@ import { useFormikContext } from 'formik';
 import AppButton from '../AppButton';
 import colors from '../../../config/colors';
 
-const SubmitButton = ({ text }) => {
+const SubmitButton = ({ text, borderRadius }) => {
 	const { handleSubmit } = useFormikContext();
 	return (
 		<>
@@ -14,6 +14,7 @@ const SubmitButton = ({ text }) => {
 				text={text}
 				textColor={colors.white}
 				handleClick={handleSubmit}
+				borderRadius={borderRadius}
 			/>
 		</>
 	);

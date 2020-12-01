@@ -82,6 +82,9 @@ const SelectAddress = () => {
 	const handlePayment = () => {
 		navigation.navigate('Payments');
 	};
+	const addAddress = () => {
+		navigation.navigate('AddAddress');
+	};
 	return (
 		<>
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
@@ -94,6 +97,7 @@ const SelectAddress = () => {
 							textColor={colors.primary1}
 							paddingVertical="2.5%"
 							textTransform="uppercase"
+							handleClick={addAddress}
 						/>
 					</View>
 				</View>

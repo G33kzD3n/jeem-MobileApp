@@ -10,6 +10,8 @@ import Payments from '../buyer/screens/Payments';
 import OrderDetails from '../buyer/screens/OrderDetails';
 import ViewOrders from '../buyer/screens/ViewOrders';
 import AddAddress from '../buyer/components/AddressPageComponents/AddAddress';
+import RegisterScreen from '../common/screens/RegisterScreen';
+import LoginScreen from '../common/screens/LoginScreen';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -70,6 +72,16 @@ function AppNavigator() {
 				name="AddAddress"
 				component={AddAddress}
 				options={{ title: 'ADD ADDRESS' }}
+			/>
+			<Stack.Screen
+				name="Login"
+				component={LoginScreen}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Register"
+				component={RegisterScreen}
+				options={{ headerShown: false }}
 			/>
 		</Stack.Navigator>
 	);

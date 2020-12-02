@@ -40,6 +40,7 @@ const TabNavigator = () => (
 			name="Cart"
 			component={Cart}
 			options={{
+				tabBarBadge: 3,
 				tabBarIcon: ({ color, size }) => (
 					<MaterialCommunityIcons name="cart" size={size} color={color} />
 				),

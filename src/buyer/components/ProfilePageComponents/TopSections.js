@@ -3,8 +3,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import AppButton from '../../../common/components/AppButton';
 import Avatar from '../../../common/components/Avatar';
 import colors from '../../../config/colors';
+import { useNavigation } from '@react-navigation/native';
 
 const TopSections = () => {
+	const navigation = useNavigation();
+	const handelAuth = () => {
+		navigation.navigate('Login');
+	};
 	return (
 		<View style={styles.topContainer}>
 			<View style={styles.firstContainer}></View>
@@ -23,6 +28,7 @@ const TopSections = () => {
 					text="LOG IN/SIGN UP"
 					customStyle={styles.button}
 					textTransform="uppercase"
+					handleClick={handelAuth}
 				/>
 			</View>
 		</View>

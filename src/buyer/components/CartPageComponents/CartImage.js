@@ -1,10 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
-const CartImage = ({ image }) => {
+const CartImage = ({ image, resizeMode = 'cover' }) => {
 	return (
 		<View>
-			<Image style={[styles.image]} source={{ uri: image }} />
+			<Image
+				style={[styles.image]}
+				source={{ uri: image }}
+				resizeMode={resizeMode}
+			/>
 		</View>
 	);
 };

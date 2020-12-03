@@ -28,7 +28,7 @@ const SucessCard = () => {
 					style={styles.icon}
 					name="check-circle"
 					size={50}
-					color="green"
+					color="mediumseagreen"
 				/>
 				<View>
 					<AppText style={styles.text}>Order placed Sucessfully!</AppText>
@@ -45,7 +45,7 @@ const SucessCard = () => {
 			<View style={styles.buttonContainer}>
 				<AppButton
 					color2={colors.secondarGreen}
-					color1="green"
+					color1="mediumseagreen"
 					text="View Order"
 					borderRadius={3}
 					textColor={colors.white}

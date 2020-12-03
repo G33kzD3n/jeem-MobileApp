@@ -183,7 +183,14 @@ const Cart = () => {
 								<ProductDetails data={items} />
 							</View>
 						</View>
-						<ProductButtons />
+						<View
+							style={{
+								borderTopColor: colors.primaryShade23,
+								borderTopWidth: 0.5,
+							}}
+						>
+							<ProductButtons />
+						</View>
 					</React.Fragment>
 				))}
 				<PriceDetails />
@@ -211,6 +218,7 @@ const styles = StyleSheet.create({
 	cartImage: {
 		flex: 1,
 		paddingRight: 10,
+		width: 50,
 	},
 	dataContainer: {
 		// paddingBottom: 5,

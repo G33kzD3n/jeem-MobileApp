@@ -4,11 +4,16 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import CartImage from '../CartPageComponents/CartImage';
+import { useNavigation } from '@react-navigation/native';
 
 const OrderInfoCards = ({ order }) => {
+	const navigation = useNavigation();
+	const fullDetails = () => {
+		navigation.navigate('ItemDetails');
+	};
 	return (
 		<TouchableWithoutFeedback
-			onPress={() => console.log('hello')}
+			onPress={() => fullDetails()}
 			style={styles.touch}
 		>
 			<View style={styles.secondSection}>

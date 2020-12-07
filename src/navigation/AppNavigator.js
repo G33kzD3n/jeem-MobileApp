@@ -12,6 +12,7 @@ import ViewOrders from '../buyer/screens/ViewOrders';
 import AddAddress from '../buyer/components/AddressPageComponents/AddAddress';
 import RegisterScreen from '../common/screens/RegisterScreen';
 import LoginScreen from '../common/screens/LoginScreen';
+import OrderFullDetail from '../buyer/components/OrderDetailsComponent/OrderFullDetail';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -82,6 +83,11 @@ function AppNavigator() {
 				name="Register"
 				component={RegisterScreen}
 				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="ItemDetails"
+				component={OrderFullDetail}
+				options={{ title: 'ITEM DETAILS' }}
 			/>
 		</Stack.Navigator>
 	);

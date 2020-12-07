@@ -1,24 +1,34 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import colors from '../../config/colors';
 import AppText from './AppText';
 
-const ComponentHeading = ({text}) => {
-    return (
-        <AppText style={styles.heading}>{text}</AppText>
-    )
-}
+const ComponentHeading = ({ text, more, onPress }) => {
+	return (
+		<View style={styles.parent}>
+			<AppText style={styles.heading}>{text}</AppText>
+			{more && (
+				<TouchableOpacity onPress={onPress}>
+					<AppText style={styles.heading}>{more}</AppText>
+				</TouchableOpacity>
+			)}
+		</View>
+	);
+};
 
-export default ComponentHeading
+export default ComponentHeading;
 
 const styles = StyleSheet.create({
-    heading:{
-        color:colors.primary2,
-        fontSize:12,
-        paddingTop:13,
-        paddingBottom:7,
-        paddingLeft:8,
-        textTransform:'uppercase'
-
-    }
-})
+	parent: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		paddingTop: 13,
+		paddingBottom: 7,
+		paddingHorizontal: 8,
+	},
+	heading: {
+		color: colors.primary2,
+		fontSize: 12,
+		textTransform: 'uppercase',
+	},
+});

@@ -9,6 +9,7 @@ import BestBuys from '../components/HomePageComponents/BestBuys';
 import RecommendedForYou from '../components/HomePageComponents/RecommendedForYou';
 import TopTrends from '../components/HomePageComponents/TopTrends';
 import FeaturedProducts from '../components/HomePageComponents/FeaturedProducts';
+import { StatusBar } from 'expo-status-bar';
 const sectionList = [
 	{
 		data: [<CarouselDisplay />],
@@ -42,6 +43,7 @@ const sectionList = [
 const Home = () => {
 	return (
 		<View style={{ flex: 1 }}>
+			<StatusBar style="light" />
 			<SectionList
 				sections={sectionList}
 				keyExtractor={(item, index) => item + index}

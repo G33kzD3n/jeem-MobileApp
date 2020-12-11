@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import AppScreen from '../../common/components/AppScreen';
 import colors from '../../config/colors';
 import AppText from '../../common/components/AppText';
 
@@ -9,6 +8,7 @@ import CartImage from '../components/CartPageComponents/CartImage';
 import ProductDetails from '../components/CartPageComponents/ProductDetails';
 import ProductButtons from '../components/CartPageComponents/ProductButtons';
 import PriceDetails from '../components/CartPageComponents/PriceDetails';
+import AppScreen from '../../common/components/AppScreen';
 const data = [
 	{
 		image: [

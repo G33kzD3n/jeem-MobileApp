@@ -1,17 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import AppScreen from '../../common/components/AppScreen'
-import AccordionListItem from '../components/CategoryPageComponents/AccordionListItem'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import AccordionListItem from '../components/CategoryPageComponents/AccordionListItem';
 // import Cards from '../components/CategoryPageComponents/Card'
 
 const Categories = () => {
-    return (
-        <AppScreen>
-           <AccordionListItem/>
-        </AppScreen>
-    )
-}
+	return (
+		<>
+			<AccordionListItem />
+		</>
+	);
+};
 
-export default Categories
+export default Categories;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

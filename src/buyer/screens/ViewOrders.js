@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import AppText from '../../common/components/AppText';

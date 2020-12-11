@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		height: '10%',
-		paddingHorizontal: 10,
+		padding: 10,
 		backgroundColor: colors.white,
 		// marginBottom: 8,
 	},

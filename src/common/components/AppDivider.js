@@ -2,13 +2,13 @@ import React from 'react';
 import { View } from 'react-native';
 import colors from '../../config/colors';
 
-const AppDivider = () => {
+const AppDivider = ({ width = 0.5, margin = 5 }) => {
 	return (
 		<View
 			style={{
 				borderBottomColor: colors.primaryShade23,
-				borderBottomWidth: 0.5,
-				marginHorizontal: 5,
+				borderBottomWidth: width,
+				marginHorizontal: margin,
 			}}
 		/>
 	);

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
 	StyleSheet,
 	Text,
@@ -8,6 +8,9 @@ import {
 	TouchableWithoutFeedback,
 } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { useSelector, useDispatch } from 'react-redux';
+import { carouselAction } from '../../../../store/actions';
+import { CAROUSEL } from '../../../../store/actions/actionTypes';
 // import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
@@ -84,7 +87,12 @@ function pagination(activeIndex) {
 
 const CarouselDisplay = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
-
+	// const updateNotebook = useSelector((state) => state.home.carousel);
+	// console.log(updateNotebook);
+	// const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(carouselAction(CAROUSEL)); //get called if the user refreshes the page to get data
+	// }, []);
 	return (
 		<>
 			{useMemo(

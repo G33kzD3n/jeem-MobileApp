@@ -13,6 +13,7 @@ import AddAddress from '../buyer/components/AddressPageComponents/AddAddress';
 import RegisterScreen from '../common/screens/RegisterScreen';
 import LoginScreen from '../common/screens/LoginScreen';
 import OrderFullDetail from '../buyer/components/OrderDetailsComponent/OrderFullDetail';
+import EditProfile from '../buyer/screens/EditProfile';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -88,6 +89,11 @@ function AppNavigator() {
 				name="ItemDetails"
 				component={OrderFullDetail}
 				options={{ title: 'ITEM DETAILS' }}
+			/>
+			<Stack.Screen
+				name="EditProfile"
+				component={EditProfile}
+				options={{ title: 'Profile' }}
 			/>
 		</Stack.Navigator>
 	);

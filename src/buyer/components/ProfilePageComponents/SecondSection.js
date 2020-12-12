@@ -8,6 +8,12 @@ const SecondSection = () => {
 	const checkStatus = () => {
 		navigation.navigate('ViewOrders');
 	};
+	const addAddress = () => {
+		navigation.navigate('SelectAddress');
+	};
+	const editProfile = () => {
+		navigation.navigate('EditProfile');
+	};
 	return (
 		<View style={styles.topContainer}>
 			<ProfileCard
@@ -16,6 +22,20 @@ const SecondSection = () => {
 				subHeading="Check your order status"
 				icon="inbox-arrow-up"
 				onPress={() => checkStatus()}
+			/>
+			<ProfileCard
+				customStyle={styles.customStyle}
+				heading="Profile Details"
+				subHeading="Change your profile details"
+				icon="account-edit"
+				onPress={() => editProfile()}
+			/>
+			<ProfileCard
+				customStyle={styles.customStyle}
+				heading="Address"
+				subHeading="Save addresses for hasle-free checkout"
+				icon="map-marker-plus"
+				onPress={() => addAddress()}
 			/>
 			<ProfileCard
 				customStyle={styles.customStyle}

@@ -11,13 +11,20 @@ const AppFormFeild = ({
 	overrideTextbox,
 	...otherprops
 }) => {
-	const { setFieldTouched, handleChange, errors, touched } = useFormikContext();
+	const {
+		setFieldTouched,
+		handleChange,
+		errors,
+		touched,
+		values,
+	} = useFormikContext();
 	return (
 		<>
 			<AppTextInput
 				onBlur={() => setFieldTouched(name)}
 				onChangeText={handleChange(name)}
 				overrideContainer={overrideContainer}
+				value={values[name]}
 				overrideTextbox={overrideTextbox}
 				{...otherprops}
 			/>

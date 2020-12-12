@@ -5,7 +5,7 @@ import Avatar from '../../../common/components/Avatar';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
 
-const TopSections = () => {
+const TopSections = ({ edit }) => {
 	const navigation = useNavigation();
 	const handelAuth = () => {
 		navigation.navigate('Login');
@@ -18,18 +18,20 @@ const TopSections = () => {
 					customStyles={styles.avatar}
 					image="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png"
 				/>
-				<AppButton
-					color1={colors.primaryShade11}
-					color2={colors.primaryShade13}
-					text="Add To Cart"
-					borderRadius={0}
-					textColor={colors.white}
-					width="50%"
-					text="LOG IN/SIGN UP"
-					customStyle={styles.button}
-					textTransform="uppercase"
-					handleClick={handelAuth}
-				/>
+				{!edit && (
+					<AppButton
+						color1={colors.primaryShade11}
+						color2={colors.primaryShade13}
+						text="Add To Cart"
+						borderRadius={0}
+						textColor={colors.white}
+						width="50%"
+						text="LOG IN/SIGN UP"
+						customStyle={styles.button}
+						textTransform="uppercase"
+						handleClick={handelAuth}
+					/>
+				)}
 			</View>
 		</View>
 	);
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
 	topContainer: {
 		backgroundColor: colors.white,
 		height: 200,
-		marginBottom: 10,
+		//	marginBottom: 10,
 	},
 	firstContainer: {
 		backgroundColor: colors.primaryShade13,

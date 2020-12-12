@@ -13,6 +13,12 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.jeem.jeem"
+    },
+    "ios": {
+      "bundleIdentifier": "com.jeem.jeem"
+    }
   }
 }

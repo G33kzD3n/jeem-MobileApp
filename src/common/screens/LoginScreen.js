@@ -10,9 +10,9 @@ import AppFormFeild from '../components/forms/AppFormFeild';
 import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
 import validation from '../components/forms/validationSchema';
-import { connect } from 'react-redux';
-import { loginAction } from '../../../store/actions/authActions';
-import { LOGIN } from '../../../store/actions/actionTypes';
+// import { connect } from 'react-redux';
+// import { loginAction } from '../../../store/actions/authActions';
+// import { LOGIN } from '../../../store/actions/actionTypes';
 
 const LoginScreen = ({ navigation, login }) => {
 	const [isEnabled, setIsEnabled] = useState(false);
@@ -43,7 +43,7 @@ const LoginScreen = ({ navigation, login }) => {
 			<View style={styles.secondContainer}>
 				<AppForm
 					initialValues={{ email: '', password: '' }}
-					onSubmit={(values) => login(values)}
+					onSubmit={(values) => console.log(values)}
 					validationSchema={validation.validationLogin}
 				>
 					<View style={styles.textBox}>
@@ -112,17 +112,7 @@ const LoginScreen = ({ navigation, login }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		login: (data) => dispatch(loginAction(LOGIN, data)),
-	};
-};
-const mapStateToProps = (state) => {
-	return {
-		loginData: state.login.login,
-	};
-};
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default LoginScreen;
 
 const styles = StyleSheet.create({
 	innerThird: {

@@ -12,6 +12,7 @@ const data = {
 };
 
 const BestBuys = () => {
+	console.log('best buyyyyyyyy');
 	return (
 		<View style={styles.parent}>
 			<ComponentHeading text="best buys" more="View More" />

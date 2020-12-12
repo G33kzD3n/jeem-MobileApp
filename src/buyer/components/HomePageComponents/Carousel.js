@@ -11,6 +11,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { carouselAction } from '../../../../store/actions';
 import { CAROUSEL } from '../../../../store/actions/actionTypes';
+import * as SplashScreen from 'expo-splash-screen';
 // import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
@@ -96,14 +97,27 @@ const CarouselDisplay = () => {
 	const carouselItems = useSelector((state) => state.home.carousel);
 	const dispatch = useDispatch();
 	useEffect(() => {
+		if (carouselItems) {
+			hideSplashScreen();
+		}
+	}, [carouselItems]);
+
+	useEffect(() => {
 		dispatch(carouselAction(CAROUSEL)); //get called if the user refreshes the page to get data
+		showSplashScreen();
 	}, []);
+
+	const hideSplashScreen = async () => {
+		await SplashScreen.hideAsync();
+	};
+	const showSplashScreen = async () => {
+		await SplashScreen.preventAutoHideAsync();
+	};
 	return (
 		<>
 			{useMemo(
 				() => (
 					<>
-						{/* {console.log('>>>>>>>>>>>>>>')} */}
 						{carouselItems && (
 							<Carousel
 								containerCustomStyle={styles.carousel}

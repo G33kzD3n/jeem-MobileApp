@@ -16,38 +16,38 @@ import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 
 const width = Dimensions.get('window').width;
-const carouselItems = [
-	{
-		title: 'Item 1',
-		text: 'Text 1',
-		image:
-			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-	},
-	{
-		title: 'Item 2',
-		text: 'Text 2',
-		image:
-			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-	},
-	{
-		title: 'Item 3',
-		text: 'Text 3',
-		image:
-			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-	},
-	{
-		title: 'Item 4',
-		text: 'Text 4',
-		image:
-			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-	},
-	{
-		title: 'Item 5',
-		text: 'Text 5',
-		image:
-			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-	},
-];
+// const carouselItems = [
+// 	{
+// 		title: 'Item 1',
+// 		text: 'Text 1',
+// 		image:
+// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
+// 	},
+// 	{
+// 		title: 'Item 2',
+// 		text: 'Text 2',
+// 		image:
+// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
+// 	},
+// 	{
+// 		title: 'Item 3',
+// 		text: 'Text 3',
+// 		image:
+// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
+// 	},
+// 	{
+// 		title: 'Item 4',
+// 		text: 'Text 4',
+// 		image:
+// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
+// 	},
+// 	{
+// 		title: 'Item 5',
+// 		text: 'Text 5',
+// 		image:
+// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
+// 	},
+// ];
 
 _renderItem = ({ item, index }) => {
 	return (
@@ -55,22 +55,28 @@ _renderItem = ({ item, index }) => {
 			onPress={() => console.log(item)}
 			style={styles.touchOpacity}
 		>
-			<ImageBackground source={{ uri: item.image }} style={styles.background}>
+			<ImageBackground
+				source={{ uri: item.carouselImage }}
+				style={styles.background}
+			>
 				<View style={{ padding: 50 }}>
 					<AppText style={{ fontSize: 30, color: colors.primary1 }}>
-						{item.title}
+						{item.carouselHeading}
 					</AppText>
-					<AppText style={{ color: colors.white }}>{item.text}</AppText>
+					<AppText style={{ color: colors.white }}>
+						{item.carouselSubHeading}
+					</AppText>
 				</View>
 			</ImageBackground>
 		</TouchableWithoutFeedback>
 	);
 };
 
-function pagination(activeIndex) {
+function pagination(activeIndex, length) {
+	// console.log(length);
 	return (
 		<Pagination
-			dotsLength={carouselItems.length}
+			dotsLength={length}
 			activeDotIndex={activeIndex}
 			containerStyle={{ paddingVertical: 0, bottom: 15 }}
 			dotStyle={styles.dotStyle}
@@ -87,39 +93,43 @@ function pagination(activeIndex) {
 
 const CarouselDisplay = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
-	// const updateNotebook = useSelector((state) => state.home.carousel);
-	// console.log(updateNotebook);
-	// const dispatch = useDispatch();
-	// useEffect(() => {
-	// 	dispatch(carouselAction(CAROUSEL)); //get called if the user refreshes the page to get data
-	// }, []);
+	const carouselItems = useSelector((state) => state.home.carousel);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(carouselAction(CAROUSEL)); //get called if the user refreshes the page to get data
+	}, []);
 	return (
 		<>
 			{useMemo(
 				() => (
 					<>
-						{console.log('in carousel')}
-						<Carousel
-							containerCustomStyle={styles.carousel}
-							layout={'default'}
-							data={carouselItems}
-							sliderWidth={width}
-							itemWidth={width}
-							autoplayInterval={4000}
-							// enableSnap={false}
-							autoplay
-							loop
-							removeClippedSubviews
-							inactiveSlideScale={1}
-							loopClonesPerSide={carouselItems.length}
-							renderItem={_renderItem}
-							onSnapToItem={(index) => setActiveIndex(index)}
-						/>
+						{/* {console.log('>>>>>>>>>>>>>>')} */}
+						{carouselItems && (
+							<Carousel
+								containerCustomStyle={styles.carousel}
+								layout={'default'}
+								data={carouselItems}
+								sliderWidth={width}
+								itemWidth={width}
+								autoplayInterval={4000}
+								// enableSnap={false}
+								autoplay
+								loop
+								removeClippedSubviews
+								inactiveSlideScale={1}
+								loopClonesPerSide={carouselItems.length}
+								renderItem={_renderItem}
+								onSnapToItem={(index) => setActiveIndex(index)}
+							/>
+						)}
 					</>
 				),
-				[_renderItem]
+				[_renderItem, carouselItems]
 			)}
-			<View style={styles.pagination}>{pagination(activeIndex)}</View>
+
+			<View style={styles.pagination}>
+				{pagination(activeIndex, carouselItems ? carouselItems.length : 0)}
+			</View>
 		</>
 	);
 };
@@ -137,7 +147,7 @@ const styles = StyleSheet.create({
 		height: 8,
 		borderRadius: 5,
 		marginHorizontal: 1,
-		backgroundColor: 'rgba(255, 255, 255, 0.92)',
+		backgroundColor: colors.primaryShade22,
 	},
 	background: {
 		flex: 1,

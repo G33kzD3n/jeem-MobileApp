@@ -1,11 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './store/reducers';
 import AppNavigator from './src/navigation/AppNavigator';
+import thunk from 'redux-thunk';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 const MyTheme = {
 	...DefaultTheme,
 	colors: {

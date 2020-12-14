@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Button, Alert } from "react-native";
+// import React, { useState } from 'react';
+import { Alert } from 'react-native';
 
-const appAlert = (title,msg) =>  {
-    Alert.alert(
-          title,
-          msg,
-          [
-            { text: "OK" }
-          ],
-          { cancelable: false }
-)
-}
+const appAlert = (title, msg, setDeleteAddress) => {
+	Alert.alert(
+		title,
+		msg,
+		[
+			{ text: 'OK', onPress: () => setDeleteAddress(true) },
+			{
+				text: 'Cancel',
+				// onPress: () => console.log('Cancel Pressed'),
+				style: 'cancel',
+			},
+		],
+		{
+			cancelable: false,
+		}
+	);
+};
 
-
-export default appAlert
-
-const styles = StyleSheet.create({})
+export default appAlert;

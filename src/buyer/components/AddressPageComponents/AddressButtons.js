@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import colors from '../../../config/colors';
 import AppButton from '../../../common/components/AppButton';
+import appAlert from '../../../common/components/appAlert';
 
 const AddressButtons = () => {
+	const [deleteAddress, setDeleteAddress] = useState(false);
+
+	const handleDelete = () => {
+		appAlert('DELETE', 'Are you sure you want to delete?', setDeleteAddress);
+	};
 	return (
 		<View style={styles.addressButtons}>
 			<View style={styles.leftButton}>
@@ -15,6 +21,7 @@ const AddressButtons = () => {
 					borderRadius={3}
 					textColor={colors.primary2}
 					customStyle={styles.button}
+					handleClick={handleDelete}
 				/>
 			</View>
 			<View style={styles.dataContainer}>

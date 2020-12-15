@@ -15,40 +15,9 @@ import * as SplashScreen from 'expo-splash-screen';
 // import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
+import { apiUrlImageCarousels } from '../../../config/config';
 
 const width = Dimensions.get('window').width;
-// const carouselItems = [
-// 	{
-// 		title: 'Item 1',
-// 		text: 'Text 1',
-// 		image:
-// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-// 	},
-// 	{
-// 		title: 'Item 2',
-// 		text: 'Text 2',
-// 		image:
-// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-// 	},
-// 	{
-// 		title: 'Item 3',
-// 		text: 'Text 3',
-// 		image:
-// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-// 	},
-// 	{
-// 		title: 'Item 4',
-// 		text: 'Text 4',
-// 		image:
-// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-// 	},
-// 	{
-// 		title: 'Item 5',
-// 		text: 'Text 5',
-// 		image:
-// 			'https://loveincorporated.blob.core.windows.net/contentimages/gallery/7043cb98-129e-49b8-bb13-7db7e4eb3eb7-hempcrete-%20credit%20Iso%20Hemp.jpg',
-// 	},
-// ];
 
 _renderItem = ({ item, index }) => {
 	return (
@@ -57,8 +26,9 @@ _renderItem = ({ item, index }) => {
 			style={styles.touchOpacity}
 		>
 			<ImageBackground
-				source={{ uri: item.carouselImage }}
+				source={{ uri: apiUrlImageCarousels + item.carouselImage }}
 				style={styles.background}
+				resizeMode="stretch"
 			>
 				<View style={{ padding: 50 }}>
 					<AppText style={{ fontSize: 30, color: colors.primary1 }}>
@@ -165,6 +135,7 @@ const styles = StyleSheet.create({
 	},
 	background: {
 		flex: 1,
+		// resizeMode: 'center',
 	},
 	touchOpacity: {
 		borderRadius: 5,

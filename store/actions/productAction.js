@@ -1,3 +1,4 @@
+import { productCategories, productSubCategories } from '../../api/homeApi.js';
 import {
 	products,
 	deleteProduct,
@@ -7,16 +8,36 @@ import {
 } from '../../api/productApi.js';
 
 export const getProductsAction = (type, values) => {
-  return async (dispatch) => {
-	const response = await products(values);
-	if (response.status === 200) {
-		dispatch({ type: type, value: response.data });
-	}
-	else{
-		dispatch({ type: type, value: null });
-	}
-    
-  };
+	return async (dispatch) => {
+		const response = await products(values);
+		if (response.status === 200) {
+			dispatch({ type: type, value: response.data });
+		} else {
+			dispatch({ type: type, value: null });
+		}
+	};
+};
+
+export const productCategoriesAction = (type) => {
+	return async (dispatch) => {
+		const response = await productCategories();
+		if (response.status === 200) {
+			dispatch({ type: type, value: response.data });
+		} else {
+			dispatch({ type: type, value: null });
+		}
+	};
+};
+
+export const productSubCategoriesAction = (type) => {
+	return async (dispatch) => {
+		const response = await productSubCategories();
+		if (response.status === 200) {
+			dispatch({ type: type, value: response.data });
+		} else {
+			dispatch({ type: type, value: null });
+		}
+	};
 };
 
 export const unSetErrorResponseAction = (type, values) => {
@@ -26,7 +47,7 @@ export const unSetErrorResponseAction = (type, values) => {
 };
 
 export const unsetProductSucessMessage = (type, value) => {
-	console.log(type, value)
+	console.log(type, value);
 	return async (dispatch) => {
 		dispatch({ type: type, value: value });
 	};
@@ -78,7 +99,6 @@ export const addProductsAction = (type, values) => {
 	productFormData.append('carouselId', values.productCarousals);
 	productFormData.append('discountedPrice', values.productDiscountedPrice);
 	productFormData.append('sellerId', sellerId);
-
 
 	if (values.arrayimages !== null) {
 		Array.from(values.arrayimages).forEach((f) => {
@@ -169,7 +189,7 @@ export const updateProductsAction = (type, prod_id, values) => {
 
 export const getProductCategoryAction = (type) => {
 	return async (dispatch) => {
-	  const response = await productCategory();
+		const response = await productCategory();
 		if (response.status === 200) {
 			dispatch({
 				type: type,
@@ -186,10 +206,7 @@ export const getProductCategoryAction = (type) => {
 			});
 		}
 	};
-  };
-  
-
-
+};
 
 // export const updateProductsActionMessage = (type, message) => {
 //   dispatch({

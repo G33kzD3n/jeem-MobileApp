@@ -51,3 +51,15 @@ export async function searchProduct(data) {
 		return response.data;
 	} catch (error) {}
 }
+
+export async function productCategories() {
+	try {
+		return await axios.get(apiUrl + 'productcategories');
+	} catch (error) {}
+}
+
+export async function productSubCategories() {
+	try {
+		return await axios.get(apiUrl + 'productsubcategories');
+	} catch (error) {}
+}

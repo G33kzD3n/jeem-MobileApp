@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import AppCarousel from '../../common/components/AppCarousel';
 import AppScreen from '../../common/components/AppScreen';
@@ -8,31 +8,54 @@ import AppButton from '../../common/components/AppButton';
 import TextCard from '../../common/components/TextCard';
 import Ratings from '../../common/components/Ratings';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { singleProductAction } from '../../../store/actions';
+import { GET_SINGLE_PRODUCT_FOR_BUYER } from '../../../store/actions/actionTypes';
+import Loader from '../../common/components/Loader';
 
 const ProductView = ({ route }) => {
 	const navigation = useNavigation();
-	const data = route.params.item;
+	const { id } = route.params;
 	const addToCart = () => {
 		navigation.navigate('Cart');
 	};
-	console.log(data);
+	const productData = useSelector((state) => state.home.singleProduct);
+
+	//console.log(productSubCategories);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(singleProductAction(GET_SINGLE_PRODUCT_FOR_BUYER, id)); //get called if the user refreshes the page to get data
+	}, []);
+
+	//console.log(id, '>>>>>>>>>>>>>>>>>>>>>>>>', productData);
+	if (!productData) return <Loader />;
+
 	return (
 		<AppScreen>
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
-				<AppCarousel height={styles.carouselHeight} data={data.image} />
+				<AppCarousel height={styles.carouselHeight} data={productData} />
 				<View style={{ backgroundColor: colors.white, marginBottom: 8 }}>
 					<View style={styles.dataContainer}>
 						<AppText style={styles.heading}>
-							{data.title}
-							<AppText style={styles.subHeading}> {data.subTitle}</AppText>
+							{productData.productName}
+							<AppText style={styles.subHeading}>
+								{' '}
+								{productData.productAddInfo}
+							</AppText>
 						</AppText>
 
 						<View style={styles.priceContainer}>
-							<AppText style={styles.mainPrice}>${data.price} </AppText>
-							<AppText style={styles.orginalPrice}>
-								${data.orginalPrice}
+							<AppText style={styles.mainPrice}>
+								${productData.productDiscountedPrice}{' '}
 							</AppText>
-							<AppText style={styles.discount}> ({data.discount}% OFF)</AppText>
+							<AppText style={styles.orginalPrice}>
+								${productData.productPrice}
+							</AppText>
+							<AppText style={styles.discount}>
+								{' '}
+								({productData.productDiscount}% OFF)
+							</AppText>
 						</View>
 
 						<AppText style={styles.taxesMessage}>
@@ -50,12 +73,15 @@ const ProductView = ({ route }) => {
 								}}
 							>
 								{' '}
-								{data.seller}
+								{/* {data.seller} */}
 							</AppText>
 						</View>
 					</View>
 				</View>
-				<TextCard heading={'Product Details'} details={data.details} />
+				<TextCard
+					heading={'Product Details'}
+					details={productData.productCartDesc}
+				/>
 				<Ratings />
 			</ScrollView>
 			<View style={styles.appButton}>

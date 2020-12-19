@@ -15,16 +15,9 @@ export const loginAction = (type, values) => {
 		const data = await loginUser(values);
 		console.log(data);
 		if (data.status === 200) {
-			// if( data.data.role.role === "Buyer"){
-			// 	console.log(data.data.role.role);
-			// 	localStorage.setItem('buyer_token', data.data.token.access_token);
-			// }else{
-			// 	console.log(data.data.role.role);
-			// 	localStorage.setItem('seller_token', data.data.token.access_token);
-			// }
-			localStorage.setItem('user_token', data.data.token.access_token);
-			localStorage.setItem('user_type', data.data.role.role);
-			localStorage.setItem('user_id', data.data.user.id);
+			// localStorage.setItem('user_token', data.data.token.access_token);
+			// localStorage.setItem('user_type', data.data.role.role);
+			// localStorage.setItem('user_id', data.data.user.id);
 			dispatch({ type: type, value: data.data });
 		} else if (data.response.status === 401) {
 			dispatch({ type: type, value: 401 });
@@ -55,9 +48,9 @@ export const logoutAction = (type) => {
 		console.log(data);
 		console.log(data.response);
 		if (data.status === 200) {
-			localStorage.removeItem('user_id');
-			localStorage.removeItem('user_token');
-			localStorage.removeItem('user_type');
+			// localStorage.removeItem('user_id');
+			// localStorage.removeItem('user_token');
+			// localStorage.removeItem('user_type');
 			// toast.success('Logout Successfull')
 			dispatch({ type: type });
 			dispatch({ type: 'RESET_CART_AFTER_LOGOUT' });

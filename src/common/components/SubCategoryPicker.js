@@ -23,8 +23,8 @@ const SubCategoryPicker = ({
 	const handelSubCategory = (item) => {
 		setModalVisible(false);
 		navigation.navigate('SubCategoryProduct', {
-			subCategoryName: item,
-			total: undefined,
+			subCategoryName: item.productSubCategoryName,
+			id: item.id,
 		}); //navigate with params
 	};
 
@@ -55,9 +55,7 @@ const SubCategoryPicker = ({
 					keyExtractor={(data) => data.id}
 					renderItem={({ item }) => (
 						<View style={styles.parent}>
-							<TouchableOpacity
-								onPress={() => handelSubCategory(item.productSubCategoryName)}
-							>
+							<TouchableOpacity onPress={() => handelSubCategory(item)}>
 								<Avatar
 									text={item.productSubCategoryName}
 									image={item.productSubCategoryImage}

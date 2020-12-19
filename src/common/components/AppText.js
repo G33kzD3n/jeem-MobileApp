@@ -9,9 +9,11 @@ const AppText = ({
 	children,
 	style,
 	color = 'white',
+	...props
 }) => {
 	return (
 		<Text
+			{...props}
 			style={[
 				defaultStyles.text,
 				{

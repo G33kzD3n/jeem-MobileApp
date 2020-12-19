@@ -15,46 +15,6 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { productSubCategoriesAction } from '../../../../store/actions';
 import { GET_PRODUCTSUBCATEGORY } from '../../../../store/actions/actionTypes';
-const data = [
-	{
-		name: 'concrete',
-		avatar:
-			'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w',
-	},
-	{
-		name: 'brick',
-		avatar:
-			'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w',
-	},
-	{
-		name: 'steal',
-		avatar:
-			'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w',
-	},
-	{
-		name: 'glass',
-		avatar:
-			'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w',
-	},
-	{
-		name: 'windows',
-		avatar:
-			'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w',
-	},
-	{
-		name: 'doors',
-		avatar:
-			'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w',
-	},
-	{
-		name: 'paint',
-		avatar:
-			'https://static1.squarespace.com/static/58ebeae859cc68b20f410b26/5a281fa5e2c4838eb6e38450/5b05d8da6d2a73e363579eb4/1527865385460/brick+wall.jpg?format=1500w',
-	},
-	{
-		name: 'All',
-	},
-];
 
 const SubCategories = () => {
 	const navigation = useNavigation();
@@ -86,11 +46,12 @@ const SubCategories = () => {
 	};
 
 	const handelSubCategory = (item) => {
-		if (item === 'All') setModalVisible(true);
+		if (item.productSubCategoryName === 'All') setModalVisible(true);
 		else
 			navigation.navigate('SubCategoryProduct', {
-				subCategoryName: item,
-				total: undefined,
+				subCategoryName: item.productSubCategoryName,
+				id: item.id,
+				// total: undefined,
 			}); //navigate with params
 	};
 
@@ -124,9 +85,7 @@ const SubCategories = () => {
 					keyExtractor={(data) => data.id}
 					renderItem={({ item }) => (
 						<View style={styles.parent}>
-							<TouchableOpacity
-								onPress={() => handelSubCategory(item.productSubCategoryName)}
-							>
+							<TouchableOpacity onPress={() => handelSubCategory(item)}>
 								<Avatar
 									text={item.productSubCategoryName}
 									image={item.productSubCategoryImage}

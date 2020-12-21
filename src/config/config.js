@@ -45,10 +45,7 @@ const authAxios = axios.create(config);
 
 authAxios.interceptors.request.use(async function (config) {
 	const token = await persistStore.getDetails('token');
-	console.log(token, '>>>>>>>>>>>>>>>>>>>>>>>');
 	config.headers.Authorization = token ? `Bearer ${token}` : ``;
-	persistStore.removeDetails('token');
-	persistStore.removeDetails('userDetails');
 	return config;
 });
 

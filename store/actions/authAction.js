@@ -1,4 +1,5 @@
 import loginUser, { signupUser, logOutUser } from '../../api/authApi';
+import persistStore from '../../src/utils/persistStore';
 // import { toast } from 'react-toastify';
 import { LOADER } from './actionTypes.js';
 
@@ -45,6 +46,8 @@ export const logoutAction = (type) => {
 	return async (dispatch) => {
 		const data = await logOutUser();
 		if (data.status === 200) {
+			persistStore.removeDetails('token');
+			persistStore.removeDetails('userDetails');
 			dispatch({ type: type });
 			dispatch({ type: 'RESET_CART_AFTER_LOGOUT' });
 		}

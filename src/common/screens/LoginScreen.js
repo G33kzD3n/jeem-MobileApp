@@ -41,6 +41,7 @@ const LoginScreen = ({ navigation, login }) => {
 		if (loginInfo) {
 			persistStore.storeDetails('token', loginInfo.token.access_token);
 			persistStore.storeDetails('userDetails', JSON.stringify(loginInfo.user));
+			navigation.goBack();
 		}
 	}, [loginInfo]);
 

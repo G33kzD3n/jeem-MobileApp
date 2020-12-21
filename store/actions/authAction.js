@@ -13,7 +13,6 @@ export const loginAction = (type, values) => {
 	return async (dispatch) => {
 		dispatch({ type: LOADER, value: true });
 		const data = await loginUser(values);
-		console.log(data);
 		if (data.status === 200) {
 			// localStorage.setItem('user_token', data.data.token.access_token);
 			// localStorage.setItem('user_type', data.data.role.role);
@@ -45,13 +44,7 @@ export const emptySignupAction = (type) => {
 export const logoutAction = (type) => {
 	return async (dispatch) => {
 		const data = await logOutUser();
-		console.log(data);
-		console.log(data.response);
 		if (data.status === 200) {
-			// localStorage.removeItem('user_id');
-			// localStorage.removeItem('user_token');
-			// localStorage.removeItem('user_type');
-			// toast.success('Logout Successfull')
 			dispatch({ type: type });
 			dispatch({ type: 'RESET_CART_AFTER_LOGOUT' });
 		}

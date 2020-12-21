@@ -26,7 +26,7 @@ _renderProduct = ({ item, index }) => {
 						'-' +
 						item.productSku +
 						'/' +
-						item.productImages,
+						item.image,
 				}}
 				style={styles.background}
 			>
@@ -39,10 +39,10 @@ _renderProduct = ({ item, index }) => {
 	);
 };
 
-function pagination(activeIndex, data) {
+function pagination(activeIndex, total) {
 	return (
 		<Pagination
-			dotsLength={data.length}
+			dotsLength={total}
 			activeDotIndex={activeIndex}
 			containerStyle={{ paddingVertical: 0, bottom: 15 }}
 			dotStyle={styles.dotStyle}
@@ -58,7 +58,6 @@ function pagination(activeIndex, data) {
 }
 
 const AppCarousel = ({ height, data }) => {
-	// console.log(data);
 	const [activeIndex, setActiveIndex] = useState(0);
 	return (
 		<>
@@ -69,7 +68,7 @@ const AppCarousel = ({ height, data }) => {
 						<Carousel
 							containerCustomStyle={[styles.carousel, height]}
 							layout={'default'}
-							data={updatedArray}
+							data={data}
 							sliderWidth={width}
 							itemWidth={width}
 							autoplayInterval={4000}
@@ -87,7 +86,7 @@ const AppCarousel = ({ height, data }) => {
 				[_renderProduct]
 			)}
 			<View style={styles.pagination}>
-				{pagination(activeIndex, updatedArray)}
+				{pagination(activeIndex, data ? data.length : 0)}
 			</View>
 		</>
 	);

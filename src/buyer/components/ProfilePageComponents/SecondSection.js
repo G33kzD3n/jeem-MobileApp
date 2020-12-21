@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ProfileCard from '../../../common/components/ProfileCard';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
-const SecondSection = () => {
+
+const SecondSection = ({ token }) => {
 	const navigation = useNavigation();
 	const checkStatus = () => {
 		navigation.navigate('ViewOrders');
@@ -16,27 +17,31 @@ const SecondSection = () => {
 	};
 	return (
 		<View style={styles.topContainer}>
-			<ProfileCard
-				customStyle={styles.customStyle}
-				heading="Orders"
-				subHeading="Check your order status"
-				icon="inbox-arrow-up"
-				onPress={() => checkStatus()}
-			/>
-			<ProfileCard
-				customStyle={styles.customStyle}
-				heading="Profile Details"
-				subHeading="Change your profile details"
-				icon="account-edit"
-				onPress={() => editProfile()}
-			/>
-			<ProfileCard
-				customStyle={styles.customStyle}
-				heading="Address"
-				subHeading="Save addresses for hasle-free checkout"
-				icon="map-marker-plus"
-				onPress={() => addAddress()}
-			/>
+			{token && (
+				<>
+					<ProfileCard
+						customStyle={styles.customStyle}
+						heading="Orders"
+						subHeading="Check your order status"
+						icon="inbox-arrow-up"
+						onPress={() => checkStatus()}
+					/>
+					<ProfileCard
+						customStyle={styles.customStyle}
+						heading="Profile Details"
+						subHeading="Change your profile details"
+						icon="account-edit"
+						onPress={() => editProfile()}
+					/>
+					<ProfileCard
+						customStyle={styles.customStyle}
+						heading="Address"
+						subHeading="Save addresses for hasle-free checkout"
+						icon="map-marker-plus"
+						onPress={() => addAddress()}
+					/>
+				</>
+			)}
 			<ProfileCard
 				customStyle={styles.customStyle}
 				heading="Help Center"

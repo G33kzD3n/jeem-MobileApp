@@ -28,13 +28,16 @@ const ProductView = ({ route }) => {
 		dispatch(singleProductAction(GET_SINGLE_PRODUCT_FOR_BUYER, id)); //get called if the user refreshes the page to get data
 	}, []);
 
-	//console.log(id, '>>>>>>>>>>>>>>>>>>>>>>>>', productData);
+	console.log(id, '>>>>>>>>>>>>>>>>>>>>>>>>', productData);
 	if (!productData) return <Loader />;
 
 	return (
 		<AppScreen>
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
-				<AppCarousel height={styles.carouselHeight} data={productData} />
+				<AppCarousel
+					height={styles.carouselHeight}
+					data={productData.productImagesMobile}
+				/>
 				<View style={{ backgroundColor: colors.white, marginBottom: 8 }}>
 					<View style={styles.dataContainer}>
 						<AppText style={styles.heading}>
@@ -82,7 +85,7 @@ const ProductView = ({ route }) => {
 					heading={'Product Details'}
 					details={productData.productCartDesc}
 				/>
-				<Ratings />
+				<Ratings ratings={productData.ratings} />
 			</ScrollView>
 			<View style={styles.appButton}>
 				<AppButton

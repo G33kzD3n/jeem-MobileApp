@@ -1,14 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import AppButton from '../../../common/components/AppButton';
 import Avatar from '../../../common/components/Avatar';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { logoutAction } from '../../../../store/actions';
+import { LOGOUT } from '../../../../store/actions/actionTypes';
 
-const TopSections = ({ edit }) => {
+const TopSections = ({ edit, token }) => {
 	const navigation = useNavigation();
-	const handelAuth = () => {
-		navigation.navigate('Login');
+
+	const dispatch = useDispatch();
+	const handelAuth = async () => {
+		if (token) {
+			dispatch(logoutAction(LOGOUT));
+			navigation.navigate('Home');
+		} else {
+			navigation.navigate('Login');
+		}
 	};
 	return (
 		<View style={styles.topContainer}>
@@ -22,11 +32,10 @@ const TopSections = ({ edit }) => {
 					<AppButton
 						color1={colors.primaryShade11}
 						color2={colors.primaryShade13}
-						text="Add To Cart"
 						borderRadius={0}
 						textColor={colors.white}
 						width="50%"
-						text="LOG IN/SIGN UP"
+						text={token !== null ? 'LOGOUT' : 'LOG IN/SIGN UP'}
 						customStyle={styles.button}
 						textTransform="uppercase"
 						handleClick={handelAuth}

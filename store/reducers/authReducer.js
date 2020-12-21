@@ -44,7 +44,7 @@ const authReducer = (state = initalState, action) => {
 			}
 		// return { ...state, login: action.value === 401 || action.value === 403 || action.value === 200 ||action.value ===422 ? null : action.value, errorMessages: action.value === 401 ? "Wrong email or password" : "Unauthorized / Account Suspended", error: action.value === 401 || action.value === 403 ? true : false};
 		case actionTypes.REMOVE_LOGIN_ERROR:
-			return { ...state, error: false, errorMessages: null, login: null };
+			return { ...state, error: false, errorMessages: null };
 		case actionTypes.LOGOUT:
 			return { ...state, login: null, error: false };
 		case actionTypes.SIGNUP:

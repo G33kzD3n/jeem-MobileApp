@@ -8,8 +8,12 @@ const AddressButtons = () => {
 	const [deleteAddress, setDeleteAddress] = useState(false);
 
 	const handleDelete = () => {
-		appAlert('DELETE', 'Are you sure you want to delete?', setDeleteAddress);
+		appAlert('DELETE', 'Are you sure you want to delete?', handleOk);
 	};
+	const handleOk = () => {
+		setDeleteAddress(true);
+	};
+
 	return (
 		<View style={styles.addressButtons}>
 			<View style={styles.leftButton}>

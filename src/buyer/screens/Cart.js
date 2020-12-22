@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import colors from '../../config/colors';
-import AppText from '../../common/components/AppText';
+import { useSelector, useDispatch } from 'react-redux';
 
 import PlaceOrderBar from '../components/CartPageComponents/PlaceOrderBar';
 import CartImage from '../components/CartPageComponents/CartImage';
@@ -9,6 +9,10 @@ import ProductDetails from '../components/CartPageComponents/ProductDetails';
 import ProductButtons from '../components/CartPageComponents/ProductButtons';
 import PriceDetails from '../components/CartPageComponents/PriceDetails';
 import AppScreen from '../../common/components/AppScreen';
+import NotFound from './NotFound';
+import { cartAction } from '../../../store/actions';
+import { GET_CART_ITEMS } from '../../../store/actions/actionTypes';
+import Loader from '../../common/components/Loader';
 const data = [
 	{
 		image: [
@@ -162,8 +166,30 @@ const data = [
 	},
 ];
 
-const Cart = () => {
+const Cart = ({ navigation }) => {
 	const scrollViewRef = useRef();
+	const token = useSelector(
+		(state) => state.auth.login && state.auth.login.token.access_token
+	);
+
+	const cartItems = useSelector((state) => state.cart.cartItems);
+
+	console.log(cartItems, 'cartItemmmmmmmmmm');
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(cartAction(GET_CART_ITEMS));
+	}, []);
+
+	const handleAuth = () => {
+		navigation.navigate('Login');
+	};
+	if (!token) {
+		return <NotFound name="LOG IN/SIGN UP" onClick={handleAuth} />;
+	}
+	if (!cartItems)
+		//means data not yet retreived
+		return <Loader />;
 	return (
 		<AppScreen>
 			<PlaceOrderBar
@@ -173,11 +199,11 @@ const Cart = () => {
 				text="PLACE ORDER"
 			/>
 			<ScrollView style={styles.scroll} ref={scrollViewRef}>
-				{data.map((items, index) => (
+				{cartItems.map((items, index) => (
 					<React.Fragment key={index}>
 						<View style={styles.topContainer}>
 							<View style={styles.cartImage}>
-								<CartImage image={items.image[0]} />
+								<CartImage image={items.productImages[0]} />
 							</View>
 							<View style={styles.dataContainer}>
 								<ProductDetails data={items} />
@@ -220,6 +246,7 @@ const styles = StyleSheet.create({
 		paddingRight: 10,
 		width: 50,
 	},
+
 	dataContainer: {
 		// paddingBottom: 5,
 		flex: 2,

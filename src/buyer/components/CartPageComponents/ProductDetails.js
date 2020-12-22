@@ -15,11 +15,11 @@ const pickerItems = [
 	{ value: 8, label: 8 },
 ];
 const ProductDetails = ({ data }) => {
-	const [selectedItem, onSelectedItem] = useState(1);
+	const [selectedItem, onSelectedItem] = useState(data.productQuantity);
 	return (
 		<>
-			<AppText style={styles.heading}>{data.title}</AppText>
-			<AppText style={styles.subHeading}>{data.subTitle}</AppText>
+			<AppText style={styles.heading}>{data.productName}</AppText>
+			<AppText style={styles.subHeading}>{data.productCartDesc}</AppText>
 
 			{/* <AppText style={styles.taxesMessage}>inclusive of all taxes</AppText> */}
 			<View style={styles.priceContainer}>
@@ -34,7 +34,7 @@ const ProductDetails = ({ data }) => {
 					}}
 				>
 					{' '}
-					{data.seller}
+					Jeem Solutions
 				</AppText>
 			</View>
 			<View style={styles.picker}>
@@ -49,9 +49,14 @@ const ProductDetails = ({ data }) => {
 				/>
 			</View>
 			<View style={styles.priceContainer}>
-				<AppText style={styles.mainPrice}>${data.price} </AppText>
-				<AppText style={styles.orginalPrice}>${data.orginalPrice}</AppText>
-				<AppText style={styles.discount}> ({data.discount}% OFF)</AppText>
+				<AppText style={styles.mainPrice}>
+					${data.productDiscountedPrice}{' '}
+				</AppText>
+				<AppText style={styles.orginalPrice}>${data.productPrice}</AppText>
+				<AppText style={styles.discount}>
+					{' '}
+					({data.productDiscount}% OFF)
+				</AppText>
 			</View>
 		</>
 	);

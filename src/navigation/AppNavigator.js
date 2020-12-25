@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
 import SubCategoryProducts from '../buyer/screens/SubCategoryProducts';
@@ -14,9 +14,33 @@ import RegisterScreen from '../common/screens/RegisterScreen';
 import LoginScreen from '../common/screens/LoginScreen';
 import OrderFullDetail from '../buyer/components/OrderDetailsComponent/OrderFullDetail';
 import EditProfile from '../buyer/screens/EditProfile';
+import { useDispatch } from 'react-redux';
+import { LOGIN } from '../../store/actions/actionTypes';
+import persistStore from '../utils/persistStore';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
+	const dispatch = useDispatch();
+
+	const getAuthDetails = async () => {
+		//check if the user is already logged in
+		const token = await persistStore.getDetails('token');
+		const userDetails = await persistStore.getDetails('userDetails');
+		if (token) {
+			const data = {
+				role: { role: 'Buyer' },
+				status: 'success',
+				token: { access_token: token },
+				user: JSON.parse(userDetails),
+			};
+			dispatch({ type: LOGIN, value: data });
+		}
+	};
+
+	useEffect(() => {
+		getAuthDetails();
+	}, []);
+
 	return (
 		<Stack.Navigator
 			screenOptions={{

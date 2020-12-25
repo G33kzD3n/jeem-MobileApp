@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import AppButton from '../../../common/components/AppButton';
 import colors from '../../../config/colors';
 
-const ProductButtons = () => {
+const ProductButtons = ({ handleClick }) => {
 	return (
 		<View style={styles.topContainer}>
 			<AppButton
@@ -14,6 +14,7 @@ const ProductButtons = () => {
 				textColor={colors.primary2}
 				customStyle={styles.button}
 				textTransform="uppercase"
+				handleClick={handleClick}
 			/>
 		</View>
 

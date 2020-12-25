@@ -3,26 +3,30 @@ import { StyleSheet, Text, View } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 
-const PriceDetails = () => {
+const PriceDetails = ({ priceDetails, totalItems }) => {
 	return (
 		<View style={styles.topContainer}>
 			<View style={styles.headingContainer}>
 				<AppText style={styles.textHeading}>Price Details</AppText>
-				<AppText style={styles.subHeading}> (1 item)</AppText>
+				<AppText style={styles.subHeading}> {`(${totalItems} item)`}</AppText>
 			</View>
 			<View style={styles.headingDetails}>
 				<AppText style={styles.textSubDetails}>Total MRP</AppText>
-				<AppText style={styles.subHeadingPrice}>$1,299</AppText>
+				<AppText style={styles.subHeadingPrice}>
+					${priceDetails.totalPrice}
+				</AppText>
 			</View>
 			<View style={styles.headingDetails}>
 				<AppText style={styles.textSubDetails}>Discount on MRP</AppText>
 				<AppText style={[styles.subHeadingPrice, { color: 'green' }]}>
-					-$299
+					{priceDetails.totalDiscountPercentage}%
 				</AppText>
 			</View>
 			<View style={styles.bottomDetails}>
 				<AppText style={styles.textHeading}>Total Amount</AppText>
-				<AppText style={styles.subHeading}>$899</AppText>
+				<AppText style={styles.subHeading}>
+					${priceDetails.totalDiscountPrice}
+				</AppText>
 			</View>
 		</View>
 	);

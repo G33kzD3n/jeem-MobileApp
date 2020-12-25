@@ -11,8 +11,16 @@ import SubmitButton from '../components/forms/SubmitButton';
 import AppForm from '../components/forms/AppForm';
 import validation from '../components/forms/validationSchema';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginAction, removeLoginErrorAction } from '../../../store/actions';
-import { LOGIN, REMOVE_LOGIN_ERROR } from '../../../store/actions/actionTypes';
+import {
+	getCartCountAction,
+	loginAction,
+	removeLoginErrorAction,
+} from '../../../store/actions';
+import {
+	GET_COUNT,
+	LOGIN,
+	REMOVE_LOGIN_ERROR,
+} from '../../../store/actions/actionTypes';
 import ErrorMessage from '../components/forms/ErrorMessage';
 import Loader from '../components/Loader';
 import persistStore from '../../utils/persistStore';
@@ -29,7 +37,6 @@ const LoginScreen = ({ navigation, login }) => {
 	const loading = useSelector((state) => state.auth.loading);
 	const errorMsg = useSelector((state) => state.auth.errorMessages);
 	const error = useSelector((state) => state.auth.error);
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -39,6 +46,7 @@ const LoginScreen = ({ navigation, login }) => {
 	//store auth in storage
 	useEffect(() => {
 		if (loginInfo) {
+			dispatch(getCartCountAction(GET_COUNT)); //get total item in cart
 			persistStore.storeDetails('token', loginInfo.token.access_token);
 			persistStore.storeDetails('userDetails', JSON.stringify(loginInfo.user));
 			navigation.goBack();
@@ -97,7 +105,8 @@ const LoginScreen = ({ navigation, login }) => {
 						<SubmitButton text="Log In" />
 					</AppForm>
 
-					<AppText size={15} style={styles.msg}>
+					{/* social media buttons for login................. */}
+					{/* <AppText size={15} style={styles.msg}>
 						Or continue with
 					</AppText>
 					<View style={styles.social}>
@@ -121,7 +130,7 @@ const LoginScreen = ({ navigation, login }) => {
 							icon="google"
 							handleClick={handleLogin}
 						/>
-					</View>
+					</View> */}
 				</View>
 
 				{!showKeyboard && (

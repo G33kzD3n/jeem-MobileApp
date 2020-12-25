@@ -6,7 +6,7 @@ const appAlert = (title, msg, handleOk) => {
 		title,
 		msg,
 		[
-			{ text: 'OK', onPress: () => handleOk },
+			{ text: 'OK', onPress: handleOk },
 			{
 				text: 'Cancel',
 				// onPress: () => console.log('Cancel Pressed'),

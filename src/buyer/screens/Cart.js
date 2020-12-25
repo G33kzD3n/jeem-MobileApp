@@ -1,7 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import colors from '../../config/colors';
 import { useSelector, useDispatch } from 'react-redux';
+import { useIsFocused } from '@react-navigation/native';
 
 import PlaceOrderBar from '../components/CartPageComponents/PlaceOrderBar';
 import CartImage from '../components/CartPageComponents/CartImage';
@@ -10,218 +11,132 @@ import ProductButtons from '../components/CartPageComponents/ProductButtons';
 import PriceDetails from '../components/CartPageComponents/PriceDetails';
 import AppScreen from '../../common/components/AppScreen';
 import NotFound from './NotFound';
-import { cartAction } from '../../../store/actions';
-import { GET_CART_ITEMS } from '../../../store/actions/actionTypes';
+import {
+	cartAction,
+	changeProductQuantity,
+	removeCartAction,
+} from '../../../store/actions';
+import {
+	CHANGE_QUANTITY,
+	GET_CART_ITEMS,
+	REMOVE_CART_ITEM,
+} from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
-const data = [
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		price: 679,
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-	{
-		image: [
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-			'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-		],
-		title: 'DressBerry',
-		subTitle: 'Colors for only you',
-		price: 679,
-		details:
-			'Best Product in the market to buy and amazing deals only for you. You will not regret it. Best in the market only for you. Best Product in the market to buy and amazing deals only for you. You will not regret it.',
-		orginalPrice: 1049,
-		discount: 60,
-		seller: 'Jeem Solutions',
-	},
-];
+import appAlert from '../../common/components/appAlert';
 
 const Cart = ({ navigation }) => {
+	const isFocused = useIsFocused();
 	const scrollViewRef = useRef();
+	const [loading, setLoading] = useState(false);
+	const [priceDetails, setPriceDetails] = useState();
 	const token = useSelector(
 		(state) => state.auth.login && state.auth.login.token.access_token
 	);
 
 	const cartItems = useSelector((state) => state.cart.cartItems);
-
-	console.log(cartItems, 'cartItemmmmmmmmmm');
+	// console.log(cartItems, 'cartItem');
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(cartAction(GET_CART_ITEMS));
-	}, []);
+		setLoading(true);
+	}, [isFocused]);
+
+	//stop Loader
+	useEffect(() => {
+		if (cartItems) {
+			//calculate total items
+			// console.log(cartItems, 'calculate total items');
+			let total = cartItems.reduce(
+				(accumltor, currentValue) => {
+					accumltor.totalPrice +=
+						currentValue.productPrice * currentValue.productQuantity;
+					accumltor.totalDiscountPrice +=
+						currentValue.productDiscountedPrice * currentValue.productQuantity;
+					accumltor.totalDiscountPercentage += currentValue.productDiscount;
+					return accumltor;
+				},
+				{ totalPrice: 0, totalDiscountPrice: 0, totalDiscountPercentage: 0 }
+			);
+			setPriceDetails(total);
+			//means if the cartitems change stop loading
+			setLoading(false);
+		}
+	}, [cartItems]);
 
 	const handleAuth = () => {
 		navigation.navigate('Login');
 	};
+
+	const handleOk = (id) => {
+		dispatch(removeCartAction(REMOVE_CART_ITEM, id));
+		setLoading(true);
+	};
+
+	const handleRemove = (id) => {
+		appAlert('DELETE', 'Are you sure you want to remove item from cart?', () =>
+			handleOk(id)
+		);
+	};
+
+	const onQuantityChange = (value, id) => {
+		dispatch(changeProductQuantity(CHANGE_QUANTITY, value, id));
+		setLoading(true);
+	};
+
 	if (!token) {
 		return <NotFound name="LOG IN/SIGN UP" onClick={handleAuth} />;
 	}
-	if (!cartItems)
+	if (!cartItems || !priceDetails)
 		//means data not yet retreived
 		return <Loader />;
+
+	//handle no item in cart
+	if (cartItems.length === 0) {
+		return <NotFound name="No Item in the cart" />;
+	}
+	// console.log('Price Details in cart', priceDetails);
 	return (
-		<AppScreen>
-			<PlaceOrderBar
-				scrollViewRef={scrollViewRef}
-				navigationAddress="SelectAddress"
-				total={1024}
-				text="PLACE ORDER"
-			/>
-			<ScrollView style={styles.scroll} ref={scrollViewRef}>
-				{cartItems.map((items, index) => (
-					<React.Fragment key={index}>
-						<View style={styles.topContainer}>
-							<View style={styles.cartImage}>
-								<CartImage image={items.productImages[0]} />
+		<>
+			{loading && <Loader />}
+			<AppScreen>
+				<PlaceOrderBar
+					scrollViewRef={scrollViewRef}
+					navigationAddress="SelectAddress"
+					total={priceDetails.totalDiscountPrice}
+					text="PLACE ORDER"
+				/>
+				<ScrollView style={styles.scroll} ref={scrollViewRef}>
+					{cartItems.map((items, index) => (
+						<React.Fragment key={index}>
+							<View style={styles.topContainer}>
+								<View style={styles.cartImage}>
+									<CartImage image={items.productImages[0]} />
+								</View>
+								<View style={styles.dataContainer}>
+									<ProductDetails
+										data={items}
+										onQuantityChange={onQuantityChange}
+									/>
+								</View>
 							</View>
-							<View style={styles.dataContainer}>
-								<ProductDetails data={items} />
+							<View
+								style={{
+									borderTopColor: colors.primaryShade23,
+									borderTopWidth: 0.5,
+								}}
+							>
+								<ProductButtons handleClick={() => handleRemove(items.id)} />
 							</View>
-						</View>
-						<View
-							style={{
-								borderTopColor: colors.primaryShade23,
-								borderTopWidth: 0.5,
-							}}
-						>
-							<ProductButtons />
-						</View>
-					</React.Fragment>
-				))}
-				<PriceDetails />
-			</ScrollView>
-		</AppScreen>
+						</React.Fragment>
+					))}
+					<PriceDetails
+						priceDetails={priceDetails}
+						totalItems={cartItems.length}
+					/>
+				</ScrollView>
+			</AppScreen>
+		</>
 	);
 };
 

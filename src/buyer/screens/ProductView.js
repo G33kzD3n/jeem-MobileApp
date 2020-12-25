@@ -9,28 +9,44 @@ import TextCard from '../../common/components/TextCard';
 import Ratings from '../../common/components/Ratings';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
-import { singleProductAction } from '../../../store/actions';
-import { GET_SINGLE_PRODUCT_FOR_BUYER } from '../../../store/actions/actionTypes';
+import {
+	addProductsToCartAction,
+	singleProductAction,
+} from '../../../store/actions';
+import {
+	ADD_PRODUCT_TO_CART,
+	ADD_PRODUCT_TO_CART_ERROR,
+	GET_SINGLE_PRODUCT_FOR_BUYER,
+} from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
+import appAlert from '../../common/components/appAlert';
 
 const ProductView = ({ route }) => {
-	const navigation = useNavigation();
+	// const navigation = useNavigation();
 	const { id } = route.params;
-	const addToCart = () => {
-		navigation.navigate('Cart');
-	};
+
 	const productData = useSelector((state) => state.home.singleProduct);
 
+	const cartMessage = useSelector((state) => state.cart.message);
+
+	const addToCart = () => {
+		dispatch(addProductsToCartAction(ADD_PRODUCT_TO_CART, id));
+		// navigation.navigate('Cart');
+	};
+	if (cartMessage) {
+		appAlert('Message', cartMessage);
+	}
 	//console.log(productSubCategories);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(singleProductAction(GET_SINGLE_PRODUCT_FOR_BUYER, id)); //get called if the user refreshes the page to get data
+		return () =>
+			dispatch({ type: ADD_PRODUCT_TO_CART_ERROR, value: { message: null } });
 	}, []);
 
-	console.log(id, '>>>>>>>>>>>>>>>>>>>>>>>>', productData);
+	// console.log(id, '>>>>>>>>>>>>>>>>>>>>>>>>', productData);
 	if (!productData) return <Loader />;
-
 	return (
 		<AppScreen>
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
@@ -77,6 +93,7 @@ const ProductView = ({ route }) => {
 							>
 								{' '}
 								{/* {data.seller} */}
+								'Jeem Solutions'
 							</AppText>
 						</View>
 					</View>

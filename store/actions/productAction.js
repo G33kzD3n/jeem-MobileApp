@@ -47,7 +47,7 @@ export const unSetErrorResponseAction = (type, values) => {
 };
 
 export const unsetProductSucessMessage = (type, value) => {
-	console.log(type, value);
+	// console.log(type, value);
 	return async (dispatch) => {
 		dispatch({ type: type, value: value });
 	};

@@ -36,12 +36,18 @@ export const getCartCountAction = (type) => {
 export const addProductsToCartAction = (type, values) => {
 	return async (dispatch) => {
 		const data = await addProductToCart(values);
-		if (data.message !== 'Product Already in cart') {
-			// toast.info("Added to Cart");
-			dispatch({ type: type, value: data.count });
+		if (data.message !== 'Product updated in cart') {
+			// console.log('Added to Cart');
+			dispatch({
+				type: type,
+				value: { count: data.count, message: 'Added to Cart' },
+			});
 		} else {
-			// toast.warn("Already in Cart");
-			dispatch({ type: ADD_PRODUCT_TO_CART_ERROR, value: data.count });
+			// console.log('Already in Cart');
+			dispatch({
+				type: ADD_PRODUCT_TO_CART_ERROR,
+				value: { message: 'Already in Cart' },
+			});
 		}
 	};
 };

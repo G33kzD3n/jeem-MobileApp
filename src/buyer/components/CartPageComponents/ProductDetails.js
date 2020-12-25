@@ -14,12 +14,16 @@ const pickerItems = [
 	{ value: 7, label: 7 },
 	{ value: 8, label: 8 },
 ];
-const ProductDetails = ({ data }) => {
-	const [selectedItem, onSelectedItem] = useState(data.productQuantity);
+const ProductDetails = ({ data, onQuantityChange }) => {
+	// const [selectedItem, setSelectedItem] = useState(data.productQuantity);
+	// console.log(selectedItem,);
+
 	return (
 		<>
 			<AppText style={styles.heading}>{data.productName}</AppText>
-			<AppText style={styles.subHeading}>{data.productCartDesc}</AppText>
+			<AppText style={styles.subHeading} numberOfLines={3}>
+				{data.productCartDesc}
+			</AppText>
 
 			{/* <AppText style={styles.taxesMessage}>inclusive of all taxes</AppText> */}
 			<View style={styles.priceContainer}>
@@ -42,17 +46,19 @@ const ProductDetails = ({ data }) => {
 					icon="chevron-down"
 					placeholder="Quantity"
 					item={pickerItems}
-					selectedItem={selectedItem}
-					onSelectedItem={onSelectedItem}
+					selectedItem={data.productQuantity}
+					onQuantityChange={(value) => onQuantityChange(value, data.id)}
 					horizontal={true}
 					pickerStyle={styles.itemPicker}
 				/>
 			</View>
 			<View style={styles.priceContainer}>
 				<AppText style={styles.mainPrice}>
-					${data.productDiscountedPrice}{' '}
+					${data.productDiscountedPrice * data.productQuantity}{' '}
 				</AppText>
-				<AppText style={styles.orginalPrice}>${data.productPrice}</AppText>
+				<AppText style={styles.orginalPrice}>
+					${data.productPrice * data.productQuantity}
+				</AppText>
 				<AppText style={styles.discount}>
 					{' '}
 					({data.productDiscount}% OFF)

@@ -54,7 +54,7 @@ const productsReducer = (state = initalState, action) => {
 				productCategories: action.value.productCategoryData,
 			};
 		case actionTypes.SUCCESS_TAG:
-			console.log(action.value);
+			// console.log(action.value);
 			if (action.value === 'delete_response') {
 				return {
 					...state,

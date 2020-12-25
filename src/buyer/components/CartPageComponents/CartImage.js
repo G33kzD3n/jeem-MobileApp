@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 const CartImage = ({ image, resizeMode = 'cover' }) => {
-	console.log(image);
+	// console.log(image);
 	return (
 		<View>
 			<Image

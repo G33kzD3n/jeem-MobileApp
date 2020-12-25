@@ -19,7 +19,7 @@ const AppPicker = ({
 	placeholder,
 	item,
 	selectedItem,
-	onSelectedItem,
+	onQuantityChange,
 	pickerStyle,
 	horizontal,
 }) => {
@@ -69,7 +69,7 @@ const AppPicker = ({
 									label={item.label}
 									onPress={() => {
 										setModalVisible(false);
-										onSelectedItem(item.value);
+										onQuantityChange(item.value);
 									}}
 								/>
 							)}

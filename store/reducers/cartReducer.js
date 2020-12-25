@@ -30,9 +30,18 @@ const cartReducer = (state = initalState, action) => {
 				count: action.count,
 			};
 		case actionTypes.ADD_PRODUCT_TO_CART:
-			return { ...state, successCart: true, count: action.value };
+			return {
+				...state,
+				successCart: true,
+				count: action.value.count,
+				message: action.value.message,
+			};
 		case actionTypes.ADD_PRODUCT_TO_CART_ERROR:
-			return { ...state, errorCart: true };
+			return {
+				...state,
+				errorCart: true,
+				message: action.value.message,
+			};
 		case actionTypes.GET_COUNT:
 			return { ...state, count: action.value };
 		case actionTypes.CHANGE_QUANTITY:

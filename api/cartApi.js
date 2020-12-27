@@ -5,7 +5,9 @@ export async function getCartItems() {
 	try {
 		const response = await authAxios.get(apiUrl + 'order/get-orders-from-cart');
 		return response.data;
-	} catch (error) {}
+	} catch (error) {
+		console.log(error, 'resssssssssssssss');
+	}
 }
 
 export async function removeCartItem(id) {

@@ -7,6 +7,21 @@ export async function getCarousel() {
 	} catch (error) {}
 }
 
+export async function getTagsForBuyer() {
+	try {
+		return await axios.get(apiUrl + 'tags');
+	} catch (error) {}
+}
+
+export async function getTagsProductForBuyer(id, page, limit) {
+	try {
+		return await axios.post(apiUrl + `tag/products/${id}`, {
+			page: page,
+			limit: limit,
+		});
+	} catch (error) {}
+}
+
 export async function getSellerCategory() {
 	try {
 		return await axios.get(apiUrl + 'sellercategory');
@@ -25,9 +40,12 @@ export async function getProductSubCategory(val) {
 	} catch (error) {}
 }
 
-export async function getProducts(val) {
+export async function getProducts(id, page, limit) {
 	try {
-		return await axios.get(apiUrl + `products/${val}`);
+		return await axios.get(apiUrl + `products/${id}`, {
+			page: page,
+			limit: limit,
+		});
 	} catch (error) {}
 }
 export async function getProduct(val) {

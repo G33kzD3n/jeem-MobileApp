@@ -9,6 +9,7 @@ const initalState = {
 	singleProduct: null,
 	search: null,
 	offers: null,
+	allTags: null,
 };
 
 const homeReducer = (state = initalState, action) => {
@@ -29,6 +30,8 @@ const homeReducer = (state = initalState, action) => {
 			return { ...state, singleProduct: action.value };
 		case actionTypes.GET_OFFERS:
 			return { ...state, offers: action.value, error: false };
+		case actionTypes.GET_ALL_TAGS:
+			return { ...state, allTags: action.value };
 		case actionTypes.SEARCH:
 			return { ...state, search: action.value, error: false };
 		default:

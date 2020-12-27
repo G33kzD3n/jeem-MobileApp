@@ -29,12 +29,6 @@ const apiUrlImageProducts =
 const apiUrlImageCarousels =
 	'http://jeem-backend.brorinfotech.com/public/storage/images/carousels/';
 
-const reacaptchaSiteKeyV3 = '6LdGZ_QZAAAAAAr-CvPT71l7LYXaEX27etvWBzeT';
-const reacaptchaSecretKeyV3 = '6LdGZ_QZAAAAAJDJxvAi3mCM4gST3wpE1cwu5uUT';
-
-const reacaptchaSiteKeyV2 = '6LdiN_UZAAAAAIwyMTx493Ko_pGWWRJrpOZdPwn7';
-const reacaptchaSecretKeyV2 = '6LdiN_UZAAAAAOdqW_1-ruZ4BqpBKo54ln4grJ6H';
-
 const config = {
 	baseURL: apiUrl,
 };
@@ -56,8 +50,4 @@ export {
 	apiUrlImageStatic,
 	apiUrlImageCarousels,
 	authAxios,
-	reacaptchaSiteKeyV2,
-	reacaptchaSiteKeyV3,
-	reacaptchaSecretKeyV2,
-	reacaptchaSecretKeyV3,
 };

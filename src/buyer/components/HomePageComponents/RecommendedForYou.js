@@ -1,17 +1,28 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import RecommendCarousel from './RecommendCarousel';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllTagsAction } from '../../../../store/actions/homeAction';
+import { GET_ALL_TAGS } from '../../../../store/actions/actionTypes';
 
 const RecommendedForYou = () => {
-    return (
-        <View>
-          <ComponentHeading text="Recommended"/>
-          <RecommendCarousel/> 
-        </View>
-    )
-}
+	const getAllTags = useSelector((state) => state.home.allTags);
 
-export default RecommendedForYou
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getAllTagsAction(GET_ALL_TAGS));
+	}, []);
 
-const styles = StyleSheet.create({})
+	if (!getAllTags) return <></>;
+	return (
+		<View>
+			<ComponentHeading text="Recommended" />
+			<RecommendCarousel allTags={getAllTags} />
+		</View>
+	);
+};
+
+export default RecommendedForYou;
+
+const styles = StyleSheet.create({});

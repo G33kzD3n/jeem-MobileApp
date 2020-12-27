@@ -58,8 +58,8 @@ function AppNavigator() {
 				options={({ route }) => ({
 					headerTitle: (props) => (
 						<HeaderTitle
-							name={route.params.subCategoryName}
-							totalItems={route.params.total}
+							name={route.params.name}
+							totalItems={route.params.totalItems}
 							{...props}
 						/>
 					),

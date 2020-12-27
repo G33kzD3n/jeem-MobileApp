@@ -42,6 +42,8 @@ export const SELLER_PROFILE_SUCCESS = 'SELLER_PROFILE_SUCCESS';
 // buyer actionTypes for Home Page
 export const CAROUSEL = 'CAROUSEL';
 export const SELLER_CATEGORY = 'SELLER_CATEGORY';
+export const GET_ALL_TAGS = 'GET_ALL_TAGS';
+// export const GET_TAGS_PRODUCT = 'GET_TAGS_PRODUCT';
 
 // buyer product category
 export const GET_PRODUCT_CATEGORY = 'GET_PRODUCT_CATEGORY';

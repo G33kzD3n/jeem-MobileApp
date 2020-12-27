@@ -34,7 +34,6 @@ const Cart = ({ navigation }) => {
 	);
 
 	const cartItems = useSelector((state) => state.cart.cartItems);
-	// console.log(cartItems, 'cartItem');
 	const dispatch = useDispatch();
 
 	useEffect(() => {

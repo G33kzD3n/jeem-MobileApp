@@ -12,6 +12,9 @@ import AddressCard from '../components/AddressPageComponents/AddressCard';
 import ComponentHeading from '../../common/components/ComponentHeading';
 import AddressButtons from '../components/AddressPageComponents/AddressButtons';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { addressesAction } from '../../../store/actions';
+import { GET_ADDRESSES } from '../../../store/actions/actionTypes';
 
 const data = [
 	{
@@ -79,6 +82,15 @@ const data = [
 const SelectAddress = () => {
 	const [selectedItem, onSelectedItem] = useState(1);
 	const navigation = useNavigation();
+
+	const getAddresses = useSelector((state) => state.address.addresses);
+	console.log(getAddresses, 'getAdressssssssssss');
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(dispatch(addressesAction(GET_ADDRESSES))); //get called if the user refreshes the page to get data
+	}, []);
+
 	const handlePayment = () => {
 		navigation.navigate('Payments');
 	};

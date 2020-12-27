@@ -49,7 +49,7 @@ const SubCategories = () => {
 		if (item.productSubCategoryName === 'All') setModalVisible(true);
 		else
 			navigation.navigate('SubCategoryProduct', {
-				subCategoryName: item.productSubCategoryName,
+				name: item.productSubCategoryName,
 				id: item.id,
 				// total: undefined,
 			}); //navigate with params

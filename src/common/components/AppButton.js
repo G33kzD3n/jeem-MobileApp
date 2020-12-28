@@ -13,6 +13,7 @@ const AppButton = ({
 	color2,
 	textColor = 'black',
 	text,
+	textAlign = 'center',
 	icon,
 	width = '100%',
 	iconSize = 24,
@@ -38,14 +39,12 @@ const AppButton = ({
 				<View>
 					{text && (
 						<AppText
-							style={[
-								styles.appText,
-								{
-									color: textColor,
-									padding: paddingText,
-									textTransform: textTransform,
-								},
-							]}
+							style={{
+								color: textColor,
+								padding: paddingText,
+								textTransform: textTransform,
+								textAlign: textAlign,
+							}}
 						>
 							{text}
 						</AppText>
@@ -70,9 +69,6 @@ const styles = StyleSheet.create({
 	icon: {
 		textAlign: 'center',
 		paddingVertical: 5,
-	},
-	appText: {
-		textAlign: 'center',
 	},
 	touchableOpacity: {
 		justifyContent: 'center',

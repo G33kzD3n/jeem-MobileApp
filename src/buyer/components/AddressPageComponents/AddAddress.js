@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import AppForm from '../../../common/components/forms/AppForm';
@@ -6,20 +6,51 @@ import AppFormFeild from '../../../common/components/forms/AppFormFeild';
 import SubmitButton from '../../../common/components/forms/SubmitButton';
 import validationSchema from '../../../common/components/forms/validationSchema';
 import colors from '../../../config/colors';
+import { useSelector, useDispatch } from 'react-redux';
+import { addAddressAction } from '../../../../store/actions';
+import {
+	ADD_ADDRESS,
+	REMOVE_ADDRESS_MESSAGE,
+} from '../../../../store/actions/actionTypes';
+import { useNavigation } from '@react-navigation/native';
+import Loader from '../../../common/components/Loader';
 
 const AddAddress = () => {
+	const navigation = useNavigation();
+	const [loading, setLoading] = useState(false);
+	const userId = useSelector(
+		(state) => state.auth.login && state.auth.login.user.id
+	);
+	const response = useSelector((state) => state.address.message);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (response) {
+			setLoading(false);
+			navigation.goBack();
+		}
+		return () => dispatch({ type: REMOVE_ADDRESS_MESSAGE });
+	}, [response]);
+
+	const handleSubmit = (values) => {
+		setLoading(true);
+		dispatch(addAddressAction(ADD_ADDRESS, values));
+	};
 	return (
 		<View>
+			{loading && <Loader />}
 			<View styles={styles.formContainer}>
 				<AppForm
 					initialValues={{
 						name: '',
-						mobile: '',
-						pin: '',
+						// mobile: '',
+						pincode: '',
 						address: '',
-						locality: '',
+						address1: '',
 						city: '',
 						state: '',
+						userId: userId,
+						country: 'Saudi Arabia',
 					}}
 					onSubmit={(values) => handleSubmit(values)}
 					validationSchema={validationSchema.validationAddress}
@@ -36,7 +67,7 @@ const AddAddress = () => {
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
 								/>
-								<AppFormFeild
+								{/* <AppFormFeild
 									placeholder="Mobile No"
 									name="mobile"
 									selectionColor={colors.primary2}
@@ -44,13 +75,13 @@ const AddAddress = () => {
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
 									keyboardType="phone-pad"
-								/>
+								/> */}
 							</View>
 							<ComponentHeading text="ADDRESS" />
 							<View style={styles.contactDetails}>
 								<AppFormFeild
 									placeholder="Pin Code"
-									name="pin"
+									name="pincode"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}
@@ -67,7 +98,7 @@ const AddAddress = () => {
 								/>
 								<AppFormFeild
 									placeholder="Locality/Town"
-									name="locality"
+									name="address1"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}

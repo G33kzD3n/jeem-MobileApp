@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	StyleSheet,
 	ScrollView,
@@ -13,83 +13,30 @@ import ComponentHeading from '../../common/components/ComponentHeading';
 import AddressButtons from '../components/AddressPageComponents/AddressButtons';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
-import { addressesAction } from '../../../store/actions';
-import { GET_ADDRESSES } from '../../../store/actions/actionTypes';
-
-const data = [
-	{
-		id: 1,
-		name: 'Basit Mir',
-		address: 'Naseem Bagh, Habak, Near Masjid yasir',
-		locality: 'Naseem Bagh',
-		city: 'Srinagar',
-		state: 'Jammu & Kashmir',
-		pincode: '190006',
-		mobile: '9858536852',
-	},
-	{
-		id: 2,
-		name: 'Basit Mir',
-		address: 'Naseem Bagh, Habak, Near Masjid yasir',
-		locality: 'Naseem Bagh',
-		city: 'Srinagar',
-		state: 'Jammu & Kashmir',
-		pincode: '190006',
-		mobile: '9858536852',
-	},
-	{
-		id: 3,
-		name: 'Basit Mir',
-		address: 'Naseem Bagh, Habak, Near Masjid yasir',
-		locality: 'Naseem Bagh',
-		city: 'Srinagar',
-		state: 'Jammu & Kashmir',
-		pincode: '190006',
-		mobile: '9858536852',
-	},
-	{
-		id: 4,
-		name: 'Basit Mir',
-		address: 'Naseem Bagh, Habak, Near Masjid yasir',
-		locality: 'Naseem Bagh',
-		city: 'Srinagar',
-		state: 'Jammu & Kashmir',
-		pincode: '190006',
-		mobile: '9858536852',
-	},
-	{
-		id: 5,
-		name: 'Basit Mir',
-		address: 'Naseem Bagh, Habak, Near Masjid yasir',
-		locality: 'Naseem Bagh',
-		city: 'Srinagar',
-		state: 'Jammu & Kashmir',
-		pincode: '190006',
-		mobile: '9858536852',
-	},
-	{
-		id: 6,
-		name: 'Basit Mir',
-		address: 'Naseem Bagh, Habak, Near Masjid yasir',
-		locality: 'Naseem Bagh',
-		city: 'Srinagar',
-		state: 'Jammu & Kashmir',
-		pincode: '190006',
-		mobile: '9858536852',
-	},
-];
+import { addressesAction, deleteAddressAction } from '../../../store/actions';
+import {
+	DELETE_ADDRESS,
+	GET_ADDRESSES,
+} from '../../../store/actions/actionTypes';
+import Loader from '../../common/components/Loader';
 
 const SelectAddress = () => {
-	const [selectedItem, onSelectedItem] = useState(1);
+	const [selectedItem, onSelectedItem] = useState(0);
+	const [loading, setLoading] = useState(false);
 	const navigation = useNavigation();
 
 	const getAddresses = useSelector((state) => state.address.addresses);
-	console.log(getAddresses, 'getAdressssssssssss');
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(dispatch(addressesAction(GET_ADDRESSES))); //get called if the user refreshes the page to get data
+		dispatch(addressesAction(GET_ADDRESSES)); //get called if the user refreshes the page to get data
 	}, []);
+
+	useEffect(() => {
+		if (getAddresses) {
+			setLoading(false);
+		}
+	}, [getAddresses]);
 
 	const handlePayment = () => {
 		navigation.navigate('Payments');
@@ -97,8 +44,19 @@ const SelectAddress = () => {
 	const addAddress = () => {
 		navigation.navigate('AddAddress');
 	};
+
+	const removeAddress = (id) => {
+		// console.log(id, '>>>>');
+		setLoading(true);
+		dispatch(deleteAddressAction(DELETE_ADDRESS, id));
+	};
+	if (getAddresses.length === 0)
+		//means data not yet retreived
+		return <Loader />;
+
 	return (
 		<>
+			{loading && <Loader />}
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
 				<View style={styles.addAdressContainer}>
 					<View style={styles.addAdress}>
@@ -114,14 +72,14 @@ const SelectAddress = () => {
 					</View>
 				</View>
 				<ComponentHeading text="SELECT ADDRESS" />
-				{data.map((item, index) => (
+				{getAddresses.map((item, index) => (
 					<React.Fragment key={index}>
-						<TouchableWithoutFeedback onPress={() => onSelectedItem(item.id)}>
+						<TouchableWithoutFeedback onPress={() => onSelectedItem(index)}>
 							<View style={styles.topContainer}>
 								<View style={styles.cartImage}>
 									<MaterialCommunityIcons
 										name={
-											selectedItem === item.id
+											selectedItem === index
 												? 'radiobox-marked'
 												: 'radiobox-blank'
 										}
@@ -134,7 +92,7 @@ const SelectAddress = () => {
 								</View>
 							</View>
 						</TouchableWithoutFeedback>
-						<AddressButtons />
+						<AddressButtons removeAddress={() => removeAddress(item.id)} />
 					</React.Fragment>
 				))}
 			</ScrollView>
@@ -161,7 +119,7 @@ const styles = StyleSheet.create({
 		marginBottom: 1,
 		flexDirection: 'row',
 		flex: 1,
-		height: 120,
+		// height: 150,
 		borderColor: 'red',
 		padding: 10,
 		justifyContent: 'space-evenly',

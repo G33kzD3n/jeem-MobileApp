@@ -9,7 +9,7 @@ const AddressCard = ({ data }) => {
 		<>
 			<AppText style={styles.heading}>{data.name}</AppText>
 			<AppText style={styles.subHeading}>{data.address}</AppText>
-			<AppText style={styles.subHeading}>({data.locality})</AppText>
+			<AppText style={styles.subHeading}>({data.address1})</AppText>
 			<AppText style={styles.subHeading}>
 				{data.city}, {data.state}, {data.pincode}
 			</AppText>
@@ -27,8 +27,8 @@ const AddressCard = ({ data }) => {
 						fontWeight: 'bold',
 					}}
 				>
-					{' '}
-					{data.mobile}
+					9858536852
+					{/* {data.mobile} */}
 				</AppText>
 			</View>
 		</>

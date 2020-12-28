@@ -4,14 +4,16 @@ import colors from '../../../config/colors';
 import AppButton from '../../../common/components/AppButton';
 import appAlert from '../../../common/components/appAlert';
 
-const AddressButtons = () => {
-	const [deleteAddress, setDeleteAddress] = useState(false);
+const AddressButtons = ({ removeAddress }) => {
+	// const [deleteAddress, setDeleteAddress] = useState(false);
 
 	const handleDelete = () => {
 		appAlert('DELETE', 'Are you sure you want to delete?', handleOk);
 	};
 	const handleOk = () => {
-		setDeleteAddress(true);
+		removeAddress();
+		// setDeleteAddress(true);
+		// dispatch(deleteAddressAction(DELETE_ADDRESS,id)
 	};
 
 	return (
@@ -25,18 +27,20 @@ const AddressButtons = () => {
 					borderRadius={3}
 					textColor={colors.primary2}
 					customStyle={styles.button}
-					handleClick={handleDelete}
+					handleClick={() => handleDelete()}
 				/>
 			</View>
 			<View style={styles.dataContainer}>
 				<AppButton
 					color1={colors.white}
 					color2={colors.white}
-					text="EDIT"
+					text="DELETE"
+					textAlign="left"
 					borderRadius={3}
-					textColor={colors.primary2}
+					textColor="red"
 					customStyle={styles.button}
 					textTransform="uppercase"
+					handleClick={() => handleDelete()}
 				/>
 			</View>
 		</View>
@@ -49,7 +53,7 @@ const styles = StyleSheet.create({
 	dataContainer: {
 		// paddingBottom: 5,
 		flex: 4,
-		//  justifyContent:'space-around'
+		textAlign: 'left',
 	},
 	addressButtons: {
 		flexDirection: 'row',
@@ -59,8 +63,9 @@ const styles = StyleSheet.create({
 	leftButton: {
 		flex: 1,
 		paddingHorizontal: 10,
-		justifyContent: 'center',
-		borderRightWidth: 1,
+		// justifyContent: 'center',
+		// borderRightWidth: 1,
 		borderColor: colors.primaryShade24,
 	},
+	button: {},
 });

@@ -20,8 +20,14 @@ export const deleteAddressAction = (type, id) => {
 export const addAddressAction = (type, data) => {
 	return async (dispatch) => {
 		const response = await addAddress(data);
-		if (response) {
-			dispatch({ type: type });
+		if (response.status === 200) {
+			dispatch({
+				type: type,
+				value: {
+					address: response.data.address,
+					message: response.data.message,
+				},
+			});
 		}
 	};
 };

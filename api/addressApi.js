@@ -22,6 +22,6 @@ export async function addAddress(data) {
 			apiUrl + 'order/buyer/addresses',
 			data
 		);
-		return response.data;
+		return response;
 	} catch (error) {}
 }

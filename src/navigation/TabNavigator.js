@@ -9,6 +9,8 @@ import Cart from '../buyer/screens/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartCountAction } from '../../store/actions';
 import { GET_COUNT } from '../../store/actions/actionTypes';
+import Search from '../buyer/screens/Search';
+import SearchButton from './SearchButton';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,6 +28,7 @@ const TabNavigator = () => {
 				activeTintColor: colors.primary1,
 				inactiveBackgroundColor: colors.primaryShade24,
 				inactiveTintColor: colors.primary2,
+				style: { backgroundColor: colors.primaryShade24 },
 			}}
 		>
 			<Tab.Screen
@@ -49,6 +52,15 @@ const TabNavigator = () => {
 						/>
 					),
 				}}
+			/>
+			<Tab.Screen
+				name="Search"
+				component={Search}
+				options={({ navigation }) => ({
+					tabBarButton: () => (
+						<SearchButton onPress={() => navigation.navigate('Search')} />
+					),
+				})}
 			/>
 			<Tab.Screen
 				name="Cart"

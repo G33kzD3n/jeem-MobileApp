@@ -20,11 +20,20 @@ export const deleteAddressAction = (type, id) => {
 export const addAddressAction = (type, data) => {
 	return async (dispatch) => {
 		const response = await addAddress(data);
-		if (response.status === 200) {
+		console.log(response,'>>>>>>>>>>>>>>>>>');
+		if (response.status === 200 && response.message==='Address saved') { //adding new addresss
 			dispatch({
 				type: type,
 				value: {
-					address: response.data.address,
+					address: response.data.address, 
+					message: response.data.message,
+				},
+			});
+		}else{ //updating current address
+			dispatch({
+				type: type,
+				value: {
+					address: response.data.selectedAddress, 
 					message: response.data.message,
 				},
 			});

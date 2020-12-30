@@ -17,9 +17,23 @@ const addressReducer = (state = initalState, action) => {
 				}),
 			};
 		case actionTypes.ADD_ADDRESS:
+			let tempAddresses=[...state.addresses];
+			let updatedAddress;
+			if(action.value.message==='Address saved'){ //when we add new address
+			tempAddresses=[...state.addresses];
+			updatedAddress=tempAddresses.map(data=> {return {...data,isActive:data.isActive=0}})
+			updatedAddress=[action.value.address, ...updatedAddress]
+			}else{
+				updatedAddress=tempAddresses.map(data=> { //when we update new address
+					if(data.id!==action.value.address.id){
+					return {...data,isActive:data.isActive=0}
+					}else{
+					return {...data,isActive:data.isActive=1}
+					}})
+			}
 			return {
 				...state,
-				addresses: [action.value.address, ...state.addresses],
+				addresses: [...updatedAddress],
 				message: action.value.message,
 			};
 		case actionTypes.REMOVE_ADDRESS_MESSAGE: {

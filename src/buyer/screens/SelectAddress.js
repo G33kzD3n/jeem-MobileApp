@@ -13,24 +13,36 @@ import ComponentHeading from '../../common/components/ComponentHeading';
 import AddressButtons from '../components/AddressPageComponents/AddressButtons';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
-import { addressesAction, deleteAddressAction } from '../../../store/actions';
+import { addAddressAction, addressesAction, deleteAddressAction } from '../../../store/actions';
 import {
+	ADD_ADDRESS,
 	DELETE_ADDRESS,
 	GET_ADDRESSES,
+	REMOVE_ADDRESS_MESSAGE,
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
+import appAlert from '../../common/components/appAlert';
 
 const SelectAddress = () => {
-	const [selectedItem, onSelectedItem] = useState(0);
+	// const [selectedItem, onSelectedItem] = useState(0);
 	const [loading, setLoading] = useState(false);
 	const navigation = useNavigation();
 
 	const getAddresses = useSelector((state) => state.address.addresses);
-	const dispatch = useDispatch();
+	const response = useSelector((state) => state.address.message);
 
+	const dispatch = useDispatch();
+	 
 	useEffect(() => {
 		dispatch(addressesAction(GET_ADDRESSES)); //get called if the user refreshes the page to get data
 	}, []);
+
+	useEffect(() => { //response for updating  address
+		if (response) {
+			setLoading(false);
+			dispatch({ type: REMOVE_ADDRESS_MESSAGE })
+		}
+	}, [response]);
 
 	useEffect(() => {
 		if (getAddresses) {
@@ -45,11 +57,19 @@ const SelectAddress = () => {
 		navigation.navigate('AddAddress');
 	};
 
-	const removeAddress = (id) => {
-		// console.log(id, '>>>>');
+	const removeAddress = (item) => {
+		if(item.isActive){
+			appAlert('ALERT', 'Please deselect the address and try again');
+		}else{
 		setLoading(true);
-		dispatch(deleteAddressAction(DELETE_ADDRESS, id));
+		dispatch(deleteAddressAction(DELETE_ADDRESS, item.id));
+		}
 	};
+
+	const handleAddressChange=(item)=>{
+		setLoading(true);
+		dispatch(addAddressAction(ADD_ADDRESS, {id:item.id}));
+	}
 	if (getAddresses.length === 0)
 		//means data not yet retreived
 		return <Loader />;
@@ -74,12 +94,12 @@ const SelectAddress = () => {
 				<ComponentHeading text="SELECT ADDRESS" />
 				{getAddresses.map((item, index) => (
 					<React.Fragment key={index}>
-						<TouchableWithoutFeedback onPress={() => onSelectedItem(index)}>
+						<TouchableWithoutFeedback onPress={() => handleAddressChange(item)}>
 							<View style={styles.topContainer}>
 								<View style={styles.cartImage}>
 									<MaterialCommunityIcons
 										name={
-											selectedItem === index
+											item.isActive
 												? 'radiobox-marked'
 												: 'radiobox-blank'
 										}
@@ -92,7 +112,7 @@ const SelectAddress = () => {
 								</View>
 							</View>
 						</TouchableWithoutFeedback>
-						<AddressButtons removeAddress={() => removeAddress(item.id)} />
+						<AddressButtons removeAddress={() => removeAddress(item)} />
 					</React.Fragment>
 				))}
 			</ScrollView>

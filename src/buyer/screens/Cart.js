@@ -19,6 +19,7 @@ import {
 import {
 	CHANGE_QUANTITY,
 	GET_CART_ITEMS,
+	PRICE_DETAILS,
 	REMOVE_CART_ITEM,
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
@@ -58,6 +59,7 @@ const Cart = ({ navigation }) => {
 				{ totalPrice: 0, totalDiscountPrice: 0, totalDiscountPercentage: 0 }
 			);
 			setPriceDetails(total);
+			dispatch({type:PRICE_DETAILS,value:{priceDetails:total,totalItem:cartItems.length}});
 			//means if the cartitems change stop loading
 			setLoading(false);
 		}
@@ -102,7 +104,7 @@ const Cart = ({ navigation }) => {
 				<PlaceOrderBar
 					scrollViewRef={scrollViewRef}
 					navigationAddress="SelectAddress"
-					total={priceDetails.totalDiscountPrice}
+					// total={priceDetails.totalDiscountPrice}
 					text="PLACE ORDER"
 				/>
 				<ScrollView style={styles.scroll} ref={scrollViewRef}>
@@ -130,8 +132,6 @@ const Cart = ({ navigation }) => {
 						</React.Fragment>
 					))}
 					<PriceDetails
-						priceDetails={priceDetails}
-						totalItems={cartItems.length}
 					/>
 				</ScrollView>
 			</AppScreen>

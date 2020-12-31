@@ -9,6 +9,7 @@ const initalState = {
 	errorCart: null,
 	orderCode: null,
 	reviewData: null,
+	// priceDetails:null
 };
 
 const cartReducer = (state = initalState, action) => {
@@ -60,6 +61,8 @@ const cartReducer = (state = initalState, action) => {
 			return { ...state, count: 0, cartItems: null };
 		case actionTypes.PLACE_ORDER:
 			return { ...state, orderCode: action.value, cartItems: null };
+			case actionTypes.PRICE_DETAILS:
+				return { ...state,  ...action.value };
 		case actionTypes.REVIEW_ORDER:
 			return { ...state, reviewData: action.value };
 		default:

@@ -34,6 +34,8 @@ const homeReducer = (state = initalState, action) => {
 			return { ...state, allTags: action.value };
 		case actionTypes.SEARCH:
 			return { ...state, search: action.value, error: false };
+		case actionTypes.CLEAR_SEARCH:
+				return { ...state, search: null, error: false };
 		default:
 			return state;
 	}

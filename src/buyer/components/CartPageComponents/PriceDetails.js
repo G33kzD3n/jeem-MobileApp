@@ -2,8 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
+import { useSelector } from 'react-redux';
 
-const PriceDetails = ({ priceDetails, totalItems }) => {
+const PriceDetails = () => { 
+	const priceDetails = useSelector((state) => state.cart.priceDetails);
+	const totalItems = useSelector((state) => state.cart.totalItems);
 	return (
 		<View style={styles.topContainer}>
 			<View style={styles.headingContainer}>

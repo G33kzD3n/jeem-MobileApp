@@ -4,16 +4,23 @@ import AppButton from '../../../common/components/AppButton';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
-const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress, total }) => {
+const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
+	const priceDetails = useSelector((state) => state.cart.priceDetails);
 	const navigation = useNavigation();
-	const handleOrder = () => {
-		navigation.navigate(navigationAddress);
+	const handleOrder = () => { 
+		if(navigationAddress==='OrderDetails'){
+		navigation.navigate(navigationAddress, {
+			totalPrice: priceDetails.totalDiscountPrice});
+		}else{
+			navigation.navigate(navigationAddress);
+		}
 	};
 	return (
 		<View style={styles.parentContainer}>
 			<View style={styles.containerLeft}>
-				<AppText style={styles.price}>$ {total}</AppText>
+				<AppText style={styles.price}>$ {priceDetails.totalDiscountPrice}</AppText>
 				<TouchableOpacity
 					onPress={() => scrollViewRef.current.scrollToEnd({ animated: true })}
 				>

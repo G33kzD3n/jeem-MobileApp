@@ -24,6 +24,7 @@ const TabNavigator = () => {
 	return (
 		<Tab.Navigator
 			tabBarOptions={{
+				keyboardHidesTabBar: true,
 				activeBackgroundColor: colors.primaryShade24,
 				activeTintColor: colors.primary1,
 				inactiveBackgroundColor: colors.primaryShade24,

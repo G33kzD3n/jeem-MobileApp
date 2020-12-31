@@ -11,13 +11,14 @@ const data = {
 	id: 1,
 	name: 'Basit Mir',
 	address: 'Naseem Bagh, Habak, Near Masjid yasir',
-	locality: 'Naseem Bagh',
+	locality: 'Naseem Bagh', 
 	city: 'Srinagar',
 	state: 'Jammu & Kashmir',
 	pincode: '190006',
 	mobile: '9858536852',
 };
-const OrderDetails = () => {
+const OrderDetails = ({route}) => {
+	const { totalPrice } = route.params;
 	return (
 		<View>
 			<SucessCard />
@@ -25,7 +26,7 @@ const OrderDetails = () => {
 				<ComponentHeading text="ORDER DETAILS" />
 				<View style={styles.details}>
 					<View style={styles.totalParent}>
-						<AppText style={styles.total}>$526</AppText>
+						<AppText style={styles.total}>$ {totalPrice}</AppText>
 						<AppText style={styles.subHeading}>
 							Amount due at the time of delivery
 						</AppText>

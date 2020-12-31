@@ -61,6 +61,7 @@ export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
 export const GET_COUNT = 'GET_COUNT';
 export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
+export const PRICE_DETAILS = 'PRICE_DETAILS';
 
 export const PLACE_ORDER = 'PLACE_ORDER';
 export const RESET_CART_AFTER_LOGOUT = 'RESET_CART_AFTER_LOGOUT';
@@ -79,6 +80,7 @@ export const GET_CAROUSAL_PRODUCTS = 'GET_CAROUSAL_PRODUCTS';
 
 export const GET_OFFERS = 'GET_OFFERS';
 export const SEARCH = 'SEARCH';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 
 export const CLEAR_SIGNUP = 'CLEAR_SIGNUP';
 export const REVIEW_ORDER = 'REVIEW_ORDER';

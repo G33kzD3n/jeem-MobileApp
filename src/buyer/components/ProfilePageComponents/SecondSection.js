@@ -15,6 +15,12 @@ const SecondSection = ({ token }) => {
 	const editProfile = () => {
 		navigation.navigate('EditProfile');
 	};
+	const helpCenter = () => {
+		navigation.navigate('HelpCenter');
+	};
+	const share = () => {
+		navigation.navigate('Share');
+	};
 	return (
 		<View style={styles.topContainer}>
 			{token && (
@@ -47,12 +53,14 @@ const SecondSection = ({ token }) => {
 				heading="Help Center"
 				subHeading="Help regarding your recent purchases"
 				icon="help-rhombus-outline"
+				onPress={() => helpCenter()}
 			/>
 			<ProfileCard
 				customStyle={styles.customStyle}
 				heading="Share"
 				subHeading="Refer to your friends"
 				icon="share-variant"
+				onPress={() => share()}
 			/>
 		</View>
 	);

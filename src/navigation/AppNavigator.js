@@ -17,6 +17,12 @@ import EditProfile from '../buyer/screens/EditProfile';
 import { useDispatch } from 'react-redux';
 import { LOGIN } from '../../store/actions/actionTypes';
 import persistStore from '../utils/persistStore';
+import HelpCenter from '../buyer/screens/HelpCenter';
+import Share from '../buyer/screens/Share';
+import Faq from '../buyer/screens/Faq';
+import AboutUs from '../buyer/screens/AboutUs';
+import TermsOfUse from '../buyer/screens/TermsOfUse';
+import PrivacyPolicy from '../buyer/screens/PrivacyPolicy';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -117,7 +123,37 @@ function AppNavigator() {
 			<Stack.Screen
 				name="EditProfile"
 				component={EditProfile}
-				options={{ title: 'Profile' }}
+				options={{ title: 'PROFILE' }}
+			/>
+				<Stack.Screen
+				name="HelpCenter"
+				component={HelpCenter}
+				options={{ title: 'HELP' }}
+			/>
+				<Stack.Screen
+				name="Share"
+				component={Share}
+				options={{ title: 'SHARE' }}
+			/>
+				<Stack.Screen
+				name="Faq"
+				component={Faq}
+				options={{ title: 'FAQ' }}
+			/>
+				<Stack.Screen
+				name="AboutUs"
+				component={AboutUs}
+				options={{ title: 'ABOUT US' }}
+			/>
+			<Stack.Screen
+				name="TermsOfUse"
+				component={TermsOfUse}
+				options={{ title: 'TERMS OF USE' }}
+			/>
+			<Stack.Screen
+				name="PrivacyPolicy"
+				component={PrivacyPolicy}
+				options={{ title: 'PRIVACY POLICY' }}
 			/>
 		</Stack.Navigator>
 	);

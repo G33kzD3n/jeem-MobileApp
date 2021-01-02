@@ -30,7 +30,6 @@ const SelectAddress = () => {
 
 	const getAddresses = useSelector((state) => state.address.addresses);
 	const response = useSelector((state) => state.address.message);
-
 	const dispatch = useDispatch();
 	 
 	useEffect(() => {

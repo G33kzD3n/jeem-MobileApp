@@ -1,9 +1,16 @@
-import { getAddresses, deleteAddress, addAddress } from '../../api/addressApi';
+import { getAddresses, deleteAddress, addAddress, activeAddress } from '../../api/addressApi';
 
 export const addressesAction = (type, id) => {
 	return async (dispatch) => {
 		const data = await getAddresses(id);
 		dispatch({ type: type, value: data.data });
+	};
+};
+
+export const activeAddressesAction = (type) => {
+	return async (dispatch) => {
+		const data = await activeAddress();
+		dispatch({ type: type, value: data });
 	};
 };
 
@@ -20,8 +27,8 @@ export const deleteAddressAction = (type, id) => {
 export const addAddressAction = (type, data) => {
 	return async (dispatch) => {
 		const response = await addAddress(data);
-		console.log(response,'>>>>>>>>>>>>>>>>>');
-		if (response.status === 200 && response.message==='Address saved') { //adding new addresss
+		// console.log(response,'>>>>>>>>>>>>>>>>>');
+		if (response.status === 200 && response.data.message==='Address saved') { //adding new addresss
 			dispatch({
 				type: type,
 				value: {

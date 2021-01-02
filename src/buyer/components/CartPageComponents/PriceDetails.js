@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const PriceDetails = () => { 
 	const priceDetails = useSelector((state) => state.cart.priceDetails);
-	const totalItems = useSelector((state) => state.cart.totalItems);
+	const totalItems = useSelector((state) => state.cart.totalItem);
 	return (
 		<View style={styles.topContainer}>
 			<View style={styles.headingContainer}>

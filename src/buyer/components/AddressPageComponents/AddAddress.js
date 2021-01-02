@@ -43,7 +43,7 @@ const AddAddress = () => {
 				<AppForm
 					initialValues={{
 						name: '',
-						// mobile: '',
+						phoneNumber: '',
 						pincode: '',
 						address: '',
 						address1: '',
@@ -67,15 +67,15 @@ const AddAddress = () => {
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
 								/>
-								{/* <AppFormFeild
+								<AppFormFeild
 									placeholder="Mobile No"
-									name="mobile"
+									name="phoneNumber"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
 									keyboardType="phone-pad"
-								/> */}
+								/>
 							</View>
 							<ComponentHeading text="ADDRESS" />
 							<View style={styles.contactDetails}>

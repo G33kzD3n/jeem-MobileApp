@@ -22,6 +22,15 @@ export async function getTagsProductForBuyer(id, page, limit) {
 	} catch (error) {}
 }
 
+export async function getSellerProductForBuyer(id, page, limit) {
+	try {
+		return await axios.post(apiUrl + `seller/products/${id}`, {
+			page: page,
+			limit: limit,
+		});
+	} catch (error) {}
+}
+
 export async function getSellerCategory() {
 	try {
 		return await axios.get(apiUrl + 'sellercategory');
@@ -42,7 +51,7 @@ export async function getProductSubCategory(val) {
 
 export async function getProducts(id, page, limit) {
 	try {
-		return await axios.get(apiUrl + `products/${id}`, {
+		return await axios.post(apiUrl + `products/${id}`, {
 			page: page,
 			limit: limit,
 		});

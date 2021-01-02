@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppDivider from '../../common/components/AppDivider';
 import AppText from '../../common/components/AppText';
@@ -6,24 +6,29 @@ import ComponentHeading from '../../common/components/ComponentHeading';
 import colors from '../../config/colors';
 import AddressCard from '../components/AddressPageComponents/AddressCard';
 import SucessCard from '../components/OrderDetailsComponent/SucessCard';
+import { useSelector, useDispatch } from 'react-redux';
+import { activeAddressesAction } from '../../../store/actions/addressesAction';
+import { GET_ACTIVE_ADDRESS, REMOVE_ACTIVE_ADDRESS } from '../../../store/actions/actionTypes';
+import Loader from '../../common/components/Loader';
 
-const data = {
-	id: 1,
-	name: 'Basit Mir',
-	address: 'Naseem Bagh, Habak, Near Masjid yasir',
-	locality: 'Naseem Bagh', 
-	city: 'Srinagar',
-	state: 'Jammu & Kashmir',
-	pincode: '190006',
-	mobile: '9858536852',
-};
+
 const OrderDetails = ({route}) => {
-	const { totalPrice } = route.params;
+	const { totalPrice,orderCode } = route.params;
+
+	const currentAddress = useSelector((state) => state.address.activeAddress);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(activeAddressesAction(GET_ACTIVE_ADDRESS)); //get called if the user refreshes the page to get data
+		return ()=>dispatch({type:REMOVE_ACTIVE_ADDRESS})
+	}, []);
+
+	if (!currentAddress) return <><Loader/></>;
+
 	return (
 		<View>
-			<SucessCard />
+			<SucessCard orderCode={orderCode}/>
 			<View>
-				<ComponentHeading text="ORDER DETAILS" />
+				<ComponentHeading text="ORDER DETAILS"/>
 				<View style={styles.details}>
 					<View style={styles.totalParent}>
 						<AppText style={styles.total}>$ {totalPrice}</AppText>
@@ -33,7 +38,7 @@ const OrderDetails = ({route}) => {
 					</View>
 					<AppDivider />
 					<View style={styles.addressBar}>
-						<AddressCard data={data} />
+						<AddressCard data={currentAddress} />
 					</View>
 				</View>
 			</View>

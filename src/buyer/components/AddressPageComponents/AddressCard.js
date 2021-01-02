@@ -27,7 +27,7 @@ const AddressCard = ({ data }) => {
 						fontWeight: 'bold',
 					}}
 				>
-					9858536852
+				  {data.phoneNumber}
 					{/* {data.mobile} */}
 				</AppText>
 			</View>

@@ -19,7 +19,7 @@ const validationProfile = Yup.object().shape({
 
 const validationAddress = Yup.object().shape({
 	name: Yup.string().required().min(3).label('Name'),
-	// mobile: Yup.string().required().min(10).label('Phone'),
+	phoneNumber: Yup.string().required().min(10).label('Phone'),
 	pincode: Yup.string().required().label('Pin Code'),
 	address: Yup.string().required().label('Address'),
 	address1: Yup.string().required().label('Locality'),

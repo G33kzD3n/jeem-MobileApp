@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppButton from '../../../common/components/AppButton';
 import { useNavigation } from '@react-navigation/native';
 
-const SucessCard = () => {
+const SucessCard = ({orderCode}) => {
 	const navigation = useNavigation();
 	const checkStatus = () => {
 		navigation.navigate('ViewOrders');
@@ -14,7 +14,7 @@ const SucessCard = () => {
 
 	const handleBackButton = () => {
 		navigation.navigate('Home');
-	};
+	}; 
 	useEffect(() => {
 		BackHandler.addEventListener('hardwareBackPress', handleBackButton);
 		return () =>
@@ -32,7 +32,7 @@ const SucessCard = () => {
 				/>
 				<View>
 					<AppText style={styles.text}>Order placed Sucessfully!</AppText>
-					<AppText style={styles.subHeading}>Order No. 102055139</AppText>
+					<AppText style={styles.subHeading}>Order No. {orderCode}</AppText>
 				</View>
 			</View>
 			<View style={styles.textTop}>

@@ -15,6 +15,14 @@ export async function deleteAddress(id) {
 		return response.data;
 	} catch (error) {}
 }
+export async function activeAddress() {
+	try {
+		const response = await authAxios.get(
+			apiUrl + 'order/buyer/activeaddress'
+		);
+		return response.data;
+	} catch (error) {}
+}
 
 export async function addAddress(data) {
 	try {

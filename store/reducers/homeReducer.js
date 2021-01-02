@@ -24,6 +24,10 @@ const homeReducer = (state = initalState, action) => {
 			return { ...state, productSubCategory: action.value };
 		case actionTypes.GET_PRODUCTS_FOR_BUYER:
 			return { ...state, products: action.value };
+		case actionTypes.GET_SELLER_PRODUCTS:
+			return { ...state, sellerProducts: action.value };
+		case actionTypes.REMOVE_SELLER_PRODUCTS:
+			return { ...state, sellerProducts: null };
 		case actionTypes.REMOVE_PRODUCTS_FROM_STORE:
 			return { ...state, products: null };
 		case actionTypes.GET_SINGLE_PRODUCT_FOR_BUYER:
@@ -35,7 +39,7 @@ const homeReducer = (state = initalState, action) => {
 		case actionTypes.SEARCH:
 			return { ...state, search: action.value, error: false };
 		case actionTypes.CLEAR_SEARCH:
-				return { ...state, search: null, error: false };
+			return { ...state, search: null, error: false };
 		default:
 			return state;
 	}

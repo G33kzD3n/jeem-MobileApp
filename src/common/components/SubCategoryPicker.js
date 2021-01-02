@@ -23,7 +23,7 @@ const SubCategoryPicker = ({
 	const handelSubCategory = (item) => {
 		setModalVisible(false);
 		navigation.navigate('SubCategoryProduct', {
-			subCategoryName: item.productSubCategoryName,
+			name: item.productSubCategoryName,
 			id: item.id,
 		}); //navigate with params
 	};

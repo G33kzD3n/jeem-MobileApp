@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import AppCarousel from '../../common/components/AppCarousel';
 import AppScreen from '../../common/components/AppScreen';
 import colors from '../../config/colors';
@@ -22,11 +22,11 @@ import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
 
 const ProductView = ({ route }) => {
-	// const navigation = useNavigation();
+	const navigation = useNavigation();
 	const { id } = route.params;
 
 	const productData = useSelector((state) => state.home.singleProduct);
-
+  // console.log(productData)
 	const cartMessage = useSelector((state) => state.cart.message);
 
 	const addToCart = () => {
@@ -44,6 +44,15 @@ const ProductView = ({ route }) => {
 		return () =>
 			dispatch({ type: ADD_PRODUCT_TO_CART_ERROR, value: { message: null } });
 	}, []);
+
+	const handleSeller=(product)=>{
+		navigation.navigate('SellerProduct', {
+			name: product.productSellerName,
+			id: product.productSellerId,
+			apiName: 'Seller',
+			// total: undefined,
+		}); //navigate with params
+	}
 
 	// console.log(id, '>>>>>>>>>>>>>>>>>>>>>>>>', productData);
 	if (!productData) return <Loader />;
@@ -80,7 +89,8 @@ const ProductView = ({ route }) => {
 						<AppText style={styles.taxesMessage}>
 							inclusive of all taxes
 						</AppText>
-						<View style={styles.priceContainer}>
+						<TouchableOpacity style={styles.priceContainer} onPress={()=>handleSeller(productData)}>
+	
 							<AppText style={{ color: colors.primary2, fontSize: 16 }}>
 								Seller:
 							</AppText>
@@ -92,10 +102,9 @@ const ProductView = ({ route }) => {
 								}}
 							>
 								{' '}
-								{/* {data.seller} */}
-								'Jeem Solutions'
+								{productData.productSellerName}
 							</AppText>
-						</View>
+						</TouchableOpacity>
 					</View>
 				</View>
 				<TextCard

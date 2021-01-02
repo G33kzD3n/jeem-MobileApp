@@ -61,6 +61,8 @@ const cartReducer = (state = initalState, action) => {
 			return { ...state, count: 0, cartItems: null };
 		case actionTypes.PLACE_ORDER:
 			return { ...state, orderCode: action.value, cartItems: null };
+			case actionTypes.REMOVE_PLACE_ORDER:
+			return { ...state, orderCode:null };
 			case actionTypes.PRICE_DETAILS:
 				return { ...state,  ...action.value };
 		case actionTypes.REVIEW_ORDER:

@@ -9,6 +9,10 @@ const addressReducer = (state = initalState, action) => {
 	switch (action.type) {
 		case actionTypes.GET_ADDRESSES:
 			return { ...state, addresses: action.value };
+			case actionTypes.GET_ACTIVE_ADDRESS:
+				return { ...state, activeAddress: action.value };
+				case actionTypes.REMOVE_ACTIVE_ADDRESS:
+				return { ...state, activeAddress: null };
 		case actionTypes.DELETE_ADDRESS:
 			return {
 				...state,

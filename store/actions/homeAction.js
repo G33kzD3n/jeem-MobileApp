@@ -1,5 +1,6 @@
 import {
 	getCarousel,
+	getSellerProductForBuyer,
 	getTagsForBuyer,
 	getTagsProductForBuyer,
 } from '../../api/homeApi.js';
@@ -51,7 +52,6 @@ export const productsAction = (type, values) => {
 	return async (dispatch) => {
 		if (values !== '') {
 			const data = await getProducts(values.id, values.page, values.limit);
-			console.log(data.data);
 			if (data !== undefined) {
 				dispatch({ type: type, value: data.data });
 			}
@@ -93,6 +93,17 @@ export const getAllTagsAction = (type) => {
 export const getTagsProductAction = (type, values) => {
 	return async (dispatch) => {
 		const result = await getTagsProductForBuyer(
+			values.id,
+			values.page,
+			values.limit
+		);
+		dispatch({ type: type, value: result.data });
+	};
+};
+
+export const getSellerProductAction = (type, values) => {
+	return async (dispatch) => {
+		const result = await getSellerProductForBuyer(
 			values.id,
 			values.page,
 			values.limit

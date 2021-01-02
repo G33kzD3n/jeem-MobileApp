@@ -6,12 +6,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { productsAction } from '../../../store/actions';
 import {
 	GET_PRODUCTS_FOR_BUYER,
-	REMOVE_PRODUCTS_FROM_STORE,
+	GET_SELLER_PRODUCTS,
+	REMOVE_SELLER_PRODUCTS,
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
-import { getTagsProductAction } from '../../../store/actions/homeAction';
+import { getSellerProductAction} from '../../../store/actions/homeAction';
 
-const SubCategoryProducts = ({ route, navigation }) => {
+const SellerProducts = ({ route, navigation }) => {
 	const { id, apiName } = route.params;
 
 	const [flatListParams, setFlatListParams] = useState({
@@ -23,14 +24,14 @@ const SubCategoryProducts = ({ route, navigation }) => {
 		error: null,
 		refreshing: false,
 	});
-	const productData = useSelector((state) => state.home.products);
+	const productData = useSelector((state) => state.home.sellerProducts);
 	const dispatch = useDispatch();
 
 	const handelDispatchCalls = (apiName) => {
 		switch (apiName) { 
-			case 'Tag':
+			case 'Seller':
 				return dispatch(
-					getTagsProductAction(GET_PRODUCTS_FOR_BUYER, {
+					getSellerProductAction(GET_SELLER_PRODUCTS, {
 						id: id,
 						page: flatListParams.page,
 						limit: flatListParams.limit,
@@ -49,18 +50,18 @@ const SubCategoryProducts = ({ route, navigation }) => {
 
 	useEffect(() => {
 		handelDispatchCalls(apiName);
-		return () => dispatch({ type: REMOVE_PRODUCTS_FROM_STORE });
+		return () => dispatch({ type: REMOVE_SELLER_PRODUCTS });
 	}, [apiName]);
 
 	useEffect(() => {
 		//set data from api to state for inital render or as data changes in productData
-
+   
 		if (
 			productData &&
 			productData.page === flatListParams.page &&
-			flatListParams.data.length < productData.totalRecords
+			flatListParams.data.length < productData.totalProducts
 		) {
-			navigation.setParams({ totalItems: productData.totalRecords.toString() }); //set total item for header
+			navigation.setParams({ totalItems: productData.totalProducts.toString() }); //set total item for header
 			setFlatListParams({
 				...flatListParams,
 				// totalRecords: productData.totalRecords,
@@ -88,7 +89,7 @@ const SubCategoryProducts = ({ route, navigation }) => {
 	};
 
 	const handleLoadMore = (apiName) => {
-		if (flatListParams.data.length < productData.totalRecords) {
+		if (flatListParams.data.length < productData.totalProducts) {
 			setFlatListParams({
 				...flatListParams,
 				page: productData.page + 1,
@@ -125,7 +126,7 @@ const SubCategoryProducts = ({ route, navigation }) => {
 	);
 };
 
-export default SubCategoryProducts;
+export default SellerProducts;
 
 const styles = StyleSheet.create({
 	outerView: {

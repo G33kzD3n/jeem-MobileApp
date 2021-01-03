@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, ActivityIndicator, View } from 'react-native';
 import colors from '../../config/colors';
 
-const Loader = ({ screen = 'full' }) => {
+const Loader = ({ screen = 'full',size='large' }) => {
 	return (
 		<View style={screen === 'full' && styles.overlay}>
 			<ActivityIndicator
-				size="large"
+				size={size}
 				color={colors.primaryShade11}
 				style={styles.loader}
 			/>

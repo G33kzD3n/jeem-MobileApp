@@ -102,7 +102,7 @@ const SubCategoryProducts = ({ route, navigation }) => {
 		//means data not yet retreived
 		return <Loader />;
 	return (
-		<View style={styles.screen}>
+		<View style={styles.screen}> 
 			<FlatList
 				refreshing={flatListParams.refreshing}
 				onRefresh={()=>handleRefresh(apiName)} //call a function

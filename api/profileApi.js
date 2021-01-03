@@ -16,3 +16,11 @@ export async function profileSet(data) {
 		console.error('Error in profile', error);
 	}
 }
+
+export async function updateUserProfile(data) {
+	try {
+		return await authAxios.post(apiUrl + 'buyer?_method=PUT', data);
+	} catch (error) {
+		console.error('Error in profile', error);
+	}
+}

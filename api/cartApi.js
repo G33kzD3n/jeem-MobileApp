@@ -4,6 +4,7 @@ import { apiUrl, authAxios } from '../src/config/config';
 export async function getCartItems() {
 	try {
 		const response = await authAxios.get(apiUrl + 'order/get-orders-from-cart');
+		console.log(response,'>:::::::::::::');
 		return response.data;
 	} catch (error) {
 		console.log(error, 'resssssssssssssss');

@@ -1,4 +1,5 @@
 import loginUser, { signupUser, logOutUser } from '../../api/authApi';
+import { updateUserProfile } from '../../api/profileApi';
 import persistStore from '../../src/utils/persistStore';
 // import { toast } from 'react-toastify';
 import { LOADER } from './actionTypes.js';
@@ -50,6 +51,15 @@ export const logoutAction = (type) => {
 			persistStore.removeDetails('userDetails');
 			dispatch({ type: type });
 			dispatch({ type: 'RESET_CART_AFTER_LOGOUT' });
+		}
+	};
+};
+
+export const updateProfileAction = (type, values) => {
+	return async (dispatch) => {
+		const data = await updateUserProfile(values);
+		if (data.status === 200) {
+		dispatch({ type: type, value: data.data[0] });
 		}
 	};
 };

@@ -72,9 +72,10 @@ export async function getAllTagsWithProducts(data) {
 
 export async function searchProduct(data) {
 	try {
-		const response = await axios.post(apiUrl + 'order/buyer/search', {
-			searchItem: data,
-		});
+		const response = await axios.post(
+			apiUrl + 'order/buyer/searchproducts',
+			data
+		);
 		return response.data;
 	} catch (error) {}
 }

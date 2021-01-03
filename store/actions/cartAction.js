@@ -65,7 +65,6 @@ export const changeProductQuantity = (type, values, id) => {
 export const placeOrderAction = (type) => {
 	return async (dispatch) => {
 		const data = await placeOrder();
-		console.log(data,'>>>>>>>>>>>>>>>>>>');
 		if (data.result === 'success') {
 			dispatch({ type: type, value: data.data.order_code });
 		}

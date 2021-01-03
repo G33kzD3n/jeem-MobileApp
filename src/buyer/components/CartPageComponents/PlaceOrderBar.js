@@ -17,7 +17,6 @@ const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 	const priceDetails = useSelector((state) => state.cart.priceDetails);
 	const orderCode = useSelector((state) => state.cart.orderCode);
 
-	console.log(orderCode, 'ooooooooooooooooooooo');
 	useEffect(() => {
 		if (orderCode) {
 			setLoading(false);

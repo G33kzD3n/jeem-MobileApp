@@ -78,7 +78,7 @@ export const offerAction = (type) => {
 
 export const searchAction = (type, values) => {
 	return async (dispatch) => {
-		const data = await searchProduct(values);
+		const data = await searchProduct(values); 
 		dispatch({ type: type, value: data });
 	};
 };

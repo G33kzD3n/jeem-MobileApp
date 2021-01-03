@@ -13,7 +13,7 @@ const validationRegister = Yup.object().shape({
 
 const validationProfile = Yup.object().shape({
 	name: Yup.string().required().min(3).label('Name'),
-	mobile: Yup.string().required().min(10).label('Phone'),
+	phonenumber: Yup.string().required().min(10).label('Phone'),
 	location: Yup.string().required().label('Location'),
 });
 

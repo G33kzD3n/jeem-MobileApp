@@ -36,7 +36,7 @@ const Cart = ({ navigation }) => {
 
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const dispatch = useDispatch();
-
+   console.log(cartItems);
 	useEffect(() => {
 		dispatch(cartAction(GET_CART_ITEMS));
 		setLoading(true);

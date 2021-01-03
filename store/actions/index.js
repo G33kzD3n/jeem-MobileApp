@@ -2,6 +2,7 @@ export {
 	loginAction,
 	logoutAction,
 	removeLoginErrorAction,
+	updateProfileAction
 } from './authAction';
 
 export {

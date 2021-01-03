@@ -17,6 +17,12 @@ const validationProfile = Yup.object().shape({
 	location: Yup.string().required().label('Location'),
 });
 
+const validationHelp = Yup.object().shape({
+	name: Yup.string().required().min(3).label('Name'),
+	email: Yup.string().required().email().label('Email'),
+	query: Yup.string().required().min(4).label('Query'),
+});
+
 const validationAddress = Yup.object().shape({
 	name: Yup.string().required().min(3).label('Name'),
 	phoneNumber: Yup.string().required().min(10).label('Phone'),
@@ -32,4 +38,5 @@ export default {
 	validationRegister,
 	validationProfile,
 	validationAddress,
+	validationHelp
 };

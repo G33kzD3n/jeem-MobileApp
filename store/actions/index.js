@@ -17,7 +17,7 @@ export {
 	productSubCategoriesAction,
 } from './productAction';
 
-export { getOrdersAction } from './ordersAction';
+export { getOrdersAction,getBuyerOrdersAction,cancelBuyerOrdersAction } from './ordersAction';
 
 export {
 	getCarousalsAction,

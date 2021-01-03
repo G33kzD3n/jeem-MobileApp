@@ -11,7 +11,7 @@ const data = [
 	{
 		id: 1,
 		status: 'cancelled',
-		date: 'Wed, 4nov',
+		date: 'Wed, 4nov', 
 		name: 'Plum',
 		subHeading: 'Navy Track Pants',
 		seller: 'Jeem',

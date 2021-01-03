@@ -91,3 +91,15 @@ export async function productSubCategories() {
 		return await axios.get(apiUrl + 'productsubcategories');
 	} catch (error) {}
 }
+
+export async function myOrders() {
+	try {
+		return await axios.get(apiUrl + 'order/buyer/myorders');
+	} catch (error) {}
+}
+
+export async function cancelOrder(id) {
+	try {
+		return await axios.get(apiUrl + `order/buyer/cancelorder/${id}`);
+	} catch (error) {}
+}

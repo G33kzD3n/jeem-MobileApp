@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { logoutAction } from '../../../../store/actions';
 import { LOGOUT } from '../../../../store/actions/actionTypes';
 
-const TopSections = ({ edit, token }) => {
+const TopSections = ({ edit, token,image="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png" }) => {
 	const navigation = useNavigation();
 
 	const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const TopSections = ({ edit, token }) => {
 			<View style={styles.secondContainer}>
 				<Avatar
 					customStyles={styles.avatar}
-					image="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png"
+					image={image}
 				/>
 				{!edit && (
 					<AppButton

@@ -33,7 +33,7 @@ const ProductCard = ({ item }) => {
 					style={styles.image}
 				/>
 				<View style={styles.dataContainer}>
-					<AppText style={styles.heading} numberOfLines={1}>
+					<AppText style={styles.heading} numberOf={1}>
 						{item.productName}
 					</AppText>
 					<AppText style={styles.subHeading} numberOfLines={1}>

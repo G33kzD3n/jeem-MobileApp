@@ -27,7 +27,6 @@ const Search = () => {
 	});
 	const dispatch = useDispatch();
 	const searchResults = useSelector((state) => state.home.search);
- console.log(searchResults,'resultssssssssssss');
 	useEffect(() => {
 		textRef.current.focus();
 		return () => dispatch({ type: CLEAR_SEARCH });
@@ -35,7 +34,7 @@ const Search = () => {
 
 	useEffect(() => {
 		//set data from api to state for inital render or as data changes in productData
-		if(searchResults && searchResults.data.length === 0){
+		if(searchResults && searchResults.data === 'No Records found'){
 			setLoading(false);
 		}
 
@@ -148,9 +147,11 @@ const Search = () => {
 							}}
 						/>
 					</View>
+					{searchResults&&
+					<AppText  style={styles.textInfo}>{searchResults.totalRecords.toString()} records found</AppText>}
 				</View>
 				<View style={styles.screen}>
-					{searchResults && searchResults.data.length === 0 ? (
+					{searchResults && searchResults.data === 'No Records found'? (
 						<AppText style={styles.message}>No Records Found</AppText>
 					) : (
 						<FlatList
@@ -181,6 +182,11 @@ const Search = () => {
 export default Search;
 
 const styles = StyleSheet.create({
+	textInfo:{
+		color:colors.primary1,
+		fontSize:13,
+		textAlign:'center'
+	},
 	message: {
 		color: colors.primary1,
 		flex: 1,

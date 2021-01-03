@@ -18,7 +18,6 @@ import { useDispatch } from 'react-redux';
 import { LOGIN } from '../../store/actions/actionTypes';
 import persistStore from '../utils/persistStore';
 import HelpCenter from '../buyer/screens/HelpCenter';
-import Share from '../buyer/screens/Share';
 import Faq from '../buyer/screens/Faq';
 import AboutUs from '../buyer/screens/AboutUs';
 import TermsOfUse from '../buyer/screens/TermsOfUse';
@@ -143,11 +142,6 @@ function AppNavigator() {
 				name="HelpCenter"
 				component={HelpCenter}
 				options={{ title: 'HELP' }}
-			/>
-				<Stack.Screen
-				name="Share"
-				component={Share}
-				options={{ title: 'SHARE' }}
 			/>
 				<Stack.Screen
 				name="Faq"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View,Share } from 'react-native';
 import ProfileCard from '../../../common/components/ProfileCard';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
@@ -18,8 +18,23 @@ const SecondSection = ({ token }) => {
 	const helpCenter = () => {
 		navigation.navigate('HelpCenter');
 	};
-	const share = () => {
-		navigation.navigate('Share');
+	const share = async() => {
+		try {
+      const result = await Share.share({
+        message: 'Jeem Solutions | http://jeem.brorinfotech.com/#/',
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
 	};
 	return (
 		<View style={styles.topContainer}>

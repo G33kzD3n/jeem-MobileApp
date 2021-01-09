@@ -8,49 +8,37 @@ import colors from '../../config/colors';
 import TopSections from '../components/ProfilePageComponents/TopSections';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-	EDIT_PROFILE,
-	LOGIN,
-	REMOVE_EDIT_PROFILE,
+	HELP_QUERY,
+	REMOVE_HELP_QUERY,
 } from '../../../store/actions/actionTypes';
-import { updateProfileAction } from '../../../store/actions';
+import { sendQueryAction, updateProfileAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
 
 const HelpCenter = () => {
 	const [loading, setLoading] = useState(false);
 
-	const profileDetails = useSelector(
-		(state) => state.auth.login && state.auth.login
+	const queryResponse = useSelector(
+		(state) => state.profile && state.profile.queryResponse
 	);
 
-	const profileStatus = useSelector(
-		(state) => state.profile && state.profile.updateMessage
-	);
+	console.log(queryResponse,'queryyyyyyyyyyyyyy');
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (profileStatus) {
+		if(queryResponse){
 			setLoading(false);
-			const data = {
-				role: { role: 'Buyer' },
-				status: 'success',
-				token: profileDetails.token,
-				user: {
-					...profileDetails.user,
-					name: profileStatus.name,
-					phonenumber: profileStatus.phonenumber,
-					seller_category_name: profileStatus.seller_category_name,
-				},
-			};
-			appAlert('SUCCESS', 'Profile updated Successfully');
-			dispatch({ type: LOGIN, value: data });
-			dispatch({ type: REMOVE_EDIT_PROFILE });
+			dispatch({type:REMOVE_HELP_QUERY});
+			appAlert('SUCCESS', 'Query send sucessfully');
 		}
-	}, [profileStatus]);
+	
+	}, [queryResponse]);
 
-	const handleUpdate = (data) => {
+	const handleQuery = (data,resetForm) => {
 		setLoading(true);
-		dispatch(updateProfileAction(EDIT_PROFILE, data));
+		dispatch(sendQueryAction(HELP_QUERY, data));
+		resetForm()
 	};
 	return (
 		<>
@@ -61,9 +49,9 @@ const HelpCenter = () => {
 						initialValues={{
 							name: '',
 							email: '',
-							query: '',
+							message: '',
 						}}
-						onSubmit={(values) => handleUpdate(values)}
+						onSubmit={(values,{resetForm}) => handleQuery(values,resetForm)}
 						validationSchema={validationSchema.validationHelp}
 					>
 						<View style={styles.topContainer}>
@@ -95,7 +83,7 @@ const HelpCenter = () => {
 									/>
 									<AppFormFeild
 										placeholder="Write your query"
-										name="query"
+										name="message"
 										numberOfLines={6}
 										multiline={true}
 										selectionColor={colors.primary2}

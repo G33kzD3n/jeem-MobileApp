@@ -3,6 +3,7 @@ import {
 	getSellerProductForBuyer,
 	getTagsForBuyer,
 	getTagsProductForBuyer,
+	helpQuery,
 } from '../../api/homeApi.js';
 import { getSellerCategory } from '../../api/homeApi.js';
 import { getProductCategory } from '../../api/homeApi.js';
@@ -114,7 +115,7 @@ export const getSellerProductAction = (type, values) => {
 
 export const sendQueryAction = (type, values) => {
 	return async (dispatch) => {
-		const result = await getSellerProductForBuyer(values);
+		const result = await helpQuery(values);
 		console.log(result,'>>>>>>>>>>');
 		dispatch({ type: type, value: result.data });
 	};

@@ -18,10 +18,10 @@ const profileReducer = (state = initalState, action) => {
 			return { ...state, updateMessage: action.value };
 		case actionTypes.REMOVE_EDIT_PROFILE:
 			return { ...state, updateMessage: null };
-			case actionTypes.HELP_QUERY:
-				return { ...state, queryResponse: action.value };
-				case actionTypes.REMOVE_HELP_QUERY:
-					return { ...state, queryResponse: null };
+		case actionTypes.HELP_QUERY:
+			return { ...state, queryResponse: action.value };
+		case actionTypes.REMOVE_HELP_QUERY:
+			return { ...state, queryResponse: null };
 		default:
 			return state;
 	}

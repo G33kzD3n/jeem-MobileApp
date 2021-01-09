@@ -109,5 +109,7 @@ export async function cancelOrder(id) {
 export async function helpQuery(data) {
 	try {
 		return await axios.post(apiUrl + `contactus`, data);
-	} catch (error) {}
+	} catch (error) {
+		console.log(error);
+	}
 }

@@ -22,7 +22,7 @@ const validationProfile = Yup.object().shape({
 const validationHelp = Yup.object().shape({
 	name: Yup.string().required().min(3).label('Name'),
 	email: Yup.string().required().email().label('Email'),
-	query: Yup.string().required().min(4).label('Query'),
+	message: Yup.string().required().min(4).label('Query'),
 });
 
 const validationAddress = Yup.object().shape({

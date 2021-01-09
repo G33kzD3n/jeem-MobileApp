@@ -1,25 +1,53 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import AppButton from '../../../common/components/AppButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { cancelBuyerOrdersAction } from '../../../../store/actions';
+import { CANCEL_ORDER, CANCEL_ORDER_STATUS } from '../../../../store/actions/actionTypes';
+import appAlert from '../../../common/components/appAlert';
+import Loader from '../../../common/components/Loader';
+import { useNavigation } from '@react-navigation/native';
 
-const data = {
-	id: 6,
-	status: 'cancelled',
-	date: 'Wed, 4nov',
-	name: 'Plum',
-	subHeading: 'Navy Track Pants',
-	seller: 'Jeem',
-	image: 'https://balinterio.files.wordpress.com/2013/05/cat-tembok.jpg',
-};
-const OrderFullDetail = () => {
+
+const OrderFullDetail = ({ route }) => {
+	const { order } = route.params;
+	const navigation = useNavigation();
+	const [loading, setLoading] = useState(false);
+	const address = JSON.parse(order.orderShippingAddress);
+	const myOrdersStatus = useSelector((state) => state.order && state.order.cancelOrders);
+	useEffect(() => {
+		if(myOrdersStatus){
+		setLoading(false);
+		dispatch({type:CANCEL_ORDER_STATUS});
+		navigation.goBack();
+		}
+	}, [myOrdersStatus]);
+
+	// console.log(myOrdersStatus);
+	const dispatch = useDispatch();
+	const handleCancel = (id)=>{
+		// console.log(id,'idddd');
+		appAlert('CANCEL', 'Are you sure you want to cancel this order?', () =>
+		handleOk(id)
+	);
+		
+	}
+	const handleOk = (id) => {
+		dispatch(cancelBuyerOrdersAction(CANCEL_ORDER,id));
+		setLoading(true);
+	};
+	
 	return (
+		<>
+			{loading && <Loader />}
 		<ScrollView style={styles.parent}>
 			<View style={styles.child1}>
-				<Image source={{ uri: data.image }} style={styles.image} />
-				<AppText style={styles.heading}>{data.name}</AppText>
-				<AppText style={styles.subHeading}>{data.subHeading}</AppText>
+				<Image source={{ uri: order.productImage }} style={styles.image} />
+				<AppText style={styles.heading}>{order.productName}</AppText>
+				<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
 				<View style={styles.priceContainer}>
 					<AppText style={{ color: colors.primary2, fontSize: 12 }}>
 						Sold by:
@@ -32,37 +60,54 @@ const OrderFullDetail = () => {
 						}}
 					>
 						{' '}
-						{data.seller}
+						{order.seller}
 					</AppText>
 				</View>
 			</View>
 			<View style={styles.topContainer}>
-				<MaterialCommunityIcons
-					style={styles.icon}
-					name={
-						data.status === 'cancelled'
-							? 'close-circle'
-							: 'package-variant-closed'
-					}
-					size={40}
-					color={
-						data.status === 'cancelled'
-							? colors.primaryShade22
-							: 'mediumseagreen'
-					}
-				/>
-				<View>
-					<AppText style={styles.text}>{data.status}</AppText>
-					<AppText style={styles.subHeading}>On {data.date}</AppText>
+				<View style={styles.orderStatus1}>
+					<MaterialCommunityIcons
+						style={styles.icon}
+						name={
+							order.orderStatus === 'cancelled'
+								? 'close-circle'
+								: 'package-variant-closed'
+						}
+						size={40}
+						color={
+							order.orderStatus === 'cancelled'
+								? colors.primaryShade22
+								: 'mediumseagreen'
+						}
+					/>
+					<View>
+						<AppText style={styles.text}>{order.orderStatus}</AppText>
+						<AppText style={styles.subHeading}>
+							On {new Date(order.created_at).toDateString()}
+						</AppText>
+					</View>
 				</View>
+				{order.orderStatus!=='cancelled'&&	
+				<View style={styles.orderStatus2}>
+					<AppButton
+						color1={colors.primaryShade11}
+						color2={colors.primaryShade13}
+						text='Cancel Order'
+						borderRadius={3}
+						textColor={colors.white}
+						paddingText="1%"
+						textTransform="uppercase"
+						handleClick={() => handleCancel(order.id)}
+					/>
+				</View>}
 			</View>
 			<View style={styles.parentContainer}>
 				<View style={styles.container}>
 					<AppText style={styles.total}>Total Order Price</AppText>
-					<AppText style={styles.total}>$592</AppText>
+					<AppText style={styles.total}>${order.orderPrice}</AppText>
 				</View>
 				<AppText style={styles.subHeading}>
-					You saved $592 on this order
+					You saved ${order.orderDiscount} on this order
 				</AppText>
 			</View>
 			<View style={styles.newView}>
@@ -76,7 +121,7 @@ const OrderFullDetail = () => {
 						size={20}
 						color={colors.primaryShade22}
 					/>
-					<AppText style={styles.subHeading}>7889567946</AppText>
+					<AppText style={styles.subHeading}>{address.phonenumber}</AppText>
 				</View>
 				<View style={styles.contactInfo}>
 					<MaterialCommunityIcons
@@ -86,16 +131,17 @@ const OrderFullDetail = () => {
 						color={colors.primaryShade22}
 					/>
 					<AppText style={[styles.subHeading, { textTransform: 'lowercase' }]}>
-						iammirbasit@gmail.com
+						{address.email}
 					</AppText>
 				</View>
 			</View>
 			<View style={styles.newView}>
 				<AppText style={[styles.subHeading, { textTransform: 'uppercase' }]}>
-					ORDER ID 112233324567889
+					ORDER ID {order.orderCode}
 				</AppText>
 			</View>
 		</ScrollView>
+		</>
 	);
 };
 
@@ -144,6 +190,19 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: colors.white,
 		paddingVertical: 20,
+		paddingHorizontal:10,
+		flex:1
+	},
+	orderStatus1:{
+		alignItems: 'center',
+		flexDirection: 'row',
+		flex:2
+	},
+	orderStatus2:{
+		// borderColor:'red',
+		// borderWidth:10
+		flex:1,
+		alignItems: 'center',
 	},
 	icon: {
 		paddingHorizontal: 12,

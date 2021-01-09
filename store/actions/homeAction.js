@@ -111,3 +111,11 @@ export const getSellerProductAction = (type, values) => {
 		dispatch({ type: type, value: result.data });
 	};
 };
+
+export const sendQueryAction = (type, values) => {
+	return async (dispatch) => {
+		const result = await getSellerProductForBuyer(values);
+		console.log(result,'>>>>>>>>>>');
+		dispatch({ type: type, value: result.data });
+	};
+};

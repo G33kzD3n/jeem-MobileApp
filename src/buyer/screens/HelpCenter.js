@@ -95,7 +95,7 @@ const HelpCenter = () => {
 									/>
 									<AppFormFeild
 										placeholder="Write your query"
-										name="location"
+										name="query"
 										numberOfLines={6}
 										multiline={true}
 										selectionColor={colors.primary2}

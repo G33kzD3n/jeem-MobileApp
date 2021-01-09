@@ -13,7 +13,7 @@ export async function signupUser(data) {
 	try {
 		return await axios.post(apiUrl + 'register', data);
 	} catch (error) {
-		console.error(error);
+		return 'Phone Number or Email already registered';
 	}
 }
 

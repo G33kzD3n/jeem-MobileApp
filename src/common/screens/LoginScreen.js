@@ -38,7 +38,6 @@ const LoginScreen = ({ navigation, login }) => {
 	const errorMsg = useSelector((state) => state.auth.errorMessages);
 	const error = useSelector((state) => state.auth.error);
 	const dispatch = useDispatch();
-
 	useEffect(() => {
 		return () => dispatch(removeLoginErrorAction(REMOVE_LOGIN_ERROR));
 	}, []);

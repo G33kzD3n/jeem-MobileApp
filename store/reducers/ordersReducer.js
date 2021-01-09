@@ -12,6 +12,8 @@ const orderssReducer = (state = initalState, action) => {
       return { ...state, myOrders: action.value };
       case actionTypes.CANCEL_ORDER:
         return { ...state, cancelOrders: action.value };
+        case actionTypes.CANCEL_ORDER_STATUS:
+        return { ...state, cancelOrders: null };
     case actionTypes.ORDER_STATUS_CHANGE:
       return { ...state, orders: { orders:state.orders.orders.map((item) => { 
         return (item.id === action.id) ? {

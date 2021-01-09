@@ -48,7 +48,7 @@ export { productSubCategoryAction } from './homeAction';
 export { productsAction } from './homeAction';
 export { singleProductAction } from './homeAction';
 export { offerAction } from './homeAction';
-export { searchAction } from './homeAction';
+export { searchAction,sendQueryAction } from './homeAction';
 
 export { addProductsToCartAction } from './cartAction';
 export { cartAction } from './cartAction';

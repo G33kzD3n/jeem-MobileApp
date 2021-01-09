@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { apiUrl } from '../src/config/config';
+import { apiUrl, authAxios } from '../src/config/config';
 
 export async function getCarousel() {
 	try {
@@ -94,12 +94,20 @@ export async function productSubCategories() {
 
 export async function myOrders() {
 	try {
-		return await axios.get(apiUrl + 'order/buyer/myorders');
-	} catch (error) {}
+		return await authAxios.get(apiUrl + 'order/buyer/myorders');
+	} catch (error) {
+		console.log(error.response);
+	}
 }
 
 export async function cancelOrder(id) {
 	try {
-		return await axios.get(apiUrl + `order/buyer/cancelorder/${id}`);
+		return await authAxios.post(apiUrl + `order/buyer/cancelorder/${id}`);
+	} catch (error) {}
+}
+
+export async function helpQuery(data) {
+	try {
+		return await axios.post(apiUrl + `contactus`, data);
 	} catch (error) {}
 }

@@ -1,17 +1,17 @@
 import { sellerOrders, updateShipmentStatus } from "../../api/sellerOrdersApi";
 import {cancelOrder, myOrders} from '../../api/homeApi';
-
+ 
 export const getBuyerOrdersAction=(type)=>{
   return async (dispatch) => {
-		const data = await myOrders();
+    const data = await myOrders();
 		dispatch({ type: type, value: data.data });
 	};
 }
 
 export const cancelBuyerOrdersAction=(type,id)=>{
   return async (dispatch) => {
-		const data = await cancelOrder(id)
-		dispatch({ type: type, value: data.data });
+    const data = await cancelOrder(id)
+		dispatch({ type: type, value: data.data.message });
 	};
 }
 

@@ -7,7 +7,11 @@ import { LOADER } from './actionTypes.js';
 export const signupAction = (type, values) => {
 	return async (dispatch) => {
 		const data = await signupUser(values);
-		dispatch({ type: type, value: data.data.user });
+		 if (data==='Phone Number or Email already registered'){
+			dispatch({ type: type, value: data });
+		 }else{
+	    	dispatch({ type: type, value: data.data.message });
+		 }
 	};
 };
 
@@ -15,6 +19,7 @@ export const loginAction = (type, values) => {
 	return async (dispatch) => {
 		dispatch({ type: LOADER, value: true });
 		const data = await loginUser(values);
+		console.log(data.status,'loginnnnnnnnnnnnnnnnnnnnnn');
 		if (data.status === 200) {
 			// localStorage.setItem('user_token', data.data.token.access_token);
 			// localStorage.setItem('user_type', data.data.role.role);

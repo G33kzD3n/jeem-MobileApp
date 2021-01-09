@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 const OrderInfoCards = ({ order }) => {
 	const navigation = useNavigation();
 	const fullDetails = () => {
-		navigation.navigate('ItemDetails');
+		navigation.navigate('ItemDetails',{order:order});
 	};
 	return (
 		<TouchableWithoutFeedback
@@ -17,12 +17,12 @@ const OrderInfoCards = ({ order }) => {
 			style={styles.touch}
 		>
 			<View style={styles.secondSection}>
-				<View style={styles.first}>
-					<CartImage image={order.image} />
+				<View style={styles.first}> 
+					<CartImage image={order.productImage} />
 				</View>
 				<View style={styles.second}>
-					<AppText style={styles.heading}>{order.name}</AppText>
-					<AppText style={styles.subHeading}>{order.subHeading}</AppText>
+					<AppText style={styles.heading}>{order.productName}</AppText>
+					<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
 							Sold by:
@@ -71,16 +71,22 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.primaryShade24,
 		flexDirection: 'row',
 		alignItems: 'center',
+		flex:1,
 		margin: 10,
 		padding: 12,
 		borderRadius: 2,
 	},
 	third: {
 		alignItems: 'flex-end',
-		flex: 1,
+		// flex: 1,
+		// borderColor:'red',
+		// borderWidth:10
 	},
 	second: {
 		paddingHorizontal: 10,
+		flex:1,
+		// 	borderColor:'red',
+		// borderWidth:10
 	},
 	heading: {
 		color: colors.primary1,
@@ -92,5 +98,7 @@ const styles = StyleSheet.create({
 		color: colors.primary2,
 		fontSize: 16,
 		paddingBottom: 2,
+		// width:'70%',
+		
 	},
 });

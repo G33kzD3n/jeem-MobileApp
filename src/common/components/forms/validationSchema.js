@@ -8,7 +8,9 @@ const validationLogin = Yup.object().shape({
 const validationRegister = Yup.object().shape({
 	name: Yup.string().required().min(3).label('Name'),
 	email: Yup.string().required().email().label('Email'),
+	phonenumber:Yup.string().required().min(10).label('Phone'),
 	password: Yup.string().required().min(4).label('Password'),
+	password_confirmation: Yup.string().required().min(4).label('Confirm Password'),
 });
 
 const validationProfile = Yup.object().shape({

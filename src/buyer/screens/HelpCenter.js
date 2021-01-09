@@ -22,15 +22,14 @@ const HelpCenter = () => {
 		(state) => state.profile && state.profile.queryResponse
 	);
 
-	console.log(queryResponse,'queryyyyyyyyyyyyyy');
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if(queryResponse){
 			setLoading(false);
+			appAlert('SUCCESS', queryResponse);
 			dispatch({type:REMOVE_HELP_QUERY});
-			appAlert('SUCCESS', 'Query send sucessfully');
 		}
 	
 	}, [queryResponse]);

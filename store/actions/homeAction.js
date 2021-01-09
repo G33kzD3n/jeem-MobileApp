@@ -116,7 +116,6 @@ export const getSellerProductAction = (type, values) => {
 export const sendQueryAction = (type, values) => {
 	return async (dispatch) => {
 		const result = await helpQuery(values);
-		console.log(result,'>>>>>>>>>>');
-		dispatch({ type: type, value: result.data });
+		dispatch({ type: type, value: result.data.success });
 	};
 };

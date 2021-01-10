@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import AppText from './AppText';
 import colors from '../../config/colors';
 
-const FeaturedCard = ({ title, subTitle, brandLogo, image }) => {
+const FeaturedCard = ({ title, subTitle, brandLogo, image,sellerName }) => {
     return (
         <View style={styles.parent}>
             <View style={styles.brandImage}>
                 <Image style={styles.brandImage} resizeMode='contain' source={{ uri: brandLogo }} />
+                 <AppText style={styles.subTitle}>{sellerName}</AppText>
             </View>
             <Image style={styles.image} source={{ uri: image }} />
             <View style={styles.textWrapper}>

@@ -113,3 +113,14 @@ export async function helpQuery(data) {
 		console.log(error);
 	}
 }
+
+export async function getSellerWithTag(page, limit) { 
+	try {
+		return await axios.post(apiUrl + `featuredbrand`, {
+			page: page,
+			limit: limit,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}

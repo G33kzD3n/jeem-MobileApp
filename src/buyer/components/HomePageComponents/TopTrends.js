@@ -1,84 +1,97 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ComponentHeading from '../../../common/components/ComponentHeading';
-import BestBuys from './BestBuys';
 import SimpleCard from '../../../common/components/SimpleCard';
-
-const data = {
-	title: '40-60% Off',
-	brandLogo:
-		'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/500px-Amazon_Web_Services_Logo.svg.png',
-	image:
-		'https://imgmedia.lbb.in/media/2020/04/5ea6933a96c7e66079ec5780_1587974970911.jpg',
-};
+import { getTagsProductAction } from '../../../../store/actions/homeAction';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { TOP_TRENDS } from '../../../../store/actions/actionTypes';
+import { apiUrlImageProducts } from '../../../config/config';
 
 const TopTrends = () => {
+	const navigation = useNavigation();
+	const handleClick = () => {
+		navigation.navigate('SubCategoryProduct', {
+			name: 'Top Trends',
+			id: 3,
+			apiName: 'Tag',
+			totalItems: undefined,
+		}); //navigate with params
+	};
+
+	const topTrends = useSelector((state) => state.home.topTrends);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getTagsProductAction(TOP_TRENDS, { id: 3, page: 0, limit: 6 }));
+	}, []);
+
+	const productView = (id) => {
+		navigation.navigate('ProductDetails', { id });
+	};
+
+	if (!topTrends) return <></>;
+
 	return (
 		<View style={styles.parent}>
-			<ComponentHeading text="top trends" more="View More" />
+			<ComponentHeading
+				text="top trends"
+				more={topTrends.totalRecords > 6 && 'View More'}
+				onPress={() => handleClick()}
+			/>
 			<View style={styles.row}>
-				<View style={styles.child}>
-					<SimpleCard
-						image={data.image}
-						textStyle={styles.text}
-						logoStyle={styles.logo}
-						imageStyle={styles.image}
-						brandLogo={data.brandLogo}
-						title={data.title}
-					/>
-				</View>
-				<View style={styles.child}>
-					<SimpleCard
-						image={data.image}
-						textStyle={styles.text}
-						logoStyle={styles.logo}
-						imageStyle={styles.image}
-						brandLogo={data.brandLogo}
-						title={data.title}
-					/>
-				</View>
-				<View style={styles.child}>
-					<SimpleCard
-						image={data.image}
-						textStyle={styles.text}
-						logoStyle={styles.logo}
-						imageStyle={styles.image}
-						brandLogo={data.brandLogo}
-						title={data.title}
-					/>
-				</View>
+				{topTrends.data.map((data, index) => (
+					<React.Fragment key={data.id}>
+						{index < 3 && (
+							<TouchableOpacity
+								onPress={() => productView(data.id)}
+								style={styles.child}
+							>
+								<SimpleCard
+									image={
+										apiUrlImageProducts +
+										data.productName +
+										'-' +
+										data.productSku +
+										'/' +
+										data.productImages[0]
+									}
+									textStyle={styles.text}
+									logoStyle={styles.logo}
+									imageStyle={styles.image}
+									brandLogo={data.productImages[0]}
+									title={`${data.productDiscount}% Off`}
+								/>
+							</TouchableOpacity>
+						)}
+					</React.Fragment>
+				))}
 			</View>
 			<View style={styles.row}>
-				<View style={styles.child}>
-					<SimpleCard
-						image={data.image}
-						textStyle={styles.text}
-						logoStyle={styles.logo}
-						imageStyle={styles.image}
-						brandLogo={data.brandLogo}
-						title={data.title}
-					/>
-				</View>
-				<View style={styles.child}>
-					<SimpleCard
-						image={data.image}
-						textStyle={styles.text}
-						logoStyle={styles.logo}
-						imageStyle={styles.image}
-						brandLogo={data.brandLogo}
-						title={data.title}
-					/>
-				</View>
-				<View style={styles.child}>
-					<SimpleCard
-						image={data.image}
-						textStyle={styles.text}
-						logoStyle={styles.logo}
-						imageStyle={styles.image}
-						brandLogo={data.brandLogo}
-						title={data.title}
-					/>
-				</View>
+				{topTrends.data.map((data, index) => (
+					<React.Fragment key={data.id}>
+						{index > 2 && (
+							<TouchableOpacity
+								onPress={() => productView(data.id)}
+								style={styles.child}
+							>
+								<SimpleCard
+									image={
+										apiUrlImageProducts +
+										data.productName +
+										'-' +
+										data.productSku +
+										'/' +
+									data.productImages[0]}
+									textStyle={styles.text}
+									logoStyle={styles.logo}
+									imageStyle={styles.image}
+									brandLogo={data.productImages[0]}
+									title={`${data.productDiscount}% Off`}
+								/>
+							</TouchableOpacity>
+						)}
+					</React.Fragment>
+				))}
 			</View>
 		</View>
 	);

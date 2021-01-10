@@ -1,6 +1,7 @@
 import {
 	getCarousel,
 	getSellerProductForBuyer,
+	getSellerWithTag,
 	getTagsForBuyer,
 	getTagsProductForBuyer,
 	helpQuery,
@@ -117,5 +118,12 @@ export const sendQueryAction = (type, values) => {
 	return async (dispatch) => {
 		const result = await helpQuery(values);
 		dispatch({ type: type, value: result.data.success });
+	};
+};
+
+export const getSellerWithTagAction = (type, values) => {
+	return async (dispatch) => {
+		const result = await getSellerWithTag(values.page,values.limit);
+		dispatch({ type: type, value: result.data });
 	};
 };

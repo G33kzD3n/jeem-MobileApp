@@ -98,7 +98,7 @@ export const getTagsProductAction = (type, values) => {
 			values.page,
 			values.limit
 		);
-		dispatch({ type: type, value: result.data });
+		dispatch({ type: type, value: result.data }); 
 	};
 };
 

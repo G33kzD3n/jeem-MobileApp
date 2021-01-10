@@ -43,6 +43,10 @@ export const SELLER_PROFILE_SUCCESS = 'SELLER_PROFILE_SUCCESS';
 export const CAROUSEL = 'CAROUSEL';
 export const SELLER_CATEGORY = 'SELLER_CATEGORY';
 export const GET_ALL_TAGS = 'GET_ALL_TAGS';
+export const DEALS_OF_THE_DAY = 'DEALS_OF_THE_DAY';
+export const BEST_BUYS = 'BEST_BUYS';
+export const TOP_TRENDS = 'TOP_TRENDS';
+export const FEATURED_PRODUCTS = 'FEATURED_PRODUCTS';
 // export const GET_TAGS_PRODUCT = 'GET_TAGS_PRODUCT';
 
 // buyer product category

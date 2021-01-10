@@ -24,6 +24,14 @@ const homeReducer = (state = initalState, action) => {
 			return { ...state, productSubCategory: action.value };
 		case actionTypes.GET_PRODUCTS_FOR_BUYER:
 			return { ...state, products: action.value };
+		case actionTypes.DEALS_OF_THE_DAY:
+			return { ...state, dealsOfTheDay: action.value };
+		case actionTypes.BEST_BUYS:
+			return { ...state, bestBuys: action.value };
+		case actionTypes.TOP_TRENDS:
+			return { ...state, topTrends: action.value };
+		case actionTypes.FEATURED_PRODUCTS:
+			return { ...state, featuredProducts: action.value };
 		case actionTypes.GET_SELLER_PRODUCTS:
 			return { ...state, sellerProducts: action.value };
 		case actionTypes.REMOVE_SELLER_PRODUCTS:

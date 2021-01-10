@@ -13,7 +13,7 @@ export async function getTagsForBuyer() {
 	} catch (error) {}
 }
 
-export async function getTagsProductForBuyer(id, page, limit) {
+export async function getTagsProductForBuyer(id, page, limit) { 
 	try {
 		return await axios.post(apiUrl + `tag/products/${id}`, {
 			page: page,

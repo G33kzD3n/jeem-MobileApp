@@ -23,6 +23,7 @@ import AboutUs from '../buyer/screens/AboutUs';
 import TermsOfUse from '../buyer/screens/TermsOfUse';
 import PrivacyPolicy from '../buyer/screens/PrivacyPolicy';
 import SellerProducts from '../buyer/screens/SellerProducts';
+import AllBrands from '../buyer/screens/AllBrands';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -84,6 +85,21 @@ function AppNavigator() {
 					),
 				})}
 			/>
+
+      <Stack.Screen
+				name="AllBrands"
+				component={AllBrands}
+				options={({ route }) => ({
+					headerTitle: (props) => (
+						<HeaderTitle
+							name={route.params.name}
+							totalItems={route.params.totalItems}
+							{...props}
+						/>
+					),
+				})}
+			/>
+
 			<Stack.Screen
 				name="ProductDetails"
 				component={ProductView}

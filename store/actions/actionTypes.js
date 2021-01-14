@@ -48,6 +48,7 @@ export const BEST_BUYS = 'BEST_BUYS';
 export const TOP_TRENDS = 'TOP_TRENDS';
 export const FEATURED_PRODUCTS = 'FEATURED_PRODUCTS';
 export const GET_SELLER_WITH_TAGS = 'GET_SELLER_WITH_TAGS';
+export const REMOVE_SELLER_WITH_TAGS = 'REMOVE_SELLER_WITH_TAGS';
 // export const GET_TAGS_PRODUCT = 'GET_TAGS_PRODUCT';
 
 // buyer product category

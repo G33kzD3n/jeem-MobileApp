@@ -4,7 +4,7 @@ import {
 	Text,
 	View,
 	FlatList,
-	TouchableWithoutFeedback,
+	TouchableOpacity,
 } from 'react-native';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import FeaturedCard from '../../../common/components/FeaturedCard';
@@ -15,93 +15,14 @@ import { GET_SELLER_WITH_TAGS } from '../../../../store/actions/actionTypes';
 import { apiUrlImage } from '../../../config/config';
 // import { apiUrlImageProducts } from '../../../config/config';
 
-const data = [
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-	{
-		title: 'Flat 30% Off',
-		subTitle: 'Limited Time Offer',
-		brandLogo: 'https://www.pngmart.com/files/10/Audi-Logo-PNG-Photos.png',
-		image:
-			'https://www.mediashower.com/img/C790E9C2-1DDA-11E8-942A-F74ECCDF3A90/supplies%20pic%201%204-2-18_600x.jpg',
-	},
-];
 
 const FeaturedBrands = () => {
 	const navigation = useNavigation();
-	const handleClick = () => {
-		navigation.navigate('SubCategoryProduct', {
-			name: 'Featured Products',
-			id: 4,
-			apiName: 'Tag',
+
+	const showMore = () => {
+		navigation.navigate('AllBrands', {
+			name: 'Featured Brands',
+			apiName: 'Seller',
 			totalItems: undefined,
 		}); //navigate with params
 	};
@@ -114,9 +35,14 @@ const FeaturedBrands = () => {
 		);
 	}, []);
 
-	const productView = (id) => {
-		navigation.navigate('ProductDetails', { id });
-	};
+	const showSellerProducts=(item)=>{
+		navigation.navigate('SellerProduct', {
+			name: item.name,
+			id: item.id,
+			apiName: 'Seller',
+			// total: undefined,
+		}); //navigate with params
+	}
 
 	if (!getSellers) return <></>;
 	// console.log(getSellers, '>>>>>>>>>:::::::');
@@ -127,7 +53,7 @@ const FeaturedBrands = () => {
 				text="Featured Brands"
 				more={getSellers.totalRecords > 10 && 'View More'}
 				// more='View More'
-				onPress={() => handleClick()}
+				onPress={() => showMore()}
 			/>
 			<FlatList
 				data={getSellers.data}
@@ -136,7 +62,7 @@ const FeaturedBrands = () => {
 				keyExtractor={(data, index) => index.toString()}
 				renderItem={({ item }) => (
 					<View style={{ paddingHorizontal: 5, width: 210 }}>
-						<TouchableWithoutFeedback onPress={() => console.log(item)}>
+						<TouchableOpacity onPress={() => showSellerProducts(item)}>
 							<FeaturedCard
 								title={item.tagName}
 								sellerName={item.name}
@@ -144,7 +70,7 @@ const FeaturedBrands = () => {
 								brandLogo={apiUrlImage+item.logo}
 								image={apiUrlImage + 'tags/'+item.tagImage}
 							/>
-						</TouchableWithoutFeedback>
+						</TouchableOpacity>
 					</View>
 				)}
 			/>

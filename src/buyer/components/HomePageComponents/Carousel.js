@@ -32,7 +32,7 @@ _renderItem = ({ item, index }) => {
 					<AppText style={{ fontSize: 30, color: colors.primary1 }}>
 						{item.carouselHeading}
 					</AppText>
-					<AppText style={{ color: colors.white }}>
+					<AppText style={{ color: colors.primaryShade11 }}>
 						{item.carouselSubHeading}
 					</AppText>
 				</View>

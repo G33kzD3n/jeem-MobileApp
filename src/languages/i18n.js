@@ -2,11 +2,24 @@ import i18n from 'i18n-js';
 
 import en from './en.json';
 import ar from './ar.json';
+import persistStore from '../utils/persistStore';
 // import de from './locales/de.json';
 
-i18n.defaultLocale = 'ar';
-i18n.locale = 'en';
-i18n.fallbacks = true;
-i18n.translations = { en,ar };
+export const getDefaultLanguage = async () => { //if default language is undefined then its arabic
+  try {
+    const defaultLanguage = await persistStore.getDetails('language');
+    i18n.defaultLocale = 'ar';
+    i18n.locale = 'en';
+    i18n.fallbacks = true;
+    i18n.translations = { en, ar };
+    console.log(defaultLanguage, 'in 1232131');
+  } catch (error) {
+    i18n.defaultLocale = 'ar';
+    i18n.locale = 'en';
+    i18n.fallbacks = true;
+    i18n.translations = { en, ar };
+  }
+}
+getDefaultLanguage()
 
 export default i18n;

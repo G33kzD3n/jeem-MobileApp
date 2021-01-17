@@ -12,7 +12,7 @@ const Ratings = ({ ratings }) => {
 				<Rating
 					showRating={false}
 					style={styles.ratings}
-					startingValue={3}
+					startingValue={0}
 					imageSize={22}
 					readonly={true}
 					fractions={false}

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
@@ -19,128 +19,146 @@ const OrderFullDetail = ({ route }) => {
 	const address = JSON.parse(order.orderShippingAddress);
 	const myOrdersStatus = useSelector((state) => state.order && state.order.cancelOrders);
 	useEffect(() => {
-		if(myOrdersStatus){
-		setLoading(false);
-		dispatch({type:CANCEL_ORDER_STATUS});
-		navigation.goBack();
+		if (myOrdersStatus) {
+			setLoading(false);
+			dispatch({ type: CANCEL_ORDER_STATUS });
+			navigation.goBack();
 		}
 	}, [myOrdersStatus]);
 
 	// console.log(myOrdersStatus);
 	const dispatch = useDispatch();
-	const handleCancel = (id)=>{
+	const handleCancel = (id) => {
 		// console.log(id,'idddd');
 		appAlert('CANCEL', 'Are you sure you want to cancel this order?', () =>
-		handleOk(id)
-	);
-		
+			handleOk(id)
+		);
+
 	}
 	const handleOk = (id) => {
-		dispatch(cancelBuyerOrdersAction(CANCEL_ORDER,id));
+		dispatch(cancelBuyerOrdersAction(CANCEL_ORDER, id));
 		setLoading(true);
 	};
-	
+
+	const handleReview = (order) => {
+		navigation.navigate('AddReview',{order:order});
+	};
+
 	return (
 		<>
 			{loading && <Loader />}
-		<ScrollView style={styles.parent}>
-			<View style={styles.child1}>
-				<Image source={{ uri: order.productImage }} style={styles.image} />
-				<AppText style={styles.heading}>{order.productName}</AppText>
-				<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
-				<View style={styles.priceContainer}>
-					<AppText style={{ color: colors.primary2, fontSize: 12 }}>
-						Sold by:
+			<ScrollView style={styles.parent}>
+				<View style={styles.child1}>
+					<Image source={{ uri: order.productImage }} style={styles.image} />
+					<AppText style={styles.heading}>{order.productName}</AppText>
+					<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
+					<View style={styles.priceContainer}>
+						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
+							Sold by:
 					</AppText>
-					<AppText
-						style={{
-							color: colors.primary1,
-							fontSize: 12,
-							alignSelf: 'center',
-						}}
-					>
-						{' '}
-						{order.seller}
-					</AppText>
-				</View>
-			</View>
-			<View style={styles.topContainer}>
-				<View style={styles.orderStatus1}>
-					<MaterialCommunityIcons
-						style={styles.icon}
-						name={
-							order.orderStatus === 'cancelled'
-								? 'close-circle'
-								: 'package-variant-closed'
-						}
-						size={40}
-						color={
-							order.orderStatus === 'cancelled'
-								? colors.primaryShade22
-								: 'mediumseagreen'
-						}
-					/>
-					<View>
-						<AppText style={styles.text}>{order.orderStatus}</AppText>
-						<AppText style={styles.subHeading}>
-							On {new Date(order.created_at).toDateString()}
+						<AppText
+							style={{
+								color: colors.primary1,
+								fontSize: 12,
+								alignSelf: 'center',
+							}}
+						>
+							{' '}
+							{order.seller}
 						</AppText>
 					</View>
 				</View>
-				{order.orderStatus!=='cancelled'&&	
-				<View style={styles.orderStatus2}>
+				<View style={styles.topContainer}>
+					<View style={styles.orderStatus1}>
+						<MaterialCommunityIcons
+							style={styles.icon}
+							name={
+								order.orderStatus === 'cancelled'
+									? 'close-circle'
+									: 'package-variant-closed'
+							}
+							size={40}
+							color={
+								order.orderStatus === 'cancelled'
+									? colors.primaryShade22
+									: 'mediumseagreen'
+							}
+						/>
+						<View>
+							<AppText style={styles.text}>{order.orderStatus}</AppText>
+							<AppText style={styles.subHeading}>
+								On {new Date(order.created_at).toDateString()}
+							</AppText>
+						</View>
+					</View>
+					{order.orderStatus !== 'cancelled' &&
+						<View style={styles.orderStatus2}>
+							<AppButton
+								color1={colors.primaryShade11}
+								color2={colors.primaryShade13}
+								text='Cancel Order'
+								borderRadius={3}
+								textColor={colors.white}
+								paddingText="1%"
+								textTransform="uppercase"
+								handleClick={() => handleCancel(order.id)}
+							/>
+						</View>}
+				</View>
+				<View style={styles.parentContainer}>
+					<View style={styles.container}>
+						<AppText style={styles.total}>Total Order Price</AppText>
+						<AppText style={styles.total}>${order.orderPrice}</AppText>
+					</View>
+					<AppText style={styles.subHeading}>
+						You saved ${order.orderDiscount} on this order
+				</AppText>
+				</View>
+				<View style={styles.newView}>
+					<AppText style={[styles.total, { paddingBottom: 6 }]}>
+						Updates sent to
+				</AppText>
+					<View style={styles.contactInfo}>
+						<MaterialCommunityIcons
+							style={styles.contactIcon}
+							name={'phone'}
+							size={20}
+							color={colors.primaryShade22}
+						/>
+						<AppText style={styles.subHeading}>{address.phonenumber}</AppText>
+					</View>
+					<View style={styles.contactInfo}>
+						<MaterialCommunityIcons
+							style={styles.contactIcon}
+							name={'email'}
+							size={20}
+							color={colors.primaryShade22}
+						/>
+						<AppText style={[styles.subHeading, { textTransform: 'lowercase' }]}>
+							{address.email}
+						</AppText>
+					</View>
+				</View>
+				<View style={styles.newView}>
+					<AppText style={[styles.subHeading, { textTransform: 'uppercase' }]}>
+						ORDER ID {order.orderCode}
+					</AppText>
+				</View>
+				{order.orderStatus === 'delivered' &&
+				<View style={styles.appButton}>
 					<AppButton
 						color1={colors.primaryShade11}
 						color2={colors.primaryShade13}
-						text='Cancel Order'
+						text="REVIEW ORDER"
 						borderRadius={3}
 						textColor={colors.white}
-						paddingText="1%"
 						textTransform="uppercase"
-						handleClick={() => handleCancel(order.id)}
+						handleClick={() => handleReview(order)}
 					/>
-				</View>}
-			</View>
-			<View style={styles.parentContainer}>
-				<View style={styles.container}>
-					<AppText style={styles.total}>Total Order Price</AppText>
-					<AppText style={styles.total}>${order.orderPrice}</AppText>
 				</View>
-				<AppText style={styles.subHeading}>
-					You saved ${order.orderDiscount} on this order
-				</AppText>
-			</View>
-			<View style={styles.newView}>
-				<AppText style={[styles.total, { paddingBottom: 6 }]}>
-					Updates sent to
-				</AppText>
-				<View style={styles.contactInfo}>
-					<MaterialCommunityIcons
-						style={styles.contactIcon}
-						name={'phone'}
-						size={20}
-						color={colors.primaryShade22}
-					/>
-					<AppText style={styles.subHeading}>{address.phonenumber}</AppText>
-				</View>
-				<View style={styles.contactInfo}>
-					<MaterialCommunityIcons
-						style={styles.contactIcon}
-						name={'email'}
-						size={20}
-						color={colors.primaryShade22}
-					/>
-					<AppText style={[styles.subHeading, { textTransform: 'lowercase' }]}>
-						{address.email}
-					</AppText>
-				</View>
-			</View>
-			<View style={styles.newView}>
-				<AppText style={[styles.subHeading, { textTransform: 'uppercase' }]}>
-					ORDER ID {order.orderCode}
-				</AppText>
-			</View>
-		</ScrollView>
+			}
+			</ScrollView>
+		
 		</>
 	);
 };
@@ -148,6 +166,10 @@ const OrderFullDetail = ({ route }) => {
 export default OrderFullDetail;
 
 const styles = StyleSheet.create({
+	appButton: {
+		padding: 5,
+		backgroundColor: colors.primaryShade24,
+	},
 	contactIcon: {
 		paddingRight: 6,
 	},
@@ -190,18 +212,18 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: colors.white,
 		paddingVertical: 20,
-		paddingHorizontal:10,
-		flex:1
+		paddingHorizontal: 10,
+		flex: 1
 	},
-	orderStatus1:{
+	orderStatus1: {
 		alignItems: 'center',
 		flexDirection: 'row',
-		flex:2
+		flex: 2
 	},
-	orderStatus2:{
+	orderStatus2: {
 		// borderColor:'red',
 		// borderWidth:10
-		flex:1,
+		flex: 1,
 		alignItems: 'center',
 	},
 	icon: {

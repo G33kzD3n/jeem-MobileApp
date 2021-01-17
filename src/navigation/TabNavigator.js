@@ -17,6 +17,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
 	const cartCount = useSelector((state) => state.cart.count);
+	// console.log(cartCount,'?????????????::::::::::::::');
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getCartCountAction(GET_COUNT));

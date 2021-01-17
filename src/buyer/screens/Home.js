@@ -10,6 +10,7 @@ import RecommendedForYou from '../components/HomePageComponents/RecommendedForYo
 import TopTrends from '../components/HomePageComponents/TopTrends';
 import FeaturedProducts from '../components/HomePageComponents/FeaturedProducts';
 import { StatusBar } from 'expo-status-bar';
+
 const sectionList = [
 	{
 		data: [<CarouselDisplay />],

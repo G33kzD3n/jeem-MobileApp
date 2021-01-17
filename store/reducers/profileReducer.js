@@ -18,6 +18,8 @@ const profileReducer = (state = initalState, action) => {
 			return { ...state, updateMessage: action.value };
 		case actionTypes.REMOVE_EDIT_PROFILE:
 			return { ...state, updateMessage: null };
+			case actionTypes.CURRENT_LANGUAGE:
+				return { ...state, language: action.value };
 		case actionTypes.HELP_QUERY:
 			return { ...state, queryResponse: action.value };
 		case actionTypes.REMOVE_HELP_QUERY:

@@ -24,6 +24,8 @@ import TermsOfUse from '../buyer/screens/TermsOfUse';
 import PrivacyPolicy from '../buyer/screens/PrivacyPolicy';
 import SellerProducts from '../buyer/screens/SellerProducts';
 import AllBrands from '../buyer/screens/AllBrands';
+import AddReview from '../buyer/screens/AddReview';
+import Language from '../buyer/screens/Language';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -178,6 +180,16 @@ function AppNavigator() {
 				name="PrivacyPolicy"
 				component={PrivacyPolicy}
 				options={{ title: 'PRIVACY POLICY' }}
+			/>
+				<Stack.Screen
+				name="AddReview"
+				component={AddReview}
+				options={{ title: 'RATE AND REVIEW' }}
+			/>
+			<Stack.Screen
+				name="Language"
+				component={Language}
+				options={{ title: 'SELECT LANGUAGE' }}
 			/>
 		</Stack.Navigator>
 	);

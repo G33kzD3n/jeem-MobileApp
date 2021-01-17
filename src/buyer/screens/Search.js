@@ -28,6 +28,7 @@ const Search = () => {
 	});
 	const dispatch = useDispatch();
 	const searchResults = useSelector((state) => state.home.search);
+	// console.log(searchResults);
 	useEffect(() => {
 		textRef.current.focus();
 		return () => dispatch({ type: CLEAR_SEARCH });
@@ -66,6 +67,7 @@ const Search = () => {
 	};
 
 	const handleSubmit = (searchItem) => {
+		
 		dispatch({ type: CLEAR_SEARCH });
 		setFlatListParams({
 		loading: false,
@@ -102,10 +104,15 @@ const Search = () => {
 				page: searchResults.page + 1,
 				loading: true,
 			});
-			handleSubmit(searchTerm);
+			dispatch(
+				searchAction(SEARCH, {
+					searchItem: searchTerm,
+					page: flatListParams.page,
+					limit: flatListParams.limit,
+				})
+			);
 		}
 	};
-
 	return (
 		<>
 			<View style={{ flex: 1, paddingTop: 20 }}>
@@ -149,7 +156,7 @@ const Search = () => {
 						/>
 					</View>
 					{searchResults&&
-					<AppText  style={styles.textInfo}>{searchResults.totalRecords.toString()}{i18n.t('searchScreen.records found')}</AppText>}
+					<AppText  style={styles.textInfo}>{searchResults.totalRecords.toString()} {i18n.t('searchScreen.records found')}</AppText>}
 				</View>
 				<View style={styles.screen}>
 					{searchResults && searchResults.data === 'No Records found'? (

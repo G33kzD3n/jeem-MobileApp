@@ -27,7 +27,6 @@ export const deleteAddressAction = (type, id) => {
 export const addAddressAction = (type, data) => {
 	return async (dispatch) => {
 		const response = await addAddress(data);
-		// console.log(response,'>>>>>>>>>>>>>>>>>');
 		if (response.status === 200 && response.data.message==='Address saved') { //adding new addresss
 			dispatch({
 				type: type,

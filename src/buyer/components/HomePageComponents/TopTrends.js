@@ -7,12 +7,13 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { TOP_TRENDS } from '../../../../store/actions/actionTypes';
 import { apiUrlImageProducts } from '../../../config/config';
+import i18n from '../../../languages/i18n';
 
 const TopTrends = () => {
 	const navigation = useNavigation();
 	const handleClick = () => {
 		navigation.navigate('SubCategoryProduct', {
-			name: 'Top Trends',
+			name: i18n.t('homeScreen.Top Trends'),
 			id: 3,
 			apiName: 'Tag',
 			totalItems: undefined,
@@ -35,7 +36,7 @@ const TopTrends = () => {
 		<View style={styles.parent}>
 			<ComponentHeading
 				text="top trends"
-				more={topTrends.totalRecords > 6 && 'View More'}
+				more={topTrends.totalRecords > 6 && i18n.t('homeScreen.View More')}
 				onPress={() => handleClick()}
 			/>
 			<View style={styles.row}>
@@ -59,7 +60,7 @@ const TopTrends = () => {
 									logoStyle={styles.logo}
 									imageStyle={styles.image}
 									brandLogo={data.productImages[0]}
-									title={`${data.productDiscount}% Off`}
+									title={`${data.productDiscount}% ${i18n.t('homeScreen.Off')}`}
 								/>
 							</TouchableOpacity>
 						)}

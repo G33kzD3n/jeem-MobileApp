@@ -5,13 +5,16 @@ import { addProductToCart } from '../../api/cartApi.js';
 import { changeProductQuan } from '../../api/cartApi.js';
 import { placeOrder } from '../../api/cartApi.js';
 import { reviewOrder } from '../../api/cartApi.js';
+import persistStore from '../../src/utils/persistStore';
 import { ADD_PRODUCT_TO_CART_ERROR } from './actionTypes';
 // import { toast } from "react-toastify";
 
 export const cartAction = (type) => {
 	return async (dispatch) => {
 		const data = await getCartItems();
-		if (data !== undefined) {
+		if (data==='Token is Expired') {
+			dispatch({ type: type, value: {orders:data} });
+		}else if(data !== undefined){
 			dispatch({ type: type, value: data });
 		}
 	};
@@ -29,7 +32,17 @@ export const removeCartAction = (type, id) => {
 export const getCartCountAction = (type) => {
 	return async (dispatch) => {
 		const data = await getCartCount();
+		if(data==='Token is Expired'){ //log the user out
+			persistStore.removeDetails('token');
+			persistStore.removeDetails('userDetails');
+			dispatch({ type: 'LOGOUT' });
+			dispatch({ type: 'RESET_CART_AFTER_LOGOUT' });
+		}else if(data==='Authorization Token not found'){
+			dispatch({ type: type, value: null });
+		}
+		else{
 		dispatch({ type: type, value: data });
+		}
 	};
 };
 

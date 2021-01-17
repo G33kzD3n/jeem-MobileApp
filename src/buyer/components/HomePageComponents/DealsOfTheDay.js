@@ -12,13 +12,14 @@ import { getTagsProductAction } from '../../../../store/actions/homeAction';
 import { DEALS_OF_THE_DAY } from '../../../../store/actions/actionTypes';
 import { apiUrlImageProducts } from '../../../config/config';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import i18n from '../../../languages/i18n';
 
 
 const DealsOfTheDay = () => {
 	const navigation = useNavigation();
 	const handleClick = () => {
 		navigation.navigate('SubCategoryProduct', {
-			name: 'Deals Of The Day',
+			name: i18n.t('homeScreen.Deals Of The Day'),
 			id: 1,
 			apiName: 'Tag',
 			totalItems: undefined,
@@ -42,8 +43,8 @@ const DealsOfTheDay = () => {
 	return (
 		<View>
 			<ComponentHeading
-				text="DEALS OF THE DAY"
-				more={getDeals.totalRecords > 10 && 'View More'}
+				text={i18n.t('homeScreen.Deals Of The Day')}
+				more={getDeals.totalRecords > 10 && i18n.t('homeScreen.View More')}
 				onPress={()=>handleClick()}
 			/>
 			<FlatList
@@ -64,8 +65,8 @@ const DealsOfTheDay = () => {
 									item.productImages[0]
 								}
 								brand={item.productName}
-								title={`Flat ${item.productDiscount}% Off`}
-								subTitle="Limited Time Offer"
+								title={`${i18n.t('homeScreen.Flat')} ${item.productDiscount}% ${i18n.t('homeScreen.Off')}`}
+								subTitle={i18n.t('homeScreen.Limited Time Offer')}
 							/>
 						</TouchableOpacity>
 					</View>

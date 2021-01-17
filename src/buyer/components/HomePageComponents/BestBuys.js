@@ -7,13 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BEST_BUYS } from '../../../../store/actions/actionTypes';
 import { getTagsProductAction } from '../../../../store/actions/homeAction';
 import { useNavigation } from '@react-navigation/native';
+import i18n from '../../../languages/i18n';
 
 
 const BestBuys = () => {
 	const navigation = useNavigation();
 	const handleClick = () => {
 		navigation.navigate('SubCategoryProduct', {
-			name: 'Best Buys',
+			name: i18n.t('homeScreen.Best Buys'),
 			id: 2,
 			apiName: 'Tag',
 			totalItems: undefined,
@@ -36,7 +37,7 @@ const BestBuys = () => {
 		<View style={styles.parent}>
 			<ComponentHeading
 				text="best buys"
-				more={bestBuys.totalRecords > 4 && 'View More'}
+				more={bestBuys.totalRecords > 4 && i18n.t('homeScreen.View More')}
 				onPress={() => handleClick()}
 			/>
 			<View style={styles.row}>
@@ -50,7 +51,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[0].productImages[0]
 						}
-						subTitle={`For $${bestBuys.data[0].productDiscountedPrice} only`}
+						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[0].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[0].productName}
 					/>
 				</TouchableOpacity>
@@ -64,7 +65,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[1].productImages[0]
 						}
-						subTitle={`For $${bestBuys.data[1].productDiscountedPrice} only`}
+						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[1].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[1].productName}
 					/>
 				</TouchableOpacity>
@@ -80,7 +81,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[2].productImages[0]
 						}
-						subTitle={`For $${bestBuys.data[2].productDiscountedPrice} only`}
+						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[2].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[2].productName}
 					/>
 				</TouchableOpacity>
@@ -94,7 +95,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[3].productImages[0]
 						}
-						subTitle={`For $${bestBuys.data[3].productDiscountedPrice} only`}
+						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[3].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[3].productName}
 					/>
 				</TouchableOpacity>

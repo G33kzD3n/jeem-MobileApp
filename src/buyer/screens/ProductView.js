@@ -20,6 +20,7 @@ import {
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
+import Reviews from '../../common/components/Reviews';
 
 const ProductView = ({ route }) => {
 	const navigation = useNavigation();
@@ -112,6 +113,7 @@ const ProductView = ({ route }) => {
 					details={productData.productCartDesc}
 				/>
 				<Ratings ratings={productData.ratings} />
+				<Reviews/>
 			</ScrollView>
 			<View style={styles.appButton}>
 				<AppButton

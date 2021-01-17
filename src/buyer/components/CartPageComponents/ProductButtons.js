@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import AppButton from '../../../common/components/AppButton';
 import colors from '../../../config/colors';
+import i18n from '../../../languages/i18n';
 
 const ProductButtons = ({ handleClick }) => {
 	return (
@@ -9,7 +10,7 @@ const ProductButtons = ({ handleClick }) => {
 			<AppButton
 				color1={colors.white}
 				color2={colors.white}
-				text="REMOVE"
+				text={i18n.t('cart.REMOVE')}
 				borderRadius={3}
 				textColor={colors.primary2}
 				customStyle={styles.button}

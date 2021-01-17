@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { useSelector } from 'react-redux';
+import i18n from '../../../languages/i18n';
 
 const PriceDetails = () => { 
 	const priceDetails = useSelector((state) => state.cart.priceDetails);
@@ -10,23 +11,23 @@ const PriceDetails = () => {
 	return (
 		<View style={styles.topContainer}>
 			<View style={styles.headingContainer}>
-				<AppText style={styles.textHeading}>Price Details</AppText>
+				<AppText style={styles.textHeading}>{i18n.t('cart.Price Details')}</AppText>
 				<AppText style={styles.subHeading}> {`(${totalItems} item)`}</AppText>
 			</View>
 			<View style={styles.headingDetails}>
-				<AppText style={styles.textSubDetails}>Total MRP</AppText>
+				<AppText style={styles.textSubDetails}>{i18n.t('cart.Total MRP')}</AppText>
 				<AppText style={styles.subHeadingPrice}>
 					${priceDetails.totalPrice}
 				</AppText>
 			</View>
 			<View style={styles.headingDetails}>
-				<AppText style={styles.textSubDetails}>Discount on MRP</AppText>
+				<AppText style={styles.textSubDetails}>{i18n.t('cart.Discount on MRP')}</AppText>
 				<AppText style={[styles.subHeadingPrice, { color: 'green' }]}>
 					{priceDetails.totalDiscountPercentage}%
 				</AppText>
 			</View>
 			<View style={styles.bottomDetails}>
-				<AppText style={styles.textHeading}>Total Amount</AppText>
+				<AppText style={styles.textHeading}>{i18n.t('cart.Total Amount')}</AppText>
 				<AppText style={styles.subHeading}>
 					${priceDetails.totalDiscountPrice}
 				</AppText>

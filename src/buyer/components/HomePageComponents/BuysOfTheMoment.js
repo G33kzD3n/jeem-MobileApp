@@ -9,12 +9,13 @@ import {
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
+import i18n from '../../../languages/i18n';
 
 const item = {
-	title: 'Fave Products',
-	subTitle: 'Now On Jeem',
+	title: i18n.t('homeScreen.Fave Products'),
+	subTitle: i18n.t('homeScreen.Now On Jeem'),
 	// subDetails: 'Up To 60% Off',
-	subDetails: 'Comming Soon',
+	subDetails:  i18n.t('homeScreen.Comming Soon'),
 	image:
 		'https://structuralengineeringbasics.com/wp-content/uploads/2019/03/STRUCTURAL-ENGINEERING-MATERIALS.png',
 };
@@ -22,7 +23,7 @@ const item = {
 const BuysOfTheMoment = () => {
 	return (
 		<View>
-			<ComponentHeading text="buys of the moment" />
+			<ComponentHeading text={i18n.t('homeScreen.buys of the moment')} />
 			<TouchableWithoutFeedback onPress={() => console.log('this is it')}>
 				<ImageBackground source={{ uri: item.image }} style={styles.background}>
 					<View style={styles.container}>

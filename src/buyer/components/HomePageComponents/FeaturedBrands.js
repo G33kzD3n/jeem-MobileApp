@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { GET_SELLER_WITH_TAGS } from '../../../../store/actions/actionTypes';
 import { apiUrlImage } from '../../../config/config';
+import i18n from '../../../languages/i18n';
 // import { apiUrlImageProducts } from '../../../config/config';
 
 
@@ -21,7 +22,7 @@ const FeaturedBrands = () => {
 
 	const showMore = () => {
 		navigation.navigate('AllBrands', {
-			name: 'Featured Brands',
+			name:i18n.t('homeScreen.Featured Brands'),
 			apiName: 'Seller',
 			totalItems: undefined,
 		}); //navigate with params
@@ -50,8 +51,8 @@ const FeaturedBrands = () => {
 	return (
 		<View>
 			<ComponentHeading
-				text="Featured Brands"
-				more={getSellers.totalRecords > 10 && 'View More'}
+				text={i18n.t('homeScreen.Featured Brands')}
+				more={getSellers.totalRecords > 10 && i18n.t('homeScreen.View More')}
 				// more='View More'
 				onPress={() => showMore()}
 			/>
@@ -66,7 +67,7 @@ const FeaturedBrands = () => {
 							<FeaturedCard
 								title={item.tagName}
 								sellerName={item.name}
-								subTitle='Limited Time Offer'
+								subTitle={i18n.t('homeScreen.Limited Time Offer')}
 								brandLogo={apiUrlImage+item.logo}
 								image={apiUrlImage + 'tags/'+item.tagImage}
 							/>

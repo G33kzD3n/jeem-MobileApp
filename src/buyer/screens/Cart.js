@@ -24,6 +24,7 @@ import {
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
+import i18n from '../../languages/i18n';
 
 const Cart = ({ navigation }) => {
 	const isFocused = useIsFocused();
@@ -36,7 +37,6 @@ const Cart = ({ navigation }) => {
 
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const dispatch = useDispatch();
-   console.log(cartItems);
 	useEffect(() => {
 		dispatch(cartAction(GET_CART_ITEMS));
 		setLoading(true);
@@ -44,7 +44,7 @@ const Cart = ({ navigation }) => {
 
 	//stop Loader
 	useEffect(() => {
-		if (cartItems) {
+		if (cartItems && cartItems!=='Token is Expired') {
 			//calculate total items
 			// console.log(cartItems, 'calculate total items');
 			let total = cartItems.reduce(
@@ -75,7 +75,7 @@ const Cart = ({ navigation }) => {
 	};
 
 	const handleRemove = (id) => {
-		appAlert('DELETE', 'Are you sure you want to remove item from cart?', () =>
+		appAlert(i18n.t('cart.DELETE'), i18n.t('cart.Are you sure you want to remove item from cart?'), () =>
 			handleOk(id)
 		);
 	};
@@ -86,15 +86,20 @@ const Cart = ({ navigation }) => {
 	};
 
 	if (!token) {
-		return <NotFound name="LOG IN/SIGN UP" onClick={handleAuth} />;
+		return <NotFound name={i18n.t('cart.LOG IN/SIGN UP')} onClick={handleAuth} />;
 	}
+
+	if (cartItems==='Token is Expired') {
+		return <NotFound name={i18n.t('cart.Please logout and then login again')}/>;
+	}
+
 	if (!cartItems || !priceDetails)
 		//means data not yet retreived
 		return <Loader />;
 
 	//handle no item in cart
 	if (cartItems.length === 0) {
-		return <NotFound name="No Item in the cart" />;
+		return <NotFound name={i18n.t('cart.No Item in the cart')} />;
 	}
 	// console.log('Price Details in cart', priceDetails);
 	return (
@@ -105,7 +110,7 @@ const Cart = ({ navigation }) => {
 					scrollViewRef={scrollViewRef}
 					navigationAddress="SelectAddress"
 					// total={priceDetails.totalDiscountPrice}
-					text="PLACE ORDER"
+					text={i18n.t('cart.PLACE ORDER')}
 				/>
 				<ScrollView style={styles.scroll} ref={scrollViewRef}>
 					{cartItems.map((items, index) => (

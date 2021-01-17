@@ -51,6 +51,7 @@ export const emptySignupAction = (type) => {
 export const logoutAction = (type) => {
 	return async (dispatch) => {
 		const data = await logOutUser();
+		console.log(data);
 		if (data.status === 200) {
 			persistStore.removeDetails('token');
 			persistStore.removeDetails('userDetails');

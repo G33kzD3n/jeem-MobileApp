@@ -11,6 +11,7 @@ import {
 	REMOVE_PLACE_ORDER,
 } from '../../../../store/actions/actionTypes';
 import Loader from '../../../common/components/Loader';
+import i18n from '../../../languages/i18n';
 
 const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 	const [loading, setLoading] = useState(false);
@@ -60,7 +61,7 @@ const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 							scrollViewRef.current.scrollToEnd({ animated: true })
 						}
 					>
-						<AppText style={styles.details}>VIEW DETAILS</AppText>
+						<AppText style={styles.details}>{i18n.t('cart.VIEW DETAILS')}</AppText>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.containerRight}>

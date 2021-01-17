@@ -10,6 +10,7 @@ import { CLEAR_SEARCH, SEARCH } from '../../../store/actions/actionTypes';
 import ProductCard from '../../common/components/ProductCard';
 import Loader from '../../common/components/Loader';
 import AppText from '../../common/components/AppText';
+import i18n from '../../languages/i18n';
 
 const Search = () => {
 	const [loading, setLoading] = useState(false);
@@ -132,7 +133,7 @@ const Search = () => {
 						/>}
 						<TextInput
 							ref={textRef}
-							placeholder="Search"
+							placeholder={i18n.t('searchScreen.Search')}
 							style={{
 								height: '100%',
 								width: '90%',
@@ -148,11 +149,11 @@ const Search = () => {
 						/>
 					</View>
 					{searchResults&&
-					<AppText  style={styles.textInfo}>{searchResults.totalRecords.toString()} records found</AppText>}
+					<AppText  style={styles.textInfo}>{searchResults.totalRecords.toString()}{i18n.t('searchScreen.records found')}</AppText>}
 				</View>
 				<View style={styles.screen}>
 					{searchResults && searchResults.data === 'No Records found'? (
-						<AppText style={styles.message}>No Records Found</AppText>
+						<AppText style={styles.message}>{i18n.t('searchScreen.No Records found')}</AppText>
 					) : (
 						<FlatList
 							refreshing={flatListParams.refreshing}

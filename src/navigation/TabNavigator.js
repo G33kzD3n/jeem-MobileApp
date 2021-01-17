@@ -11,6 +11,7 @@ import { getCartCountAction } from '../../store/actions';
 import { GET_COUNT } from '../../store/actions/actionTypes';
 import Search from '../buyer/screens/Search';
 import SearchButton from './SearchButton';
+import i18n from '../languages/i18n';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +34,7 @@ const TabNavigator = () => {
 			}}
 		>
 			<Tab.Screen
-				name="Home"
+				name={i18n.t('tabNavigation.Home')}
 				component={Home}
 				options={{
 					tabBarIcon: ({ color, size }) => (
@@ -42,7 +43,7 @@ const TabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name="Categories"
+			name={i18n.t('tabNavigation.Categories')}
 				component={Categories}
 				options={{
 					tabBarIcon: ({ color, size }) => (
@@ -55,7 +56,7 @@ const TabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name="Search"
+				name={i18n.t('tabNavigation.Search')}
 				component={Search}
 				options={({ navigation }) => ({
 					tabBarButton: () => (
@@ -64,7 +65,7 @@ const TabNavigator = () => {
 				})}
 			/>
 			<Tab.Screen
-				name="Cart"
+				name={i18n.t('tabNavigation.Cart')}
 				component={Cart}
 				options={{
 					tabBarBadge: cartCount !== 0 ? cartCount : undefined,
@@ -74,7 +75,7 @@ const TabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name="Profile"
+				name={i18n.t('tabNavigation.Profile')}
 				component={Profile}
 				options={{
 					tabBarIcon: ({ color, size }) => (

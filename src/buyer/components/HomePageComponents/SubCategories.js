@@ -15,6 +15,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { productSubCategoriesAction } from '../../../../store/actions';
 import { GET_PRODUCTSUBCATEGORY } from '../../../../store/actions/actionTypes';
+import i18n from '../../../languages/i18n';
 
 const SubCategories = () => {
 	const navigation = useNavigation();
@@ -46,7 +47,7 @@ const SubCategories = () => {
 	};
 
 	const handelSubCategory = (item) => {
-		if (item.productSubCategoryName === 'All') setModalVisible(true);
+		if (item.productSubCategoryName === i18n.t('homeScreen.All')) setModalVisible(true);
 		else
 			navigation.navigate('SubCategoryProduct', {
 				name: item.productSubCategoryName,
@@ -79,7 +80,7 @@ const SubCategories = () => {
 				<FlatList
 					data={productSubCategories
 						.slice(0, 7)
-						.concat({ productSubCategoryName: 'All', id: 'All' })}
+						.concat({ productSubCategoryName: i18n.t('homeScreen.All'), id: 'All' })}
 					numColumns={4}
 					scrollEnabled={false}
 					keyExtractor={(data) => data.id}

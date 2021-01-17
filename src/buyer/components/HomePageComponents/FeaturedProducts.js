@@ -17,6 +17,7 @@ import colors from '../../../config/colors';
 import { FEATURED_PRODUCTS } from '../../../../store/actions/actionTypes';
 import { getTagsProductAction } from '../../../../store/actions/homeAction';
 import { apiUrlImageProducts } from '../../../config/config';
+import i18n from '../../../languages/i18n';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
@@ -24,10 +25,10 @@ const ITEM_HEIGHT = Math.round(ITEM_WIDTH * (3 / 4));
 
 const FeatureProducts = () => {
 	let carouselRef = useRef(null);
-	const navigation = useNavigation();
+	const navigation = useNavigation(); 
 	const handleClick = () => {
 		navigation.navigate('SubCategoryProduct', {
-			name: 'Featured Products',
+			name:i18n.t('homeScreen.Featured Products'),
 			id: 4,
 			apiName: 'Tag',
 			totalItems: undefined,
@@ -85,8 +86,8 @@ const FeatureProducts = () => {
 	return (
 		<View>
 			<ComponentHeading
-				text="featured products"
-				more={featuredProducts.totalRecords > 6 && 'View More'}
+				text={i18n.t('homeScreen.Featured Products')}
+				more={featuredProducts.totalRecords > 6 && i18n.t('homeScreen.View More')}
 				onPress={() => handleClick()}
 			/>
 			<Carousel

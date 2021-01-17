@@ -7,7 +7,7 @@ export async function getCartItems() {
 		console.log(response,'>:::::::::::::');
 		return response.data;
 	} catch (error) {
-		console.log(error, 'resssssssssssssss');
+		return 'Token is Expired';
 	}
 }
 
@@ -25,17 +25,20 @@ export async function getCartCount() {
 		const response = await authAxios.get(apiUrl + 'order/buyer/count');
 		return response.data;
 	} catch (error) {
-		if (error.response.status === 404) {
-		}
+		return(error.response.data.status);
+		// if (error.response.status === 404) {
+		// 	console.log(error.response);
+		// }
 	}
 }
 export async function placeOrder() {
 	try {
 		console.log('orderrrrrrrrrrrrrrrrrrr');
 		const response = await authAxios.post(apiUrl + 'order/buyer/orders');
-		console.log(response,'apiiiiiiiiiiiiiiiiii');
 		return response.data;
-	} catch (error) {}
+	} catch (error) {
+		console.log(error.status);
+	}
 }
 
 export async function addProductToCart(data) {

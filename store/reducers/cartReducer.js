@@ -13,6 +13,7 @@ const initalState = {
 };
 
 const cartReducer = (state = initalState, action) => {
+	
 	switch (action.type) {
 		case actionTypes.GET_CART_ITEMS:
 			return {

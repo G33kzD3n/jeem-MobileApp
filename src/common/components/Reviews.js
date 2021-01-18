@@ -4,25 +4,29 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../config/colors';
 import AppDivider from './AppDivider';
 import AppText from './AppText';
-
-const Reviews = () => {
+ 
+const Reviews = ({reviews}) => {
 	return (
 		<React.Fragment>
+			{reviews.map(data=>
+			<React.Fragment key={data.id}>
 			<AppDivider />
 			<View style={styles.topContainer}>
 				<View style={styles.cartImage}>
-					<AppText style={styles.text}>4</AppText>
+					<AppText style={styles.text}>{data.rating}</AppText>
 					<MaterialCommunityIcons name="star" size={15} color="white" />
 				</View>
 				<View style={styles.dataContainer}>
 					<AppText style={styles.comment}>
-						Great smell not sticky 
+					{data.reviewContent}
 					</AppText>
           <AppText style={styles.details}>
-						Basit Mir | 30 Oct,2020
+					{data.reviewUserName} | {new Date(data.created_at).toDateString()}
 					</AppText>
 				</View>
 			</View>
+			</React.Fragment>
+			)}
 		</React.Fragment>
 	);
 };

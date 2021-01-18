@@ -5,6 +5,7 @@ import {
 	addProduct,
 	updateProduct,
 	productCategory,
+	productReviews,
 } from '../../api/productApi.js';
 
 export const getProductsAction = (type, values) => {
@@ -37,6 +38,15 @@ export const productSubCategoriesAction = (type) => {
 		} else {
 			dispatch({ type: type, value: null });
 		}
+	};
+};
+
+export const getProductReviews = (type, id) => {
+	return async (dispatch) => {
+			const data = await productReviews(id);
+			if (data.status === 200) {
+				dispatch({ type: type, value: data.data });
+			}
 	};
 };
 

@@ -11,11 +11,13 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	addProductsToCartAction,
+	getProductReviews,
 	singleProductAction,
 } from '../../../store/actions';
 import {
 	ADD_PRODUCT_TO_CART,
 	ADD_PRODUCT_TO_CART_ERROR,
+	GET_REVIEWS_OF_PRODUCT,
 	GET_SINGLE_PRODUCT_FOR_BUYER,
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
@@ -27,7 +29,7 @@ const ProductView = ({ route }) => {
 	const { id } = route.params;
 
 	const productData = useSelector((state) => state.home.singleProduct);
-  // console.log(productData)
+	const reviews = useSelector((state) => state.product.reviews);
 	const cartMessage = useSelector((state) => state.cart.message);
 
 	const addToCart = () => {
@@ -42,6 +44,7 @@ const ProductView = ({ route }) => {
 
 	useEffect(() => {
 		dispatch(singleProductAction(GET_SINGLE_PRODUCT_FOR_BUYER, id)); //get called if the user refreshes the page to get data
+		dispatch(getProductReviews(GET_REVIEWS_OF_PRODUCT, id));
 		return () =>
 			dispatch({ type: ADD_PRODUCT_TO_CART_ERROR, value: { message: null } });
 	}, []);
@@ -55,7 +58,6 @@ const ProductView = ({ route }) => {
 		}); //navigate with params
 	}
 
-	// console.log(id, '>>>>>>>>>>>>>>>>>>>>>>>>', productData);
 	if (!productData) return <Loader />;
 	return (
 		<AppScreen>
@@ -112,8 +114,10 @@ const ProductView = ({ route }) => {
 					heading={'Product Details'}
 					details={productData.productCartDesc}
 				/>
-				<Ratings ratings={productData.ratings} />
-				<Reviews/>
+				<Ratings ratings={productData.ratings} totalReviews={productData.totalReviews}/>
+				{reviews&&reviews.length!==0&&
+				<Reviews reviews={reviews}/>
+        }
 			</ScrollView>
 			<View style={styles.appButton}>
 				<AppButton

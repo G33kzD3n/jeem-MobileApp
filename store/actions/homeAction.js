@@ -13,6 +13,7 @@ import { getProducts } from '../../api/homeApi.js';
 import { getProduct } from '../../api/homeApi.js';
 import { getAllTagsWithProducts } from '../../api/homeApi.js';
 import { searchProduct } from '../../api/homeApi.js';
+import { productReviews } from '../../api/productApi.js';
 
 export const carouselAction = (type) => {
 	return async (dispatch) => {

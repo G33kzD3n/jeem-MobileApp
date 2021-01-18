@@ -15,6 +15,7 @@ export {
 	unsetProductSucessMessage,
 	productCategoriesAction,
 	productSubCategoriesAction,
+	getProductReviews
 } from './productAction';
 
 export { getOrdersAction,getBuyerOrdersAction,cancelBuyerOrdersAction } from './ordersAction';

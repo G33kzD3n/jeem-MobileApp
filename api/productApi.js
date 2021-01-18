@@ -37,3 +37,12 @@ export async function productCategory() {
 		return await authAxios.post(apiUrl + `productsubcategories`, pagination);
 	} catch (error) {}
 }
+
+export async function productReviews(id) {
+	try {
+		// return
+		return await authAxios.get(apiUrl + `review/${id}`);
+	} catch (error) {
+		return error.response;
+	}
+}

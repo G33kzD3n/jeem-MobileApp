@@ -4,7 +4,7 @@ import { Rating } from 'react-native-ratings';
 import colors from '../../config/colors';
 import AppText from './AppText';
 
-const Ratings = ({ ratings }) => {
+const Ratings = ({ ratings,totalReviews }) => {
 	return (
 		<View style={styles.topContainer}>
 			<AppText style={styles.heading}>Ratings and Reviews</AppText>
@@ -12,7 +12,7 @@ const Ratings = ({ ratings }) => {
 				<Rating
 					showRating={false}
 					style={styles.ratings}
-					startingValue={0}
+					startingValue={ratings}
 					imageSize={22}
 					readonly={true}
 					fractions={false}
@@ -20,7 +20,7 @@ const Ratings = ({ ratings }) => {
 				/>
 				<AppText style={styles.ratingText}>{ratings} out of 5</AppText>
 			</View>
-			<AppText style={styles.globalRatings}>15,540 global ratings</AppText>
+			<AppText style={styles.globalRatings}>{totalReviews} global ratings</AppText>
 		</View>
 	);
 };

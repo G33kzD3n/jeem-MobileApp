@@ -35,10 +35,15 @@ const validationAddress = Yup.object().shape({
 	state: Yup.string().required().label('State'),
 });
 
+const validationForgotPassword = Yup.object().shape({
+	email: Yup.string().required().email().label('Email'),
+});
+
 export default {
 	validationLogin,
 	validationRegister,
 	validationProfile,
 	validationAddress,
-	validationHelp
+	validationHelp,
+	validationForgotPassword
 };

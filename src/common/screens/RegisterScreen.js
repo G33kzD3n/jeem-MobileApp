@@ -31,7 +31,7 @@ const RegisterScreen = ({ navigation }) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		console.log(signupInfo, '>>>>>>>>>>>>>>>>>>>>');
+		// console.log(signupInfo, '>>>>>>>>>>>>>>>>>>>>');
 		if (signupInfo && signupInfo==='Phone Number or Email already registered') {
 			setloading(false);
 			appAlert(

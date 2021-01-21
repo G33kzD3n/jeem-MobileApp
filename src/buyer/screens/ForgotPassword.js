@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ImageBackground } from 'react-native';
-import AppText from '../components/AppText';
 import colors from '../../config/colors';
-import AppSwitch from '../components/AppSwitch';
-import AppButton from '../components/AppButton';
-import TextClick from '../components/TextClick';
+import TextClick from '../../common/components/TextClick';
 import useKeyboardDetect from '../../hooks/useKeyboardDetect';
-import AppFormFeild from '../components/forms/AppFormFeild';
-import SubmitButton from '../components/forms/SubmitButton';
-import AppForm from '../components/forms/AppForm';
-import validation from '../components/forms/validationSchema';
+import AppFormFeild from '../../common/components/forms/AppFormFeild';
+import SubmitButton from '../../common/components/forms/SubmitButton';
+import AppForm from '../../common/components/forms/AppForm';
+import validation from '../../common/components/forms/validationSchema';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	getCartCountAction,
@@ -21,14 +18,12 @@ import {
 	LOGIN,
 	REMOVE_LOGIN_ERROR,
 } from '../../../store/actions/actionTypes';
-import ErrorMessage from '../components/forms/ErrorMessage';
-import Loader from '../components/Loader';
+import ErrorMessage from '../../common/components/forms/ErrorMessage';
+import Loader from '../../common/components/Loader';
 import persistStore from '../../utils/persistStore';
-// import { connect } from 'react-redux';
-// import { loginAction } from '../../../store/actions/authActions';
-// import { LOGIN } from '../../../store/actions/actionTypes';
+import AppText from '../../common/components/AppText';
 
-const LoginScreen = ({ navigation, login }) => {
+const ForgotPassword = ({ navigation, login }) => {
 	const [isEnabled, setIsEnabled] = useState(false);
 	const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
@@ -56,9 +51,6 @@ const LoginScreen = ({ navigation, login }) => {
 		console.log('Login');
 	};
 
-	const handleSignUp = () => {
-		navigation.navigate('Register');
-	};
 
 	const handleForgotPassword = () => {
 		navigation.navigate('ForgotPassword');
@@ -74,7 +66,7 @@ const LoginScreen = ({ navigation, login }) => {
 			>
 				<View style={styles.firstContainer}>
 					<AppText weight="bold" color={colors.white} size={42}>
-						Log into{'\n'}your account
+						Forgot{'\n'}Password
 					</AppText>
 				</View>
 				{error && (
@@ -84,9 +76,9 @@ const LoginScreen = ({ navigation, login }) => {
 				)}
 				<View style={styles.secondContainer}>
 					<AppForm
-						initialValues={{ email: '', password: '' }}
+						initialValues={{ email: '' }}
 						onSubmit={(values) => dispatch(loginAction(LOGIN, values))}
-						validationSchema={validation.validationLogin}
+						validationSchema={validation.validationForgotPassword}
 					>
 						<View style={styles.textBox}>
 							<AppFormFeild
@@ -94,69 +86,20 @@ const LoginScreen = ({ navigation, login }) => {
 								keyboardType="email-address"
 								name="email"
 							/>
-							<AppFormFeild
-								name="password"
-								placeholder="Password"
-								secureTextEntry
-							/>
 						</View>
-						<View style={styles.forgotPasswordParent}>
-							<AppSwitch
-								isEnabled={isEnabled}
-								toggleSwitch={toggleSwitch}
-								text="Remember me"
-							/>
-							<View style={{paddingTop:5}}>
-								<TextClick
-									weight="bold"
-									textDecorationLine="underline"
-									text="Forgot Password"
-									onClick={handleForgotPassword}
-									size={16}
-									color={colors.white}
-								/>
-							</View>
-						</View>
-						<SubmitButton text="Log In" />
+						<SubmitButton text="Confirm" />
 					</AppForm>
-
-					{/* social media buttons for login................. */}
-					{/* <AppText size={15} style={styles.msg}>
-						Or continue with
-					</AppText>
-					<View style={styles.social}>
-						<AppButton
-							color1="#808cba"
-							textTransform="uppercase"
-							color2="#808cba"
-							width="45%"
-							iconColor={colors.white}
-							iconSize={20}
-							icon="facebook"
-							handleClick={handleLogin}
-						/>
-						<AppButton
-							color1="#f18a77"
-							textTransform="uppercase"
-							color2="#f18a77"
-							width="45%"
-							iconColor={colors.white}
-							iconSize={20}
-							icon="google"
-							handleClick={handleLogin}
-						/>
-					</View> */}
 				</View>
 
 				{!showKeyboard && (
 					<View style={styles.thirdContainer}>
 						<View style={styles.innerThird}>
-							<AppText style={styles.signUp}>Don't have an account? </AppText>
+							<AppText style={styles.signUp}>Remember Password? </AppText>
 							<TextClick
 								weight="bold"
 								textDecorationLine="underline"
-								text="Sign Up"
-								onClick={handleSignUp}
+								text="Login"
+								onClick={handleLogin}
 								size={16}
 								color={colors.white}
 							/>
@@ -168,7 +111,7 @@ const LoginScreen = ({ navigation, login }) => {
 	);
 };
 
-export default LoginScreen;
+export default ForgotPassword;
 
 const styles = StyleSheet.create({
 	forgotPasswordParent: {
@@ -179,11 +122,13 @@ const styles = StyleSheet.create({
 		flex: 1,
 		paddingBottom: 40,
 		flexDirection: 'row',
-		alignItems: 'flex-end',
+    alignItems: 'flex-end',
+    
 	},
 	signUp: {
 		color: colors.white,
-		fontSize: 16,
+    fontSize: 16,
+    
 	},
 	social: {
 		flexDirection: 'row',
@@ -192,20 +137,26 @@ const styles = StyleSheet.create({
 	msg: {
 		paddingVertical: 20,
 		textAlign: 'center',
-		color: colors.white,
+    color: colors.white,
+    
 	},
 	parentContainer: {
 		flex: 1,
-		paddingHorizontal: 15,
+    paddingHorizontal: 15,
+    
 	},
 	firstContainer: {
-		flex: 1,
-		justifyContent: 'flex-end',
+		flex: 2,
+    justifyContent: 'flex-end',
+    
 	},
-	textBox: {},
+	textBox: {
+    paddingBottom:10
+  },
 	secondContainer: {
 		flex: 2,
-		maxHeight: '65%',
+    maxHeight: '65%',
+    // justifyContent:'center'
 	},
 	thirdContainer: {
 		flex: 1,

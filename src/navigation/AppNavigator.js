@@ -26,6 +26,7 @@ import SellerProducts from '../buyer/screens/SellerProducts';
 import AllBrands from '../buyer/screens/AllBrands';
 import AddReview from '../buyer/screens/AddReview';
 import Language from '../buyer/screens/Language';
+import ForgotPassword from '../buyer/screens/ForgotPassword';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -190,6 +191,11 @@ function AppNavigator() {
 				name="Language"
 				component={Language}
 				options={{ title: 'SELECT LANGUAGE' }}
+			/>
+				<Stack.Screen
+				name="ForgotPassword"
+				component={ForgotPassword}
+				options={{ headerShown: false }}
 			/>
 		</Stack.Navigator>
 	);

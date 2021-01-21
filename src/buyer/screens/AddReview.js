@@ -9,47 +9,53 @@ import { Rating } from 'react-native-ratings';
 import TopSections from '../components/ProfilePageComponents/TopSections';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  HELP_QUERY,
-  REMOVE_HELP_QUERY,
+  ADD_REVIEWS_OF_PRODUCT,
+  REMOVE_REVIEWS_OF_PRODUCT,
 } from '../../../store/actions/actionTypes';
-import { sendQueryAction, updateProfileAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
-import Ratings from '../../common/components/Ratings';
+import { addProductReviews } from '../../../store/actions/productAction';
+import { useNavigation } from '@react-navigation/native';
 
-const AddReview = ({route}) => {
+const AddReview = ({ route }) => {
 
+  const navigation = useNavigation();
   const { order } = route.params;
-  const [reviewData,setReviewData]=useState({productId:order.orderProductId,content:'',rating:3})
+
+  const [reviewData, setReviewData] = useState({ content: '', rating: 3 })
   const [loading, setLoading] = useState(false);
 
   const profileDetails = useSelector(
     (state) => state.auth.login && state.auth.login
   );
 
-  const queryResponse = useSelector(
-    (state) => state.profile && state.profile.queryResponse
+  const reviewResponse = useSelector(
+    (state) => state && state.product.reviewResponse
   );
 
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (queryResponse) {
+    if (reviewResponse) {
       setLoading(false);
-      appAlert('SUCCESS', queryResponse);
-      dispatch({ type: REMOVE_HELP_QUERY });
+      appAlert('SUCCESS', 'Review added successfully', () =>handleOk());
+      dispatch({ type: REMOVE_REVIEWS_OF_PRODUCT });
     }
+  }, [reviewResponse]);
 
-  }, [queryResponse]);
+  const handleOk = () => {
+		navigation.goBack();
+	};
 
   const handleReview = (data, resetForm) => {
+    // orderProductId
     setLoading(true);
-    dispatch(sendQueryAction(HELP_QUERY, data));
+    dispatch(addProductReviews(ADD_REVIEWS_OF_PRODUCT, order.orderProductId, data));
     resetForm()
   };
-  const ratingCompleted=(rating)=>{
-    setReviewData({...reviewData,rating:rating})
+  const ratingCompleted = (rating) => {
+    setReviewData({ ...reviewData, rating: rating })
   }
   return (
     <>
@@ -62,10 +68,10 @@ const AddReview = ({route}) => {
               email: profileDetails.user.email,
               message: ''
             }}
-            onSubmit={(values, { resetForm }) => 
-            // handleReview({...reviewData,content:values.message}, resetForm)
-            console.log({...reviewData,content:values.message})
-          }
+            onSubmit={(values, { resetForm }) =>
+              handleReview({ ...reviewData, content: values.message }, resetForm)
+              // console.log({...reviewData,content:values.message})
+            }
             validationSchema={validationSchema.validationHelp}
           >
             <View style={styles.topContainer}>
@@ -134,8 +140,8 @@ export default AddReview;
 const styles = StyleSheet.create({
   ratings: {
     // alignSelf: 'flex-start',
-    
-	},
+
+  },
   textArea: {
     color: colors.primary1,
     width: '100%',

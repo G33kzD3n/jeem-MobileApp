@@ -38,8 +38,7 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 						alignSelf: 'center',
 					}}
 				>
-					{' '}
-					Jeem Solutions
+					{data.productSellerName}
 				</AppText>
 			</View>
 			<View style={styles.picker}>

@@ -9,7 +9,7 @@ import OrderInfoCards from '../components/OrderDetailsComponent/OrderInfoCards';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 import { getBuyerOrdersAction } from '../../../store/actions';
-import { GET_MY_ORDERS } from '../../../store/actions/actionTypes';
+import { CLEAR_GET_MY_ORDERS, GET_MY_ORDERS } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 
 
@@ -21,20 +21,23 @@ const ViewOrders = () => {
 
 	const myOrders = useSelector((state) => state.order && state.order.myOrders);
 
-	// console.log(myOrders, '>>>>>>>:::::::::::');
 	const dispatch = useDispatch();
 
+	useEffect(() => {
+		dispatch(getBuyerOrdersAction(GET_MY_ORDERS));
+		setLoading(true);
+	}, [isFocused]);
+	
 	useEffect(() => {
 		if (myOrders) {
 			setLoading(false);
 		}
 	}, [myOrders]);
 
-	useEffect(() => {
-		dispatch(getBuyerOrdersAction(GET_MY_ORDERS));
-		setLoading(true);
-	}, [isFocused]);
-
+	
+useEffect(() => {
+	return ()=>dispatch({type:CLEAR_GET_MY_ORDERS})
+}, [])
 	const checkStatus = () => {
 		// navigation.navigate('ViewOrders');
 	};

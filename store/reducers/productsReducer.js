@@ -21,6 +21,17 @@ const productsReducer = (state = initalState, action) => {
 					...state,
 					reviews: action.value,
 				};
+				case actionTypes.ADD_REVIEWS_OF_PRODUCT:
+					return {
+						...state,
+						reviewResponse: action.value,
+					};
+					case actionTypes.REMOVE_REVIEWS_OF_PRODUCT:
+						return {
+							...state,
+							reviewResponse: null,
+						};
+
 				case actionTypes.CLEAN_REVIEWS_OF_PRODUCT:
 			return {
 				...state,

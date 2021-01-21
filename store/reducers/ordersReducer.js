@@ -10,6 +10,8 @@ const orderssReducer = (state = initalState, action) => {
       return { ...state, orders: action.value };
       case actionTypes.GET_MY_ORDERS:
       return { ...state, myOrders: action.value };
+      case actionTypes.CLEAR_GET_MY_ORDERS:
+      return { ...state, myOrders: null };
       case actionTypes.CANCEL_ORDER:
         return { ...state, cancelOrders: action.value };
         case actionTypes.CANCEL_ORDER_STATUS:

@@ -35,7 +35,7 @@ const OrderInfoCards = ({ order }) => {
 							}}
 						>
 							{' '}
-							{order.seller}
+							{order.sellerName}
 						</AppText>
 					</View>
 				</View>

@@ -11,7 +11,7 @@ import {
 	HELP_QUERY,
 	REMOVE_HELP_QUERY,
 } from '../../../store/actions/actionTypes';
-import { sendQueryAction, updateProfileAction } from '../../../store/actions';
+import { sendQueryAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
 

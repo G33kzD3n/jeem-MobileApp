@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import AppPicker from '../../../common/components/AppPicker';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
@@ -8,12 +8,12 @@ import i18n from '../../../languages/i18n';
 const pickerItems = [
 	{ value: 1, label: i18n.t('cart.1') },
 	{ value: 2, label: i18n.t('cart.2') },
-	{ value: 3, label: i18n.t('cart.3')},
-	{ value: 4, label: i18n.t('cart.4')},
-	{ value: 5, label: i18n.t('cart.5')},
-	{ value: 6, label: i18n.t('cart.6')},
-	{ value: 7, label: i18n.t('cart.7')},
-	{ value: 8, label: i18n.t('cart.8')},
+	{ value: 3, label: i18n.t('cart.3') },
+	{ value: 4, label: i18n.t('cart.4') },
+	{ value: 5, label: i18n.t('cart.5') },
+	{ value: 6, label: i18n.t('cart.6') },
+	{ value: 7, label: i18n.t('cart.7') },
+	{ value: 8, label: i18n.t('cart.8') }
 ];
 const ProductDetails = ({ data, onQuantityChange }) => {
 	// const [selectedItem, setSelectedItem] = useState(data.productQuantity);
@@ -29,13 +29,13 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 			{/* <AppText style={styles.taxesMessage}>inclusive of all taxes</AppText> */}
 			<View style={styles.priceContainer}>
 				<AppText style={{ color: colors.primary2, fontSize: 12 }}>
-				{i18n.t('cart.Sold by')}:
+					{i18n.t('cart.Sold by')}:
 				</AppText>
 				<AppText
 					style={{
 						color: colors.primary1,
 						fontSize: 12,
-						alignSelf: 'center',
+						alignSelf: 'center'
 					}}
 				>
 					{data.productSellerName}
@@ -47,7 +47,7 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 					placeholder={i18n.t('cart.Quantity')}
 					item={pickerItems}
 					selectedItem={data.productQuantity}
-					onQuantityChange={(value) => onQuantityChange(value, data.id)}
+					onQuantityChange={value => onQuantityChange(value, data.id)}
 					horizontal={true}
 					pickerStyle={styles.itemPicker}
 				/>
@@ -79,47 +79,47 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		flex: 1,
 		margin: 5,
-		marginBottom: 10,
+		marginBottom: 10
 	},
 	picker: {
 		marginTop: '10%',
 		backgroundColor: colors.primaryShade24,
 		alignSelf: 'flex-start',
 		padding: 3,
-		marginBottom: '3%',
+		marginBottom: '3%'
 	},
 	heading: {
 		color: colors.primary1,
 		fontSize: 18,
 		fontWeight: 'bold',
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 16,
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	discount: {
 		color: 'red',
 		textTransform: 'uppercase',
-		fontSize: 15,
+		fontSize: 15
 	},
 	orginalPrice: {
 		color: colors.primary2,
 		fontSize: 15,
-		textDecorationLine: 'line-through',
+		textDecorationLine: 'line-through'
 	},
 	mainPrice: {
 		color: colors.primary1,
 		fontSize: 18,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	priceContainer: {
-		flexDirection: 'row',
+		flexDirection: 'row'
 		// alignItems:'center'
 	},
 	taxesMessage: {
 		color: 'green',
-		fontSize: 15,
-	},
+		fontSize: 15
+	}
 });

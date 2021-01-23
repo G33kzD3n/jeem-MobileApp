@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 const OrderInfoCards = ({ order }) => {
 	const navigation = useNavigation();
 	const fullDetails = () => {
-		navigation.navigate('ItemDetails',{order:order});
+		navigation.navigate('ItemDetails', { order: order });
 	};
 	return (
 		<TouchableWithoutFeedback
@@ -17,7 +17,7 @@ const OrderInfoCards = ({ order }) => {
 			style={styles.touch}
 		>
 			<View style={styles.secondSection}>
-				<View style={styles.first}> 
+				<View style={styles.first}>
 					<CartImage image={order.productImage} />
 				</View>
 				<View style={styles.second}>
@@ -31,7 +31,7 @@ const OrderInfoCards = ({ order }) => {
 							style={{
 								color: colors.primary1,
 								fontSize: 12,
-								alignSelf: 'center',
+								alignSelf: 'center'
 							}}
 						>
 							{' '}
@@ -56,35 +56,35 @@ export default OrderInfoCards;
 
 const styles = StyleSheet.create({
 	priceContainer: {
-		flexDirection: 'row',
+		flexDirection: 'row'
 		// alignItems:'center'
 	},
 	first: {
 		// flex: 1,
 		height: 80,
-		width: 60,
+		width: 60
 	},
 	touch: {
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	secondSection: {
 		backgroundColor: colors.primaryShade24,
 		flexDirection: 'row',
 		alignItems: 'center',
-		flex:1,
+		flex: 1,
 		margin: 10,
 		padding: 12,
-		borderRadius: 2,
+		borderRadius: 2
 	},
 	third: {
-		alignItems: 'flex-end',
+		alignItems: 'flex-end'
 		// flex: 1,
 		// borderColor:'red',
 		// borderWidth:10
 	},
 	second: {
 		paddingHorizontal: 10,
-		flex:1,
+		flex: 1
 		// 	borderColor:'red',
 		// borderWidth:10
 	},
@@ -92,13 +92,12 @@ const styles = StyleSheet.create({
 		color: colors.primary1,
 		fontSize: 18,
 		fontWeight: 'bold',
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 16,
-		paddingBottom: 2,
+		paddingBottom: 2
 		// width:'70%',
-		
-	},
+	}
 });

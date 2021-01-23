@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import colors from '../../../config/colors';
 import AppButton from '../../../common/components/AppButton';
 import appAlert from '../../../common/components/appAlert';
@@ -53,19 +53,19 @@ const styles = StyleSheet.create({
 	dataContainer: {
 		// paddingBottom: 5,
 		flex: 4,
-		textAlign: 'left',
+		textAlign: 'left'
 	},
 	addressButtons: {
 		flexDirection: 'row',
 		backgroundColor: colors.white,
-		marginBottom: 6,
+		marginBottom: 6
 	},
 	leftButton: {
 		flex: 1,
 		paddingHorizontal: 10,
 		// justifyContent: 'center',
 		// borderRightWidth: 1,
-		borderColor: colors.primaryShade24,
+		borderColor: colors.primaryShade24
 	},
-	button: {},
+	button: {}
 });

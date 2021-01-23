@@ -47,7 +47,7 @@ export async function productReviews(id) {
 	}
 }
 
-export async function addReview(id,data) {
+export async function addReview(id, data) {
 	try {
 		return await authAxios.post(apiUrl + `review/${id}?_method=PUT`, data);
 	} catch (error) {

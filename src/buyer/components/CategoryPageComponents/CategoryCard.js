@@ -3,7 +3,7 @@ import {
 	StyleSheet,
 	View,
 	ImageBackground,
-	TouchableWithoutFeedback,
+	TouchableWithoutFeedback
 } from 'react-native';
 import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -16,7 +16,7 @@ const CategoryCard = ({ toggleExpanded, data, collapsedSubCat }) => {
 			<View style={styles.box1}>
 				<ImageBackground
 					source={{
-						uri: data.categoryImage,
+						uri: data.categoryImage
 					}}
 					style={styles.containerStyle}
 				>
@@ -51,18 +51,18 @@ const styles = StyleSheet.create({
 	icon: {
 		alignSelf: 'center',
 		textAlign: 'left',
-		paddingTop: 5,
+		paddingTop: 5
 	},
 	text: {
 		color: colors.primary1,
 		fontWeight: 'bold',
 		fontSize: 40,
-		width: '65%',
+		width: '65%'
 	},
 	containerStyle: {
 		flexDirection: 'row',
 		flex: 1,
-		resizeMode: 'contain',
+		resizeMode: 'contain'
 	},
 	innerBoxes1: {
 		flexDirection: 'row',
@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.primaryShade23,
 		opacity: 0.8,
 		borderTopEndRadius: 250,
-		justifyContent: 'center',
+		justifyContent: 'center'
 	},
 	innerBoxes2: {
-		flex: 1,
+		flex: 1
 	},
 	box1: {
 		backgroundColor: colors.primaryShade12,
 		flexGrow: 1,
-		justifyContent: 'space-between',
-	},
+		justifyContent: 'space-between'
+	}
 });

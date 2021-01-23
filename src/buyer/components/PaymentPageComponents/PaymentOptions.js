@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import AppDivider from '../../../common/components/AppDivider';
 import AppText from '../../../common/components/AppText';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -28,20 +28,20 @@ export default PaymentOptions;
 const styles = StyleSheet.create({
 	innerContainer: {
 		flexDirection: 'row',
-		paddingLeft: 40,
+		paddingLeft: 40
 	},
 	container: {
 		backgroundColor: colors.white,
 		height: 40,
 		// borderColor:'red',
 		// borderWidth:3,
-		justifyContent: 'center',
+		justifyContent: 'center'
 		// paddingLeft: 18,
 	},
 	text: {
 		color: colors.primary1,
 		textTransform: 'uppercase',
 		fontSize: 14,
-		paddingLeft: 22,
-	},
+		paddingLeft: 22
+	}
 });

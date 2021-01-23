@@ -1,11 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import {
 	StyleSheet,
-	Text,
 	View,
 	Dimensions,
 	ImageBackground,
-	TouchableWithoutFeedback,
+	TouchableWithoutFeedback
 } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
@@ -62,7 +61,7 @@ function pagination(activeIndex, length) {
 
 const CarouselDisplay = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
-	const carouselItems = useSelector((state) => state.home.carousel);
+	const carouselItems = useSelector(state => state.home.carousel);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -89,7 +88,7 @@ const CarouselDisplay = () => {
 								inactiveSlideScale={1}
 								loopClonesPerSide={carouselItems.length}
 								renderItem={_renderItem}
-								onSnapToItem={(index) => setActiveIndex(index)}
+								onSnapToItem={index => setActiveIndex(index)}
 							/>
 						)}
 					</>
@@ -110,21 +109,21 @@ const styles = StyleSheet.create({
 	carousel: {
 		flexGrow: 0,
 		height: 310,
-		paddingVertical: 0,
+		paddingVertical: 0
 	},
 	dotStyle: {
 		width: 8,
 		height: 8,
 		borderRadius: 5,
 		marginHorizontal: 1,
-		backgroundColor: colors.primaryShade22,
+		backgroundColor: colors.primaryShade22
 	},
 	background: {
-		flex: 1,
+		flex: 1
 		// resizeMode: 'center',
 	},
 	touchOpacity: {
 		borderRadius: 5,
-		height: '100%',
-	},
+		height: '100%'
+	}
 });

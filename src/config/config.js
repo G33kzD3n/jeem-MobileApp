@@ -30,14 +30,14 @@ const apiUrlImageCarousels =
 	'http://jeem-backend.brorinfotech.com/public/storage/images/carousels/';
 
 const config = {
-	baseURL: apiUrl,
+	baseURL: apiUrl
 };
 
 const authAxios = axios.create(config);
 
 //get token
 
-authAxios.interceptors.request.use(async function (config) {
+authAxios.interceptors.request.use(async function(config) {
 	const token = await persistStore.getDetails('token');
 	config.headers.Authorization = token ? `Bearer ${token}` : ``;
 	return config;
@@ -49,5 +49,5 @@ export {
 	apiUrlImage,
 	apiUrlImageStatic,
 	apiUrlImageCarousels,
-	authAxios,
+	authAxios
 };

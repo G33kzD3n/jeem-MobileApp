@@ -34,15 +34,15 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 15,
 		marginVertical: 10,
 		borderBottomColor: colors.primaryShade14,
-		borderBottomWidth: 0.5,
+		borderBottomWidth: 0.5
 	},
 	forgot: {
-		color: colors.white,
+		color: colors.white
 	},
 	textInput: {
 		fontWeight: 'bold',
 		width: '80%',
 		paddingVertical: 15,
-		color: colors.white,
-	},
+		color: colors.white
+	}
 });

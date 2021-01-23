@@ -1,10 +1,10 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
 	StyleSheet,
 	View,
 	Dimensions,
 	ImageBackground,
-	TouchableWithoutFeedback,
+	TouchableWithoutFeedback
 } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
@@ -26,7 +26,7 @@ _renderProduct = ({ item, index }) => {
 						'-' +
 						item.productSku +
 						'/' +
-						item.image,
+						item.image
 				}}
 				style={styles.background}
 			>
@@ -79,7 +79,7 @@ const AppCarousel = ({ height, data }) => {
 							inactiveSlideScale={1}
 							// loopClonesPerSide={carouselItems.length}
 							renderItem={_renderProduct}
-							onSnapToItem={(index) => setActiveIndex(index)}
+							onSnapToItem={index => setActiveIndex(index)}
 						/>
 					</>
 				),
@@ -98,20 +98,20 @@ const styles = StyleSheet.create({
 	carousel: {
 		// flexGrow: 0,
 		// height:310,
-		paddingVertical: 0,
+		paddingVertical: 0
 	},
 	dotStyle: {
 		width: 8,
 		height: 8,
 		borderRadius: 5,
 		marginHorizontal: 1,
-		backgroundColor: 'rgba(255, 255, 255, 0.92)',
+		backgroundColor: 'rgba(255, 255, 255, 0.92)'
 	},
 	background: {
-		flex: 1,
+		flex: 1
 	},
 	touchOpacity: {
 		borderRadius: 5,
-		height: '100%',
-	},
+		height: '100%'
+	}
 });

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import SimpleCard from '../../../common/components/SimpleCard';
 import { getTagsProductAction } from '../../../../store/actions/homeAction';
@@ -16,17 +16,17 @@ const TopTrends = () => {
 			name: i18n.t('homeScreen.Top Trends'),
 			id: 3,
 			apiName: 'Tag',
-			totalItems: undefined,
+			totalItems: undefined
 		}); //navigate with params
 	};
 
-	const topTrends = useSelector((state) => state.home.topTrends);
+	const topTrends = useSelector(state => state.home.topTrends);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getTagsProductAction(TOP_TRENDS, { id: 3, page: 0, limit: 6 }));
 	}, []);
 
-	const productView = (id) => {
+	const productView = id => {
 		navigation.navigate('ProductDetails', { id });
 	};
 
@@ -81,7 +81,8 @@ const TopTrends = () => {
 										'-' +
 										data.productSku +
 										'/' +
-									data.productImages[0]}
+										data.productImages[0]
+									}
 									textStyle={styles.text}
 									logoStyle={styles.logo}
 									imageStyle={styles.image}
@@ -101,26 +102,26 @@ export default TopTrends;
 
 const styles = StyleSheet.create({
 	text: {
-		bottom: 5,
+		bottom: 5
 	},
 	parent: {},
 	row: {
 		flexDirection: 'row',
 		paddingBottom: 10,
-		flex: 1,
+		flex: 1
 	},
 	child: {
 		flex: 3,
 		// width:'50%',
-		paddingHorizontal: 5,
+		paddingHorizontal: 5
 	},
 	image: {
 		height: 120,
 		marginBottom: 5,
 		borderTopRightRadius: 5,
-		borderTopLeftRadius: 5,
+		borderTopLeftRadius: 5
 	},
 	logo: {
-		height: 30,
-	},
+		height: 30
+	}
 });

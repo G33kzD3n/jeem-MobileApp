@@ -4,7 +4,7 @@ export default {
 		fontSize: 18,
 		// borderColor:'red',
 		// borderWidth:2,
-		textAlignVertical: 'center',
+		textAlignVertical: 'center'
 		// fontFamily:"OptimaLTStd"
-	},
+	}
 };

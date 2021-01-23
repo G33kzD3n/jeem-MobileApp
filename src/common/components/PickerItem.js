@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import colors from '../../config/colors';
 import AppText from './AppText';
 
@@ -16,6 +16,6 @@ export default PickerItem;
 const styles = StyleSheet.create({
 	text: {
 		padding: 20,
-		color: colors.primary1,
-	},
+		color: colors.primary1
+	}
 });

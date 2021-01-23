@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet,  View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import ProductCard from '../../common/components/ProductCard';
 import colors from '../../config/colors';
 import { useSelector, useDispatch } from 'react-redux';
 import { productsAction } from '../../../store/actions';
 import {
 	GET_PRODUCTS_FOR_BUYER,
-	REMOVE_PRODUCTS_FROM_STORE,
+	REMOVE_PRODUCTS_FROM_STORE
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import { getTagsProductAction } from '../../../store/actions/homeAction';
@@ -21,19 +21,19 @@ const SubCategoryProducts = ({ route, navigation }) => {
 		limit: 10,
 		// totalRecords: '0',
 		error: null,
-		refreshing: false,
+		refreshing: false
 	});
-	const productData = useSelector((state) => state.home.products);
+	const productData = useSelector(state => state.home.products);
 	const dispatch = useDispatch();
 
-	const handelDispatchCalls = (apiName) => {
-		switch (apiName) { 
+	const handelDispatchCalls = apiName => {
+		switch (apiName) {
 			case 'Tag':
 				return dispatch(
 					getTagsProductAction(GET_PRODUCTS_FOR_BUYER, {
 						id: id,
 						page: flatListParams.page,
-						limit: flatListParams.limit,
+						limit: flatListParams.limit
 					})
 				);
 			default:
@@ -41,7 +41,7 @@ const SubCategoryProducts = ({ route, navigation }) => {
 					productsAction(GET_PRODUCTS_FOR_BUYER, {
 						id: id,
 						page: flatListParams.page,
-						limit: flatListParams.limit,
+						limit: flatListParams.limit
 					})
 				); //get called if the user refreshes the page to get data
 		}
@@ -67,7 +67,7 @@ const SubCategoryProducts = ({ route, navigation }) => {
 				page: productData.page,
 				loading: false,
 				refreshing: false,
-				data: [...flatListParams.data, ...productData.data],
+				data: [...flatListParams.data, ...productData.data]
 			});
 		}
 	}, [productData]);
@@ -77,22 +77,22 @@ const SubCategoryProducts = ({ route, navigation }) => {
 		return <Loader screen="simple" />;
 	};
 
-	const handleRefresh = (apiName) => {
+	const handleRefresh = apiName => {
 		setFlatListParams({
 			...flatListParams,
 			page: 0,
 			refreshing: true,
-			data: [],
+			data: []
 		});
 		handelDispatchCalls(apiName);
 	};
 
-	const handleLoadMore = (apiName) => {
+	const handleLoadMore = apiName => {
 		if (flatListParams.data.length < productData.totalRecords) {
 			setFlatListParams({
 				...flatListParams,
 				page: productData.page + 1,
-				loading: true,
+				loading: true
 			});
 			handelDispatchCalls(apiName);
 		}
@@ -102,10 +102,10 @@ const SubCategoryProducts = ({ route, navigation }) => {
 		//means data not yet retreived
 		return <Loader />;
 	return (
-		<View style={styles.screen}> 
+		<View style={styles.screen}>
 			<FlatList
 				refreshing={flatListParams.refreshing}
-				onRefresh={()=>handleRefresh(apiName)} //call a function
+				onRefresh={() => handleRefresh(apiName)} //call a function
 				data={flatListParams.data}
 				showsVerticalScrollIndicator={false}
 				initialNumToRender={6}
@@ -113,7 +113,7 @@ const SubCategoryProducts = ({ route, navigation }) => {
 				numColumns={2}
 				keyExtractor={(data, index) => index.toString()}
 				ListFooterComponent={renderFooter}
-				onEndReached={()=>handleLoadMore(apiName)}
+				onEndReached={() => handleLoadMore(apiName)}
 				onEndReachedThreshold={0.5}
 				renderItem={({ item }) => (
 					<View style={styles.outerView}>
@@ -131,10 +131,10 @@ const styles = StyleSheet.create({
 	outerView: {
 		flex: 1,
 		paddingHorizontal: 3,
-		paddingBottom: 5,
+		paddingBottom: 5
 	},
 	screen: {
 		backgroundColor: colors.primaryShade24,
-		flex: 1,
-	},
+		flex: 1
+	}
 });

@@ -13,11 +13,11 @@ export async function getTagsForBuyer() {
 	} catch (error) {}
 }
 
-export async function getTagsProductForBuyer(id, page, limit) { 
+export async function getTagsProductForBuyer(id, page, limit) {
 	try {
 		return await axios.post(apiUrl + `tag/products/${id}`, {
 			page: page,
-			limit: limit,
+			limit: limit
 		});
 	} catch (error) {}
 }
@@ -26,7 +26,7 @@ export async function getSellerProductForBuyer(id, page, limit) {
 	try {
 		return await axios.post(apiUrl + `seller/products/${id}`, {
 			page: page,
-			limit: limit,
+			limit: limit
 		});
 	} catch (error) {}
 }
@@ -53,7 +53,7 @@ export async function getProducts(id, page, limit) {
 	try {
 		return await axios.post(apiUrl + `products/${id}`, {
 			page: page,
-			limit: limit,
+			limit: limit
 		});
 	} catch (error) {}
 }
@@ -114,11 +114,11 @@ export async function helpQuery(data) {
 	}
 }
 
-export async function getSellerWithTag(page, limit) { 
+export async function getSellerWithTag(page, limit) {
 	try {
 		return await axios.post(apiUrl + `featuredbrand`, {
 			page: page,
-			limit: limit,
+			limit: limit
 		});
 	} catch (error) {
 		console.log(error);

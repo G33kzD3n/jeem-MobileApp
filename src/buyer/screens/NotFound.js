@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 import AppButton from '../../common/components/AppButton';
 import AppScreen from '../../common/components/AppScreen';
 import colors from '../../config/colors';
@@ -34,13 +34,13 @@ export default NotFound;
 const styles = StyleSheet.create({
 	parentNotFound: {
 		flex: 1,
-		alignItems: 'center',
+		alignItems: 'center'
 	},
 	background: {
 		flex: 2,
-		width: '100%',
+		width: '100%'
 	},
 	button: {
-		flex: 1.3,
-	},
+		flex: 1.3
+	}
 });

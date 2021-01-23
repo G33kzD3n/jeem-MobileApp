@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import colors from '../../config/colors';
 import AppText from './AppText';
 
-const Ratings = ({ ratings,totalReviews }) => {
+const Ratings = ({ ratings, totalReviews }) => {
 	return (
 		<View style={styles.topContainer}>
 			<AppText style={styles.heading}>Ratings and Reviews</AppText>
@@ -20,7 +20,9 @@ const Ratings = ({ ratings,totalReviews }) => {
 				/>
 				<AppText style={styles.ratingText}>{ratings} out of 5</AppText>
 			</View>
-			<AppText style={styles.globalRatings}>{totalReviews} global ratings</AppText>
+			<AppText style={styles.globalRatings}>
+				{totalReviews} global ratings
+			</AppText>
 		</View>
 	);
 };
@@ -30,28 +32,28 @@ export default Ratings;
 const styles = StyleSheet.create({
 	globalRatings: {
 		color: colors.primaryShade21,
-		fontSize: 15,
+		fontSize: 15
 	},
 	innerContainer: {
 		flexDirection: 'row',
-		paddingBottom: 8,
+		paddingBottom: 8
 	},
 	ratings: {
-		alignSelf: 'flex-start',
+		alignSelf: 'flex-start'
 	},
 	topContainer: {
 		marginTop: 8,
 		backgroundColor: colors.white,
-		padding: 10,
+		padding: 10
 	},
 	ratingText: {
 		color: colors.primary1,
 		fontSize: 18,
-		paddingLeft: 10,
+		paddingLeft: 10
 	},
 	heading: {
 		color: colors.primary1,
 		fontSize: 17,
-		paddingBottom: 8,
-	},
+		paddingBottom: 8
+	}
 });

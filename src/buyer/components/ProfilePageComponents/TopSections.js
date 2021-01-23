@@ -8,7 +8,11 @@ import { useDispatch } from 'react-redux';
 import { logoutAction } from '../../../../store/actions';
 import { LOGOUT } from '../../../../store/actions/actionTypes';
 
-const TopSections = ({ edit, token,image="https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png" }) => {
+const TopSections = ({
+	edit,
+	token,
+	image = 'https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png'
+}) => {
 	const navigation = useNavigation();
 
 	const dispatch = useDispatch();
@@ -24,10 +28,7 @@ const TopSections = ({ edit, token,image="https://cdn0.iconfinder.com/data/icons
 		<View style={styles.topContainer}>
 			<View style={styles.firstContainer}></View>
 			<View style={styles.secondContainer}>
-				<Avatar
-					customStyles={styles.avatar}
-					image={image}
-				/>
+				<Avatar customStyles={styles.avatar} image={image} />
 				{!edit && (
 					<AppButton
 						color1={colors.primaryShade11}
@@ -50,27 +51,27 @@ export default TopSections;
 
 const styles = StyleSheet.create({
 	button: {
-		alignSelf: 'center',
+		alignSelf: 'center'
 	},
 	avatar: {
 		height: 150,
 		width: 150,
 		borderRadius: 75,
-		bottom: 80,
+		bottom: 80
 	},
 	topContainer: {
 		backgroundColor: colors.white,
-		height: 200,
+		height: 200
 		//	marginBottom: 10,
 	},
 	firstContainer: {
 		backgroundColor: colors.primaryShade13,
-		flex: 1.5,
+		flex: 1.5
 	},
 	secondContainer: {
 		backgroundColor: colors.white,
 		flex: 1,
 		flexDirection: 'row',
-		justifyContent: 'space-evenly',
-	},
+		justifyContent: 'space-evenly'
+	}
 });

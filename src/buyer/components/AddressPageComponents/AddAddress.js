@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import AppForm from '../../../common/components/forms/AppForm';
 import AppFormFeild from '../../../common/components/forms/AppFormFeild';
@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addAddressAction } from '../../../../store/actions';
 import {
 	ADD_ADDRESS,
-	REMOVE_ADDRESS_MESSAGE,
+	REMOVE_ADDRESS_MESSAGE
 } from '../../../../store/actions/actionTypes';
 import { useNavigation } from '@react-navigation/native';
 import Loader from '../../../common/components/Loader';
@@ -19,9 +19,9 @@ const AddAddress = () => {
 	const navigation = useNavigation();
 	const [loading, setLoading] = useState(false);
 	const userId = useSelector(
-		(state) => state.auth.login && state.auth.login.user.id
+		state => state.auth.login && state.auth.login.user.id
 	);
-	const response = useSelector((state) => state.address.message);
+	const response = useSelector(state => state.address.message);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ const AddAddress = () => {
 		return () => dispatch({ type: REMOVE_ADDRESS_MESSAGE });
 	}, [response]);
 
-	const handleSubmit = (values) => {
+	const handleSubmit = values => {
 		setLoading(true);
 		dispatch(addAddressAction(ADD_ADDRESS, values));
 	};
@@ -50,9 +50,9 @@ const AddAddress = () => {
 						city: '',
 						state: '',
 						userId: userId,
-						country: 'Saudi Arabia',
+						country: 'Saudi Arabia'
 					}}
-					onSubmit={(values) => handleSubmit(values)}
+					onSubmit={values => handleSubmit(values)}
 					validationSchema={validationSchema.validationAddress}
 				>
 					<View style={styles.topContainer}>
@@ -139,29 +139,29 @@ const styles = StyleSheet.create({
 		// borderColor: 'green',
 		// borderWidth: 3,
 		paddingBottom: '12%',
-		height: '100%',
+		height: '100%'
 	},
 	button: {
 		width: '100%',
 		position: 'absolute', //Here is the trick
 		bottom: 0, //Here is the trick
 		padding: 5,
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	formContainer: {
-		flex: 1,
+		flex: 1
 	},
 	contactDetails: {
 		backgroundColor: colors.white,
-		padding: 10,
+		padding: 10
 	},
 	overrideTextbox: {
 		paddingVertical: 10,
-		color: colors.primary1,
+		color: colors.primary1
 	},
 	outerLayer: {
 		borderColor: colors.primary2,
 		borderWidth: 0.5,
-		borderBottomColor: colors.primary2,
-	},
+		borderBottomColor: colors.primary2
+	}
 });

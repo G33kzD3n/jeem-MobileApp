@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, BackHandler } from 'react-native';
+import { StyleSheet, View, BackHandler } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppButton from '../../../common/components/AppButton';
 import { useNavigation } from '@react-navigation/native';
 
-const SucessCard = ({orderCode}) => {
+const SucessCard = ({ orderCode }) => {
 	const navigation = useNavigation();
 	const checkStatus = () => {
 		navigation.navigate('ViewOrders');
@@ -14,7 +14,7 @@ const SucessCard = ({orderCode}) => {
 
 	const handleBackButton = () => {
 		navigation.navigate('Home');
-	}; 
+	};
 	useEffect(() => {
 		BackHandler.addEventListener('hardwareBackPress', handleBackButton);
 		return () =>
@@ -62,20 +62,20 @@ export default SucessCard;
 const styles = StyleSheet.create({
 	buttonContainer: {
 		padding: 10,
-		marginTop: 8,
+		marginTop: 8
 	},
 	textTop: {
 		paddingLeft: 10,
 		textAlign: 'center',
-		paddingTop: 10,
+		paddingTop: 10
 	},
 	theory: {
 		color: colors.primary2,
-		fontSize: 15,
+		fontSize: 15
 	},
 	parent: {
 		backgroundColor: colors.white,
-		margin: 10,
+		margin: 10
 	},
 	topContainer: {
 		flexDirection: 'row',
@@ -84,21 +84,21 @@ const styles = StyleSheet.create({
 		margin: 10,
 		borderBottomWidth: 1,
 		borderColor: colors.primaryShade23,
-		paddingBottom: 20,
+		paddingBottom: 20
 		// borderWidth:3
 	},
 	text: {
 		color: colors.primary1,
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
-		fontSize: 20,
+		fontSize: 20
 	},
 	subHeading: {
 		color: colors.primaryShade21,
 		fontSize: 14,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	icon: {
-		paddingHorizontal: 12,
-	},
+		paddingHorizontal: 12
+	}
 });

@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet,  View, ScrollView, Image } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppButton from '../../../common/components/AppButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { cancelBuyerOrdersAction } from '../../../../store/actions';
-import { CANCEL_ORDER, CANCEL_ORDER_STATUS } from '../../../../store/actions/actionTypes';
+import {
+	CANCEL_ORDER,
+	CANCEL_ORDER_STATUS
+} from '../../../../store/actions/actionTypes';
 import appAlert from '../../../common/components/appAlert';
 import Loader from '../../../common/components/Loader';
 import { useNavigation } from '@react-navigation/native';
-
 
 const OrderFullDetail = ({ route }) => {
 	const { order } = route.params;
 	const navigation = useNavigation();
 	const [loading, setLoading] = useState(false);
 	const address = JSON.parse(order.orderShippingAddress);
-	const myOrdersStatus = useSelector((state) => state.order && state.order.cancelOrders);
+	const myOrdersStatus = useSelector(
+		state => state.order && state.order.cancelOrders
+	);
 	useEffect(() => {
 		if (myOrdersStatus) {
 			setLoading(false);
@@ -28,20 +32,19 @@ const OrderFullDetail = ({ route }) => {
 
 	// console.log(myOrdersStatus);
 	const dispatch = useDispatch();
-	const handleCancel = (id) => {
+	const handleCancel = id => {
 		// console.log(id,'idddd');
 		appAlert('CANCEL', 'Are you sure you want to cancel this order?', () =>
 			handleOk(id)
 		);
-
-	}
-	const handleOk = (id) => {
+	};
+	const handleOk = id => {
 		dispatch(cancelBuyerOrdersAction(CANCEL_ORDER, id));
 		setLoading(true);
 	};
 
-	const handleReview = (order) => {
-		navigation.navigate('AddReview',{order:order});
+	const handleReview = order => {
+		navigation.navigate('AddReview', { order: order });
 	};
 
 	return (
@@ -55,12 +58,12 @@ const OrderFullDetail = ({ route }) => {
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
 							Sold by:
-					</AppText>
+						</AppText>
 						<AppText
 							style={{
 								color: colors.primary1,
 								fontSize: 12,
-								alignSelf: 'center',
+								alignSelf: 'center'
 							}}
 						>
 							{' '}
@@ -91,19 +94,20 @@ const OrderFullDetail = ({ route }) => {
 							</AppText>
 						</View>
 					</View>
-					{order.orderStatus !== 'cancelled' &&
+					{order.orderStatus !== 'cancelled' && (
 						<View style={styles.orderStatus2}>
 							<AppButton
 								color1={colors.primaryShade11}
 								color2={colors.primaryShade13}
-								text='Cancel Order'
+								text="Cancel Order"
 								borderRadius={3}
 								textColor={colors.white}
 								paddingText="1%"
 								textTransform="uppercase"
 								handleClick={() => handleCancel(order.id)}
 							/>
-						</View>}
+						</View>
+					)}
 				</View>
 				<View style={styles.parentContainer}>
 					<View style={styles.container}>
@@ -112,12 +116,12 @@ const OrderFullDetail = ({ route }) => {
 					</View>
 					<AppText style={styles.subHeading}>
 						You saved ${order.orderDiscount} on this order
-				</AppText>
+					</AppText>
 				</View>
 				<View style={styles.newView}>
 					<AppText style={[styles.total, { paddingBottom: 6 }]}>
 						Updates sent to
-				</AppText>
+					</AppText>
 					<View style={styles.contactInfo}>
 						<MaterialCommunityIcons
 							style={styles.contactIcon}
@@ -134,7 +138,9 @@ const OrderFullDetail = ({ route }) => {
 							size={20}
 							color={colors.primaryShade22}
 						/>
-						<AppText style={[styles.subHeading, { textTransform: 'lowercase' }]}>
+						<AppText
+							style={[styles.subHeading, { textTransform: 'lowercase' }]}
+						>
 							{address.email}
 						</AppText>
 					</View>
@@ -144,21 +150,20 @@ const OrderFullDetail = ({ route }) => {
 						ORDER ID {order.orderCode}
 					</AppText>
 				</View>
-				{order.orderStatus === 'delivered' &&
-				<View style={styles.appButton}>
-					<AppButton
-						color1={colors.primaryShade11}
-						color2={colors.primaryShade13}
-						text="REVIEW ORDER"
-						borderRadius={3}
-						textColor={colors.white}
-						textTransform="uppercase"
-						handleClick={() => handleReview(order)}
-					/>
-				</View>
-			}
+				{order.orderStatus === 'delivered' && (
+					<View style={styles.appButton}>
+						<AppButton
+							color1={colors.primaryShade11}
+							color2={colors.primaryShade13}
+							text="REVIEW ORDER"
+							borderRadius={3}
+							textColor={colors.white}
+							textTransform="uppercase"
+							handleClick={() => handleReview(order)}
+						/>
+					</View>
+				)}
 			</ScrollView>
-		
 		</>
 	);
 };
@@ -168,44 +173,44 @@ export default OrderFullDetail;
 const styles = StyleSheet.create({
 	appButton: {
 		padding: 5,
-		backgroundColor: colors.primaryShade24,
+		backgroundColor: colors.primaryShade24
 	},
 	contactIcon: {
-		paddingRight: 6,
+		paddingRight: 6
 	},
 	contactInfo: {
-		flexDirection: 'row',
+		flexDirection: 'row'
 	},
 	newView: {
 		marginTop: 8,
 		padding: 10,
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	parentContainer: {
 		backgroundColor: colors.white,
 
 		padding: 10,
-		marginTop: 8,
+		marginTop: 8
 	},
 	total: {
 		color: colors.primary1,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	container: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		paddingBottom: 5,
+		paddingBottom: 5
 	},
 	text: {
 		color: colors.primary1,
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
-		fontSize: 17,
+		fontSize: 17
 	},
 	subHeading: {
 		color: colors.primaryShade21,
 		fontSize: 14,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	topContainer: {
 		flexDirection: 'row',
@@ -224,43 +229,43 @@ const styles = StyleSheet.create({
 		// borderColor:'red',
 		// borderWidth:10
 		flex: 1,
-		alignItems: 'center',
+		alignItems: 'center'
 	},
 	icon: {
-		paddingHorizontal: 12,
+		paddingHorizontal: 12
 	},
 	image: {
 		height: 200,
 		width: 150,
-		alignSelf: 'center',
+		alignSelf: 'center'
 	},
 	parent: {
-		backgroundColor: colors.primaryShade24,
+		backgroundColor: colors.primaryShade24
 	},
 	child1: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 45,
+		padding: 45
 		// borderColor: 'red',
 		// borderWidth: 3,
 	},
 	child2: {
-		flex: 1,
+		flex: 1
 	},
 	heading: {
 		color: colors.primary1,
 		fontSize: 18,
 		fontWeight: 'bold',
 		paddingBottom: 2,
-		paddingTop: 8,
+		paddingTop: 8
 	},
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 16,
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	priceContainer: {
-		flexDirection: 'row',
+		flexDirection: 'row'
 		// alignItems:'center'
-	},
+	}
 });

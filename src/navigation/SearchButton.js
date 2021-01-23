@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import colors from '../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
 		borderColor: colors.primaryShade24,
 		borderWidth: 10,
 		alignItems: 'center',
-		justifyContent: 'center',
-	},
+		justifyContent: 'center'
+	}
 });

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import AppForm from '../../common/components/forms/AppForm';
 import AppFormFeild from '../../common/components/forms/AppFormFeild';
 import SubmitButton from '../../common/components/forms/SubmitButton';
@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
 	EDIT_PROFILE,
 	LOGIN,
-	REMOVE_EDIT_PROFILE,
+	REMOVE_EDIT_PROFILE
 } from '../../../store/actions/actionTypes';
 import { updateProfileAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
@@ -20,11 +20,11 @@ const EditProfile = () => {
 	const [loading, setLoading] = useState(false);
 
 	const profileDetails = useSelector(
-		(state) => state.auth.login && state.auth.login
+		state => state.auth.login && state.auth.login
 	);
 
 	const profileStatus = useSelector(
-		(state) => state.profile && state.profile.updateMessage
+		state => state.profile && state.profile.updateMessage
 	);
 	const dispatch = useDispatch();
 
@@ -39,16 +39,16 @@ const EditProfile = () => {
 					...profileDetails.user,
 					name: profileStatus.name,
 					phonenumber: profileStatus.phonenumber,
-					seller_category_name: profileStatus.seller_category_name,
-				},
+					seller_category_name: profileStatus.seller_category_name
+				}
 			};
-			appAlert('SUCCESS', 'Profile updated Successfully')
+			appAlert('SUCCESS', 'Profile updated Successfully');
 			dispatch({ type: LOGIN, value: data });
 			dispatch({ type: REMOVE_EDIT_PROFILE });
 		}
 	}, [profileStatus]);
 
-	const handleUpdate = (data) => {
+	const handleUpdate = data => {
 		setLoading(true);
 		dispatch(updateProfileAction(EDIT_PROFILE, data));
 	};
@@ -62,9 +62,9 @@ const EditProfile = () => {
 							name: profileDetails.user.name,
 							phonenumber: profileDetails.user.phonenumber,
 							email: profileDetails.user.email,
-							location: profileDetails.user.seller_category_name, //store as location
+							location: profileDetails.user.seller_category_name //store as location
 						}}
-						onSubmit={(values) => handleUpdate(values)}
+						onSubmit={values => handleUpdate(values)}
 						validationSchema={validationSchema.validationProfile}
 					>
 						<View style={styles.topContainer}>
@@ -85,7 +85,7 @@ const EditProfile = () => {
 										overrideContainer={styles.outerLayer}
 										overrideTextbox={{
 											paddingVertical: 10,
-											color: colors.primaryShade22,
+											color: colors.primaryShade22
 										}}
 									/>
 									<AppFormFeild
@@ -133,29 +133,29 @@ const styles = StyleSheet.create({
 		// borderColor: 'green',
 		// borderWidth: 3,
 		paddingBottom: '12%',
-		height: '100%',
+		height: '100%'
 	},
 	button: {
 		width: '100%',
 		position: 'absolute', //Here is the trick
 		bottom: 0, //Here is the trick
 		padding: 5,
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	formContainer: {
-		flex: 1,
+		flex: 1
 	},
 	contactDetails: {
 		backgroundColor: colors.white,
-		padding: 30,
+		padding: 30
 	},
 	overrideTextbox: {
 		paddingVertical: 10,
-		color: colors.primary1,
+		color: colors.primary1
 	},
 	outerLayer: {
 		borderColor: colors.primary2,
 		borderWidth: 0.5,
-		borderBottomColor: colors.primary2,
-	},
+		borderBottomColor: colors.primary2
+	}
 });

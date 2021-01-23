@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import {
-	Button,
 	FlatList,
 	Modal,
 	StyleSheet,
-	Text,
 	TouchableOpacity,
 	TouchableWithoutFeedback,
-	View,
+	View
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../config/colors';
@@ -21,7 +19,7 @@ const AppPicker = ({
 	selectedItem,
 	onQuantityChange,
 	pickerStyle,
-	horizontal,
+	horizontal
 }) => {
 	const [modalVisible, setModalVisible] = useState(false);
 	return (
@@ -62,7 +60,7 @@ const AppPicker = ({
 						<FlatList
 							data={item}
 							horizontal={horizontal}
-							keyExtractor={(item) => item.value.toString()}
+							keyExtractor={item => item.value.toString()}
 							renderItem={({ item }) => (
 								<PickerItem
 									style={pickerStyle}
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
 	close: {
 		alignSelf: 'flex-end',
 		paddingRight: 10,
-		paddingBottom: 5,
+		paddingBottom: 5
 	},
 	modalParent: {
 		flex: 1,
@@ -97,22 +95,22 @@ const styles = StyleSheet.create({
 		shadowColor: '#000',
 		shadowOffset: {
 			width: 0,
-			height: 2,
+			height: 2
 		},
 		shadowOpacity: 0.25,
 		shadowRadius: 3.84,
-		elevation: 15,
+		elevation: 15
 	},
 	list: {
 		alignItems: 'center',
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	container: { flexDirection: 'row' },
 	modal: {
-		flex: 1,
+		flex: 1
 	},
 	text: {
 		fontSize: 16,
-		color: colors.primary1,
-	},
+		color: colors.primary1
+	}
 });

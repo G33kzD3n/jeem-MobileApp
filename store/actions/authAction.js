@@ -1,22 +1,26 @@
-import loginUser, { signupUser, logOutUser, forgotPassword } from '../../api/authApi';
+import loginUser, {
+	signupUser,
+	logOutUser,
+	forgotPassword
+} from '../../api/authApi';
 import { updateUserProfile } from '../../api/profileApi';
 import persistStore from '../../src/utils/persistStore';
 // import { toast } from 'react-toastify';
 import { LOADER } from './actionTypes.js';
 
 export const signupAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const data = await signupUser(values);
-		 if (data==='Phone Number or Email already registered'){
+		if (data === 'Phone Number or Email already registered') {
 			dispatch({ type: type, value: data });
-		 }else{
-	    	dispatch({ type: type, value: data.data.message });
-		 }
+		} else {
+			dispatch({ type: type, value: data.data.message });
+		}
 	};
 };
 
 export const loginAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		dispatch({ type: LOADER, value: true });
 		const data = await loginUser(values);
 		if (data.status === 200) {
@@ -35,20 +39,20 @@ export const loginAction = (type, values) => {
 	};
 };
 
-export const removeLoginErrorAction = (type) => {
-	return async (dispatch) => {
+export const removeLoginErrorAction = type => {
+	return async dispatch => {
 		dispatch({ type: type });
 	};
 };
 
-export const emptySignupAction = (type) => {
-	return async (dispatch) => {
+export const emptySignupAction = type => {
+	return async dispatch => {
 		dispatch({ type: type });
 	};
 };
 
-export const logoutAction = (type) => {
-	return async (dispatch) => {
+export const logoutAction = type => {
+	return async dispatch => {
 		const data = await logOutUser();
 		if (data.status === 200) {
 			persistStore.removeDetails('token');
@@ -60,23 +64,21 @@ export const logoutAction = (type) => {
 };
 
 export const updateProfileAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const data = await updateUserProfile(values);
 		if (data.status === 200) {
-		dispatch({ type: type, value: data.data[0] });
+			dispatch({ type: type, value: data.data[0] });
 		}
 	};
 };
 
 export const forgotPasswordAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const data = await forgotPassword(values);
 		if (data.status === 200) {
-		dispatch({ type: type, value: 200 });
-		}else{
+			dispatch({ type: type, value: 200 });
+		} else {
 			dispatch({ type: type, value: 422 });
 		}
 	};
 };
-
-

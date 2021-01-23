@@ -17,9 +17,7 @@ export async function deleteAddress(id) {
 }
 export async function activeAddress() {
 	try {
-		const response = await authAxios.get(
-			apiUrl + 'order/buyer/activeaddress'
-		);
+		const response = await authAxios.get(apiUrl + 'order/buyer/activeaddress');
 		return response.data;
 	} catch (error) {}
 }

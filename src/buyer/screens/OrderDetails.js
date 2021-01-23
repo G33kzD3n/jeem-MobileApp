@@ -1,5 +1,5 @@
-import React,{useEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 import AppDivider from '../../common/components/AppDivider';
 import AppText from '../../common/components/AppText';
 import ComponentHeading from '../../common/components/ComponentHeading';
@@ -8,27 +8,34 @@ import AddressCard from '../components/AddressPageComponents/AddressCard';
 import SucessCard from '../components/OrderDetailsComponent/SucessCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { activeAddressesAction } from '../../../store/actions/addressesAction';
-import { GET_ACTIVE_ADDRESS, REMOVE_ACTIVE_ADDRESS } from '../../../store/actions/actionTypes';
+import {
+	GET_ACTIVE_ADDRESS,
+	REMOVE_ACTIVE_ADDRESS
+} from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 
+const OrderDetails = ({ route }) => {
+	const { totalPrice, orderCode } = route.params;
 
-const OrderDetails = ({route}) => {
-	const { totalPrice,orderCode } = route.params;
-
-	const currentAddress = useSelector((state) => state.address.activeAddress);
+	const currentAddress = useSelector(state => state.address.activeAddress);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(activeAddressesAction(GET_ACTIVE_ADDRESS)); //get called if the user refreshes the page to get data
-		return ()=>dispatch({type:REMOVE_ACTIVE_ADDRESS})
+		return () => dispatch({ type: REMOVE_ACTIVE_ADDRESS });
 	}, []);
 
-	if (!currentAddress) return <><Loader/></>;
+	if (!currentAddress)
+		return (
+			<>
+				<Loader />
+			</>
+		);
 
 	return (
 		<View>
-			<SucessCard orderCode={orderCode}/>
+			<SucessCard orderCode={orderCode} />
 			<View>
-				<ComponentHeading text="ORDER DETAILS"/>
+				<ComponentHeading text="ORDER DETAILS" />
 				<View style={styles.details}>
 					<View style={styles.totalParent}>
 						<AppText style={styles.total}>$ {totalPrice}</AppText>
@@ -63,35 +70,35 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		backgroundColor: colors.white,
 		padding: 10,
-		margin: 10,
+		margin: 10
 	},
 	headText: {
 		fontWeight: '300',
 		color: colors.primary1,
-		fontSize: 15,
+		fontSize: 15
 	},
 	noteBodyText: {
 		color: colors.primaryShade22,
-		fontSize: 14,
+		fontSize: 14
 	},
 	addressBar: {
-		paddingTop: 16,
+		paddingTop: 16
 	},
 	totalParent: {
-		paddingVertical: 10,
+		paddingVertical: 10
 	},
 	details: {
 		backgroundColor: colors.white,
 		padding: 10,
-		margin: 10,
+		margin: 10
 	},
 	total: {
 		fontWeight: 'bold',
-		color: colors.primary1,
+		color: colors.primary1
 	},
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 15,
-		paddingBottom: 10,
-	},
+		paddingBottom: 10
+	}
 });

@@ -24,7 +24,7 @@ const SecondSection = ({ token }) => {
 	const share = async () => {
 		try {
 			const result = await Share.share({
-				message: 'Jeem Solutions | http://jeem.brorinfotech.com/#/',
+				message: 'Jeem Solutions | http://jeem.brorinfotech.com/#/'
 			});
 			if (result.action === Share.sharedAction) {
 				if (result.activityType) {
@@ -99,6 +99,6 @@ const styles = StyleSheet.create({
 	},
 	customStyle: {
 		marginBottom: 2,
-		backgroundColor: colors.white,
-	},
+		backgroundColor: colors.white
+	}
 });

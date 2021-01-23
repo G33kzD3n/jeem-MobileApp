@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import AppText from '../../../common/components/AppText';
@@ -24,10 +24,10 @@ const AddressCard = ({ data }) => {
 						color: colors.primary1,
 						fontSize: 14,
 						alignSelf: 'center',
-						fontWeight: 'bold',
+						fontWeight: 'bold'
 					}}
 				>
-				  {data.phoneNumber}
+					{data.phoneNumber}
 					{/* {data.mobile} */}
 				</AppText>
 			</View>
@@ -41,16 +41,16 @@ const styles = StyleSheet.create({
 		color: colors.primary1,
 		fontSize: 18,
 		fontWeight: 'bold',
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 14,
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	priceContainer: {
 		flexDirection: 'row',
-		paddingTop: 7,
+		paddingTop: 7
 		// alignItems:'center'
-	},
+	}
 });

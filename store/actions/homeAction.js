@@ -4,7 +4,7 @@ import {
 	getSellerWithTag,
 	getTagsForBuyer,
 	getTagsProductForBuyer,
-	helpQuery,
+	helpQuery
 } from '../../api/homeApi.js';
 import { getSellerCategory } from '../../api/homeApi.js';
 import { getProductCategory } from '../../api/homeApi.js';
@@ -15,22 +15,22 @@ import { getAllTagsWithProducts } from '../../api/homeApi.js';
 import { searchProduct } from '../../api/homeApi.js';
 import { productReviews } from '../../api/productApi.js';
 
-export const carouselAction = (type) => {
-	return async (dispatch) => {
+export const carouselAction = type => {
+	return async dispatch => {
 		const data = await getCarousel();
 		dispatch({ type: type, value: data.data });
 	};
 };
 
-export const sellerCategoryAction = (type) => {
-	return async (dispatch) => {
+export const sellerCategoryAction = type => {
+	return async dispatch => {
 		const data = await getSellerCategory();
 		dispatch({ type: type, value: data.data });
 	};
 };
 
 export const productCategoryAction = (type, val) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		if (val !== '') {
 			const data = await getProductCategory(val);
 			if (data !== undefined) {
@@ -41,7 +41,7 @@ export const productCategoryAction = (type, val) => {
 };
 
 export const productSubCategoryAction = (type, val) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		if (val !== '') {
 			const data = await getProductSubCategory(val);
 			if (data !== undefined) {
@@ -52,7 +52,7 @@ export const productSubCategoryAction = (type, val) => {
 };
 
 export const productsAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		if (values !== '') {
 			const data = await getProducts(values.id, values.page, values.limit);
 			if (data !== undefined) {
@@ -62,7 +62,7 @@ export const productsAction = (type, values) => {
 	};
 };
 export const singleProductAction = (type, val) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		if (val !== '') {
 			const data = await getProduct(val);
 			if (data !== undefined) {
@@ -72,40 +72,40 @@ export const singleProductAction = (type, val) => {
 	};
 };
 
-export const offerAction = (type) => {
-	return async (dispatch) => {
+export const offerAction = type => {
+	return async dispatch => {
 		const data = await getAllTagsWithProducts();
 		dispatch({ type: type, value: data.data });
 	};
 };
 
 export const searchAction = (type, values) => {
-	return async (dispatch) => {
-		const data = await searchProduct(values); 
+	return async dispatch => {
+		const data = await searchProduct(values);
 		dispatch({ type: type, value: data });
 	};
 };
 
-export const getAllTagsAction = (type) => {
-	return async (dispatch) => {
+export const getAllTagsAction = type => {
+	return async dispatch => {
 		const result = await getTagsForBuyer();
 		dispatch({ type: type, value: result.data });
 	};
 };
 
 export const getTagsProductAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const result = await getTagsProductForBuyer(
 			values.id,
 			values.page,
 			values.limit
 		);
-		dispatch({ type: type, value: result.data }); 
+		dispatch({ type: type, value: result.data });
 	};
 };
 
 export const getSellerProductAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const result = await getSellerProductForBuyer(
 			values.id,
 			values.page,
@@ -116,15 +116,15 @@ export const getSellerProductAction = (type, values) => {
 };
 
 export const sendQueryAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const result = await helpQuery(values);
 		dispatch({ type: type, value: result.data.success });
 	};
 };
 
 export const getSellerWithTagAction = (type, values) => {
-	return async (dispatch) => {
-		const result = await getSellerWithTag(values.page,values.limit);
+	return async dispatch => {
+		const result = await getSellerWithTag(values.page, values.limit);
 		dispatch({ type: type, value: result.data });
 	};
 };

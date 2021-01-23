@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import AppText from './AppText';
 import colors from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -20,7 +20,7 @@ const AppButton = ({
 	iconColor = 'white',
 	paddingText,
 	paddingVertical = '3.5%',
-	textTransform = 'capitalize',
+	textTransform = 'capitalize'
 }) => {
 	return (
 		<TouchableOpacity
@@ -30,7 +30,7 @@ const AppButton = ({
 			<LinearGradient
 				style={[
 					styles.touchableOpacity,
-					{ borderRadius: borderRadius, paddingVertical: paddingVertical },
+					{ borderRadius: borderRadius, paddingVertical: paddingVertical }
 				]}
 				colors={[color2, color1, color1, color2]}
 				start={[0, 0]}
@@ -43,7 +43,7 @@ const AppButton = ({
 								color: textColor,
 								padding: paddingText,
 								textTransform: textTransform,
-								textAlign: textAlign,
+								textAlign: textAlign
 							}}
 						>
 							{text}
@@ -68,9 +68,9 @@ export default AppButton;
 const styles = StyleSheet.create({
 	icon: {
 		textAlign: 'center',
-		paddingVertical: 5,
+		paddingVertical: 5
 	},
 	touchableOpacity: {
-		justifyContent: 'center',
-	},
+		justifyContent: 'center'
+	}
 });

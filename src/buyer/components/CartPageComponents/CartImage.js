@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
 const CartImage = ({ image, resizeMode = 'cover' }) => {
 	// console.log(image);
@@ -18,6 +18,6 @@ export default CartImage;
 
 const styles = StyleSheet.create({
 	image: {
-		height: '100%',
-	},
+		height: '100%'
+	}
 });

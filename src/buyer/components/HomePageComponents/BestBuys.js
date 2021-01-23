@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import SimpleCard from '../../../common/components/SimpleCard';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import { apiUrlImageProducts } from '../../../config/config';
@@ -9,7 +9,6 @@ import { getTagsProductAction } from '../../../../store/actions/homeAction';
 import { useNavigation } from '@react-navigation/native';
 import i18n from '../../../languages/i18n';
 
-
 const BestBuys = () => {
 	const navigation = useNavigation();
 	const handleClick = () => {
@@ -17,17 +16,17 @@ const BestBuys = () => {
 			name: i18n.t('homeScreen.Best Buys'),
 			id: 2,
 			apiName: 'Tag',
-			totalItems: undefined,
+			totalItems: undefined
 		}); //navigate with params
 	};
 
-	const bestBuys = useSelector((state) => state.home.bestBuys);
+	const bestBuys = useSelector(state => state.home.bestBuys);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getTagsProductAction(BEST_BUYS, { id: 2, page: 0, limit: 4 }));
 	}, []);
 
-	const productView = (id) => {
+	const productView = id => {
 		navigation.navigate('ProductDetails', { id });
 	};
 
@@ -41,7 +40,10 @@ const BestBuys = () => {
 				onPress={() => handleClick()}
 			/>
 			<View style={styles.row}>
-				<TouchableOpacity onPress={() => productView(bestBuys.data[0].id)} style={styles.child}>
+				<TouchableOpacity
+					onPress={() => productView(bestBuys.data[0].id)}
+					style={styles.child}
+				>
 					<SimpleCard
 						image={
 							apiUrlImageProducts +
@@ -51,11 +53,16 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[0].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[0].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
+						subTitle={`${i18n.t('homeScreen.For')} $${
+							bestBuys.data[0].productDiscountedPrice
+						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[0].productName}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={() => productView(bestBuys.data[1].id)} style={styles.child}>
+				<TouchableOpacity
+					onPress={() => productView(bestBuys.data[1].id)}
+					style={styles.child}
+				>
 					<SimpleCard
 						image={
 							apiUrlImageProducts +
@@ -65,13 +72,18 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[1].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[1].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
+						subTitle={`${i18n.t('homeScreen.For')} $${
+							bestBuys.data[1].productDiscountedPrice
+						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[1].productName}
 					/>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.row}>
-				<TouchableOpacity onPress={() => productView(bestBuys.data[2].id)} style={styles.child}>
+				<TouchableOpacity
+					onPress={() => productView(bestBuys.data[2].id)}
+					style={styles.child}
+				>
 					<SimpleCard
 						image={
 							apiUrlImageProducts +
@@ -81,11 +93,16 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[2].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[2].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
+						subTitle={`${i18n.t('homeScreen.For')} $${
+							bestBuys.data[2].productDiscountedPrice
+						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[2].productName}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={() => productView(bestBuys.data[3].id)} style={styles.child}>
+				<TouchableOpacity
+					onPress={() => productView(bestBuys.data[3].id)}
+					style={styles.child}
+				>
 					<SimpleCard
 						image={
 							apiUrlImageProducts +
@@ -95,7 +112,9 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[3].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${bestBuys.data[3].productDiscountedPrice} ${i18n.t('homeScreen.only')}`}
+						subTitle={`${i18n.t('homeScreen.For')} $${
+							bestBuys.data[3].productDiscountedPrice
+						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[3].productName}
 					/>
 				</TouchableOpacity>
@@ -110,10 +129,10 @@ const styles = StyleSheet.create({
 	parent: {},
 	row: {
 		flexDirection: 'row',
-		paddingBottom: 10,
+		paddingBottom: 10
 	},
 	child: {
 		width: '50%',
-		paddingHorizontal: 8,
-	},
+		paddingHorizontal: 8
+	}
 });

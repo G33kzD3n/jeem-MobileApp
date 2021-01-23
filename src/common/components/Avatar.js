@@ -30,12 +30,12 @@ export default Avatar;
 
 const styles = StyleSheet.create({
 	parent: {
-		alignItems: 'center',
+		alignItems: 'center'
 	},
 	image: {
 		height: 50,
 		width: 50,
-		borderRadius: 25,
+		borderRadius: 25
 	},
 	icon: {
 		borderColor: colors.primary2,
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
 		borderRadius: 30,
 		padding: 5,
 		textAlign: 'center',
-		color: colors.primary2,
-	},
+		color: colors.primary2
+	}
 });

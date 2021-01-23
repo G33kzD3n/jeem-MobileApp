@@ -2,11 +2,9 @@ import React from 'react';
 import {
 	StyleSheet,
 	Modal,
-	Text,
-	Button,
 	FlatList,
 	TouchableOpacity,
-	View,
+	View
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -17,14 +15,14 @@ import { useNavigation } from '@react-navigation/native';
 const SubCategoryPicker = ({
 	visible,
 	setModalVisible,
-	productSubCategories,
+	productSubCategories
 }) => {
 	const navigation = useNavigation();
-	const handelSubCategory = (item) => {
+	const handelSubCategory = item => {
 		setModalVisible(false);
 		navigation.navigate('SubCategoryProduct', {
 			name: item.productSubCategoryName,
-			id: item.id,
+			id: item.id
 		}); //navigate with params
 	};
 
@@ -39,7 +37,7 @@ const SubCategoryPicker = ({
 					colors.primaryShade24,
 					colors.primaryShade22,
 					colors.primaryShade23,
-					colors.primaryShade24,
+					colors.primaryShade24
 				]}
 			>
 				<TouchableOpacity
@@ -52,7 +50,7 @@ const SubCategoryPicker = ({
 				<FlatList
 					data={productSubCategories}
 					numColumns={3}
-					keyExtractor={(data) => data.id}
+					keyExtractor={data => data.id}
 					renderItem={({ item }) => (
 						<View style={styles.parent}>
 							<TouchableOpacity onPress={() => handelSubCategory(item)}>
@@ -75,7 +73,7 @@ export default SubCategoryPicker;
 const styles = StyleSheet.create({
 	parent: {
 		flex: 1,
-		paddingVertical: 6,
+		paddingVertical: 6
 	},
 	touch: {
 		width: 30,
@@ -86,20 +84,20 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-end',
 
 		top: 6,
-		right: 8,
+		right: 8
 	},
 	icon: {
 		color: colors.primary1,
-		textAlign: 'center',
+		textAlign: 'center'
 	},
 	avatar: {
 		height: 80,
 		width: 80,
-		borderRadius: 50,
+		borderRadius: 50
 	},
 	modal: {
 		backgroundColor: colors.primary2,
 		flex: 1,
-		opacity: 0.8,
-	},
+		opacity: 0.8
+	}
 });

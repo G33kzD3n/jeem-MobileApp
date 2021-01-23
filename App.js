@@ -11,8 +11,8 @@ const MyTheme = {
 	...DefaultTheme,
 	colors: {
 		...DefaultTheme.colors,
-		notification: 'sienna',
-	},
+		notification: 'sienna'
+	}
 };
 export default function App() {
 	return (

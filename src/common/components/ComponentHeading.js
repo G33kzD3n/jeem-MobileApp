@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import colors from '../../config/colors';
 import AppText from './AppText';
 
@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		paddingTop: 13,
 		paddingBottom: 7,
-		paddingHorizontal: 8,
+		paddingHorizontal: 8
 	},
 	heading: {
 		color: colors.primary2,
 		fontSize: 12,
-		textTransform: 'uppercase',
-	},
+		textTransform: 'uppercase'
+	}
 });

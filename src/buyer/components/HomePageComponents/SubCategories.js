@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
 	StyleSheet,
-	Text,
 	View,
 	FlatList,
-	TouchableOpacity,
+	TouchableOpacity
 } from 'react-native';
 import Avatar from '../../../common/components/Avatar';
 import * as SplashScreen from 'expo-splash-screen';
@@ -22,7 +21,7 @@ const SubCategories = () => {
 	const [modalVisible, setModalVisible] = useState(false);
 
 	const productSubCategories = useSelector(
-		(state) => state.product.productSubCategoriesData
+		state => state.product.productSubCategoriesData
 	);
 
 	//console.log(productSubCategories);
@@ -46,12 +45,13 @@ const SubCategories = () => {
 		await SplashScreen.preventAutoHideAsync();
 	};
 
-	const handelSubCategory = (item) => {
-		if (item.productSubCategoryName === i18n.t('homeScreen.All')) setModalVisible(true);
+	const handelSubCategory = item => {
+		if (item.productSubCategoryName === i18n.t('homeScreen.All'))
+			setModalVisible(true);
 		else
 			navigation.navigate('SubCategoryProduct', {
 				name: item.productSubCategoryName,
-				id: item.id,
+				id: item.id
 				// total: undefined,
 			}); //navigate with params
 	};
@@ -74,16 +74,19 @@ const SubCategories = () => {
 					colors.primaryShade24,
 					colors.primaryShade24,
 					colors.primaryShade22,
-					colors.primaryShade24,
+					colors.primaryShade24
 				]}
 			>
 				<FlatList
 					data={productSubCategories
 						.slice(0, 7)
-						.concat({ productSubCategoryName: i18n.t('homeScreen.All'), id: 'All' })}
+						.concat({
+							productSubCategoryName: i18n.t('homeScreen.All'),
+							id: 'All'
+						})}
 					numColumns={4}
 					scrollEnabled={false}
-					keyExtractor={(data) => data.id}
+					keyExtractor={data => data.id}
 					renderItem={({ item }) => (
 						<View style={styles.parent}>
 							<TouchableOpacity onPress={() => handelSubCategory(item)}>
@@ -105,6 +108,6 @@ export default SubCategories;
 const styles = StyleSheet.create({
 	parent: {
 		flex: 1,
-		paddingVertical: 6,
-	},
+		paddingVertical: 6
+	}
 });

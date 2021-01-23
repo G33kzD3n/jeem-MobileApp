@@ -4,7 +4,7 @@ import { apiUrl, authAxios } from '../src/config/config';
 export async function getCartItems() {
 	try {
 		const response = await authAxios.get(apiUrl + 'order/get-orders-from-cart');
-		console.log(response,'>:::::::::::::');
+		console.log(response, '>:::::::::::::');
 		return response.data;
 	} catch (error) {
 		return 'Token is Expired';
@@ -25,7 +25,7 @@ export async function getCartCount() {
 		const response = await authAxios.get(apiUrl + 'order/buyer/count');
 		return response.data;
 	} catch (error) {
-		return(error.response.data.status);
+		return error.response.data.status;
 		// if (error.response.status === 404) {
 		// 	console.log(error.response);
 		// }

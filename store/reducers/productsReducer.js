@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initalState = {
 	products: null,
-	productCategories: null,
+	productCategories: null
 };
 
 const productsReducer = (state = initalState, action) => {
@@ -14,76 +14,76 @@ const productsReducer = (state = initalState, action) => {
 			return {
 				...state,
 				delete_response: action.value.message,
-				products: action.value.productData,
+				products: action.value.productData
 			};
-			case actionTypes.GET_REVIEWS_OF_PRODUCT:
-				return {
-					...state,
-					reviews: action.value,
-				};
-				case actionTypes.ADD_REVIEWS_OF_PRODUCT:
-					return {
-						...state,
-						reviewResponse: action.value,
-					};
-					case actionTypes.REMOVE_REVIEWS_OF_PRODUCT:
-						return {
-							...state,
-							reviewResponse: null,
-						};
-
-				case actionTypes.CLEAN_REVIEWS_OF_PRODUCT:
+		case actionTypes.GET_REVIEWS_OF_PRODUCT:
 			return {
 				...state,
-				reviews: null,
+				reviews: action.value
+			};
+		case actionTypes.ADD_REVIEWS_OF_PRODUCT:
+			return {
+				...state,
+				reviewResponse: action.value
+			};
+		case actionTypes.REMOVE_REVIEWS_OF_PRODUCT:
+			return {
+				...state,
+				reviewResponse: null
+			};
+
+		case actionTypes.CLEAN_REVIEWS_OF_PRODUCT:
+			return {
+				...state,
+				reviews: null
 			};
 		case actionTypes.ADD_PRODUCT:
 			return {
 				...state,
-				addProduct_response: action.value.message,
+				addProduct_response: action.value.message
 			};
 
 		case actionTypes.UPDATE_PRODUCT:
 			return {
 				...state,
-				updateProduct_response: action.value.message,
+				updateProduct_response: action.value.message
 			};
 		case actionTypes.ERROR_RESPONSE:
 			return {
 				...state,
-				error_response: action.value.message,
+				error_response: action.value.message
 			};
 		case actionTypes.GET_PRODCUTCATEGORY:
 			return {
 				...state,
-				productCategoriesData: action.value,
+				productCategoriesData: action.value
 			};
 		case actionTypes.GET_PRODUCTSUBCATEGORY:
 			return {
 				...state,
-				productSubCategoriesData: action.value,
+				productSubCategoriesData: action.value
 			};
 		case actionTypes.UN_SET_ERROR_RESPONSE:
 			return {
 				...state,
-				error_response: action.value,
+				error_response: action.value
 			};
 		case actionTypes.GET_SELLER_PRODUCT_CATEGORY:
 			return {
 				...state,
-				productCategories: action.value.productCategoryData,
+				productCategories: action.value.productCategoryData
 			};
 		case actionTypes.SUCCESS_TAG:
 			// console.log(action.value);
 			if (action.value === 'delete_response') {
 				return {
 					...state,
-					delete_response: null,
+					delete_response: null
 				};
 			} else {
 				return {
 					...state,
-					addProduct_response: null,
+					addProduct_response: null
 				};
 			}
 		default:

@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-	StyleSheet,
-	View,
-	FlatList,
-} from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import Card from '../../../common/components/Card';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +10,6 @@ import { apiUrlImageProducts } from '../../../config/config';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import i18n from '../../../languages/i18n';
 
-
 const DealsOfTheDay = () => {
 	const navigation = useNavigation();
 	const handleClick = () => {
@@ -22,11 +17,11 @@ const DealsOfTheDay = () => {
 			name: i18n.t('homeScreen.Deals Of The Day'),
 			id: 1,
 			apiName: 'Tag',
-			totalItems: undefined,
+			totalItems: undefined
 		}); //navigate with params
 	};
 
-	const getDeals = useSelector((state) => state.home.dealsOfTheDay);
+	const getDeals = useSelector(state => state.home.dealsOfTheDay);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
@@ -34,9 +29,9 @@ const DealsOfTheDay = () => {
 		);
 	}, []);
 
-	const productView=(id)=>{
+	const productView = id => {
 		navigation.navigate('ProductDetails', { id });
-	}
+	};
 
 	if (!getDeals) return <></>;
 
@@ -45,7 +40,7 @@ const DealsOfTheDay = () => {
 			<ComponentHeading
 				text={i18n.t('homeScreen.Deals Of The Day')}
 				more={getDeals.totalRecords > 10 && i18n.t('homeScreen.View More')}
-				onPress={()=>handleClick()}
+				onPress={() => handleClick()}
 			/>
 			<FlatList
 				data={getDeals.data}
@@ -65,7 +60,9 @@ const DealsOfTheDay = () => {
 									item.productImages[0]
 								}
 								brand={item.productName}
-								title={`${i18n.t('homeScreen.Flat')} ${item.productDiscount}% ${i18n.t('homeScreen.Off')}`}
+								title={`${i18n.t('homeScreen.Flat')} ${
+									item.productDiscount
+								}% ${i18n.t('homeScreen.Off')}`}
 								subTitle={i18n.t('homeScreen.Limited Time Offer')}
 							/>
 						</TouchableOpacity>

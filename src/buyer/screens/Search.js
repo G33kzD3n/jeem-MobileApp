@@ -24,10 +24,10 @@ const Search = () => {
 		limit: 10,
 		// totalRecords: '0',
 		error: null,
-		refreshing: false,
+		refreshing: false
 	});
 	const dispatch = useDispatch();
-	const searchResults = useSelector((state) => state.home.search);
+	const searchResults = useSelector(state => state.home.search);
 	// console.log(searchResults);
 	useEffect(() => {
 		textRef.current.focus();
@@ -36,7 +36,7 @@ const Search = () => {
 
 	useEffect(() => {
 		//set data from api to state for inital render or as data changes in productData
-		if(searchResults && searchResults.data === 'No Records found'){
+		if (searchResults && searchResults.data === 'No Records found') {
 			setLoading(false);
 		}
 
@@ -55,7 +55,7 @@ const Search = () => {
 				page: searchResults.page,
 				loading: false,
 				refreshing: false,
-				data: [...flatListParams.data, ...searchResults.data],
+				data: [...flatListParams.data, ...searchResults.data]
 			});
 		}
 		return () => Keyboard.dismiss();
@@ -66,24 +66,23 @@ const Search = () => {
 		return <Loader screen="simple" />;
 	};
 
-	const handleSubmit = (searchItem) => {
-		
+	const handleSubmit = searchItem => {
 		dispatch({ type: CLEAR_SEARCH });
 		setFlatListParams({
-		loading: false,
-		data: [],
-		page: 0,
-		limit: 10,
-		// totalRecords: '0',
-		error: null,
-		refreshing: false,
-	})
+			loading: false,
+			data: [],
+			page: 0,
+			limit: 10,
+			// totalRecords: '0',
+			error: null,
+			refreshing: false
+		});
 		setLoading(true);
 		dispatch(
 			searchAction(SEARCH, {
 				searchItem: searchItem,
 				page: flatListParams.page,
-				limit: flatListParams.limit,
+				limit: flatListParams.limit
 			})
 		);
 	};
@@ -92,7 +91,7 @@ const Search = () => {
 			...flatListParams,
 			page: 0,
 			refreshing: true,
-			data: [],
+			data: []
 		});
 		handleSubmit(searchTerm);
 	};
@@ -102,13 +101,13 @@ const Search = () => {
 			setFlatListParams({
 				...flatListParams,
 				page: searchResults.page + 1,
-				loading: true,
+				loading: true
 			});
 			dispatch(
 				searchAction(SEARCH, {
 					searchItem: searchTerm,
 					page: flatListParams.page,
-					limit: flatListParams.limit,
+					limit: flatListParams.limit
 				})
 			);
 		}
@@ -121,7 +120,7 @@ const Search = () => {
 						height: 80,
 						backgroundColor: colors.primaryShade14,
 						justifyContent: 'center',
-						paddingHorizontal: 5,
+						paddingHorizontal: 5
 					}}
 				>
 					<View
@@ -130,14 +129,18 @@ const Search = () => {
 							backgroundColor: 'white',
 							flexDirection: 'row',
 							paddingHorizontal: 5,
-							alignItems: 'center',
+							alignItems: 'center'
 						}}
 					>
-						{loading ? <Loader screen="simple" size='small'/>:<MaterialCommunityIcons
-							name="magnify"
-							size={25}
-							color={colors.primary2}
-						/>}
+						{loading ? (
+							<Loader screen="simple" size="small" />
+						) : (
+							<MaterialCommunityIcons
+								name="magnify"
+								size={25}
+								color={colors.primary2}
+							/>
+						)}
 						<TextInput
 							ref={textRef}
 							placeholder={i18n.t('searchScreen.Search')}
@@ -145,22 +148,28 @@ const Search = () => {
 								height: '100%',
 								width: '90%',
 								fontSize: 20,
-								paddingLeft: 15,
+								paddingLeft: 15
 							}}
 							// value={searchTerm}
 							// onChange={(e)=>setSearchTerm(e.target.value)}
-							onSubmitEditing={(e) => {
+							onSubmitEditing={e => {
 								setSearchTerm(e.nativeEvent.text);
 								return handleSubmit(e.nativeEvent.text);
 							}}
 						/>
 					</View>
-					{searchResults&&
-					<AppText  style={styles.textInfo}>{searchResults.totalRecords.toString()} {i18n.t('searchScreen.records found')}</AppText>}
+					{searchResults && (
+						<AppText style={styles.textInfo}>
+							{searchResults.totalRecords.toString()}{' '}
+							{i18n.t('searchScreen.records found')}
+						</AppText>
+					)}
 				</View>
 				<View style={styles.screen}>
-					{searchResults && searchResults.data === 'No Records found'? (
-						<AppText style={styles.message}>{i18n.t('searchScreen.No Records found')}</AppText>
+					{searchResults && searchResults.data === 'No Records found' ? (
+						<AppText style={styles.message}>
+							{i18n.t('searchScreen.No Records found')}
+						</AppText>
 					) : (
 						<FlatList
 							refreshing={flatListParams.refreshing}
@@ -190,23 +199,23 @@ const Search = () => {
 export default Search;
 
 const styles = StyleSheet.create({
-	textInfo:{
-		color:colors.primary1,
-		fontSize:13,
-		textAlign:'center'
+	textInfo: {
+		color: colors.primary1,
+		fontSize: 13,
+		textAlign: 'center'
 	},
 	message: {
 		color: colors.primary1,
 		flex: 1,
-		textAlign: 'center',
+		textAlign: 'center'
 	},
 	outerView: {
 		flex: 1,
 		paddingHorizontal: 3,
-		paddingBottom: 5,
+		paddingBottom: 5
 	},
 	screen: {
 		backgroundColor: colors.primaryShade24,
-		flex: 1,
-	},
+		flex: 1
+	}
 });

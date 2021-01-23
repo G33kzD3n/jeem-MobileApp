@@ -11,6 +11,6 @@ export default AppScreen;
 const styles = StyleSheet.create({
 	screen: {
 		paddingTop: constants.statusBarHeight,
-		flex: 1,
-	},
+		flex: 1
+	}
 });

@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import {
+	StyleSheet,
+	View,
+	ScrollView,
+	TouchableOpacity
+} from 'react-native';
 import AppCarousel from '../../common/components/AppCarousel';
 import AppScreen from '../../common/components/AppScreen';
 import colors from '../../config/colors';
@@ -12,13 +17,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
 	addProductsToCartAction,
 	getProductReviews,
-	singleProductAction,
+	singleProductAction
 } from '../../../store/actions';
 import {
 	ADD_PRODUCT_TO_CART,
 	ADD_PRODUCT_TO_CART_ERROR,
 	GET_REVIEWS_OF_PRODUCT,
-	GET_SINGLE_PRODUCT_FOR_BUYER,
+	GET_SINGLE_PRODUCT_FOR_BUYER
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
@@ -28,9 +33,9 @@ const ProductView = ({ route }) => {
 	const navigation = useNavigation();
 	const { id } = route.params;
 
-	const productData = useSelector((state) => state.home.singleProduct);
-	const reviews = useSelector((state) => state.product.reviews);
-	const cartMessage = useSelector((state) => state.cart.message);
+	const productData = useSelector(state => state.home.singleProduct);
+	const reviews = useSelector(state => state.product.reviews);
+	const cartMessage = useSelector(state => state.cart.message);
 
 	const addToCart = () => {
 		dispatch(addProductsToCartAction(ADD_PRODUCT_TO_CART, id));
@@ -49,14 +54,14 @@ const ProductView = ({ route }) => {
 			dispatch({ type: ADD_PRODUCT_TO_CART_ERROR, value: { message: null } });
 	}, []);
 
-	const handleSeller=(product)=>{
+	const handleSeller = product => {
 		navigation.navigate('SellerProduct', {
 			name: product.productSellerName,
 			id: product.productSellerId,
-			apiName: 'Seller',
+			apiName: 'Seller'
 			// total: undefined,
 		}); //navigate with params
-	}
+	};
 
 	if (!productData) return <Loader />;
 	return (
@@ -92,8 +97,10 @@ const ProductView = ({ route }) => {
 						<AppText style={styles.taxesMessage}>
 							inclusive of all taxes
 						</AppText>
-						<TouchableOpacity style={styles.priceContainer} onPress={()=>handleSeller(productData)}>
-	
+						<TouchableOpacity
+							style={styles.priceContainer}
+							onPress={() => handleSeller(productData)}
+						>
 							<AppText style={{ color: colors.primary2, fontSize: 16 }}>
 								Seller:
 							</AppText>
@@ -101,7 +108,7 @@ const ProductView = ({ route }) => {
 								style={{
 									color: colors.primary1,
 									fontSize: 15,
-									alignSelf: 'center',
+									alignSelf: 'center'
 								}}
 							>
 								{' '}
@@ -114,10 +121,11 @@ const ProductView = ({ route }) => {
 					heading={'Product Details'}
 					details={productData.productCartDesc}
 				/>
-				<Ratings ratings={productData.ratings} totalReviews={productData.totalReviews}/>
-				{reviews&&reviews.length!==0&&
-				<Reviews reviews={reviews}/>
-        }
+				<Ratings
+					ratings={productData.ratings}
+					totalReviews={productData.totalReviews}
+				/>
+				{reviews && reviews.length !== 0 && <Reviews reviews={reviews} />}
 			</ScrollView>
 			<View style={styles.appButton}>
 				<AppButton
@@ -139,53 +147,53 @@ export default ProductView;
 const styles = StyleSheet.create({
 	appButton: {
 		padding: 5,
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	taxesMessage: {
 		color: 'green',
-		fontSize: 15,
+		fontSize: 15
 	},
 	carouselHeight: {
-		height: 550,
+		height: 550
 		// height:'80%',
 		// flex:1
 	},
 	dataContainer: {
 		padding: 10,
 		paddingBottom: 5,
-		flex: 1,
+		flex: 1
 		//  justifyContent:'space-around'
 	},
 	discount: {
 		color: 'red',
 		textTransform: 'uppercase',
-		fontSize: 15,
+		fontSize: 15
 	},
 	orginalPrice: {
 		color: colors.primary2,
 		fontSize: 15,
-		textDecorationLine: 'line-through',
+		textDecorationLine: 'line-through'
 	},
 	mainPrice: {
 		color: colors.primary1,
 		fontSize: 18,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	priceContainer: {
-		flexDirection: 'row',
+		flexDirection: 'row'
 		// alignItems:'center'
 	},
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 16,
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	heading: {
 		color: colors.primary1,
 		fontSize: 18,
 		fontWeight: 'bold',
-		paddingBottom: 2,
-	},
+		paddingBottom: 2
+	}
 	// parent: {
 	//     height: 290,
 	//     borderRadius: 5,

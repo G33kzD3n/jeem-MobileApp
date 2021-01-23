@@ -41,7 +41,7 @@ function AppNavigator() {
 				role: { role: 'Buyer' },
 				status: 'success',
 				token: { access_token: token },
-				user: JSON.parse(userDetails),
+				user: JSON.parse(userDetails)
 			};
 			dispatch({ type: LOGIN, value: data });
 		}
@@ -54,7 +54,7 @@ function AppNavigator() {
 	return (
 		<Stack.Navigator
 			screenOptions={{
-				headerTintColor: colors.primary1,
+				headerTintColor: colors.primary1
 			}}
 		>
 			<Stack.Screen
@@ -66,40 +66,40 @@ function AppNavigator() {
 				name="SubCategoryProduct"
 				component={SubCategoryProducts}
 				options={({ route }) => ({
-					headerTitle: (props) => (
+					headerTitle: props => (
 						<HeaderTitle
 							name={route.params.name}
 							totalItems={route.params.totalItems}
 							{...props}
 						/>
-					),
+					)
 				})}
 			/>
-				<Stack.Screen
+			<Stack.Screen
 				name="SellerProduct"
 				component={SellerProducts}
 				options={({ route }) => ({
-					headerTitle: (props) => (
+					headerTitle: props => (
 						<HeaderTitle
 							name={route.params.name}
 							totalItems={route.params.totalItems}
 							{...props}
 						/>
-					),
+					)
 				})}
 			/>
 
-      <Stack.Screen
+			<Stack.Screen
 				name="AllBrands"
 				component={AllBrands}
 				options={({ route }) => ({
-					headerTitle: (props) => (
+					headerTitle: props => (
 						<HeaderTitle
 							name={route.params.name}
 							totalItems={route.params.totalItems}
 							{...props}
 						/>
-					),
+					)
 				})}
 			/>
 
@@ -124,7 +124,7 @@ function AppNavigator() {
 				options={{
 					title: 'ORDER',
 					headerTitleStyle: { alignSelf: 'center' },
-					headerLeft: () => null,
+					headerLeft: () => null
 				}}
 			/>
 			<Stack.Screen
@@ -157,17 +157,13 @@ function AppNavigator() {
 				component={EditProfile}
 				options={{ title: 'PROFILE' }}
 			/>
-				<Stack.Screen
+			<Stack.Screen
 				name="HelpCenter"
 				component={HelpCenter}
 				options={{ title: 'HELP' }}
 			/>
-				<Stack.Screen
-				name="Faq"
-				component={Faq}
-				options={{ title: 'FAQ' }}
-			/>
-				<Stack.Screen
+			<Stack.Screen name="Faq" component={Faq} options={{ title: 'FAQ' }} />
+			<Stack.Screen
 				name="AboutUs"
 				component={AboutUs}
 				options={{ title: 'ABOUT US' }}
@@ -182,7 +178,7 @@ function AppNavigator() {
 				component={PrivacyPolicy}
 				options={{ title: 'PRIVACY POLICY' }}
 			/>
-				<Stack.Screen
+			<Stack.Screen
 				name="AddReview"
 				component={AddReview}
 				options={{ title: 'RATE AND REVIEW' }}
@@ -192,7 +188,7 @@ function AppNavigator() {
 				component={Language}
 				options={{ title: 'SELECT LANGUAGE' }}
 			/>
-				<Stack.Screen
+			<Stack.Screen
 				name="ForgotPassword"
 				component={ForgotPassword}
 				options={{ headerShown: false }}

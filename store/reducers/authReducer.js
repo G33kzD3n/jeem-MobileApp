@@ -4,7 +4,7 @@ const initalState = {
 	login: null,
 	signup: null,
 	error: false,
-	errorMessages: '',
+	errorMessages: ''
 };
 
 const authReducer = (state = initalState, action) => {
@@ -16,21 +16,21 @@ const authReducer = (state = initalState, action) => {
 						...state,
 						login: null,
 						error: true,
-						errorMessages: 'Wrong email or password',
+						errorMessages: 'Wrong email or password'
 					};
 				case 403:
 					return {
 						...state,
 						login: null,
 						error: true,
-						errorMessages: 'Unauthorized / Account Suspended',
+						errorMessages: 'Unauthorized / Account Suspended'
 					};
 				case 422:
 					return {
 						...state,
 						login: null,
 						error: true,
-						errorMessages: 'ReCaptcha Error',
+						errorMessages: 'ReCaptcha Error'
 					};
 				case 200:
 					return { ...state, login: null, error: true, errorMessages: null };
@@ -39,7 +39,7 @@ const authReducer = (state = initalState, action) => {
 						...state,
 						login: action.value,
 						error: false,
-						errorMessages: null,
+						errorMessages: null
 					};
 			}
 		// return { ...state, login: action.value === 401 || action.value === 403 || action.value === 200 ||action.value ===422 ? null : action.value, errorMessages: action.value === 401 ? "Wrong email or password" : "Unauthorized / Account Suspended", error: action.value === 401 || action.value === 403 ? true : false};

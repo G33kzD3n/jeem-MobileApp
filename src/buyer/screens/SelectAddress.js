@@ -3,7 +3,7 @@ import {
 	StyleSheet,
 	ScrollView,
 	View,
-	TouchableWithoutFeedback,
+	TouchableWithoutFeedback
 } from 'react-native';
 import colors from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -13,12 +13,16 @@ import ComponentHeading from '../../common/components/ComponentHeading';
 import AddressButtons from '../components/AddressPageComponents/AddressButtons';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
-import { addAddressAction, addressesAction, deleteAddressAction } from '../../../store/actions';
+import {
+	addAddressAction,
+	addressesAction,
+	deleteAddressAction
+} from '../../../store/actions';
 import {
 	ADD_ADDRESS,
 	DELETE_ADDRESS,
 	GET_ADDRESSES,
-	REMOVE_ADDRESS_MESSAGE,
+	REMOVE_ADDRESS_MESSAGE
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
@@ -28,18 +32,19 @@ const SelectAddress = () => {
 	const [loading, setLoading] = useState(false);
 	const navigation = useNavigation();
 
-	const getAddresses = useSelector((state) => state.address.addresses);
-	const response = useSelector((state) => state.address.message);
+	const getAddresses = useSelector(state => state.address.addresses);
+	const response = useSelector(state => state.address.message);
 	const dispatch = useDispatch();
-	 
+
 	useEffect(() => {
 		dispatch(addressesAction(GET_ADDRESSES)); //get called if the user refreshes the page to get data
 	}, []);
 
-	useEffect(() => { //response for updating  address
+	useEffect(() => {
+		//response for updating  address
 		if (response) {
 			setLoading(false);
-			dispatch({ type: REMOVE_ADDRESS_MESSAGE })
+			dispatch({ type: REMOVE_ADDRESS_MESSAGE });
 		}
 	}, [response]);
 
@@ -56,19 +61,19 @@ const SelectAddress = () => {
 		navigation.navigate('AddAddress');
 	};
 
-	const removeAddress = (item) => {
-		if(item.isActive){
+	const removeAddress = item => {
+		if (item.isActive) {
 			appAlert('ALERT', 'Please deselect the address and try again');
-		}else{
-		setLoading(true);
-		dispatch(deleteAddressAction(DELETE_ADDRESS, item.id));
+		} else {
+			setLoading(true);
+			dispatch(deleteAddressAction(DELETE_ADDRESS, item.id));
 		}
 	};
 
-	const handleAddressChange=(item)=>{
+	const handleAddressChange = item => {
 		setLoading(true);
-		dispatch(addAddressAction(ADD_ADDRESS, {id:item.id}));
-	}
+		dispatch(addAddressAction(ADD_ADDRESS, { id: item.id }));
+	};
 	if (getAddresses.length === 0)
 		//means data not yet retreived
 		return <Loader />;
@@ -97,11 +102,7 @@ const SelectAddress = () => {
 							<View style={styles.topContainer}>
 								<View style={styles.cartImage}>
 									<MaterialCommunityIcons
-										name={
-											item.isActive
-												? 'radiobox-marked'
-												: 'radiobox-blank'
-										}
+										name={item.isActive ? 'radiobox-marked' : 'radiobox-blank'}
 										size={24}
 										color={colors.primary1}
 									/>
@@ -141,32 +142,32 @@ const styles = StyleSheet.create({
 		// height: 150,
 		borderColor: 'red',
 		padding: 10,
-		justifyContent: 'space-evenly',
+		justifyContent: 'space-evenly'
 	},
 	cartImage: {
 		flex: 1,
 		paddingRight: 10,
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center'
 		// borderColor: colors.primary1,
 		// borderWidth: 1,
 	},
 	dataContainer: {
 		// paddingBottom: 5,
-		flex: 4,
+		flex: 4
 		//  justifyContent:'space-around'
 	},
 	addAdressContainer: {
 		padding: 10,
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	addAdress: {
 		borderColor: colors.primary1,
 		borderWidth: 1,
-		borderRadius: 3,
+		borderRadius: 3
 	},
 	appButton: {
 		padding: 5,
-		backgroundColor: colors.white,
-	},
+		backgroundColor: colors.white
+	}
 });

@@ -20,9 +20,9 @@ const AppText = ({
 					fontSize: size,
 					fontWeight: weight,
 					color: color,
-					textTransform: 'capitalize',
+					textTransform: 'capitalize'
 				},
-				style,
+				style
 			]}
 		>
 			{children}

@@ -9,7 +9,7 @@ import TopSections from '../components/ProfilePageComponents/TopSections';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	HELP_QUERY,
-	REMOVE_HELP_QUERY,
+	REMOVE_HELP_QUERY
 } from '../../../store/actions/actionTypes';
 import { sendQueryAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
@@ -19,25 +19,23 @@ const HelpCenter = () => {
 	const [loading, setLoading] = useState(false);
 
 	const queryResponse = useSelector(
-		(state) => state.profile && state.profile.queryResponse
+		state => state.profile && state.profile.queryResponse
 	);
-
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if(queryResponse){
+		if (queryResponse) {
 			setLoading(false);
 			appAlert('SUCCESS', queryResponse);
-			dispatch({type:REMOVE_HELP_QUERY});
+			dispatch({ type: REMOVE_HELP_QUERY });
 		}
-	
 	}, [queryResponse]);
 
-	const handleQuery = (data,resetForm) => {
+	const handleQuery = (data, resetForm) => {
 		setLoading(true);
 		dispatch(sendQueryAction(HELP_QUERY, data));
-		resetForm()
+		resetForm();
 	};
 	return (
 		<>
@@ -48,9 +46,9 @@ const HelpCenter = () => {
 						initialValues={{
 							name: '',
 							email: '',
-							message: '',
+							message: ''
 						}}
-						onSubmit={(values,{resetForm}) => handleQuery(values,resetForm)}
+						onSubmit={(values, { resetForm }) => handleQuery(values, resetForm)}
 						validationSchema={validationSchema.validationHelp}
 					>
 						<View style={styles.topContainer}>
@@ -111,36 +109,36 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		padding: 0,
-		margin: 0,
+		margin: 0
 	},
 	topContainer: {
 		// borderColor: 'green',
 		// borderWidth: 3,
 		paddingBottom: '12%',
-		height: '100%',
+		height: '100%'
 	},
 	button: {
 		width: '100%',
 		position: 'absolute', //Here is the trick
 		bottom: 0, //Here is the trick
 		padding: 5,
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 	},
 	formContainer: {
-		flex: 1,
+		flex: 1
 	},
 	contactDetails: {
 		backgroundColor: colors.white,
-		padding: 30,
+		padding: 30
 	},
 	overrideTextbox: {
 		paddingVertical: 10,
 		color: colors.primary1,
-		width: '100%',
+		width: '100%'
 	},
 	outerLayer: {
 		borderColor: colors.primary2,
 		borderWidth: 0.5,
-		borderBottomColor: colors.primary2,
-	},
+		borderBottomColor: colors.primary2
+	}
 });

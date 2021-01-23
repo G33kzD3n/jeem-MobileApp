@@ -14,12 +14,12 @@ const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.9);
 
 const RecommendCarousel = ({ allTags }) => {
 	const navigation = useNavigation();
-	const handleClick = (item) => {
+	const handleClick = item => {
 		navigation.navigate('SubCategoryProduct', {
 			name: item.tagName,
 			id: item.id,
 			apiName: 'Tag',
-			totalItems: undefined,
+			totalItems: undefined
 		}); //navigate with params
 	};
 	const _renderItemCarousel = ({ item, index }) => {
@@ -37,7 +37,7 @@ const RecommendCarousel = ({ allTags }) => {
 						style={{
 							fontSize: 30,
 							color: colors.primary1,
-							textAlign: 'center',
+							textAlign: 'center'
 						}}
 					>
 						{item.tagName}
@@ -83,14 +83,14 @@ const styles = StyleSheet.create({
 	carousel: {
 		flexGrow: 0,
 		height: 310,
-		paddingVertical: 0,
+		paddingVertical: 0
 	},
 	background: {
-		flex: 1,
+		flex: 1
 	},
 	touchOpacity: {
 		borderRadius: 50,
 		height: '100%',
-		marginRight: 10,
-	},
+		marginRight: 10
+	}
 });

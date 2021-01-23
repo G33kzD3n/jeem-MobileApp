@@ -14,13 +14,13 @@ import NotFound from './NotFound';
 import {
 	cartAction,
 	changeProductQuantity,
-	removeCartAction,
+	removeCartAction
 } from '../../../store/actions';
 import {
 	CHANGE_QUANTITY,
 	GET_CART_ITEMS,
 	PRICE_DETAILS,
-	REMOVE_CART_ITEM,
+	REMOVE_CART_ITEM
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
@@ -32,10 +32,10 @@ const Cart = ({ navigation }) => {
 	const [loading, setLoading] = useState(false);
 	const [priceDetails, setPriceDetails] = useState();
 	const token = useSelector(
-		(state) => state.auth.login && state.auth.login.token.access_token
+		state => state.auth.login && state.auth.login.token.access_token
 	);
 
-	const cartItems = useSelector((state) => state.cart.cartItems);
+	const cartItems = useSelector(state => state.cart.cartItems);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(cartAction(GET_CART_ITEMS));
@@ -44,7 +44,7 @@ const Cart = ({ navigation }) => {
 
 	//stop Loader
 	useEffect(() => {
-		if (cartItems && cartItems!=='Token is Expired') {
+		if (cartItems && cartItems !== 'Token is Expired') {
 			//calculate total items
 			// console.log(cartItems, 'calculate total items');
 			let total = cartItems.reduce(
@@ -59,7 +59,10 @@ const Cart = ({ navigation }) => {
 				{ totalPrice: 0, totalDiscountPrice: 0, totalDiscountPercentage: 0 }
 			);
 			setPriceDetails(total);
-			dispatch({type:PRICE_DETAILS,value:{priceDetails:total,totalItem:cartItems.length}});
+			dispatch({
+				type: PRICE_DETAILS,
+				value: { priceDetails: total, totalItem: cartItems.length }
+			});
 			//means if the cartitems change stop loading
 			setLoading(false);
 		}
@@ -69,14 +72,16 @@ const Cart = ({ navigation }) => {
 		navigation.navigate('Login');
 	};
 
-	const handleOk = (id) => {
+	const handleOk = id => {
 		dispatch(removeCartAction(REMOVE_CART_ITEM, id));
 		setLoading(true);
 	};
 
-	const handleRemove = (id) => {
-		appAlert(i18n.t('cart.DELETE'), i18n.t('cart.Are you sure you want to remove item from cart?'), () =>
-			handleOk(id)
+	const handleRemove = id => {
+		appAlert(
+			i18n.t('cart.DELETE'),
+			i18n.t('cart.Are you sure you want to remove item from cart?'),
+			() => handleOk(id)
 		);
 	};
 
@@ -86,11 +91,15 @@ const Cart = ({ navigation }) => {
 	};
 
 	if (!token) {
-		return <NotFound name={i18n.t('cart.LOG IN/SIGN UP')} onClick={handleAuth} />;
+		return (
+			<NotFound name={i18n.t('cart.LOG IN/SIGN UP')} onClick={handleAuth} />
+		);
 	}
 
-	if (cartItems==='Token is Expired') {
-		return <NotFound name={i18n.t('cart.Please logout and then login again')}/>;
+	if (cartItems === 'Token is Expired') {
+		return (
+			<NotFound name={i18n.t('cart.Please logout and then login again')} />
+		);
 	}
 
 	if (!cartItems || !priceDetails)
@@ -129,15 +138,14 @@ const Cart = ({ navigation }) => {
 							<View
 								style={{
 									borderTopColor: colors.primaryShade23,
-									borderTopWidth: 0.5,
+									borderTopWidth: 0.5
 								}}
 							>
 								<ProductButtons handleClick={() => handleRemove(items.id)} />
 							</View>
 						</React.Fragment>
 					))}
-					<PriceDetails
-					/>
+					<PriceDetails />
 				</ScrollView>
 			</AppScreen>
 		</>
@@ -148,7 +156,7 @@ export default Cart;
 
 const styles = StyleSheet.create({
 	scroll: {
-		backgroundColor: colors.primaryShade24,
+		backgroundColor: colors.primaryShade24
 	},
 	topContainer: {
 		backgroundColor: colors.white,
@@ -158,17 +166,17 @@ const styles = StyleSheet.create({
 		height: 200,
 		borderColor: 'red',
 		padding: 10,
-		justifyContent: 'space-evenly',
+		justifyContent: 'space-evenly'
 	},
 	cartImage: {
 		flex: 1,
 		paddingRight: 10,
-		width: 50,
+		width: 50
 	},
 
 	dataContainer: {
 		// paddingBottom: 5,
-		flex: 2,
+		flex: 2
 		//  justifyContent:'space-around'
-	},
+	}
 });

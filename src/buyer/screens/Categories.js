@@ -4,21 +4,21 @@ import AccordionListItem from '../components/CategoryPageComponents/AccordionLis
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	GET_PRODCUTCATEGORY,
-	SELLER_CATEGORY,
+	SELLER_CATEGORY
 } from '../../../store/actions/actionTypes';
 import {
 	productCategoriesAction,
-	sellerCategoryAction,
+	sellerCategoryAction
 } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
 
 const Categories = () => {
-	const sellerCategory = useSelector((state) => state.home.sellerCategory);
+	const sellerCategory = useSelector(state => state.home.sellerCategory);
 	const productCategory = useSelector(
-		(state) => state.product.productCategoriesData
+		state => state.product.productCategoriesData
 	);
 	const productSubCategories = useSelector(
-		(state) => state.product.productSubCategoriesData
+		state => state.product.productSubCategoriesData
 	);
 	const dispatch = useDispatch();
 
@@ -47,6 +47,6 @@ export default Categories;
 
 const styles = StyleSheet.create({
 	loader: {
-		flex: 1,
-	},
+		flex: 1
+	}
 });

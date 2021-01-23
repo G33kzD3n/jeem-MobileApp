@@ -9,9 +9,11 @@ import OrderInfoCards from '../components/OrderDetailsComponent/OrderInfoCards';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 import { getBuyerOrdersAction } from '../../../store/actions';
-import { CLEAR_GET_MY_ORDERS, GET_MY_ORDERS } from '../../../store/actions/actionTypes';
+import {
+	CLEAR_GET_MY_ORDERS,
+	GET_MY_ORDERS
+} from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
-
 
 const ViewOrders = () => {
 	const isFocused = useIsFocused();
@@ -19,7 +21,7 @@ const ViewOrders = () => {
 
 	const [loading, setLoading] = useState(false);
 
-	const myOrders = useSelector((state) => state.order && state.order.myOrders);
+	const myOrders = useSelector(state => state.order && state.order.myOrders);
 
 	const dispatch = useDispatch();
 
@@ -27,17 +29,16 @@ const ViewOrders = () => {
 		dispatch(getBuyerOrdersAction(GET_MY_ORDERS));
 		setLoading(true);
 	}, [isFocused]);
-	
+
 	useEffect(() => {
 		if (myOrders) {
 			setLoading(false);
 		}
 	}, [myOrders]);
 
-	
-useEffect(() => {
-	return ()=>dispatch({type:CLEAR_GET_MY_ORDERS})
-}, [])
+	useEffect(() => {
+		return () => dispatch({ type: CLEAR_GET_MY_ORDERS });
+	}, []);
 	const checkStatus = () => {
 		// navigation.navigate('ViewOrders');
 	};
@@ -46,7 +47,7 @@ useEffect(() => {
 		navigation.navigate('Home');
 	};
 
-	if (!myOrders) return <Loader />
+	if (!myOrders) return <Loader />;
 	if (myOrders.length === 0) {
 		return <NotFound name="No Items" />;
 	}
@@ -94,28 +95,28 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.white,
 		margin: 10,
 		padding: 6,
-		marginBottom: 0,
+		marginBottom: 0
 	},
 
 	parent: {
-		backgroundColor: colors.primaryShade24,
+		backgroundColor: colors.primaryShade24
 	},
 	topContainer: {
 		flexDirection: 'row',
-		alignItems: 'center',
+		alignItems: 'center'
 	},
 	text: {
 		color: colors.primary1,
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
-		fontSize: 17,
+		fontSize: 17
 	},
 	subHeading: {
 		color: colors.primaryShade21,
 		fontSize: 14,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	icon: {
-		paddingHorizontal: 12,
-	},
+		paddingHorizontal: 12
+	}
 });

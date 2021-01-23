@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, ActivityIndicator, View } from 'react-native';
 import colors from '../../config/colors';
 
-const Loader = ({ screen = 'full',size='large' }) => {
+const Loader = ({ screen = 'full', size = 'large' }) => {
 	return (
 		<View style={screen === 'full' && styles.overlay}>
 			<ActivityIndicator
@@ -18,7 +18,7 @@ export default Loader;
 
 const styles = StyleSheet.create({
 	loader: {
-		flex: 1,
+		flex: 1
 	},
 	overlay: {
 		position: 'absolute',
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
 		opacity: 0.8,
 		height: '100%',
 		width: '100%',
-		zIndex: 1,
-	},
+		zIndex: 1
+	}
 });

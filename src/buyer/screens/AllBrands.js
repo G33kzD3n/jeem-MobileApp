@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet,  View, FlatList,TouchableOpacity } from 'react-native';
+import { StyleSheet, View, FlatList, TouchableOpacity } from 'react-native';
 import colors from '../../config/colors';
 import { useSelector, useDispatch } from 'react-redux';
 import { productsAction } from '../../../store/actions';
 import {
 	GET_PRODUCTS_FOR_BUYER,
-  GET_SELLER_WITH_TAGS,
-  REMOVE_SELLER_WITH_TAGS,
+	GET_SELLER_WITH_TAGS,
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import { getSellerWithTagAction } from '../../../store/actions/homeAction';
@@ -23,18 +22,18 @@ const AllBrands = ({ route, navigation }) => {
 		limit: 10,
 		// totalRecords: '0',
 		error: null,
-		refreshing: false,
+		refreshing: false
 	});
-  const getSellers = useSelector((state) => state.home.getSellers);
+	const getSellers = useSelector(state => state.home.getSellers);
 	const dispatch = useDispatch();
 
-	const handelDispatchCalls = (apiName) => {
-		switch (apiName) { 
-      case 'Seller':
+	const handelDispatchCalls = apiName => {
+		switch (apiName) {
+			case 'Seller':
 				return dispatch(
-          getSellerWithTagAction(GET_SELLER_WITH_TAGS, {
+					getSellerWithTagAction(GET_SELLER_WITH_TAGS, {
 						page: flatListParams.page,
-						limit: flatListParams.limit,
+						limit: flatListParams.limit
 					})
 				);
 			default:
@@ -42,7 +41,7 @@ const AllBrands = ({ route, navigation }) => {
 					productsAction(GET_PRODUCTS_FOR_BUYER, {
 						id: id,
 						page: flatListParams.page,
-						limit: flatListParams.limit,
+						limit: flatListParams.limit
 					})
 				); //get called if the user refreshes the page to get data
 		}
@@ -68,7 +67,7 @@ const AllBrands = ({ route, navigation }) => {
 				page: getSellers.page,
 				loading: false,
 				refreshing: false,
-				data: [...flatListParams.data, ...getSellers.data],
+				data: [...flatListParams.data, ...getSellers.data]
 			});
 		}
 	}, [getSellers]);
@@ -78,44 +77,44 @@ const AllBrands = ({ route, navigation }) => {
 		return <Loader screen="simple" />;
 	};
 
-	const handleRefresh = (apiName) => {
+	const handleRefresh = apiName => {
 		setFlatListParams({
 			...flatListParams,
 			page: 0,
 			refreshing: true,
-			data: [],
+			data: []
 		});
 		handelDispatchCalls(apiName);
 	};
 
-	const handleLoadMore = (apiName) => {
+	const handleLoadMore = apiName => {
 		if (flatListParams.data.length < getSellers.totalRecords) {
 			setFlatListParams({
 				...flatListParams,
 				page: getSellers.page + 1,
-				loading: true,
+				loading: true
 			});
 			handelDispatchCalls(apiName);
 		}
-  };
-  
-  const showSellerProducts=(item)=>{
+	};
+
+	const showSellerProducts = item => {
 		navigation.navigate('SellerProduct', {
 			name: item.name,
 			id: item.id,
-			apiName: 'Seller',
+			apiName: 'Seller'
 			// total: undefined,
 		}); //navigate with params
-	}
+	};
 
 	if (!getSellers)
 		//means data not yet retreived
 		return <Loader />;
 	return (
-		<View style={styles.screen}> 
+		<View style={styles.screen}>
 			<FlatList
 				refreshing={flatListParams.refreshing}
-				onRefresh={()=>handleRefresh(apiName)} //call a function
+				onRefresh={() => handleRefresh(apiName)} //call a function
 				data={flatListParams.data}
 				showsVerticalScrollIndicator={false}
 				initialNumToRender={6}
@@ -123,20 +122,20 @@ const AllBrands = ({ route, navigation }) => {
 				numColumns={2}
 				keyExtractor={(data, index) => index.toString()}
 				ListFooterComponent={renderFooter}
-				onEndReached={()=>handleLoadMore(apiName)}
+				onEndReached={() => handleLoadMore(apiName)}
 				onEndReachedThreshold={0.5}
 				renderItem={({ item }) => (
-          <View style={{ paddingHorizontal: 5, width: 210 }}>
-          <TouchableOpacity onPress={() => showSellerProducts(item)}>
-            <FeaturedCard
-              title={item.tagName}
-              sellerName={item.name}
-              subTitle='Limited Time Offer'
-              brandLogo={apiUrlImage+item.logo}
-              image={apiUrlImage + 'tags/'+item.tagImage}
-            />
-          </TouchableOpacity>
-        </View>
+					<View style={{ paddingHorizontal: 5, width: 210 }}>
+						<TouchableOpacity onPress={() => showSellerProducts(item)}>
+							<FeaturedCard
+								title={item.tagName}
+								sellerName={item.name}
+								subTitle="Limited Time Offer"
+								brandLogo={apiUrlImage + item.logo}
+								image={apiUrlImage + 'tags/' + item.tagImage}
+							/>
+						</TouchableOpacity>
+					</View>
 				)}
 			/>
 		</View>
@@ -149,10 +148,10 @@ const styles = StyleSheet.create({
 	outerView: {
 		flex: 1,
 		paddingHorizontal: 3,
-		paddingBottom: 5,
+		paddingBottom: 5
 	},
 	screen: {
 		backgroundColor: colors.primaryShade24,
-		flex: 1,
-	},
+		flex: 1
+	}
 });

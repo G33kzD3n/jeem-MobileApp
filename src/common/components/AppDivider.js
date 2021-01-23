@@ -8,7 +8,7 @@ const AppDivider = ({ width = 0.5, margin = 5 }) => {
 			style={{
 				borderBottomColor: colors.primaryShade23,
 				borderBottomWidth: width,
-				marginHorizontal: margin,
+				marginHorizontal: margin
 			}}
 		/>
 	);

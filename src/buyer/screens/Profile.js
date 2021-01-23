@@ -1,8 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { StyleSheet,  View, ScrollView } from 'react-native';
 import AppDivider from '../../common/components/AppDivider';
-import AppScreen from '../../common/components/AppScreen';
 import colors from '../../config/colors';
 import AppVersion from '../components/ProfilePageComponents/AppVersion';
 import SecondSection from '../components/ProfilePageComponents/SecondSection';
@@ -12,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 const Profile = () => {
 	const token = useSelector(
-		(state) => state.auth.login && state.auth.login.token.access_token
+		state => state.auth.login && state.auth.login.token.access_token
 	);
 	return (
 		// <AppScreen>

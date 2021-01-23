@@ -8,12 +8,11 @@ const initalState = {
 	successCart: null,
 	errorCart: null,
 	orderCode: null,
-	reviewData: null,
+	reviewData: null
 	// priceDetails:null
 };
 
 const cartReducer = (state = initalState, action) => {
-	
 	switch (action.type) {
 		case actionTypes.GET_CART_ITEMS:
 			return {
@@ -21,51 +20,51 @@ const cartReducer = (state = initalState, action) => {
 				cartItems: action.value.orders,
 				error: false,
 				count: action.value.count,
-				orderCode: null,
+				orderCode: null
 			};
 		case actionTypes.REMOVE_CART_ITEM:
 			return {
 				...state,
-				cartItems: state.cartItems.filter((item) => {
+				cartItems: state.cartItems.filter(item => {
 					return item.id !== action.id;
 				}),
-				count: action.count,
+				count: action.count
 			};
 		case actionTypes.ADD_PRODUCT_TO_CART:
 			return {
 				...state,
 				successCart: true,
 				count: action.value.count,
-				message: action.value.message,
+				message: action.value.message
 			};
 		case actionTypes.ADD_PRODUCT_TO_CART_ERROR:
 			return {
 				...state,
 				errorCart: true,
-				message: action.value.message,
+				message: action.value.message
 			};
 		case actionTypes.GET_COUNT:
 			return { ...state, count: action.value };
 		case actionTypes.CHANGE_QUANTITY:
 			return {
 				...state,
-				cartItems: state.cartItems.map((item) => {
+				cartItems: state.cartItems.map(item => {
 					return item.id === action.id
 						? {
 								...item,
-								productQuantity: action.quan,
+								productQuantity: action.quan
 						  }
 						: { ...item };
-				}),
+				})
 			};
 		case actionTypes.RESET_CART_AFTER_LOGOUT:
 			return { ...state, count: 0, cartItems: null };
 		case actionTypes.PLACE_ORDER:
 			return { ...state, orderCode: action.value, cartItems: null };
-			case actionTypes.REMOVE_PLACE_ORDER:
-			return { ...state, orderCode:null };
-			case actionTypes.PRICE_DETAILS:
-				return { ...state,  ...action.value };
+		case actionTypes.REMOVE_PLACE_ORDER:
+			return { ...state, orderCode: null };
+		case actionTypes.PRICE_DETAILS:
+			return { ...state, ...action.value };
 		case actionTypes.REVIEW_ORDER:
 			return { ...state, reviewData: action.value };
 		default:

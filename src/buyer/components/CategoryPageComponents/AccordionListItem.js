@@ -7,11 +7,11 @@ import SubCategory from './SubCategory';
 const AccordionListItem = ({
 	sellerCategory,
 	productCategory,
-	productSubCategories,
+	productSubCategories
 }) => {
 	const [collapsedSubCat, setCollapsedSubCat] = useState(true);
 	const [category, setCategory] = useState('');
-	const toggleExpanded = (selectedCategory) => {
+	const toggleExpanded = selectedCategory => {
 		setCategory(selectedCategory);
 		collapsedSubCat ? setCollapsedSubCat(false) : setCollapsedSubCat(true);
 	};
@@ -19,10 +19,10 @@ const AccordionListItem = ({
 		<ScrollView
 			contentContainerStyle={{
 				flexGrow: 1,
-				justifyContent: 'space-between',
+				justifyContent: 'space-between'
 			}}
 		>
-			{sellerCategory.map((data) => (
+			{sellerCategory.map(data => (
 				<React.Fragment key={data.id}>
 					<CategoryCard
 						collapsedSubCat={{ collapseCat: collapsedSubCat, cat: category }}

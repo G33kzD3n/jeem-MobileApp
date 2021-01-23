@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import {
 	StyleSheet,
-	Text,
 	View,
 	FlatList,
-	TouchableOpacity,
+	TouchableOpacity
 } from 'react-native';
 import ComponentHeading from '../../../common/components/ComponentHeading';
 import FeaturedCard from '../../../common/components/FeaturedCard';
@@ -16,19 +15,18 @@ import { apiUrlImage } from '../../../config/config';
 import i18n from '../../../languages/i18n';
 // import { apiUrlImageProducts } from '../../../config/config';
 
-
 const FeaturedBrands = () => {
 	const navigation = useNavigation();
 
 	const showMore = () => {
 		navigation.navigate('AllBrands', {
-			name:i18n.t('homeScreen.Featured Brands'),
+			name: i18n.t('homeScreen.Featured Brands'),
 			apiName: 'Seller',
-			totalItems: undefined,
+			totalItems: undefined
 		}); //navigate with params
 	};
 
-	const getSellers = useSelector((state) => state.home.getSellers);
+	const getSellers = useSelector(state => state.home.getSellers);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
@@ -36,14 +34,14 @@ const FeaturedBrands = () => {
 		);
 	}, []);
 
-	const showSellerProducts=(item)=>{
+	const showSellerProducts = item => {
 		navigation.navigate('SellerProduct', {
 			name: item.name,
 			id: item.id,
-			apiName: 'Seller',
+			apiName: 'Seller'
 			// total: undefined,
 		}); //navigate with params
-	}
+	};
 
 	if (!getSellers) return <></>;
 	// console.log(getSellers, '>>>>>>>>>:::::::');
@@ -68,8 +66,8 @@ const FeaturedBrands = () => {
 								title={item.tagName}
 								sellerName={item.name}
 								subTitle={i18n.t('homeScreen.Limited Time Offer')}
-								brandLogo={apiUrlImage+item.logo}
-								image={apiUrlImage + 'tags/'+item.tagImage}
+								brandLogo={apiUrlImage + item.logo}
+								image={apiUrlImage + 'tags/' + item.tagImage}
 							/>
 						</TouchableOpacity>
 					</View>

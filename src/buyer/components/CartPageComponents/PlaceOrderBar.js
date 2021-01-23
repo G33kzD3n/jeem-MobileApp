@@ -8,22 +8,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { placeOrderAction } from '../../../../store/actions';
 import {
 	PLACE_ORDER,
-	REMOVE_PLACE_ORDER,
+	REMOVE_PLACE_ORDER
 } from '../../../../store/actions/actionTypes';
 import Loader from '../../../common/components/Loader';
 import i18n from '../../../languages/i18n';
 
 const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 	const [loading, setLoading] = useState(false);
-	const priceDetails = useSelector((state) => state.cart.priceDetails);
-	const orderCode = useSelector((state) => state.cart.orderCode);
+	const priceDetails = useSelector(state => state.cart.priceDetails);
+	const orderCode = useSelector(state => state.cart.orderCode);
 
 	useEffect(() => {
 		if (orderCode) {
 			setLoading(false);
 			navigation.navigate(navigationAddress, {
 				totalPrice: priceDetails.totalDiscountPrice,
-				orderCode: orderCode,
+				orderCode: orderCode
 			});
 		}
 		return () => {
@@ -34,10 +34,10 @@ const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 
 	const dispatch = useDispatch();
 	const navigation = useNavigation();
-	
+
 	const handleBackButton = () => {
 		navigation.navigate('Home');
-	}; 
+	};
 
 	const handleOrder = () => {
 		if (navigationAddress === 'OrderDetails') {
@@ -61,7 +61,9 @@ const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 							scrollViewRef.current.scrollToEnd({ animated: true })
 						}
 					>
-						<AppText style={styles.details}>{i18n.t('cart.VIEW DETAILS')}</AppText>
+						<AppText style={styles.details}>
+							{i18n.t('cart.VIEW DETAILS')}
+						</AppText>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.containerRight}>
@@ -90,20 +92,20 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		height: '10%',
 		padding: 10,
-		backgroundColor: colors.white,
+		backgroundColor: colors.white
 		// marginBottom: 8,
 	},
 	containerLeft: { flex: 1 },
 	containerRight: {
-		flexGrow: 1,
+		flexGrow: 1
 	},
 	price: {
-		color: colors.black,
+		color: colors.black
 	},
 	details: {
 		color: 'red',
 		fontSize: 12,
 		textTransform: 'uppercase',
-		fontWeight: 'bold',
-	},
+		fontWeight: 'bold'
+	}
 });

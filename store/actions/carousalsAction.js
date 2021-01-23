@@ -1,18 +1,17 @@
 import {
-    carousals,
+	carousals,
 	singleCarousal,
 	deleteCarousal,
 	addCarousal,
-	updateCarousal,
+	updateCarousal
 } from '../../api/carousalApi.js';
 
 export const getCarousalsAction = (type, values) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const response = await carousals(values);
 		if (response.status === 200) {
 			dispatch({ type: type, value: response.data });
-		}
-		else{
+		} else {
 			dispatch({ type: type, value: null });
 		}
 		// dispatch({ type: UPDATE_TAG, value: { message: null } });
@@ -20,26 +19,26 @@ export const getCarousalsAction = (type, values) => {
 };
 
 export const getSingleCarousalAction = (type, value) => {
-	return async (dispatch) => {
+	return async dispatch => {
 		const response = await singleCarousal(value);
 		if (response.status === 200) {
 			dispatch({
 				type: type,
-				value: response.data,
+				value: response.data
 			});
 		} else {
 			dispatch({
 				type: type,
 				value: {
-					message: 'Something went wrong',
-				},
+					message: 'Something went wrong'
+				}
 			});
 		}
 	};
 };
 
-export const deleteCarousalAction = (type, value ,callback ,error) => {
-	return async (dispatch) => {
+export const deleteCarousalAction = (type, value, callback, error) => {
+	return async dispatch => {
 		const response = await deleteCarousal(value);
 		if (response.status === 202) {
 			callback(response.data);
@@ -49,8 +48,8 @@ export const deleteCarousalAction = (type, value ,callback ,error) => {
 	};
 };
 
-export const unsetSucessMessage = (type) => {
-	return async (dispatch) => {
+export const unsetSucessMessage = type => {
+	return async dispatch => {
 		dispatch({ type: type, value: null });
 	};
 };
@@ -64,22 +63,22 @@ export const addCarousalAction = (type, values) => {
 	carousalFormdata.append('image', values.carouselImage);
 	carousalFormdata.append('sellerId', sellerId);
 
-	return async (dispatch) => {
+	return async dispatch => {
 		const response = await addCarousal(carousalFormdata);
 		if (response.status === 201) {
 			const message = response.statusText;
 			dispatch({
 				type: type,
 				value: {
-					message: message,
-				},
+					message: message
+				}
 			});
 		} else {
 			dispatch({
 				type: type,
 				value: {
-					message: null,
-				},
+					message: null
+				}
 			});
 		}
 	};
@@ -95,22 +94,22 @@ export const updateCarousalAction = (type, values, carousal_id) => {
 	carousalFormdata.append('sellerId', sellerId);
 	carousalFormdata.append('_method', 'PUT');
 
-	return async (dispatch) => {
+	return async dispatch => {
 		const response = await updateCarousal(carousal_id, carousalFormdata);
 		if (response.status === 200) {
 			const message = 'Carousal Updated Sucessfully';
 			dispatch({
 				type: type,
 				value: {
-					message: message,
-				},
+					message: message
+				}
 			});
 		} else {
 			dispatch({
 				type: type,
 				value: {
-					message: 'Something went wrong',
-				},
+					message: 'Something went wrong'
+				}
 			});
 		}
 	};

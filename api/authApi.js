@@ -27,8 +27,8 @@ export async function logOutUser() {
 
 export async function forgotPassword(email) {
 	try {
-	const data= await axios.post(apiUrl + 'user/forgot',email);
-  return data;
+		const data = await axios.post(apiUrl + 'user/forgot', email);
+		return data;
 	} catch (error) {
 		return error;
 	}

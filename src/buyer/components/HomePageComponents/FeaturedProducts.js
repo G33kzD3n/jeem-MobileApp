@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import {
-	Text,
 	View,
 	Dimensions,
 	StyleSheet,
 	ImageBackground,
-	TouchableOpacity,
+	TouchableOpacity
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Carousel from 'react-native-snap-carousel'; // Version can be specified in package.json
@@ -25,17 +24,17 @@ const ITEM_HEIGHT = Math.round(ITEM_WIDTH * (3 / 4));
 
 const FeatureProducts = () => {
 	let carouselRef = useRef(null);
-	const navigation = useNavigation(); 
+	const navigation = useNavigation();
 	const handleClick = () => {
 		navigation.navigate('SubCategoryProduct', {
-			name:i18n.t('homeScreen.Featured Products'),
+			name: i18n.t('homeScreen.Featured Products'),
 			id: 4,
 			apiName: 'Tag',
-			totalItems: undefined,
+			totalItems: undefined
 		}); //navigate with params
 	};
 
-	const featuredProducts = useSelector((state) => state.home.featuredProducts);
+	const featuredProducts = useSelector(state => state.home.featuredProducts);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(
@@ -43,7 +42,7 @@ const FeatureProducts = () => {
 		);
 	}, []);
 
-	const productView = (id) => {
+	const productView = id => {
 		navigation.navigate('ProductDetails', { id });
 	};
 
@@ -57,27 +56,33 @@ const FeatureProducts = () => {
 				style={styles.touchOpacity}
 			>
 				<>
-				<ImageBackground
-					source={{
-						uri:
-							apiUrlImageProducts +
-							item.productName +
-							'-' +
-							item.productSku +
-							'/' +
-							item.productImages[0],
-					}}
-					style={styles.itemContainer}
-				>
-					<View style={{ padding: 50 }}>
-						<AppText style={{ fontSize: 30, color: colors.primary1,fontWeight:'bold' }}>
-							{item.productName}
-						</AppText>
-						<AppText style={{ color: colors.white }}>
-							{item.productAddInfo}
-						</AppText>
-					</View>
-				</ImageBackground>
+					<ImageBackground
+						source={{
+							uri:
+								apiUrlImageProducts +
+								item.productName +
+								'-' +
+								item.productSku +
+								'/' +
+								item.productImages[0]
+						}}
+						style={styles.itemContainer}
+					>
+						<View style={{ padding: 50 }}>
+							<AppText
+								style={{
+									fontSize: 30,
+									color: colors.primary1,
+									fontWeight: 'bold'
+								}}
+							>
+								{item.productName}
+							</AppText>
+							<AppText style={{ color: colors.white }}>
+								{item.productAddInfo}
+							</AppText>
+						</View>
+					</ImageBackground>
 				</>
 			</TouchableOpacity>
 		);
@@ -87,11 +92,13 @@ const FeatureProducts = () => {
 		<View>
 			<ComponentHeading
 				text={i18n.t('homeScreen.Featured Products')}
-				more={featuredProducts.totalRecords > 6 && i18n.t('homeScreen.View More')}
+				more={
+					featuredProducts.totalRecords > 6 && i18n.t('homeScreen.View More')
+				}
 				onPress={() => handleClick()}
 			/>
 			<Carousel
-				ref={(carousel) => (carouselRef = carousel)}
+				ref={carousel => (carouselRef = carousel)}
 				data={featuredProducts.data}
 				renderItem={_renderItem}
 				sliderWidth={SLIDER_WIDTH}
@@ -122,16 +129,16 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: 'transparent',
-		borderRadius: 10,
+		borderRadius: 10
 	},
 	itemLabel: {
 		color: 'white',
-		fontSize: 24,
+		fontSize: 24
 	},
 	counter: {
 		marginTop: 25,
 		fontSize: 30,
 		fontWeight: 'bold',
-		textAlign: 'center',
-	},
+		textAlign: 'center'
+	}
 });

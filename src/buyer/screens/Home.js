@@ -13,32 +13,32 @@ import { StatusBar } from 'expo-status-bar';
 
 const sectionList = [
 	{
-		data: [<CarouselDisplay />],
+		data: [<CarouselDisplay />]
 	},
 	{
-		data: [<SubCategories />],
+		data: [<SubCategories />]
 	},
 	{
-		data: [<DealsOfTheDay />],
+		data: [<DealsOfTheDay />]
 	},
 	{
-		data: [<BuysOfTheMoment />],
+		data: [<BuysOfTheMoment />]
 	},
 	{
-		data: [<FeaturedBrands />],
+		data: [<FeaturedBrands />]
 	},
 	{
-		data: [<BestBuys />],
+		data: [<BestBuys />]
 	},
 	{
-		data: [<RecommendedForYou />],
+		data: [<RecommendedForYou />]
 	},
 	{
-		data: [<TopTrends />],
+		data: [<TopTrends />]
 	},
 	{
-		data: [<FeaturedProducts />],
-	},
+		data: [<FeaturedProducts />]
+	}
 ];
 
 const Home = () => {

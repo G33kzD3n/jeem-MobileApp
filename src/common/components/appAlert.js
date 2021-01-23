@@ -10,11 +10,11 @@ const appAlert = (title, msg, handleOk) => {
 			{
 				text: 'Cancel',
 				// onPress: () => console.log('Cancel Pressed'),
-				style: 'cancel',
-			},
+				style: 'cancel'
+			}
 		],
 		{
-			cancelable: false,
+			cancelable: false
 		}
 	);
 };

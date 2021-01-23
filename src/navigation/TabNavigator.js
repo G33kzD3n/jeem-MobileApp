@@ -16,7 +16,7 @@ import i18n from '../languages/i18n';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-	const cartCount = useSelector((state) => state.cart.count);
+	const cartCount = useSelector(state => state.cart.count);
 	// console.log(cartCount,'?????????????::::::::::::::');
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -31,7 +31,7 @@ const TabNavigator = () => {
 				activeTintColor: colors.primary1,
 				inactiveBackgroundColor: colors.primaryShade24,
 				inactiveTintColor: colors.primary2,
-				style: { backgroundColor: colors.primaryShade24 },
+				style: { backgroundColor: colors.primaryShade24 }
 			}}
 		>
 			<Tab.Screen
@@ -40,11 +40,11 @@ const TabNavigator = () => {
 				options={{
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="home" size={size} color={color} />
-					),
+					)
 				}}
 			/>
 			<Tab.Screen
-			name={i18n.t('tabNavigation.Categories')}
+				name={i18n.t('tabNavigation.Categories')}
 				component={Categories}
 				options={{
 					tabBarIcon: ({ color, size }) => (
@@ -53,7 +53,7 @@ const TabNavigator = () => {
 							size={size}
 							color={color}
 						/>
-					),
+					)
 				}}
 			/>
 			<Tab.Screen
@@ -62,7 +62,7 @@ const TabNavigator = () => {
 				options={({ navigation }) => ({
 					tabBarButton: () => (
 						<SearchButton onPress={() => navigation.navigate('Search')} />
-					),
+					)
 				})}
 			/>
 			<Tab.Screen
@@ -72,7 +72,7 @@ const TabNavigator = () => {
 					tabBarBadge: cartCount !== 0 ? cartCount : undefined,
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="cart" size={size} color={color} />
-					),
+					)
 				}}
 			/>
 			<Tab.Screen
@@ -81,7 +81,7 @@ const TabNavigator = () => {
 				options={{
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="account" size={size} color={color} />
-					),
+					)
 				}}
 			/>
 		</Tab.Navigator>

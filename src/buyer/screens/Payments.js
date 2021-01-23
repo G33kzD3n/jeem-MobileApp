@@ -1,11 +1,5 @@
 import React, { useRef, useState } from 'react';
-import {
-	StyleSheet,
-	Text,
-	View,
-	ScrollView,
-	TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import ComponentHeading from '../../common/components/ComponentHeading';
 import colors from '../../config/colors';
 import PlaceOrderBar from '../components/CartPageComponents/PlaceOrderBar';
@@ -18,7 +12,7 @@ const Payments = () => {
 	const scrollViewRef = useRef();
 	const [collapsedSubCat, setCollapsedSubCat] = useState(false);
 	const [category, setCategory] = useState('');
-	const toggleExpanded = (selectedCategory) => {
+	const toggleExpanded = selectedCategory => {
 		// setCategory(selectedCategory);
 		collapsedSubCat ? setCollapsedSubCat(false) : setCollapsedSubCat(true);
 	};
@@ -57,12 +51,12 @@ export default Payments;
 const styles = StyleSheet.create({
 	scroll: {
 		backgroundColor: colors.primaryShade24,
-		flex: 1,
+		flex: 1
 	},
 	customStyle: {
 		marginBottom: 2,
 		backgroundColor: colors.white,
 		height: 60,
-		justifyContent: 'center',
-	},
+		justifyContent: 'center'
+	}
 });

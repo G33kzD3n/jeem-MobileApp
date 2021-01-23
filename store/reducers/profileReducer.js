@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes.js';
 const initalState = {
 	profileStatus: null,
 	error: false,
-	data: null,
+	data: null
 };
 
 const profileReducer = (state = initalState, action) => {
@@ -18,8 +18,8 @@ const profileReducer = (state = initalState, action) => {
 			return { ...state, updateMessage: action.value };
 		case actionTypes.REMOVE_EDIT_PROFILE:
 			return { ...state, updateMessage: null };
-			case actionTypes.CURRENT_LANGUAGE:
-				return { ...state, language: action.value };
+		case actionTypes.CURRENT_LANGUAGE:
+			return { ...state, language: action.value };
 		case actionTypes.HELP_QUERY:
 			return { ...state, queryResponse: action.value };
 		case actionTypes.REMOVE_HELP_QUERY:

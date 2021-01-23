@@ -10,7 +10,7 @@ const storeDetails = async (key, details) => {
 	}
 };
 
-const getDetails = async (key) => {
+const getDetails = async key => {
 	try {
 		return await SecureStore.getItemAsync(key);
 	} catch (error) {
@@ -18,7 +18,7 @@ const getDetails = async (key) => {
 	}
 };
 
-const removeDetails = async (key) => {
+const removeDetails = async key => {
 	try {
 		await SecureStore.deleteItemAsync(key);
 	} catch (error) {

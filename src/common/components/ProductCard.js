@@ -1,10 +1,9 @@
 import React from 'react';
 import {
 	StyleSheet,
-	Text,
 	View,
 	Image,
-	TouchableWithoutFeedback,
+	TouchableWithoutFeedback
 } from 'react-native';
 import colors from '../../config/colors';
 import AppText from './AppText';
@@ -13,7 +12,7 @@ import { apiUrlImageProducts } from '../../config/config';
 
 const ProductCard = ({ item }) => {
 	const navigation = useNavigation();
-	const displayProduct = (id) => {
+	const displayProduct = id => {
 		// console.log(item,'>>>>>>>>>>>>>>>>>>>>>');
 		navigation.navigate('ProductDetails', { id });
 	};
@@ -28,7 +27,7 @@ const ProductCard = ({ item }) => {
 							'-' +
 							item.productSku +
 							'/' +
-							item.productImages,
+							item.productImages
 					}}
 					style={styles.image}
 				/>
@@ -59,37 +58,37 @@ export default ProductCard;
 
 const styles = StyleSheet.create({
 	dataContainer: {
-		padding: 10,
+		padding: 10
 		//  justifyContent:'space-around'
 	},
 	discount: {
 		color: 'red',
 		textTransform: 'uppercase',
-		fontSize: 15,
+		fontSize: 15
 	},
 	orginalPrice: {
 		color: colors.primary2,
 		fontSize: 15,
-		textDecorationLine: 'line-through',
+		textDecorationLine: 'line-through'
 	},
 	mainPrice: {
 		color: colors.primary1,
 		fontSize: 18,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	priceContainer: {
-		flexDirection: 'row',
+		flexDirection: 'row'
 	},
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 15,
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	heading: {
 		color: colors.primary1,
 		fontSize: 18,
 		fontWeight: 'bold',
-		paddingBottom: 2,
+		paddingBottom: 2
 	},
 	parent: {
 		height: 290,
@@ -98,10 +97,10 @@ const styles = StyleSheet.create({
 		// borderWidth: 1,
 		width: '100%',
 		overflow: 'hidden',
-		backgroundColor: 'white',
+		backgroundColor: 'white'
 	},
 	image: {
 		height: 200,
-		width: '100%',
-	},
+		width: '100%'
+	}
 });

@@ -24,13 +24,6 @@ export {
 	updateCarousalAction,
 } from './carousalsAction';
 
-export {
-	getTagsAction,
-	deleteTagsAction,
-	addTagAction,
-	updateTagsAction,
-	unsetSucessMessage,
-} from './tagsAction';
 
 
 export { carouselAction } from './homeAction';

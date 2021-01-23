@@ -32,11 +32,6 @@ export {
 	unsetSucessMessage,
 } from './tagsAction';
 
-export {
-	getDashboardStats,
-	getSellerProfileAction,
-	updateSellerProfileAction,
-} from './sellerDashboardAction';
 
 export { carouselAction } from './homeAction';
 export { sellerCategoryAction } from './homeAction';

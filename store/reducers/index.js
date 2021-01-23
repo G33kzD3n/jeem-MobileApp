@@ -5,7 +5,6 @@ import orderssReducer from "./ordersReducer";
 import tagsReducer from "./tagsReducer";
 import carousalReducer from "./carousalReducer";
 import homeReducer from "./homeReducer";
-import sellerDashboardReducer from "./sellerDashboardReducer"
 import cartReducer from "./cartReducer";
 import profileReducer from "./profileReducer";
 import addressReducer from "./addressReducer";
@@ -16,7 +15,6 @@ const rootReducer = combineReducers({
   order: orderssReducer,
   tag: tagsReducer,
   carousal: carousalReducer,
-  seller_stats: sellerDashboardReducer,
   home: homeReducer,
   cart: cartReducer,
   profile:profileReducer,

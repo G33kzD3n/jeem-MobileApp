@@ -1,10 +1,5 @@
 import { productCategories, productSubCategories } from '../../api/homeApi.js';
 import {
-	products,
-	deleteProduct,
-	addProduct,
-	updateProduct,
-	productCategory,
 	productReviews,
 	addReview,
 } from '../../api/productApi.js';
@@ -50,16 +45,4 @@ export const addProductReviews = (type, id, val) => {
 	};
 };
 
-export const unSetErrorResponseAction = (type, values) => {
-	return async (dispatch) => {
-		dispatch({ type: type, value: null });
-	};
-};
-
-export const unsetProductSucessMessage = (type, value) => {
-	// console.log(type, value);
-	return async (dispatch) => {
-		dispatch({ type: type, value: value });
-	};
-};
 

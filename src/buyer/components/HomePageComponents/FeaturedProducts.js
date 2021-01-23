@@ -70,7 +70,7 @@ const FeatureProducts = () => {
 					style={styles.itemContainer}
 				>
 					<View style={{ padding: 50 }}>
-						<AppText style={{ fontSize: 30, color: colors.primary1 }}>
+						<AppText style={{ fontSize: 30, color: colors.primary1,fontWeight:'bold' }}>
 							{item.productName}
 						</AppText>
 						<AppText style={{ color: colors.white }}>

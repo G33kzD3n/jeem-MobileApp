@@ -24,3 +24,12 @@ export async function logOutUser() {
 		return error;
 	}
 }
+
+export async function forgotPassword(email) {
+	try {
+	const data= await axios.post(apiUrl + 'user/forgot',email);
+  return data;
+	} catch (error) {
+		return error;
+	}
+}

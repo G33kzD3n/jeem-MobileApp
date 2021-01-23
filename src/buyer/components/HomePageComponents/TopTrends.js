@@ -31,7 +31,6 @@ const TopTrends = () => {
 	};
 
 	if (!topTrends) return <></>;
-
 	return (
 		<View style={styles.parent}>
 			<ComponentHeading

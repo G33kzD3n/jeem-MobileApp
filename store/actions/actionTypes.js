@@ -3,6 +3,8 @@ export const LOGIN = 'LOGIN';
 export const REMOVE_LOGIN_ERROR = 'REMOVE_LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const SIGNUP = 'SIGNUP';
+export const FORGOT_PASSWORD='FORGOT_PASSWORD';
+export const CLEAR_FORGOT_PASSWORD='CLEAR_FORGOT_PASSWORD';
 export const LOADER = 'LOADER';
 
 //  seller products actionTypes

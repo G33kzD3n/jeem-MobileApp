@@ -51,6 +51,10 @@ const authReducer = (state = initalState, action) => {
 			return { ...state, signup: action.value, error: false };
 		case actionTypes.CLEAR_SIGNUP:
 			return { ...state, signup: null, error: false };
+		case actionTypes.FORGOT_PASSWORD:
+			return { ...state, forgotPasswordStatus: action.value };
+		case actionTypes.CLEAR_FORGOT_PASSWORD:
+			return { ...state, forgotPasswordStatus: null };
 		case actionTypes.LOADER:
 			return { ...state, loading: action.value };
 		default:

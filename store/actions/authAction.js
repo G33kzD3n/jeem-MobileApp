@@ -1,4 +1,4 @@
-import loginUser, { signupUser, logOutUser } from '../../api/authApi';
+import loginUser, { signupUser, logOutUser, forgotPassword } from '../../api/authApi';
 import { updateUserProfile } from '../../api/profileApi';
 import persistStore from '../../src/utils/persistStore';
 // import { toast } from 'react-toastify';
@@ -19,7 +19,6 @@ export const loginAction = (type, values) => {
 	return async (dispatch) => {
 		dispatch({ type: LOADER, value: true });
 		const data = await loginUser(values);
-		console.log(data.status,'loginnnnnnnnnnnnnnnnnnnnnn');
 		if (data.status === 200) {
 			// localStorage.setItem('user_token', data.data.token.access_token);
 			// localStorage.setItem('user_type', data.data.role.role);
@@ -51,7 +50,6 @@ export const emptySignupAction = (type) => {
 export const logoutAction = (type) => {
 	return async (dispatch) => {
 		const data = await logOutUser();
-		console.log(data);
 		if (data.status === 200) {
 			persistStore.removeDetails('token');
 			persistStore.removeDetails('userDetails');
@@ -69,3 +67,16 @@ export const updateProfileAction = (type, values) => {
 		}
 	};
 };
+
+export const forgotPasswordAction = (type, values) => {
+	return async (dispatch) => {
+		const data = await forgotPassword(values);
+		if (data.status === 200) {
+		dispatch({ type: type, value: 200 });
+		}else{
+			dispatch({ type: type, value: 422 });
+		}
+	};
+};
+
+

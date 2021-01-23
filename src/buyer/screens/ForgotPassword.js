@@ -9,52 +9,57 @@ import AppForm from '../../common/components/forms/AppForm';
 import validation from '../../common/components/forms/validationSchema';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-	getCartCountAction,
-	loginAction,
-	removeLoginErrorAction,
+	forgotPasswordAction
 } from '../../../store/actions';
 import {
-	GET_COUNT,
-	LOGIN,
-	REMOVE_LOGIN_ERROR,
+	CLEAR_FORGOT_PASSWORD,
+	FORGOT_PASSWORD,
 } from '../../../store/actions/actionTypes';
-import ErrorMessage from '../../common/components/forms/ErrorMessage';
 import Loader from '../../common/components/Loader';
-import persistStore from '../../utils/persistStore';
 import AppText from '../../common/components/AppText';
+import appAlert from '../../common/components/appAlert';
 
-const ForgotPassword = ({ navigation, login }) => {
-	const [isEnabled, setIsEnabled] = useState(false);
-	const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-
+const ForgotPassword = ({ navigation }) => {
+	const [loading, setLoading] = useState(false);
 	const showKeyboard = useKeyboardDetect();
-	const loginInfo = useSelector((state) => state.auth.login);
-	const loading = useSelector((state) => state.auth.loading);
-	const errorMsg = useSelector((state) => state.auth.errorMessages);
-	const error = useSelector((state) => state.auth.error);
+	const status = useSelector((state) => state.auth.forgotPasswordStatus);
 	const dispatch = useDispatch();
-	useEffect(() => {
-		return () => dispatch(removeLoginErrorAction(REMOVE_LOGIN_ERROR));
-	}, []);
+
 
 	//store auth in storage
 	useEffect(() => {
-		if (loginInfo) {
-			dispatch(getCartCountAction(GET_COUNT)); //get total item in cart
-			persistStore.storeDetails('token', loginInfo.token.access_token);
-			persistStore.storeDetails('userDetails', JSON.stringify(loginInfo.user));
-			navigation.goBack();
+		if (status && status === 200) {
+			setLoading(false);
+			dispatch(forgotPasswordAction(CLEAR_FORGOT_PASSWORD));
+			appAlert(
+				'Success',
+				'Reset Password link send to your verified email address',
+				handleOk
+			);
+		} else if (status && status !== 200) {
+			setLoading(false);
+			dispatch(forgotPasswordAction(CLEAR_FORGOT_PASSWORD));
+			appAlert(
+				'Error',
+				'Email not registered or Please try again later',
+				handleOk
+			);
 		}
-	}, [loginInfo]);
+	}, [status]);
+
+	const handleOk = () => {
+		navigation.goBack();
+	};
 
 	const handleLogin = () => {
-		console.log('Login');
+		navigation.navigate('Login');
 	};
 
+	const handleForgotPassword = (values) => {
+		setLoading(true);
+		dispatch(forgotPasswordAction(FORGOT_PASSWORD, values))
+	}
 
-	const handleForgotPassword = () => {
-		navigation.navigate('ForgotPassword');
-	};
 
 	return (
 		<>
@@ -69,15 +74,10 @@ const ForgotPassword = ({ navigation, login }) => {
 						Forgot{'\n'}Password
 					</AppText>
 				</View>
-				{error && (
-					<View style={{ alignSelf: 'center' }}>
-						<ErrorMessage visible={error} error={errorMsg} />
-					</View>
-				)}
 				<View style={styles.secondContainer}>
 					<AppForm
 						initialValues={{ email: '' }}
-						onSubmit={(values) => dispatch(loginAction(LOGIN, values))}
+						onSubmit={(values) => handleForgotPassword(values)}
 						validationSchema={validation.validationForgotPassword}
 					>
 						<View style={styles.textBox}>
@@ -122,13 +122,13 @@ const styles = StyleSheet.create({
 		flex: 1,
 		paddingBottom: 40,
 		flexDirection: 'row',
-    alignItems: 'flex-end',
-    
+		alignItems: 'flex-end',
+
 	},
 	signUp: {
 		color: colors.white,
-    fontSize: 16,
-    
+		fontSize: 16,
+
 	},
 	social: {
 		flexDirection: 'row',
@@ -137,26 +137,26 @@ const styles = StyleSheet.create({
 	msg: {
 		paddingVertical: 20,
 		textAlign: 'center',
-    color: colors.white,
-    
+		color: colors.white,
+
 	},
 	parentContainer: {
 		flex: 1,
-    paddingHorizontal: 15,
-    
+		paddingHorizontal: 15,
+
 	},
 	firstContainer: {
 		flex: 2,
-    justifyContent: 'flex-end',
-    
+		justifyContent: 'flex-end',
+
 	},
 	textBox: {
-    paddingBottom:10
-  },
+		paddingBottom: 10
+	},
 	secondContainer: {
 		flex: 2,
-    maxHeight: '65%',
-    // justifyContent:'center'
+		maxHeight: '65%',
+		// justifyContent:'center'
 	},
 	thirdContainer: {
 		flex: 1,

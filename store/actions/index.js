@@ -7,12 +7,7 @@ export {
 } from './authAction';
 
 export {
-	getProductsAction,
-	deleteProductAction,
-	addProductsAction,
-	updateProductsAction,
 	unSetErrorResponseAction,
-	getProductCategoryAction,
 	unsetProductSucessMessage,
 	productCategoriesAction,
 	productSubCategoriesAction,

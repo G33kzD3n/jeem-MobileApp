@@ -27,6 +27,7 @@ import AllBrands from '../buyer/screens/AllBrands';
 import AddReview from '../buyer/screens/AddReview';
 import Language from '../buyer/screens/Language';
 import ForgotPassword from '../buyer/screens/ForgotPassword';
+import i18n from '../languages/i18n';
 
 const Stack = createStackNavigator();
 function AppNavigator() {
@@ -111,18 +112,18 @@ function AppNavigator() {
 			<Stack.Screen
 				name="SelectAddress"
 				component={SelectAddress}
-				options={{ title: 'ADDRESS' }}
+				options={{ title:i18n.t('appNavigation.ADDRESS') }}
 			/>
 			<Stack.Screen
 				name="Payments"
 				component={Payments}
-				options={{ title: 'PAYMENT' }}
+				options={{ title:i18n.t('appNavigation.PAYMENT') }}
 			/>
 			<Stack.Screen
 				name="OrderDetails"
 				component={OrderDetails}
 				options={{
-					title: 'ORDER',
+					title:i18n.t('appNavigation.ORDER'),
 					headerTitleStyle: { alignSelf: 'center' },
 					headerLeft: () => null
 				}}
@@ -130,12 +131,12 @@ function AppNavigator() {
 			<Stack.Screen
 				name="ViewOrders"
 				component={ViewOrders}
-				options={{ title: 'MY ORDERS' }}
+				options={{ title:i18n.t('appNavigation.MY ORDERS') }}
 			/>
 			<Stack.Screen
 				name="AddAddress"
 				component={AddAddress}
-				options={{ title: 'ADD ADDRESS' }}
+				options={{ title:i18n.t('appNavigation.ADD ADDRESS') }}
 			/>
 			<Stack.Screen
 				name="Login"
@@ -150,43 +151,43 @@ function AppNavigator() {
 			<Stack.Screen
 				name="ItemDetails"
 				component={OrderFullDetail}
-				options={{ title: 'ITEM DETAILS' }}
+				options={{ title:i18n.t('appNavigation.ITEM DETAILS') }}
 			/>
 			<Stack.Screen
 				name="EditProfile"
 				component={EditProfile}
-				options={{ title: 'PROFILE' }}
+				options={{ title:i18n.t('appNavigation.PROFILE') }}
 			/>
 			<Stack.Screen
 				name="HelpCenter"
 				component={HelpCenter}
-				options={{ title: 'HELP' }}
+				options={{ title:i18n.t('appNavigation.HELP') }}
 			/>
-			<Stack.Screen name="Faq" component={Faq} options={{ title: 'FAQ' }} />
+			<Stack.Screen name="Faq" component={Faq} options={{ title:i18n.t('appNavigation.FAQ') }} />
 			<Stack.Screen
 				name="AboutUs"
 				component={AboutUs}
-				options={{ title: 'ABOUT US' }}
+				options={{ title:i18n.t('appNavigation.ABOUT US') }}
 			/>
 			<Stack.Screen
 				name="TermsOfUse"
 				component={TermsOfUse}
-				options={{ title: 'TERMS OF USE' }}
+				options={{ title:i18n.t('appNavigation.TERMS OF USE') }}
 			/>
 			<Stack.Screen
 				name="PrivacyPolicy"
 				component={PrivacyPolicy}
-				options={{ title: 'PRIVACY POLICY' }}
+				options={{ title:i18n.t('appNavigation.PRIVACY POLICY') }}
 			/>
 			<Stack.Screen
 				name="AddReview"
 				component={AddReview}
-				options={{ title: 'RATE AND REVIEW' }}
+				options={{ title:i18n.t('appNavigation.RATE AND REVIEW') }}
 			/>
 			<Stack.Screen
 				name="Language"
 				component={Language}
-				options={{ title: 'SELECT LANGUAGE' }}
+				options={{ title:i18n.t('appNavigation.SELECT LANGUAGE') }}
 			/>
 			<Stack.Screen
 				name="ForgotPassword"

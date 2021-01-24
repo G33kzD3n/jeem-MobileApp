@@ -13,6 +13,7 @@ import {
 	REMOVE_ACTIVE_ADDRESS
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
+import i18n from '../../languages/i18n';
 
 const OrderDetails = ({ route }) => {
 	const { totalPrice, orderCode } = route.params;
@@ -35,12 +36,12 @@ const OrderDetails = ({ route }) => {
 		<View>
 			<SucessCard orderCode={orderCode} />
 			<View>
-				<ComponentHeading text="ORDER DETAILS" />
+				<ComponentHeading text={i18n.t('orderScreen.ORDER DETAILS')} />
 				<View style={styles.details}>
 					<View style={styles.totalParent}>
 						<AppText style={styles.total}>$ {totalPrice}</AppText>
 						<AppText style={styles.subHeading}>
-							Amount due at the time of delivery
+							{i18n.t('orderScreen.Amount due at the time of delivery')}
 						</AppText>
 					</View>
 					<AppDivider />
@@ -51,11 +52,9 @@ const OrderDetails = ({ route }) => {
 			</View>
 			<View style={styles.note}>
 				<AppText style={styles.headText}>
-					{`Note: `}
+					{i18n.t('orderScreen.Note: ')}
 					<AppText style={styles.noteBodyText}>
-						We do not demand your banking and credit card details verbally or
-						telephonically. Please do not divulge your details to fraudsters and
-						imposters falsely claiming to be calling on Jeem's behalf.
+					{i18n.t('orderScreen.We do not demand your banking and credit card details verbally or telephonically. Please do not divulge your details to fraudsters and imposters falsely claiming to be calling on Jeem\'s behalf.')}
 					</AppText>
 				</AppText>
 			</View>

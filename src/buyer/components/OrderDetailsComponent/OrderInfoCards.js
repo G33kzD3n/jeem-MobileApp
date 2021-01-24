@@ -5,6 +5,7 @@ import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import CartImage from '../CartPageComponents/CartImage';
 import { useNavigation } from '@react-navigation/native';
+import i18n from '../../../languages/i18n';
 
 const OrderInfoCards = ({ order }) => {
 	const navigation = useNavigation();
@@ -25,7 +26,7 @@ const OrderInfoCards = ({ order }) => {
 					<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
-							Sold by:
+						  {i18n.t('orderScreen.Sold by:')}
 						</AppText>
 						<AppText
 							style={{

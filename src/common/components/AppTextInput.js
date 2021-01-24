@@ -4,6 +4,7 @@ import defaultStyles from '../../config/defaultStyles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../config/colors';
 import AppText from './AppText';
+import i18n from '../../languages/i18n';
 
 export default function AppTextInput({
 	name,
@@ -22,7 +23,7 @@ export default function AppTextInput({
 				style={[defaultStyles.text, styles.textInput, overrideTextbox]}
 				{...otherProps}
 			/>
-			{name === 'password' && <AppText style={styles.forgot}>Forgot?</AppText>}
+			{name === 'password' && <AppText style={styles.forgot}>{i18n.t('common.Forgot?')}</AppText>}
 		</View>
 	);
 }

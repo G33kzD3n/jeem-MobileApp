@@ -3,12 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import colors from '../../../config/colors';
 import AppButton from '../../../common/components/AppButton';
 import appAlert from '../../../common/components/appAlert';
+import i18n from '../../../languages/i18n';
 
 const AddressButtons = ({ removeAddress }) => {
 	// const [deleteAddress, setDeleteAddress] = useState(false);
 
 	const handleDelete = () => {
-		appAlert('DELETE', 'Are you sure you want to delete?', handleOk);
+		appAlert(i18n.t('addresses.DELETE'),i18n.t('addresses.Are you sure you want to delete?'), handleOk);
 	};
 	const handleOk = () => {
 		removeAddress();
@@ -34,7 +35,7 @@ const AddressButtons = ({ removeAddress }) => {
 				<AppButton
 					color1={colors.white}
 					color2={colors.white}
-					text="DELETE"
+					text={i18n.t('addresses.DELETE')}
 					textAlign="left"
 					borderRadius={3}
 					textColor="red"

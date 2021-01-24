@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
+import i18n from '../../../languages/i18n';
 
 const ThirdSection = () => {
 	const navigation = useNavigation();
@@ -21,19 +22,19 @@ const ThirdSection = () => {
 	return (
 		<View style={styles.topContainer}>
 			<TouchableOpacity style={styles.container} onPress={() => faq()}>
-				<AppText style={styles.text}>FAQs</AppText>
+				<AppText style={styles.text}>{i18n.t('profileScreen.FAQs')}</AppText>
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.container} onPress={() => aboutUs()}>
-				<AppText style={styles.text}>ABOUT US</AppText>
+				<AppText style={styles.text}>{i18n.t('profileScreen.ABOUT US')}</AppText>
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.container} onPress={() => termsOfUse()}>
-				<AppText style={styles.text}>TERMS OF USE</AppText>
+				<AppText style={styles.text}>{i18n.t('profileScreen.TERMS OF USE')}</AppText>
 			</TouchableOpacity>
 			<TouchableOpacity
 				style={styles.container}
 				onPress={() => privacyPolicy()}
 			>
-				<AppText style={styles.text}>PRIVACY POLICY</AppText>
+				<AppText style={styles.text}>{i18n.t('profileScreen.PRIVACY POLICY')}</AppText>
 			</TouchableOpacity>
 		</View>
 	);

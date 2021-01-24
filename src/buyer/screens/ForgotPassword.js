@@ -16,6 +16,7 @@ import {
 import Loader from '../../common/components/Loader';
 import AppText from '../../common/components/AppText';
 import appAlert from '../../common/components/appAlert';
+import i18n from '../../languages/i18n';
 
 const ForgotPassword = ({ navigation }) => {
 	const [loading, setLoading] = useState(false);
@@ -29,16 +30,16 @@ const ForgotPassword = ({ navigation }) => {
 			setLoading(false);
 			dispatch(forgotPasswordAction(CLEAR_FORGOT_PASSWORD));
 			appAlert(
-				'Success',
-				'Reset Password link send to your verified email address',
+				i18n.t('forgotScreen.SUCCESS'),
+				i18n.t('forgotScreen.Reset Password link send to your verified email address'),
 				handleOk
 			);
 		} else if (status && status !== 200) {
 			setLoading(false);
 			dispatch(forgotPasswordAction(CLEAR_FORGOT_PASSWORD));
 			appAlert(
-				'Error',
-				'Email not registered or Please try again later',
+				i18n.t('forgotScreen.Error'),
+				i18n.t('forgotScreen.Email not registered or Please try again later'),
 				handleOk
 			);
 		}
@@ -67,7 +68,7 @@ const ForgotPassword = ({ navigation }) => {
 			>
 				<View style={styles.firstContainer}>
 					<AppText weight="bold" color={colors.white} size={42}>
-						Forgot{'\n'}Password
+						{i18n.t('forgotScreen.Forgot')}{'\n'}{i18n.t('forgotScreen.Password')}
 					</AppText>
 				</View>
 				<View style={styles.secondContainer}>
@@ -78,23 +79,23 @@ const ForgotPassword = ({ navigation }) => {
 					>
 						<View style={styles.textBox}>
 							<AppFormFeild
-								placeholder="Email"
+								placeholder={i18n.t('forgotScreen.Email')}
 								keyboardType="email-address"
 								name="email"
 							/>
 						</View>
-						<SubmitButton text="Confirm" />
+						<SubmitButton text={i18n.t('forgotScreen.Confirm')} />
 					</AppForm>
 				</View>
 
 				{!showKeyboard && (
 					<View style={styles.thirdContainer}>
 						<View style={styles.innerThird}>
-							<AppText style={styles.signUp}>Remember Password? </AppText>
+							<AppText style={styles.signUp}>{i18n.t('forgotScreen.Remember Password?')} </AppText>
 							<TextClick
 								weight="bold"
 								textDecorationLine="underline"
-								text="Login"
+								text={i18n.t('forgotScreen.Login')}
 								onClick={handleLogin}
 								size={16}
 								color={colors.white}

@@ -26,6 +26,7 @@ import {
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
+import i18n from '../../languages/i18n';
 
 const SelectAddress = () => {
 	// const [selectedItem, onSelectedItem] = useState(0);
@@ -63,7 +64,7 @@ const SelectAddress = () => {
 
 	const removeAddress = item => {
 		if (item.isActive) {
-			appAlert('ALERT', 'Please deselect the address and try again');
+			appAlert(i18n.t('addresses.ALERT'),i18n.t('addresses.Please deselect the address and try again'));
 		} else {
 			setLoading(true);
 			dispatch(deleteAddressAction(DELETE_ADDRESS, item.id));
@@ -87,7 +88,7 @@ const SelectAddress = () => {
 						<AppButton
 							color1={colors.white}
 							color2={colors.white}
-							text="Add New Address"
+							text={i18n.t('addresses.Add New Address')}
 							textColor={colors.primary1}
 							paddingVertical="2.5%"
 							textTransform="uppercase"
@@ -95,7 +96,7 @@ const SelectAddress = () => {
 						/>
 					</View>
 				</View>
-				<ComponentHeading text="SELECT ADDRESS" />
+				<ComponentHeading text={i18n.t('addresses.SELECT ADDRESS')} />
 				{getAddresses.map((item, index) => (
 					<React.Fragment key={index}>
 						<TouchableWithoutFeedback onPress={() => handleAddressChange(item)}>
@@ -120,7 +121,7 @@ const SelectAddress = () => {
 				<AppButton
 					color1={colors.primaryShade11}
 					color2={colors.primaryShade13}
-					text="CONFIRM"
+					text={i18n.t('addresses.CONFIRM')}
 					borderRadius={3}
 					textColor={colors.white}
 					textTransform="uppercase"

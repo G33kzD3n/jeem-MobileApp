@@ -7,6 +7,7 @@ import PriceDetails from '../components/CartPageComponents/PriceDetails';
 import Collapsible from 'react-native-collapsible';
 import ProfileCard from '../../common/components/ProfileCard';
 import PaymentOptions from '../components/PaymentPageComponents/PaymentOptions';
+import i18n from '../../languages/i18n';
 
 const Payments = () => {
 	const scrollViewRef = useRef();
@@ -19,11 +20,11 @@ const Payments = () => {
 
 	return (
 		<>
-			<ComponentHeading text="PAYMENT OPTIONS" />
+			<ComponentHeading text={i18n.t('paymentScreen.PAYMENT OPTIONS')} />
 			<ScrollView style={styles.scroll} ref={scrollViewRef}>
 				<ProfileCard
 					customStyle={styles.customStyle}
-					heading="Cash on delivery"
+					heading={i18n.t('paymentScreen.Cash on delivery')}
 					icon="cash"
 					onPress={toggleExpanded}
 					icon2={collapsedSubCat ? 'chevron-down' : 'chevron-up'}
@@ -40,7 +41,7 @@ const Payments = () => {
 				scrollViewRef={scrollViewRef}
 				navigationAddress="OrderDetails"
 				// total={1024}
-				text="PLACE ORDER"
+				text={i18n.t('paymentScreen.PLACE ORDER')}
 			/>
 		</>
 	);

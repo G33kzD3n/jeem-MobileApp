@@ -4,6 +4,7 @@ import AppDivider from '../../../common/components/AppDivider';
 import AppText from '../../../common/components/AppText';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../../config/colors';
+import i18n from '../../../languages/i18n';
 
 const PaymentOptions = () => {
 	return (
@@ -16,7 +17,7 @@ const PaymentOptions = () => {
 						size={24}
 						color={colors.primary1}
 					/>
-					<AppText style={styles.text}>Pay on delivery</AppText>
+					<AppText style={styles.text}>{i18n.t('orderScreen.Pay on delivery')}</AppText>
 				</View>
 			</TouchableOpacity>
 		</View>

@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { logoutAction } from '../../../../store/actions';
 import { LOGOUT } from '../../../../store/actions/actionTypes';
+import i18n from '../../../languages/i18n';
 
 const TopSections = ({
 	edit,
@@ -36,7 +37,7 @@ const TopSections = ({
 						borderRadius={0}
 						textColor={colors.white}
 						width="50%"
-						text={token !== null ? 'LOGOUT' : 'LOG IN/SIGN UP'}
+						text={token !== null ?i18n.t('profileScreen.LOGOUT') :i18n.t('profileScreen.LOG IN/SIGN UP')}
 						customStyle={styles.button}
 						textTransform="uppercase"
 						handleClick={handelAuth}

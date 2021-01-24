@@ -20,6 +20,7 @@ import {
 	emptySignupAction,
 	signupAction,
 } from '../../../store/actions/authAction';
+import i18n from '../../languages/i18n';
 
 const RegisterScreen = ({ navigation }) => {
 	const [isEnabled, setIsEnabled] = useState(false);
@@ -34,15 +35,15 @@ const RegisterScreen = ({ navigation }) => {
 		if (signupInfo && signupInfo==='Phone Number or Email already registered') {
 			setloading(false);
 			appAlert(
-				'Error',
-				'Phone Number or Email already registered'
+				i18n.t('registerScreen.Error'),
+				i18n.t('registerScreen.Phone Number or Email already registered')
 			);
 			dispatch(emptySignupAction(CLEAR_SIGNUP));
 		}else if (signupInfo){
 			setloading(false);
 			appAlert(
-				'Verification email sent',
-				'Please verify your email and login',
+				i18n.t('registerScreen.Verification email sent'),
+				i18n.t('registerScreen.Please verify your email and login'),
 				handleOk
 			);
 			dispatch(emptySignupAction(CLEAR_SIGNUP));
@@ -56,7 +57,7 @@ const RegisterScreen = ({ navigation }) => {
 	const handleSubmit = (values) => {
 		setCheckPassword(null);
 		if (!isEnabled) {
-			appAlert('Info!', 'Please agree on the terms and privacy policy');
+			appAlert(i18n.t('registerScreen.Info!'),i18n.t('registerScreen.Please agree on the terms and privacy policy'));
 		} else if (values.password !== values.password_confirmation) {
 			setCheckPassword('Password Mismatch');
 		} else {
@@ -81,7 +82,7 @@ const RegisterScreen = ({ navigation }) => {
 				<ScrollView>
 					<View style={styles.firstContainer}>
 						<AppText weight="bold" color={colors.white} size={42}>
-							Create{'\n'}your account
+							{i18n.t('registerScreen.Create')}{'\n'}{i18n.t('registerScreen.your account')}
 						</AppText>
 					</View>
 					{checkPassword && (
@@ -92,45 +93,45 @@ const RegisterScreen = ({ navigation }) => {
 					<View style={styles.secondContainer}>
 						<AppForm
 							initialValues={{
-								name: 'basit',
-								email: 'basitmir@gmail.com',
-								password: 'basit123',
-								password_confirmation: 'basit123',
-								phonenumber: '9858536852',
+								name: '',
+								email: '',
+								password: '',
+								password_confirmation: '',
+								phonenumber: '',
 							}}
 							onSubmit={(values) => handleSubmit(values)}
 							validationSchema={validation.validationRegister}
 						>
 							<View style={styles.textBox}>
-								<AppFormFeild placeholder="Your Name" name="name" />
+								<AppFormFeild placeholder={i18n.t('registerScreen.Your Name')} name="name" />
 								<AppFormFeild
-									placeholder="Email"
+									placeholder={i18n.t('registerScreen.Email')}
 									keyboardType="email-address"
 									name="email"
 									keyboardType="email-address"
 								/>
 								<AppFormFeild
 									name="phonenumber"
-									placeholder="Phone Number"
+									placeholder={i18n.t('registerScreen.Phone Number')}
 									keyboardType="phone-pad"
 								/>
 								<AppFormFeild
 									name="password"
-									placeholder="Password"
+									placeholder={i18n.t('registerScreen.Password')}
 									secureTextEntry
 								/>
 								<AppFormFeild
 									name="password_confirmation"
-									placeholder="Confirm Password"
+									placeholder={i18n.t('registerScreen.Confirm Password')}
 									secureTextEntry
 								/>
 							</View>
 							<AppSwitch
 								isEnabled={isEnabled}
 								toggleSwitch={toggleSwitch}
-								text="You agree the terms and privacy policy"
+								text={i18n.t('registerScreen.You agree the terms and privacy policy')}
 							/>
-							<SubmitButton text="Sign Up" />
+							<SubmitButton text={i18n.t('registerScreen.Sign Up')}/>
 						</AppForm>
 
 						{/* <AppText size={15} style={styles.msg}>
@@ -164,12 +165,12 @@ const RegisterScreen = ({ navigation }) => {
 						<View style={styles.thirdContainer}>
 							<View style={styles.innerThird}>
 								<AppText style={styles.signUp}>
-									Already have an account?{' '}
+									{i18n.t('registerScreen.Already have an account?')}{' '}
 								</AppText>
 								<TextClick
 									weight="bold"
 									textDecorationLine="underline"
-									text="Log In"
+									text={i18n.t('registerScreen.Log In')}
 									onClick={handleLogin}
 									size={16}
 									color={colors.white}

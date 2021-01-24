@@ -15,6 +15,7 @@ import {
 import { updateProfileAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
+import i18n from '../../languages/i18n';
 
 const EditProfile = () => {
 	const [loading, setLoading] = useState(false);
@@ -42,7 +43,7 @@ const EditProfile = () => {
 					seller_category_name: profileStatus.seller_category_name
 				}
 			};
-			appAlert('SUCCESS', 'Profile updated Successfully');
+			appAlert(i18n.t('profileScreen.SUCCESS'),i18n.t('profileScreen.Profile updated Successfully'));
 			dispatch({ type: LOGIN, value: data });
 			dispatch({ type: REMOVE_EDIT_PROFILE });
 		}
@@ -75,7 +76,7 @@ const EditProfile = () => {
 
 								<View style={styles.contactDetails}>
 									<AppFormFeild
-										placeholder="Email"
+										placeholder={i18n.t('profileScreen.Email')}
 										keyboardType="email-address"
 										name="email"
 										editable={false}
@@ -89,7 +90,7 @@ const EditProfile = () => {
 										}}
 									/>
 									<AppFormFeild
-										placeholder="Name"
+										placeholder={i18n.t('profileScreen.Name')}
 										name="name"
 										selectionColor={colors.primary2}
 										placeholderTextColor={colors.primaryShade22}
@@ -97,7 +98,7 @@ const EditProfile = () => {
 										overrideTextbox={styles.overrideTextbox}
 									/>
 									<AppFormFeild
-										placeholder="Mobile No"
+										placeholder={i18n.t('profileScreen.Mobile No')}
 										name="phonenumber"
 										selectionColor={colors.primary2}
 										placeholderTextColor={colors.primaryShade22}
@@ -106,7 +107,7 @@ const EditProfile = () => {
 										keyboardType="phone-pad"
 									/>
 									<AppFormFeild
-										placeholder="Location"
+										placeholder={i18n.t('profileScreen.Location')}
 										name="location"
 										selectionColor={colors.primary2}
 										placeholderTextColor={colors.primaryShade22}
@@ -117,7 +118,7 @@ const EditProfile = () => {
 							</ScrollView>
 						</View>
 						<View style={styles.button}>
-							<SubmitButton text="SAVE" borderRadius={0} />
+							<SubmitButton text={i18n.t('profileScreen.SAVE')} borderRadius={0} />
 						</View>
 					</AppForm>
 				</View>

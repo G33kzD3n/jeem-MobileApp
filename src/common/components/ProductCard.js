@@ -9,6 +9,7 @@ import colors from '../../config/colors';
 import AppText from './AppText';
 import { useNavigation } from '@react-navigation/native';
 import { apiUrlImageProducts } from '../../config/config';
+import i18n from '../../languages/i18n';
 
 const ProductCard = ({ item }) => {
 	const navigation = useNavigation();
@@ -45,7 +46,7 @@ const ProductCard = ({ item }) => {
 						<AppText style={styles.orginalPrice}>${item.productPrice}</AppText>
 						<AppText style={styles.discount}>
 							{' '}
-							{item.productDiscount}% OFF
+							{item.productDiscount}% {i18n.t('common.OFF')}
 						</AppText>
 					</View>
 				</View>

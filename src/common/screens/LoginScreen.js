@@ -24,6 +24,7 @@ import {
 import ErrorMessage from '../components/forms/ErrorMessage';
 import Loader from '../components/Loader';
 import persistStore from '../../utils/persistStore';
+import i18n from '../../languages/i18n';
 // import { connect } from 'react-redux';
 // import { loginAction } from '../../../store/actions/authActions';
 // import { LOGIN } from '../../../store/actions/actionTypes';
@@ -74,7 +75,7 @@ const LoginScreen = ({ navigation, login }) => {
 			>
 				<View style={styles.firstContainer}>
 					<AppText weight="bold" color={colors.white} size={42}>
-						Log into{'\n'}your account
+						{i18n.t('loginScreen.Log into')}{'\n'}{i18n.t('loginScreen.your account')}
 					</AppText>
 				</View>
 				{error && (
@@ -90,13 +91,13 @@ const LoginScreen = ({ navigation, login }) => {
 					>
 						<View style={styles.textBox}>
 							<AppFormFeild
-								placeholder="Email"
+								placeholder={i18n.t('loginScreen.Email')}
 								keyboardType="email-address"
 								name="email"
 							/>
 							<AppFormFeild
 								name="password"
-								placeholder="Password"
+								placeholder={i18n.t('loginScreen.Password')}
 								secureTextEntry
 							/>
 						</View>
@@ -104,20 +105,20 @@ const LoginScreen = ({ navigation, login }) => {
 							<AppSwitch
 								isEnabled={isEnabled}
 								toggleSwitch={toggleSwitch}
-								text="Remember me"
+								text={i18n.t('loginScreen.Remember me')}
 							/>
 							<View style={{paddingTop:5}}>
 								<TextClick
 									weight="bold"
 									textDecorationLine="underline"
-									text="Forgot Password"
+									text={i18n.t('loginScreen.Forgot Password')}
 									onClick={handleForgotPassword}
 									size={16}
 									color={colors.white}
 								/>
 							</View>
 						</View>
-						<SubmitButton text="Log In" />
+						<SubmitButton text={i18n.t('loginScreen.Log In')} />
 					</AppForm>
 
 					{/* social media buttons for login................. */}
@@ -151,11 +152,11 @@ const LoginScreen = ({ navigation, login }) => {
 				{!showKeyboard && (
 					<View style={styles.thirdContainer}>
 						<View style={styles.innerThird}>
-							<AppText style={styles.signUp}>Don't have an account? </AppText>
+							<AppText style={styles.signUp}>{i18n.t('loginScreen.Don\'t have an account?')} </AppText>
 							<TextClick
 								weight="bold"
 								textDecorationLine="underline"
-								text="Sign Up"
+								text={i18n.t('loginScreen.Sign Up')}
 								onClick={handleSignUp}
 								size={16}
 								color={colors.white}

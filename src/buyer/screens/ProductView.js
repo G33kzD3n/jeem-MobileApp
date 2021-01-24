@@ -28,6 +28,7 @@ import {
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
 import Reviews from '../../common/components/Reviews';
+import i18n from '../../languages/i18n';
 
 const ProductView = ({ route }) => {
 	const navigation = useNavigation();
@@ -42,7 +43,7 @@ const ProductView = ({ route }) => {
 		// navigation.navigate('Cart');
 	};
 	if (cartMessage) {
-		appAlert('Message', cartMessage);
+		appAlert(i18n.t('productView.Message'), cartMessage);
 	}
 	//console.log(productSubCategories);
 	const dispatch = useDispatch();
@@ -90,19 +91,19 @@ const ProductView = ({ route }) => {
 							</AppText>
 							<AppText style={styles.discount}>
 								{' '}
-								({productData.productDiscount}% OFF)
+								({productData.productDiscount}% {i18n.t('productView.OFF')})
 							</AppText>
 						</View>
 
 						<AppText style={styles.taxesMessage}>
-							inclusive of all taxes
+							{i18n.t('productView.inclusive of all taxes')}
 						</AppText>
 						<TouchableOpacity
 							style={styles.priceContainer}
 							onPress={() => handleSeller(productData)}
 						>
 							<AppText style={{ color: colors.primary2, fontSize: 16 }}>
-								Seller:
+								 {i18n.t('productView.Seller:')}
 							</AppText>
 							<AppText
 								style={{
@@ -118,7 +119,7 @@ const ProductView = ({ route }) => {
 					</View>
 				</View>
 				<TextCard
-					heading={'Product Details'}
+					heading={i18n.t('productView.Product Details')}
 					details={productData.productCartDesc}
 				/>
 				<Ratings
@@ -131,7 +132,7 @@ const ProductView = ({ route }) => {
 				<AppButton
 					color1={colors.primaryShade11}
 					color2={colors.primaryShade13}
-					text="Add To Cart"
+					text={i18n.t('productView.Add To Cart')}
 					borderRadius={3}
 					textColor={colors.white}
 					handleClick={() => addToCart()}

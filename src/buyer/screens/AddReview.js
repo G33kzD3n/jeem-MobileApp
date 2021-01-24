@@ -16,6 +16,7 @@ import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
 import { addProductReviews } from '../../../store/actions/productAction';
 import { useNavigation } from '@react-navigation/native';
+import i18n from '../../languages/i18n';
 
 const AddReview = ({ route }) => {
 	const navigation = useNavigation();
@@ -37,7 +38,7 @@ const AddReview = ({ route }) => {
 	useEffect(() => {
 		if (reviewResponse) {
 			setLoading(false);
-			appAlert('SUCCESS', 'Review added successfully', () => handleOk());
+			appAlert(i18n.t('reviewScreen.SUCCESS'), i18n.t('reviewScreen.Review added successfully'), () => handleOk());
 			dispatch({ type: REMOVE_REVIEWS_OF_PRODUCT });
 		}
 	}, [reviewResponse]);
@@ -96,7 +97,7 @@ const AddReview = ({ route }) => {
 								/>
 								<View style={styles.contactDetails}>
 									<AppFormFeild
-										placeholder="Name"
+										placeholder={i18n.t('reviewScreen.Name')}
 										name="name"
 										editable={false}
 										selectTextOnFocus={false}
@@ -106,7 +107,7 @@ const AddReview = ({ route }) => {
 										overrideTextbox={styles.overrideTextbox}
 									/>
 									<AppFormFeild
-										placeholder="Email"
+										placeholder={i18n.t('reviewScreen.Email')}
 										keyboardType="email-address"
 										name="email"
 										editable={false}
@@ -117,7 +118,7 @@ const AddReview = ({ route }) => {
 										overrideTextbox={styles.overrideTextbox}
 									/>
 									<AppFormFeild
-										placeholder="Write your review"
+										placeholder={i18n.t('reviewScreen.Write your review')}
 										name="message"
 										numberOfLines={6}
 										multiline={true}
@@ -130,7 +131,7 @@ const AddReview = ({ route }) => {
 							</ScrollView>
 						</View>
 						<View style={styles.button}>
-							<SubmitButton text="SUBMIT" borderRadius={0} />
+							<SubmitButton text={i18n.t('reviewScreen.SUBMIT')} borderRadius={0} />
 						</View>
 					</AppForm>
 				</View>

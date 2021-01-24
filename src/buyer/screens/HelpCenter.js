@@ -14,6 +14,7 @@ import {
 import { sendQueryAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
+import i18n from '../../languages/i18n';
 
 const HelpCenter = () => {
 	const [loading, setLoading] = useState(false);
@@ -27,7 +28,7 @@ const HelpCenter = () => {
 	useEffect(() => {
 		if (queryResponse) {
 			setLoading(false);
-			appAlert('SUCCESS', queryResponse);
+			appAlert(i18n.t('helpScreen.SUCCESS'), queryResponse);
 			dispatch({ type: REMOVE_HELP_QUERY });
 		}
 	}, [queryResponse]);
@@ -62,7 +63,7 @@ const HelpCenter = () => {
 
 								<View style={styles.contactDetails}>
 									<AppFormFeild
-										placeholder="Name"
+										placeholder={i18n.t('helpScreen.Name')}
 										name="name"
 										selectionColor={colors.primary2}
 										placeholderTextColor={colors.primaryShade22}
@@ -70,7 +71,7 @@ const HelpCenter = () => {
 										overrideTextbox={styles.overrideTextbox}
 									/>
 									<AppFormFeild
-										placeholder="Email"
+										placeholder={i18n.t('helpScreen.Email')}
 										keyboardType="email-address"
 										name="email"
 										selectionColor={colors.primary2}
@@ -79,7 +80,7 @@ const HelpCenter = () => {
 										overrideTextbox={styles.overrideTextbox}
 									/>
 									<AppFormFeild
-										placeholder="Write your query"
+										placeholder={i18n.t('helpScreen.Write your query')}
 										name="message"
 										numberOfLines={6}
 										multiline={true}
@@ -92,7 +93,7 @@ const HelpCenter = () => {
 							</ScrollView>
 						</View>
 						<View style={styles.button}>
-							<SubmitButton text="SEND" borderRadius={0} />
+							<SubmitButton text={i18n.t('helpScreen.SEND')} borderRadius={0} />
 						</View>
 					</AppForm>
 				</View>

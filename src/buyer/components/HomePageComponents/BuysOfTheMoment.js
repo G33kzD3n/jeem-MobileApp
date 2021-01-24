@@ -9,13 +9,13 @@ import ComponentHeading from '../../../common/components/ComponentHeading';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import i18n from '../../../languages/i18n';
-
+ 
 const item = {
 	title: i18n.t('homeScreen.Fave Products'),
 	subTitle: i18n.t('homeScreen.Now On Jeem'),
 	// subDetails: 'Up To 60% Off',
 	subDetails: i18n.t('homeScreen.Comming Soon'),
-	image:
+	image: 
 		'https://structuralengineeringbasics.com/wp-content/uploads/2019/03/STRUCTURAL-ENGINEERING-MATERIALS.png'
 };
 

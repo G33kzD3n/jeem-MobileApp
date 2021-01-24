@@ -3,6 +3,7 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 import AppText from '../../common/components/AppText';
 import colors from '../../config/colors';
 import { LinearGradient } from 'expo-linear-gradient';
+import i18n from '../../languages/i18n';
 
 const AboutUs = () => {
 	return (
@@ -13,10 +14,9 @@ const AboutUs = () => {
 				style={styles.image}
 			>
 				<AppText style={styles.text1}>
-					JEEM is a plat form that will connect the server provider with the
-					consumer in every thing that matters in the building industry by
-					listing all the big names in the building material industry and the
-					and contractors
+					{i18n.t(
+						'aboutScreen.JEEM is a platform that will connect the server provider with the consumer in every thing that matters in the building industry by listing all the big names in the building material industry and the and contractors'
+					)}
 				</AppText>
 			</ImageBackground>
 			<LinearGradient
@@ -32,17 +32,16 @@ const AboutUs = () => {
 				]}
 			>
 				<AppText style={styles.text2}>
-					We JEEM A start up in the building industry to help and make the
-					technology part of this big industry and to go hand in hand with the
-					great vision of Saudi Arabia 2030
+					{i18n.t('aboutScreen.We JEEM A start up in the building industry to help and make the technology part of this big industry and to go hand in hand with the great vision of Saudi Arabia 2030')}
+				
 				</AppText>
 			</LinearGradient>
 			<AppText style={styles.text3}>
-				{`We at JEEM looking to give the consumers THE great experience of giving them THE EASY WAY TO BULID To have all the leaders in the building industry under one umbrella 
+			{i18n.t(`aboutScreen.We at JEEM looking to give the consumers THE great experience of giving them THE EASY WAY TO BULID To have all the leaders in the building industry under one umbrella 
     - easy 
     - many chooses 
     - the higher quality
-    - the diversity of prices`}
+    - the diversity of prices`)}
 			</AppText>
 		</View>
 	);

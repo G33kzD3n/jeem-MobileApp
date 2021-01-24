@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Rating } from 'react-native-ratings';
 import colors from '../../config/colors';
+import i18n from '../../languages/i18n';
 import AppText from './AppText';
 
 const Ratings = ({ ratings, totalReviews }) => {
 	return (
 		<View style={styles.topContainer}>
-			<AppText style={styles.heading}>Ratings and Reviews</AppText>
+			<AppText style={styles.heading}>{i18n.t('common.Ratings and Reviews')}</AppText>
 			<View style={styles.innerContainer}>
 				<Rating
 					showRating={false}
@@ -18,10 +19,10 @@ const Ratings = ({ ratings, totalReviews }) => {
 					fractions={false}
 					ratingCount={5}
 				/>
-				<AppText style={styles.ratingText}>{ratings} out of 5</AppText>
+				<AppText style={styles.ratingText}>{ratings} {i18n.t('common.out of 5')}</AppText>
 			</View>
 			<AppText style={styles.globalRatings}>
-				{totalReviews} global ratings
+				{totalReviews} {i18n.t('common.global ratings')}
 			</AppText>
 		</View>
 	);

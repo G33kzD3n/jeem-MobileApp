@@ -14,6 +14,7 @@ import {
 	GET_MY_ORDERS
 } from '../../../store/actions/actionTypes';
 import Loader from '../../common/components/Loader';
+import i18n from '../../languages/i18n';
 
 const ViewOrders = () => {
 	const isFocused = useIsFocused();
@@ -49,7 +50,7 @@ const ViewOrders = () => {
 
 	if (!myOrders) return <Loader />;
 	if (myOrders.length === 0) {
-		return <NotFound name="No Items" />;
+		return <NotFound name={i18n.t('orderScreen.No Items')} />;
 	}
 
 	return (
@@ -76,7 +77,7 @@ const ViewOrders = () => {
 							<View>
 								<AppText style={styles.text}>{order.orderStatus}</AppText>
 								<AppText style={styles.subHeading}>
-									On {new Date(order.created_at).toDateString()}
+								{i18n.t('orderScreen.On')} {new Date(order.created_at).toDateString()}
 								</AppText>
 							</View>
 						</View>

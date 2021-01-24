@@ -5,6 +5,7 @@ import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppButton from '../../../common/components/AppButton';
 import { useNavigation } from '@react-navigation/native';
+import i18n from '../../../languages/i18n';
 
 const SucessCard = ({ orderCode }) => {
 	const navigation = useNavigation();
@@ -31,22 +32,27 @@ const SucessCard = ({ orderCode }) => {
 					color="mediumseagreen"
 				/>
 				<View>
-					<AppText style={styles.text}>Order placed Sucessfully!</AppText>
-					<AppText style={styles.subHeading}>Order No. {orderCode}</AppText>
+					<AppText style={styles.text}>
+						{i18n.t('orderScreen.Order placed Sucessfully!')}
+					</AppText>
+					<AppText style={styles.subHeading}>
+						{i18n.t('orderScreen.Order No.')}
+						{orderCode}
+					</AppText>
 				</View>
 			</View>
 			<View style={styles.textTop}>
 				<AppText style={styles.theory}>
-					Your order is currently being processed. You will receive an order
-					confirmation mail shortlly with the expected delivery date for your
-					items.
+					{i18n.t(
+						'orderScreen.Your order is currently being processed. You will receive an order confirmation mail shortlly with the expected delivery date for your items.'
+					)}
 				</AppText>
 			</View>
 			<View style={styles.buttonContainer}>
 				<AppButton
 					color2={colors.secondarGreen}
 					color1="mediumseagreen"
-					text="View Order"
+					text={i18n.t('orderScreen.View Order')}
 					borderRadius={3}
 					textColor={colors.white}
 					textTransform="uppercase"

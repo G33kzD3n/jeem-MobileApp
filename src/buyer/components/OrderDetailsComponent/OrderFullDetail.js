@@ -13,6 +13,7 @@ import {
 import appAlert from '../../../common/components/appAlert';
 import Loader from '../../../common/components/Loader';
 import { useNavigation } from '@react-navigation/native';
+import i18n from '../../../languages/i18n';
 
 const OrderFullDetail = ({ route }) => {
 	const { order } = route.params;
@@ -34,7 +35,7 @@ const OrderFullDetail = ({ route }) => {
 	const dispatch = useDispatch();
 	const handleCancel = id => {
 		// console.log(id,'idddd');
-		appAlert('CANCEL', 'Are you sure you want to cancel this order?', () =>
+		appAlert(i18n.t('orderScreen.CANCEL'),i18n.t('orderScreen.Are you sure you want to cancel this order?'), () =>
 			handleOk(id)
 		);
 	};
@@ -57,7 +58,7 @@ const OrderFullDetail = ({ route }) => {
 					<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
-							Sold by:
+						 {i18n.t('orderScreen.Sold by:')}
 						</AppText>
 						<AppText
 							style={{
@@ -90,7 +91,7 @@ const OrderFullDetail = ({ route }) => {
 						<View>
 							<AppText style={styles.text}>{order.orderStatus}</AppText>
 							<AppText style={styles.subHeading}>
-								On {new Date(order.created_at).toDateString()}
+								{i18n.t('orderScreen.On')} {new Date(order.created_at).toDateString()}
 							</AppText>
 						</View>
 					</View>
@@ -99,7 +100,7 @@ const OrderFullDetail = ({ route }) => {
 							<AppButton
 								color1={colors.primaryShade11}
 								color2={colors.primaryShade13}
-								text="Cancel Order"
+								text={i18n.t('orderScreen.Cancel Order')}
 								borderRadius={3}
 								textColor={colors.white}
 								paddingText="1%"
@@ -111,16 +112,16 @@ const OrderFullDetail = ({ route }) => {
 				</View>
 				<View style={styles.parentContainer}>
 					<View style={styles.container}>
-						<AppText style={styles.total}>Total Order Price</AppText>
+						<AppText style={styles.total}>{i18n.t('orderScreen.Total Order Price')}</AppText>
 						<AppText style={styles.total}>${order.orderPrice}</AppText>
 					</View>
 					<AppText style={styles.subHeading}>
-						You saved ${order.orderDiscount} on this order
+					{i18n.t('orderScreen.You saved')} ${order.orderDiscount} {i18n.t('orderScreen.on this order')}
 					</AppText>
 				</View>
 				<View style={styles.newView}>
 					<AppText style={[styles.total, { paddingBottom: 6 }]}>
-						Updates sent to
+					{i18n.t('orderScreen.Updates sent to')}
 					</AppText>
 					<View style={styles.contactInfo}>
 						<MaterialCommunityIcons
@@ -147,7 +148,7 @@ const OrderFullDetail = ({ route }) => {
 				</View>
 				<View style={styles.newView}>
 					<AppText style={[styles.subHeading, { textTransform: 'uppercase' }]}>
-						ORDER ID {order.orderCode}
+					{i18n.t('orderScreen.ORDER ID')} {order.orderCode}
 					</AppText>
 				</View>
 				{order.orderStatus === 'delivered' && (
@@ -155,7 +156,7 @@ const OrderFullDetail = ({ route }) => {
 						<AppButton
 							color1={colors.primaryShade11}
 							color2={colors.primaryShade13}
-							text="REVIEW ORDER"
+							text={i18n.t('orderScreen.REVIEW ORDER')}
 							borderRadius={3}
 							textColor={colors.white}
 							textTransform="uppercase"

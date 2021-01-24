@@ -1,10 +1,26 @@
-{
+{ 
   "tabNavigation": {
     "Home": "Home",
     "Categories": "Categories",
     "Search": "Search",
     "Cart": "Cart",
     "Profile": "Profile"
+  },
+  "appNavigation":{
+    "ADDRESS":"ADDRESS",
+    "PAYMENT":"PAYMENT",
+    "ORDER":"ORDER",
+    "MY ORDERS":"MY ORDERS",
+    "ADD ADDRESS":"ADD ADDRESS",
+    "ITEM DETAILS":"ITEM DETAILS",
+    "PROFILE":"PROFILE",
+    "HELP":"HELP",
+    "FAQ":"FAQ",
+    "ABOUT US":"ABOUT US",
+    "TERMS OF USE":"TERMS OF USE",
+    "PRIVACY POLICY":"PRIVACY POLICY",
+    "RATE AND REVIEW":"RATE AND REVIEW",
+    "SELECT LANGUAGE":"SELECT LANGUAGE"
   },
   "homeScreen": {
     "All": "All",
@@ -58,6 +74,7 @@
   "addresses": {
     "CONTACT DETAILS": "CONTACT DETAILS",
     "Name": "Name",
+    "ADDRESS":"ADDRESS",
     "Mobile No": "Mobile No",
     "Pin Code": "Pin Code",
     "Address (House No, Building, Street, Area)": "Address (House No, Building, Street, Area)",
@@ -67,7 +84,7 @@
     "ADD": "ADD",
     "DELETE": "DELETE",
     "Are you sure you want to delete?": "Are you sure you want to delete?",
-    "Mobile": "Mobile",
+    "Mobile:": "Mobile:",
     "ALERT": "ALERT",
     "Please deselect the address and try again": "Please deselect the address and try again",
     "Add New Address": "Add New Address",
@@ -83,6 +100,8 @@
     "Are you sure you want to cancel this order?": "Are you sure you want to cancel this order?",
     "Sold by:": "Sold by:",
     "On": "On",
+    "REVIEW ORDER":"REVIEW ORDER",
+    "Cancel Order":"Cancel Order",
     "Total Order Price": "Total Order Price",
     "You saved": "You saved",
     "on this order": "on this order",
@@ -154,7 +173,8 @@
     "Remember me": "Remember me",
     "Log In": "Log In",
     "Don't have an account?": "Don't have an account?",
-    "Sign Up": "Sign Up"
+    "Sign Up": "Sign Up",
+    "Forgot Password":"Forgot Password"
   },
   "registerScreen": {
     "Error": "Error",
@@ -175,6 +195,18 @@
     "Already have an account?": "Already have an account?",
     "Log In": "Log In"
   },
+  "forgotScreen":{
+    "SUCCESS":"SUCCESS",
+    "Reset Password link send to your verified email address":"Reset Password link send to your verified email address",
+    "Error":"Error",
+    "Email not registered or Please try again later":"Email not registered or Please try again later",
+    "Forgot":"Forgot",
+    "Password":"Password",
+    "Email":"Email",
+    "Confirm":"Confirm",
+    "Remember Password?":"Remember Password?",
+    "Login":"Login"
+  },
   "appAlert": {
     "OK": "OK",
     "Cancel": "Cancel"
@@ -192,6 +224,14 @@
     "Locality": "Locality",
     "City": "City",
     "State": "State"
+  },
+  "reviewScreen":{
+    "SUCCESS":"SUCCESS",
+    "Review added successfully":"Review added successfully",
+    "Name":"Name",
+    "Email":"Email",
+    "Write your review":"Write your review",
+    "SUBMIT":"SUBMIT"
   },
   "common": {
     "All": "All",

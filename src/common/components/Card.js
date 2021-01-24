@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import AppText from './AppText';
 import colors from '../../config/colors';
+import i18n from '../../languages/i18n';
 
 const Card = ({ brand, image, title, subTitle }) => {
 	return (
@@ -11,7 +12,7 @@ const Card = ({ brand, image, title, subTitle }) => {
 				<AppText style={styles.brand}>{brand}</AppText>
 				<AppText style={styles.title}>{title}</AppText>
 				<AppText style={styles.subTitle}>{subTitle}</AppText>
-				<AppText style={styles.terms}>*T&C Apply</AppText>
+				<AppText style={styles.terms}>{i18n.t('common.*T&C Apply')}</AppText>
 			</View>
 		</View>
 	);

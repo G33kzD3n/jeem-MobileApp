@@ -14,6 +14,7 @@ import {
 } from '../../../../store/actions/actionTypes';
 import { useNavigation } from '@react-navigation/native';
 import Loader from '../../../common/components/Loader';
+import i18n from '../../../languages/i18n';
 
 const AddAddress = () => {
 	const navigation = useNavigation();
@@ -57,10 +58,10 @@ const AddAddress = () => {
 				>
 					<View style={styles.topContainer}>
 						<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
-							<ComponentHeading text="CONTACT DETAILS" />
+							<ComponentHeading text={i18n.t('addresses.CONTACT DETAILS')}/>
 							<View style={styles.contactDetails}>
 								<AppFormFeild
-									placeholder="Name"
+									placeholder={i18n.t('addresses.Name')}
 									name="name"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
@@ -68,7 +69,7 @@ const AddAddress = () => {
 									overrideTextbox={styles.overrideTextbox}
 								/>
 								<AppFormFeild
-									placeholder="Mobile No"
+									placeholder={i18n.t('addresses.Mobile No')}
 									name="phoneNumber"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
@@ -77,10 +78,10 @@ const AddAddress = () => {
 									keyboardType="phone-pad"
 								/>
 							</View>
-							<ComponentHeading text="ADDRESS" />
+							<ComponentHeading text={i18n.t('addresses.ADDRESS')}/>
 							<View style={styles.contactDetails}>
 								<AppFormFeild
-									placeholder="Pin Code"
+									placeholder={i18n.t('addresses.Pin Code')}
 									name="pincode"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
@@ -89,7 +90,7 @@ const AddAddress = () => {
 									keyboardType="number-pad"
 								/>
 								<AppFormFeild
-									placeholder="Address (House No, Building, Street, Area)"
+									placeholder={i18n.t('addresses.Address (House No, Building, Street, Area)')}
 									name="address"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
@@ -97,7 +98,7 @@ const AddAddress = () => {
 									overrideTextbox={styles.overrideTextbox}
 								/>
 								<AppFormFeild
-									placeholder="Locality/Town"
+									placeholder={i18n.t('addresses.Locality/Town')}
 									name="address1"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
@@ -105,7 +106,7 @@ const AddAddress = () => {
 									overrideTextbox={styles.overrideTextbox}
 								/>
 								<AppFormFeild
-									placeholder="City"
+									placeholder={i18n.t('addresses.City')}
 									name="city"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
@@ -113,7 +114,7 @@ const AddAddress = () => {
 									overrideTextbox={styles.overrideTextbox}
 								/>
 								<AppFormFeild
-									placeholder="State"
+									placeholder={i18n.t('addresses.State')}
 									name="state"
 									selectionColor={colors.primary2}
 									placeholderTextColor={colors.primaryShade22}
@@ -124,7 +125,7 @@ const AddAddress = () => {
 						</ScrollView>
 					</View>
 					<View style={styles.button}>
-						<SubmitButton text="ADD" borderRadius={0} />
+						<SubmitButton text={i18n.t('addresses.ADD')} borderRadius={0} />
 					</View>
 				</AppForm>
 			</View>

@@ -11,6 +11,7 @@ import Loader from '../../common/components/Loader';
 import { getSellerWithTagAction } from '../../../store/actions/homeAction';
 import FeaturedCard from '../../common/components/FeaturedCard';
 import { apiUrlImage } from '../../config/config';
+import i18n from '../../languages/i18n';
 
 const AllBrands = ({ route, navigation }) => {
 	const { id, apiName } = route.params;
@@ -130,7 +131,7 @@ const AllBrands = ({ route, navigation }) => {
 							<FeaturedCard
 								title={item.tagName}
 								sellerName={item.name}
-								subTitle="Limited Time Offer"
+								subTitle={i18n.t('homeScreen.Limited Time Offer')}
 								brandLogo={apiUrlImage + item.logo}
 								image={apiUrlImage + 'tags/' + item.tagImage}
 							/>

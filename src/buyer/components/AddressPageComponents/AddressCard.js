@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
+import i18n from '../../../languages/i18n';
 
 const AddressCard = ({ data }) => {
 	return (
@@ -17,7 +18,7 @@ const AddressCard = ({ data }) => {
 			{/* <AppText style={styles.taxesMessage}>inclusive of all taxes</AppText> */}
 			<View style={styles.priceContainer}>
 				<AppText style={{ color: colors.primary2, fontSize: 14 }}>
-					Mobile:
+					{i18n.t('addresses.Mobile:')}
 				</AppText>
 				<AppText
 					style={{

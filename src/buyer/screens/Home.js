@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, SectionList, View } from 'react-native';
 import CarouselDisplay from '../components/HomePageComponents/Carousel';
 import SubCategories from '../components/HomePageComponents/SubCategories';
@@ -10,6 +10,8 @@ import RecommendedForYou from '../components/HomePageComponents/RecommendedForYo
 import TopTrends from '../components/HomePageComponents/TopTrends';
 import FeaturedProducts from '../components/HomePageComponents/FeaturedProducts';
 import { StatusBar } from 'expo-status-bar';
+import Loader from '../../common/components/Loader';
+import { useIsFocused } from '@react-navigation/native';
 
 const sectionList = [
 	{
@@ -42,17 +44,25 @@ const sectionList = [
 ];
 
 const Home = () => {
+	const [loading, setLoading] = useState(true);
+	const isFocused = useIsFocused();
+	useEffect(() => {
+		setLoading(false);
+	}, [isFocused]);
 	return (
 		<View style={{ flex: 1 }}>
-			<StatusBar style="light" />
-			<SectionList
-				sections={sectionList}
-				keyExtractor={(item, index) => item + index}
-				renderItem={({ item }) => <>{item}</>}
-				// renderSectionHeader={({ section: { title } }) => (
-				//    title  &&<Text>{title}</Text>
-				// )}
-			/>
+			<>
+				{loading && <Loader />}
+				<StatusBar style="light" />
+				<SectionList
+					sections={sectionList}
+					keyExtractor={(item, index) => item + index}
+					renderItem={({ item }) => <>{item}</>}
+					// renderSectionHeader={({ section: { title } }) => (
+					//    title  &&<Text>{title}</Text>
+					// )}
+				/>
+			</>
 		</View>
 	);
 };

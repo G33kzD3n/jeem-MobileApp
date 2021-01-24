@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const Faq = () => {
 	return (
 		<View>
-			<Text>FAQ</Text>
+			<Text>Comming Soon</Text>
 		</View>
 	);
 };

@@ -18,7 +18,7 @@ import ComponentHeading from '../../common/components/ComponentHeading';
 import AppText from '../../common/components/AppText';
 import persistStore from '../../utils/persistStore';
 import appAlert from '../../common/components/appAlert';
-import { getDefaultLanguage } from '../../languages/i18n';
+import i18n, { getDefaultLanguage } from '../../languages/i18n';
 
 const Language = () => {
 	const [language, setLanguage] = useState([
@@ -56,7 +56,7 @@ const Language = () => {
 	const handleLanguage = async () => {
 		const selectLanguage = language.filter(data => data.isActive === 1);
 		await persistStore.storeDetails('language', selectLanguage[0].value);
-		appAlert('Success', 'Language changed successfully');
+		appAlert(i18n.t('languageScreen.Success'),i18n.t('languageScreen.Language changed successfully'));
 		getDefaultLanguage();
 		// navigation.navigate('Payments');
 	};
@@ -102,7 +102,7 @@ const Language = () => {
 				<AppButton
 					color1={colors.primaryShade11}
 					color2={colors.primaryShade13}
-					text="CONFIRM"
+					text={i18n.t('languageScreen.CONFIRM')}
 					borderRadius={3}
 					textColor={colors.white}
 					textTransform="uppercase"

@@ -55,7 +55,6 @@ const RecommendCarousel = ({ allTags }) => {
 			{useMemo(
 				() => (
 					<>
-						{console.log('in rec carousel')}
 						<Carousel
 							data={allTags}
 							layout={'stack'}

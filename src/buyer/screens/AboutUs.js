@@ -15,7 +15,7 @@ const AboutUs = () => {
 			>
 				<AppText style={styles.text1}>
 					{i18n.t(
-						'aboutScreen.JEEM is a platform that will connect the server provider with the consumer in every thing that matters in the building industry by listing all the big names in the building material industry and the and contractors'
+						'aboutScreen.aboutUs1'
 					)}
 				</AppText>
 			</ImageBackground>
@@ -32,16 +32,12 @@ const AboutUs = () => {
 				]}
 			>
 				<AppText style={styles.text2}>
-					{i18n.t('aboutScreen.We JEEM A start up in the building industry to help and make the technology part of this big industry and to go hand in hand with the great vision of Saudi Arabia 2030')}
+					{i18n.t('aboutScreen.aboutUs2')}
 				
 				</AppText>
 			</LinearGradient>
 			<AppText style={styles.text3}>
-			{i18n.t(`aboutScreen.We at JEEM looking to give the consumers THE great experience of giving them THE EASY WAY TO BULID To have all the leaders in the building industry under one umbrella 
-    - easy 
-    - many chooses 
-    - the higher quality
-    - the diversity of prices`)}
+			{i18n.t(`aboutScreen.aboutUs3`)}
 			</AppText>
 		</View>
 	);
@@ -60,7 +56,7 @@ const styles = StyleSheet.create({
 		// paddingVertical:20
 	},
 	image: {
-		flex: 1
+		flex: 2
 	},
 	text1: {
 		color: colors.white,
@@ -76,7 +72,7 @@ const styles = StyleSheet.create({
 		color: colors.primary1,
 		paddingHorizontal: 10,
 		textAlign: 'center',
-		fontSize: 30,
+		fontSize: 20,
 		flex: 1,
 		fontWeight: 'bold'
 		// backgroundColor:colors.primaryShade23

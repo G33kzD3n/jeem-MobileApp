@@ -35,18 +35,20 @@ const TabNavigator = () => {
 			}}
 		>
 			<Tab.Screen
-				name={i18n.t('tabNavigation.Home')}
+				name='Home'
 				component={Home}
 				options={{
+					tabBarLabel:i18n.t('tabNavigation.Home'),
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="home" size={size} color={color} />
 					)
 				}}
 			/>
 			<Tab.Screen
-				name={i18n.t('tabNavigation.Categories')}
+				name='Categories'
 				component={Categories}
 				options={{
+					tabBarLabel:i18n.t('tabNavigation.Categories'),
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons
 							name="view-list"
@@ -57,18 +59,20 @@ const TabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name={i18n.t('tabNavigation.Search')}
+				name='Search'
 				component={Search}
 				options={({ navigation }) => ({
+					tabBarLabel:i18n.t('tabNavigation.Search'),
 					tabBarButton: () => (
 						<SearchButton onPress={() => navigation.navigate('Search')} />
 					)
 				})}
 			/>
 			<Tab.Screen
-				name={i18n.t('tabNavigation.Cart')}
+				name='Cart'
 				component={Cart}
 				options={{
+					tabBarLabel:i18n.t('tabNavigation.Cart'),
 					tabBarBadge: cartCount !== 0 ? cartCount : undefined,
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="cart" size={size} color={color} />
@@ -76,9 +80,10 @@ const TabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name={i18n.t('tabNavigation.Profile')}
+				name='Profile'
 				component={Profile}
 				options={{
+					tabBarLabel:i18n.t('tabNavigation.Profile'),
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="account" size={size} color={color} />
 					)

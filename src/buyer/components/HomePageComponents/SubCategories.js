@@ -46,7 +46,7 @@ const SubCategories = () => {
 	};
 
 	const handelSubCategory = item => {
-		if (item.productSubCategoryName === i18n.t('homeScreen.All'))
+		if (item.productSubCategoryName ==='All')
 			setModalVisible(true);
 		else
 			navigation.navigate('SubCategoryProduct', {
@@ -81,7 +81,7 @@ const SubCategories = () => {
 					data={productSubCategories
 						.slice(0, 7)
 						.concat({
-							productSubCategoryName: i18n.t('homeScreen.All'),
+							productSubCategoryName:'All',
 							id: 'All'
 						})}
 					numColumns={4}

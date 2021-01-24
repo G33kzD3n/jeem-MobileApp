@@ -17,7 +17,7 @@ const PaymentOptions = () => {
 						size={24}
 						color={colors.primary1}
 					/>
-					<AppText style={styles.text}>{i18n.t('orderScreen.Pay on delivery')}</AppText>
+					<AppText style={styles.text}>{i18n.t('paymentScreen.Pay on delivery')}</AppText>
 				</View>
 			</TouchableOpacity>
 		</View>

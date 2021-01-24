@@ -54,7 +54,7 @@ const OrderDetails = ({ route }) => {
 				<AppText style={styles.headText}>
 					{i18n.t('orderScreen.Note: ')}
 					<AppText style={styles.noteBodyText}>
-					{i18n.t('orderScreen.We do not demand your banking and credit card details verbally or telephonically. Please do not divulge your details to fraudsters and imposters falsely claiming to be calling on Jeem\'s behalf.')}
+					{i18n.t('orderScreen.We In jeem do not ask you for any payment details in anyway but the seller might do to proceed his payment please don\'t worry all of the registered sellers are trusted saudi organization the payment system for the website is under construction')}
 					</AppText>
 				</AppText>
 			</View>

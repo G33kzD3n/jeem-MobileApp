@@ -15,7 +15,8 @@
       "**/*"
     ],
     "android": {
-      "package": "com.jeem.jeem"
+      "package": "com.jeem.jeem",
+      "versionCode":1
     },
     "ios": {
       "bundleIdentifier": "com.jeem.jeem"

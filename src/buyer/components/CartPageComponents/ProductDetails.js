@@ -11,7 +11,7 @@ const pickerItems = [
 	{ value: 3, label: i18n.t('cart.3') },
 	{ value: 4, label: i18n.t('cart.4') },
 	{ value: 5, label: i18n.t('cart.5') },
-	{ value: 6, label: i18n.t('cart.6') },
+	{ value: 6, label: i18n.t('cart.6') }, 
 	{ value: 7, label: i18n.t('cart.7') },
 	{ value: 8, label: i18n.t('cart.8') }
 ];

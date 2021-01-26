@@ -14,25 +14,33 @@ import i18n from '../../../languages/i18n';
 const BuysOfTheMoment = () => {
 	return (
 		<View>
-			<ComponentHeading text={i18n.t('homeScreen.buys of the moment')} />
+			<ComponentHeading
+			//  text={i18n.t('homeScreen.buys of the moment')} 
+			 />
 			<TouchableWithoutFeedback onPress={() => console.log('this is it')}>
 				<ImageBackground
-					source={{
-						uri:
-							'https://structuralengineeringbasics.com/wp-content/uploads/2019/03/STRUCTURAL-ENGINEERING-MATERIALS.png'
-					}}
+				source={require('../../../assets/background.png')}
+					// source={{
+					// 	uri:
+					// 		'https://structuralengineeringbasics.com/wp-content/uploads/2019/03/STRUCTURAL-ENGINEERING-MATERIALS.png'
+					// }}
 					style={styles.background}
 				>
 					<View style={styles.container}>
 						<View style={styles.subContainer}>
 							<AppText
 								style={{
-									fontSize: 28,
+									fontSize: 30,
+									textAlign:'center',
 									color: colors.white,
+									backgroundColor: colors.primary1,
+									opacity: 0.6,
 									fontWeight: 'bold'
 								}}
 							>
-								{i18n.t('homeScreen.Fave Products')}
+								{/* {i18n.t('homeScreen.Fave Products')} */}
+								{i18n.t('homeScreen.aboutUs3')}
+								
 							</AppText>
 							<AppText
 								style={{
@@ -41,7 +49,7 @@ const BuysOfTheMoment = () => {
 									fontWeight: 'bold'
 								}}
 							>
-								{i18n.t('homeScreen.Now On Jeem')}
+								{/* {i18n.t('homeScreen.Now On Jeem')} */}
 							</AppText>
 							<AppText
 								style={{
@@ -52,7 +60,7 @@ const BuysOfTheMoment = () => {
 									paddingHorizontal: 10
 								}}
 							>
-								{i18n.t('homeScreen.Comming Soon')}
+								{/* {i18n.t('homeScreen.Comming Soon')} */}
 							</AppText>
 						</View>
 					</View>

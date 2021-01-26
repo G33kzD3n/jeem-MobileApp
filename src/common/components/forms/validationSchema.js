@@ -1,101 +1,101 @@
 import * as Yup from 'yup';
-import i18n from '../../../languages/i18n';
+// import i18n from '../../../languages/i18n';
 
 
 const validationLogin = Yup.object().shape({
 	email: Yup.string()
 		.required()
 		.email()
-		.label(i18n.t('validation.Email')),
+		.label('Email'),
 	password: Yup.string()
 		.required()
 		.min(4)
-		.label(i18n.t('validation.Password'))
+		.label('Password')
 });
 
 const validationRegister = Yup.object().shape({
 	name: Yup.string()
 		.required()
 		.min(3)
-		.label(i18n.t('validation.Name')),
+		.label('Name'),
 	email: Yup.string()
 		.required()
 		.email()
-		.label(i18n.t('validation.Email')),
+		.label('Email'),
 	phonenumber: Yup.string()
 		.required()
 		.min(10)
-		.label(i18n.t('validation.Phone')),
+		.label('Phone'),
 	password: Yup.string()
 		.required()
 		.min(4)
-		.label(i18n.t('validation.Password')),
+		.label('Password'),
 	password_confirmation: Yup.string()
 		.required()
 		.min(4)
-		.label(i18n.t('validation.Confirm Password'))
+		.label('Confirm Password')
 });
 
 const validationProfile = Yup.object().shape({
 	name: Yup.string()
 		.required()
 		.min(3)
-		.label(i18n.t('validation.Name')),
+		.label('Name'),
 	phonenumber: Yup.string()
 		.required()
 		.min(10)
-		.label(i18n.t('validation.Phone')),
+		.label('Phone'),
 	location: Yup.string()
 		.required()
-		.label(i18n.t('validation.Location'))
+		.label('Location')
 });
 
 const validationHelp = Yup.object().shape({
 	name: Yup.string()
 		.required()
 		.min(3)
-		.label(i18n.t('validation.Name')),
+		.label('Name'),
 	email: Yup.string()
 		.required()
 		.email()
-		.label(i18n.t('validation.Email')),
+		.label('Email'),
 	message: Yup.string()
 		.required()
 		.min(4)
-		.label(i18n.t('validation.Query'))
+		.label('Query')
 });
 
 const validationAddress = Yup.object().shape({
 	name: Yup.string()
 		.required()
 		.min(3)
-		.label(i18n.t('validation.Name')),
+		.label('Name'),
 	phoneNumber: Yup.string()
 		.required()
 		.min(10)
-		.label(i18n.t('validation.Phone')),
+		.label('Phone'),
 	pincode: Yup.string()
 		.required()
-		.label(i18n.t('validation.Pin Code')),
+		.label('Pin Code'),
 	address: Yup.string()
 		.required()
-		.label(i18n.t('validation.Address')),
+		.label('Address'),
 	address1: Yup.string()
 		.required()
-		.label(i18n.t('validation.Locality')),
+		.label('Locality'),
 	city: Yup.string()
 		.required()
-		.label(i18n.t('validation.City')),
+		.label('City'),
 	state: Yup.string()
 		.required()
-		.label(i18n.t('validation.State'))
+		.label('State')
 });
 
 const validationForgotPassword = Yup.object().shape({
 	email: Yup.string()
 		.required()
 		.email()
-		.label(i18n.t('validation.Email'))
+		.label('Email')
 });
 
 export default {

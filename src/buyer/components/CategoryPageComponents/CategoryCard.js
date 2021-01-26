@@ -27,14 +27,14 @@ const CategoryCard = ({ toggleExpanded, data, collapsedSubCat }) => {
 							<MaterialCommunityIcons
 								style={styles.icon}
 								name="chevron-up"
-								size={40}
+								size={50}
 								color={colors.primary1}
 							/>
 						) : (
 							<MaterialCommunityIcons
 								style={styles.icon}
 								name="chevron-down"
-								size={40}
+								size={50}
 								color={colors.primary1}
 							/>
 						)}
@@ -51,12 +51,13 @@ const styles = StyleSheet.create({
 	icon: {
 		alignSelf: 'center',
 		textAlign: 'left',
-		paddingTop: 5
+		paddingTop: 5,
+		fontWeight:'bold'
 	},
 	text: {
 		color: colors.primary1,
 		fontWeight: 'bold',
-		fontSize: 40,
+		fontSize: 30,
 		width: '65%'
 	},
 	containerStyle: {

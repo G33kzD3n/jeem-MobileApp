@@ -39,7 +39,7 @@ const OrderDetails = ({ route }) => {
 				<ComponentHeading text={i18n.t('orderScreen.ORDER DETAILS')} />
 				<View style={styles.details}>
 					<View style={styles.totalParent}>
-						<AppText style={styles.total}>$ {totalPrice}</AppText>
+						<AppText style={styles.total}>SAR {totalPrice}</AppText>
 						<AppText style={styles.subHeading}>
 							{i18n.t('orderScreen.Amount due at the time of delivery')}
 						</AppText>

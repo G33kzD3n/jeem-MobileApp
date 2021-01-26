@@ -84,10 +84,10 @@ const ProductView = ({ route }) => {
 
 						<View style={styles.priceContainer}>
 							<AppText style={styles.mainPrice}>
-								${productData.productDiscountedPrice}{' '}
+								SAR {productData.productDiscountedPrice}{' '}
 							</AppText>
 							<AppText style={styles.orginalPrice}>
-								${productData.productPrice}
+								SAR {productData.productPrice}
 							</AppText>
 							<AppText style={styles.discount}>
 								{' '}

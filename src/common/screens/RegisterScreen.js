@@ -82,7 +82,7 @@ const RegisterScreen = ({ navigation }) => {
 				<ScrollView>
 					<View style={styles.firstContainer}>
 						<AppText weight="bold" color={colors.white} size={42}>
-							{i18n.t('registerScreen.Create')}{'\n'}{i18n.t('registerScreen.your account')}
+							{i18n.t('registerScreen.Create your account')}
 						</AppText>
 					</View>
 					{checkPassword && (

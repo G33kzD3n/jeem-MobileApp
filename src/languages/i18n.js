@@ -11,12 +11,12 @@ export const getDefaultLanguage = async () => { //if default language is undefin
     i18n.defaultLocale = 'ar';
     i18n.locale = defaultLanguage;
     i18n.fallbacks = true;
-    i18n.translations = { en, ar };
+    i18n.translations = { ar, en};
   } catch (error) {
     i18n.defaultLocale = 'ar';
     i18n.locale = 'ar';
     i18n.fallbacks = true;
-    i18n.translations = { en, ar };
+    i18n.translations = { ar, en };
   }
 }
 getDefaultLanguage()

@@ -75,7 +75,7 @@ const LoginScreen = ({ navigation, login }) => {
 			>
 				<View style={styles.firstContainer}>
 					<AppText weight="bold" color={colors.white} size={42}>
-						{i18n.t('loginScreen.Log into')}{'\n'}{i18n.t('loginScreen.your account')}
+						{i18n.t('loginScreen.Log into your account')}
 					</AppText>
 				</View>
 				{error && (

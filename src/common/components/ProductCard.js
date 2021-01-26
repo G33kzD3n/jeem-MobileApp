@@ -41,9 +41,9 @@ const ProductCard = ({ item }) => {
 					</AppText>
 					<View style={styles.priceContainer}>
 						<AppText style={styles.mainPrice}>
-							${item.productDiscountedPrice}{' '}
+							SAR {item.productDiscountedPrice}{' '}
 						</AppText>
-						<AppText style={styles.orginalPrice}>${item.productPrice}</AppText>
+						<AppText style={styles.orginalPrice}>SAR {item.productPrice}</AppText>
 						<AppText style={styles.discount}>
 							{' '}
 							{item.productDiscount}% {i18n.t('common.OFF')}

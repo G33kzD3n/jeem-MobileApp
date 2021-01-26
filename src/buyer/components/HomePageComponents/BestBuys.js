@@ -53,7 +53,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[0].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${
+						subTitle={`${i18n.t('homeScreen.For')} SAR ${
 							bestBuys.data[0].productDiscountedPrice
 						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[0].productName}
@@ -72,7 +72,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[1].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${
+						subTitle={`${i18n.t('homeScreen.For')} SAR ${
 							bestBuys.data[1].productDiscountedPrice
 						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[1].productName}
@@ -93,7 +93,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[2].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${
+						subTitle={`${i18n.t('homeScreen.For')} SAR ${
 							bestBuys.data[2].productDiscountedPrice
 						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[2].productName}
@@ -112,7 +112,7 @@ const BestBuys = () => {
 							'/' +
 							bestBuys.data[3].productImages[0]
 						}
-						subTitle={`${i18n.t('homeScreen.For')} $${
+						subTitle={`${i18n.t('homeScreen.For')} SAR ${
 							bestBuys.data[3].productDiscountedPrice
 						} ${i18n.t('homeScreen.only')}`}
 						title={bestBuys.data[3].productName}

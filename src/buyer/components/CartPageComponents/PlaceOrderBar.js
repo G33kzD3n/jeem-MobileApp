@@ -54,7 +54,7 @@ const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 			<View style={styles.parentContainer}>
 				<View style={styles.containerLeft}>
 					<AppText style={styles.price}>
-						$ {priceDetails.totalDiscountPrice}
+						SAR {priceDetails.totalDiscountPrice}
 					</AppText>
 					<TouchableOpacity
 						onPress={() =>

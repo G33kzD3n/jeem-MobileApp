@@ -54,10 +54,10 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 			</View>
 			<View style={styles.priceContainer}>
 				<AppText style={styles.mainPrice}>
-					${data.productDiscountedPrice * data.productQuantity}{' '}
+					SAR {data.productDiscountedPrice * data.productQuantity}{' '}
 				</AppText>
 				<AppText style={styles.orginalPrice}>
-					${data.productPrice * data.productQuantity}
+					SAR {data.productPrice * data.productQuantity}
 				</AppText>
 				<AppText style={styles.discount}>
 					{' '}

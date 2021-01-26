@@ -113,10 +113,10 @@ const OrderFullDetail = ({ route }) => {
 				<View style={styles.parentContainer}>
 					<View style={styles.container}>
 						<AppText style={styles.total}>{i18n.t('orderScreen.Total Order Price')}</AppText>
-						<AppText style={styles.total}>${order.orderPrice}</AppText>
+						<AppText style={styles.total}>SAR {order.orderPrice}</AppText>
 					</View>
 					<AppText style={styles.subHeading}>
-					{i18n.t('orderScreen.You saved')} ${order.orderDiscount} {i18n.t('orderScreen.on this order')}
+					{i18n.t('orderScreen.You saved')} SAR {order.orderDiscount} {i18n.t('orderScreen.on this order')}
 					</AppText>
 				</View>
 				<View style={styles.newView}>

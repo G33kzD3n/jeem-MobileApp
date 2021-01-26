@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Profile from '../buyer/screens/Profile';
@@ -12,17 +12,23 @@ import { GET_COUNT } from '../../store/actions/actionTypes';
 import Search from '../buyer/screens/Search';
 import SearchButton from './SearchButton';
 import i18n from '../languages/i18n';
+import persistStore from '../utils/persistStore';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+	const [language, setLanguage] = useState();
 	const cartCount = useSelector(state => state.cart.count);
-	// console.log(cartCount,'?????????????::::::::::::::');
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(getCartCountAction(GET_COUNT));
-	}, []);
+		currentLanguage();
+		if (language) dispatch(getCartCountAction(GET_COUNT));
+	}, [language]);
 
+	const currentLanguage = async () => {
+		const defaultLanguage = await persistStore.getDetails('language');
+		setLanguage(defaultLanguage);
+	};
 	return (
 		<Tab.Navigator
 			tabBarOptions={{
@@ -35,20 +41,20 @@ const TabNavigator = () => {
 			}}
 		>
 			<Tab.Screen
-				name='Home'
+				name="Home"
 				component={Home}
 				options={{
-					tabBarLabel:i18n.t('tabNavigation.Home'),
+					tabBarLabel: i18n.t('tabNavigation.Home'),
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="home" size={size} color={color} />
 					)
 				}}
 			/>
 			<Tab.Screen
-				name='Categories'
+				name="Categories"
 				component={Categories}
 				options={{
-					tabBarLabel:i18n.t('tabNavigation.Categories'),
+					tabBarLabel: i18n.t('tabNavigation.Categories'),
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons
 							name="view-list"
@@ -59,20 +65,20 @@ const TabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name='Search'
+				name="Search"
 				component={Search}
 				options={({ navigation }) => ({
-					tabBarLabel:i18n.t('tabNavigation.Search'),
+					tabBarLabel: i18n.t('tabNavigation.Search'),
 					tabBarButton: () => (
 						<SearchButton onPress={() => navigation.navigate('Search')} />
 					)
 				})}
 			/>
 			<Tab.Screen
-				name='Cart'
+				name="Cart"
 				component={Cart}
 				options={{
-					tabBarLabel:i18n.t('tabNavigation.Cart'),
+					tabBarLabel: i18n.t('tabNavigation.Cart'),
 					tabBarBadge: cartCount !== 0 ? cartCount : undefined,
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="cart" size={size} color={color} />
@@ -80,10 +86,10 @@ const TabNavigator = () => {
 				}}
 			/>
 			<Tab.Screen
-				name='Profile'
+				name="Profile"
 				component={Profile}
 				options={{
-					tabBarLabel:i18n.t('tabNavigation.Profile'),
+					tabBarLabel: i18n.t('tabNavigation.Profile'),
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="account" size={size} color={color} />
 					)

@@ -21,7 +21,7 @@ const PriceDetails = () => {
 					{i18n.t('cart.Total MRP')}
 				</AppText>
 				<AppText style={styles.subHeadingPrice}>
-					${priceDetails.totalPrice}
+					SAR {priceDetails.totalPrice}
 				</AppText>
 			</View>
 			<View style={styles.headingDetails}>
@@ -37,7 +37,7 @@ const PriceDetails = () => {
 					{i18n.t('cart.Total Amount')}
 				</AppText>
 				<AppText style={styles.subHeading}>
-					${priceDetails.totalDiscountPrice}
+					SAR {priceDetails.totalDiscountPrice}
 				</AppText>
 			</View>
 		</View>

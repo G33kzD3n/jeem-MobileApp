@@ -94,8 +94,8 @@
   "orderScreen": {
     "ORDER DETAILS": "تفاصيل الطلب",
     "Amount due at the time of delivery": "الوقت المتوقع للتوصيل ",
-    "Note:": "Note:",
-    "We In jeem do not ask you for any payment details in anyway but the seller might do to proceed his payment please don't worry all of the registered sellers are trusted saudi organization the payment system for the website is under construction   ": "نحن في جيم لانطلب منكم معلومات الدفع باي شكل من الاشكال لكن يحق للتاجر طلبها في الوقت الراهن الى ان يتم انشاء وسيلة دفع من خلال المنصة لاتقلق جميع التجار على جيم موثوقون ومؤسسات سعودية رسمية ",
+    "Note:": "Note: ",
+    "info": "نحن في جيم لانطلب منكم معلومات الدفع باي شكل من الاشكال لكن يحق للتاجر طلبها في الوقت الراهن الى ان يتم انشاء وسيلة دفع من خلال المنصة لاتقلق جميع التجار على جيم موثوقون ومؤسسات سعودية رسمية ",
     "CANCEL": "الغاء",
     "Are you sure you want to cancel this order?": "هل انت متأكد من عدم رغبتك بهذه الطلب",
     "Sold by:": "مباع من قبل:",
@@ -108,8 +108,8 @@
     "Updates sent to": "سنقوم بإرسال التحديثات الى",
     "ORDER ID": "معرف الطلب",
     "Order placed Sucessfully!": "!لقد تم إرسال الطلب بنجاح الى التاجر",
-    "Order No. ": "رقم الطلب. ",
-    "Your order is currently being processed. You will receive an order confirmation mail shortlly with the expected delivery date for your items.": "طلبك قد تم ارساله سنزودكم برقم الطلب مع وقت التسليم المتوقع حال تأكيده",
+    "Order No": "رقم الطلب. ",
+    "orderInfo": "طلبك قد تم ارساله سنزودكم برقم الطلب مع وقت التسليم المتوقع حال تأكيده",
     "View Order": "أظهر الطلب",
     "No Items": "لا يوجد منتج"
   },

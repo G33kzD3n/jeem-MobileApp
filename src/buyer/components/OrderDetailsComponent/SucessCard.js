@@ -10,7 +10,7 @@ import i18n from '../../../languages/i18n';
 const SucessCard = ({ orderCode }) => {
 	const navigation = useNavigation();
 	const checkStatus = () => {
-		navigation.navigate('ViewOrders');
+		navigation.navigate('ViewOrders',{name:i18n.t('appNavigation.MY ORDERS')});
 	};
 
 	const handleBackButton = () => {
@@ -36,7 +36,7 @@ const SucessCard = ({ orderCode }) => {
 						{i18n.t('orderScreen.Order placed Sucessfully!')}
 					</AppText>
 					<AppText style={styles.subHeading}>
-						{i18n.t('orderScreen.Order No.')}
+						{i18n.t('orderScreen.Order No')}
 						{orderCode}
 					</AppText>
 				</View>
@@ -44,7 +44,7 @@ const SucessCard = ({ orderCode }) => {
 			<View style={styles.textTop}>
 				<AppText style={styles.theory}>
 					{i18n.t(
-						'orderScreen.Your order is currently being processed. You will receive an order confirmation mail shortlly with the expected delivery date for your items.'
+						'orderScreen.orderInfo'
 					)}
 				</AppText>
 			</View>

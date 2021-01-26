@@ -10,7 +10,7 @@ import i18n from '../../../languages/i18n';
 const OrderInfoCards = ({ order }) => {
 	const navigation = useNavigation();
 	const fullDetails = () => {
-		navigation.navigate('ItemDetails', { order: order });
+		navigation.navigate('ItemDetails', { order: order,name:i18n.t('appNavigation.ITEM DETAILS') });
 	};
 	return (
 		<TouchableWithoutFeedback

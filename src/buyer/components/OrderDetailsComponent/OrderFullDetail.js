@@ -45,7 +45,7 @@ const OrderFullDetail = ({ route }) => {
 	};
 
 	const handleReview = order => {
-		navigation.navigate('AddReview', { order: order });
+		navigation.navigate('AddReview', { order: order,name:i18n.t('appNavigation.RATE AND REVIEW') });
 	};
 
 	return (

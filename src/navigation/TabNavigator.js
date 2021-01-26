@@ -12,23 +12,25 @@ import { GET_COUNT } from '../../store/actions/actionTypes';
 import Search from '../buyer/screens/Search';
 import SearchButton from './SearchButton';
 import i18n from '../languages/i18n';
-import persistStore from '../utils/persistStore';
+import { useIsFocused } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-	const [language, setLanguage] = useState();
+	// const [language, setLanguage] = useState();
+	const isFocused = useIsFocused();
 	const cartCount = useSelector(state => state.cart.count);
+	const language = useSelector(state => state.profile.language);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		currentLanguage();
+		// currentLanguage();
 		if (language) dispatch(getCartCountAction(GET_COUNT));
-	}, [language]);
+	}, [language,isFocused]);
 
-	const currentLanguage = async () => {
-		const defaultLanguage = await persistStore.getDetails('language');
-		setLanguage(defaultLanguage);
-	};
+	// const currentLanguage = async () => {
+	// 	const defaultLanguage = await persistStore.getDetails('language');
+	// 	setLanguage(defaultLanguage);
+	// };
 	return (
 		<Tab.Navigator
 			tabBarOptions={{

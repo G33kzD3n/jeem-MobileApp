@@ -9,8 +9,8 @@ import colors from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppButton from '../../common/components/AppButton';
 import ComponentHeading from '../../common/components/ComponentHeading';
-// import { useNavigation } from '@react-navigation/native';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 // import { addressesAction, } from '../../../store/actions';
 // import {
 //   GET_ADDRESSES,
@@ -19,6 +19,7 @@ import AppText from '../../common/components/AppText';
 import persistStore from '../../utils/persistStore';
 import appAlert from '../../common/components/appAlert';
 import i18n, { getDefaultLanguage } from '../../languages/i18n';
+import { CURRENT_LANGUAGE } from '../../../store/actions/actionTypes';
 
 const Language = () => {
 	const [language, setLanguage] = useState([
@@ -26,10 +27,10 @@ const Language = () => {
 		{ value: 'en', name: 'English', isActive: 0 }
 	]);
 
-	// const navigation = useNavigation();
+	const navigation = useNavigation();
 
 	// const getAddresses = useSelector((state) => state.address.addresses);
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	const getCurrentDefaultLanguage = async () => {
 		try {
@@ -57,8 +58,9 @@ const Language = () => {
 		const selectLanguage = language.filter(data => data.isActive === 1);
 		await persistStore.storeDetails('language', selectLanguage[0].value);
 		appAlert(i18n.t('languageScreen.Success'),i18n.t('languageScreen.Language changed successfully'));
+		dispatch({ type: CURRENT_LANGUAGE, value: selectLanguage[0].value });
 		getDefaultLanguage();
-		// navigation.navigate('Payments');
+		// navigation.goBack();
 	};
 
 	const handleLanguageChange = item => {

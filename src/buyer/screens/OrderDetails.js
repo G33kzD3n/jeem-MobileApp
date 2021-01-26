@@ -52,9 +52,9 @@ const OrderDetails = ({ route }) => {
 			</View>
 			<View style={styles.note}>
 				<AppText style={styles.headText}>
-					{i18n.t('orderScreen.Note: ')}
+					{i18n.t('orderScreen.Note:')}
 					<AppText style={styles.noteBodyText}>
-					{i18n.t('orderScreen.We In jeem do not ask you for any payment details in anyway but the seller might do to proceed his payment please don\'t worry all of the registered sellers are trusted saudi organization the payment system for the website is under construction')}
+					{i18n.t('orderScreen.info')}
 					</AppText>
 				</AppText>
 			</View>

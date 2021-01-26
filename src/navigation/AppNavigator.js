@@ -15,7 +15,7 @@ import LoginScreen from '../common/screens/LoginScreen';
 import OrderFullDetail from '../buyer/components/OrderDetailsComponent/OrderFullDetail';
 import EditProfile from '../buyer/screens/EditProfile';
 import { useDispatch } from 'react-redux';
-import { LOGIN } from '../../store/actions/actionTypes';
+import { CURRENT_LANGUAGE, LOGIN } from '../../store/actions/actionTypes';
 import persistStore from '../utils/persistStore';
 import HelpCenter from '../buyer/screens/HelpCenter';
 import Faq from '../buyer/screens/Faq';
@@ -34,9 +34,16 @@ function AppNavigator() {
 	const dispatch = useDispatch();
 
 	const getAuthDetails = async () => {
-		//check if the user is already logged in
+		const defaultLanguage = await persistStore.getDetails('language');
+	  if(defaultLanguage){
+			dispatch({ type: CURRENT_LANGUAGE, value: defaultLanguage });
+		}else{
+			dispatch({ type: CURRENT_LANGUAGE, value: 'ar' });
+		}
+		//check if the user is already logged in 
 		const token = await persistStore.getDetails('token');
 		const userDetails = await persistStore.getDetails('userDetails');
+
 		if (token) {
 			const data = {
 				role: { role: 'Buyer' },
@@ -112,31 +119,53 @@ function AppNavigator() {
 			<Stack.Screen
 				name="SelectAddress"
 				component={SelectAddress}
-				options={{ title:i18n.t('appNavigation.ADDRESS') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="Payments"
 				component={Payments}
-				options={{ title:i18n.t('appNavigation.PAYMENT') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="OrderDetails"
 				component={OrderDetails}
-				options={{
-					title:i18n.t('appNavigation.ORDER'),
+				options={({ route }) => ({
 					headerTitleStyle: { alignSelf: 'center' },
-					headerLeft: () => null
-				}}
+					headerLeft: () => null,
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="ViewOrders"
 				component={ViewOrders}
-				options={{ title:i18n.t('appNavigation.MY ORDERS') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="AddAddress"
 				component={AddAddress}
-				options={{ title:i18n.t('appNavigation.ADD ADDRESS') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="Login"
@@ -151,43 +180,104 @@ function AppNavigator() {
 			<Stack.Screen
 				name="ItemDetails"
 				component={OrderFullDetail}
-				options={{ title:i18n.t('appNavigation.ITEM DETAILS') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="EditProfile"
 				component={EditProfile}
-				options={{ title:i18n.t('appNavigation.PROFILE') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="HelpCenter"
 				component={HelpCenter}
-				options={{ title:i18n.t('appNavigation.HELP') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
-			<Stack.Screen name="Faq" component={Faq} options={{ title:i18n.t('appNavigation.FAQ') }} />
+			<Stack.Screen
+				name="Faq"
+				component={Faq}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
+			/>
 			<Stack.Screen
 				name="AboutUs"
 				component={AboutUs}
-				options={{ title:i18n.t('appNavigation.ABOUT US') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle
+							name={route.params.name}
+							{...props}
+						/>
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="TermsOfUse"
 				component={TermsOfUse}
-				options={{ title:i18n.t('appNavigation.TERMS OF USE') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle name={route.params.name} {...props} />
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="PrivacyPolicy"
 				component={PrivacyPolicy}
-				options={{ title:i18n.t('appNavigation.PRIVACY POLICY') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle
+							name={route.params.name}
+							{...props}
+						/>
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="AddReview"
 				component={AddReview}
-				options={{ title:i18n.t('appNavigation.RATE AND REVIEW') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle
+							name={route.params.name}
+							{...props}
+						/>
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="Language"
 				component={Language}
-				options={{ title:i18n.t('appNavigation.SELECT LANGUAGE') }}
+				options={({ route }) => ({
+					headerTitleStyle: { alignSelf: 'center' },
+					headerTitle: props => (
+						<HeaderTitle
+							name={route.params.name}
+							{...props}
+						/>
+					)
+				})}
 			/>
 			<Stack.Screen
 				name="ForgotPassword"

@@ -23,7 +23,8 @@ const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 			setLoading(false);
 			navigation.navigate(navigationAddress, {
 				totalPrice: priceDetails.totalDiscountPrice,
-				orderCode: orderCode
+				orderCode: orderCode,
+				name:i18n.t('appNavigation.ORDER')
 			});
 		}
 		return () => {
@@ -45,7 +46,7 @@ const PlaceOrderBar = ({ scrollViewRef, text, navigationAddress }) => {
 			dispatch(placeOrderAction(PLACE_ORDER));
 			BackHandler.addEventListener('hardwareBackPress', handleBackButton);
 		} else {
-			navigation.navigate(navigationAddress);
+			navigation.navigate(navigationAddress,{name:i18n.t('appNavigation.ADDRESS')});
 		}
 	};
 	return (

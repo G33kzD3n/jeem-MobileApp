@@ -14,7 +14,6 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { productSubCategoriesAction } from '../../../../store/actions';
 import { GET_PRODUCTSUBCATEGORY } from '../../../../store/actions/actionTypes';
-import i18n from '../../../languages/i18n';
 
 const SubCategories = () => {
 	const navigation = useNavigation();

@@ -56,10 +56,10 @@ const SelectAddress = () => {
 	}, [getAddresses]);
 
 	const handlePayment = () => {
-		navigation.navigate('Payments');
+		navigation.navigate('Payments',{name:i18n.t('appNavigation.PAYMENT')});
 	};
 	const addAddress = () => {
-		navigation.navigate('AddAddress');
+		navigation.navigate('AddAddress',{name:i18n.t('appNavigation.ADD ADDRESS')});
 	};
 
 	const removeAddress = item => {

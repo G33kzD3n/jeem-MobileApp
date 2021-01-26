@@ -1,9 +1,9 @@
 {
-  "name": "jeemApp",
-  "displayName": "jeemApp",
+  "name": "jeem",
+  "displayName": "jeem",
   "expo": {
-    "name": "jeemApp",
-    "slug": "jeemApp",
+    "name": "jeem",
+    "slug": "jeem",
     "version": "1.0.0",
     "icon": "./src/assets/jeem.png",
     "splash": {
@@ -19,7 +19,9 @@
       "versionCode":1
     },
     "ios": {
-      "bundleIdentifier": "com.jeem.jeem"
+      "supportsTablet":true,
+      "bundleIdentifier": "com.jeem.jeem",
+      "buildNumber":"1.0.0"
     }
   }
 }

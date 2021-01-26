@@ -8,16 +8,16 @@ import i18n from '../../../languages/i18n';
 const ThirdSection = () => {
 	const navigation = useNavigation();
 	const faq = () => {
-		navigation.navigate('Faq');
+		navigation.navigate('Faq',{name:i18n.t('appNavigation.FAQ')});
 	};
 	const aboutUs = () => {
-		navigation.navigate('AboutUs');
+		navigation.navigate('AboutUs',{name:i18n.t('appNavigation.ABOUT US')});
 	};
 	const termsOfUse = () => {
-		navigation.navigate('TermsOfUse');
+		navigation.navigate('TermsOfUse',{name:i18n.t('appNavigation.TERMS OF USE')});
 	};
 	const privacyPolicy = () => {
-		navigation.navigate('PrivacyPolicy');
+		navigation.navigate('PrivacyPolicy',{name:i18n.t('appNavigation.PRIVACY POLICY')});
 	};
 	return (
 		<View style={styles.topContainer}>

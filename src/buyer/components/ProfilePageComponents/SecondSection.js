@@ -8,19 +8,19 @@ import i18n from '../../../languages/i18n';
 const SecondSection = ({ token }) => {
 	const navigation = useNavigation();
 	const checkStatus = () => {
-		navigation.navigate('ViewOrders');
+		navigation.navigate('ViewOrders',{name:i18n.t('appNavigation.MY ORDERS')});
 	};
 	const addAddress = () => {
-		navigation.navigate('SelectAddress');
+		navigation.navigate('SelectAddress',{name:i18n.t('appNavigation.ADDRESS')});
 	};
 	const editProfile = () => {
-		navigation.navigate('EditProfile');
+		navigation.navigate('EditProfile',{name:i18n.t('appNavigation.PROFILE')});
 	};
 	const helpCenter = () => {
-		navigation.navigate('HelpCenter');
+		navigation.navigate('HelpCenter',{name:i18n.t('appNavigation.HELP')});
 	};
 	const language = () => {
-		navigation.navigate('Language');
+		navigation.navigate('Language',{name:i18n.t('appNavigation.SELECT LANGUAGE')});
 	};
 	const share = async () => {
 		try {

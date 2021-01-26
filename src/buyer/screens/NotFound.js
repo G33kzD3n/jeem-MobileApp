@@ -10,7 +10,7 @@ const NotFound = ({ onClick, name }) => {
 			<View style={styles.parentNotFound}>
 				<View style={{ flex: 0.7 }}></View>
 				<ImageBackground
-					source={require('../../assets/not-found.png')}
+					source={require('../../assets/not-found.jpg')}
 					style={styles.background}
 				/>
 				<AppButton
@@ -34,7 +34,8 @@ export default NotFound;
 const styles = StyleSheet.create({
 	parentNotFound: {
 		flex: 1,
-		alignItems: 'center'
+		alignItems: 'center',
+		backgroundColor:'white'
 	},
 	background: {
 		flex: 2,

@@ -21,9 +21,9 @@ const ThirdSection = () => {
 	};
 	return (
 		<View style={styles.topContainer}>
-			<TouchableOpacity style={styles.container} onPress={() => faq()}>
+			{/* <TouchableOpacity style={styles.container} onPress={() => faq()}>
 				<AppText style={styles.text}>{i18n.t('profileScreen.FAQs')}</AppText>
-			</TouchableOpacity>
+			</TouchableOpacity> */}
 			<TouchableOpacity style={styles.container} onPress={() => aboutUs()}>
 				<AppText style={styles.text}>{i18n.t('profileScreen.ABOUT US')}</AppText>
 			</TouchableOpacity>

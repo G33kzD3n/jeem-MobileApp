@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
 	},
 	subHeading: {
 		color: colors.primary2,
-		textAlign: 'justify'
+		// textAlign: 'justify'
 	}
 });

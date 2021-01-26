@@ -16,6 +16,7 @@ const Profile = () => {
 	const token = useSelector(
 		state => state.auth.login && state.auth.login.token.access_token
 	);
+
 	useEffect(() => {
 		setLoading(false);
 	}, [isFocused]);
@@ -26,7 +27,7 @@ const Profile = () => {
 			<View>
 				<TopSections token={token} />
 				<AppDivider width={0.5} />
-				<SecondSection token={token} />
+				<SecondSection token={token}/>
 				<ThirdSection />
 				<AppVersion />
 			</View>

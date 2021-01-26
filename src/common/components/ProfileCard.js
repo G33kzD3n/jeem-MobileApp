@@ -10,12 +10,13 @@ const ProfileCard = ({
 	subHeading,
 	customStyle,
 	onPress,
+	direction='row',
 	icon2 = undefined
 }) => {
 	return (
 		<View style={customStyle}>
 			<TouchableOpacity style={styles.topTouch} onPress={onPress}>
-				<View style={styles.topContainer}>
+				<View style={[styles.topContainer,{flexDirection:direction}]}>
 					<MaterialCommunityIcons
 						style={styles.icon}
 						name={icon}
@@ -56,8 +57,8 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	topContainer: {
-		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
+		// flexDirection:'row-reverse'
 		// borderColor:'red',
 		// borderWidth:3
 	},

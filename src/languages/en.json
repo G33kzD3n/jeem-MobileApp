@@ -84,6 +84,7 @@
 		"State": "State",
 		"ADD": "ADD",
 		"DELETE": "DELETE",
+		"Please remove one of the addresses and try again":"Please remove one of the addresses and try again",
 		"Are you sure you want to delete?": "Are you sure you want to delete?",
 		"Mobile:": "Mobile:",
 		"ALERT": "ALERT",
@@ -150,7 +151,7 @@
 		"Change Language according to your needs": "Change Language according to your needs"
 	},
 	"aboutScreen": {
-		"aboutUs1": "Jeem Building Solutions was established in the Kingdom of Saudi Arabia Madinah The year (2020), in line with the Kingdom's Vision 2030. )Jeem is a startup that aspires to become a quality major distributor International Building Materials and Technologies. Jeem`steam consists of a number of experienced experts and specialists Stay informed of construction developments, technologies and solutions. Our team is keen to choose the best and finest construction materials and technologies.We at Jeem look to the future; So that we intensify our efforts For continuous development",
+		"aboutUs1": "Jeem Building Solutions was established in the Kingdom of Saudi Arabia Madinah The year (2020), in line with the Kingdom's Vision 2030. Jeem is a startup that aspires to become a quality major distributor International Building Materials and Technologies. Jeem`steam consists of a number of experienced experts and specialists Stay informed of construction developments, technologies and solutions. Our team is keen to choose the best and finest construction materials and technologies.We at Jeem look to the future; So that we intensify our efforts For continuous development",
 		"aboutUs2": "We JEEM A start up in the building industry to help and make the technology part of this big industry and to go hand in hand with the great vision of Saudi Arabia 2030",
 		"aboutUs3": "We at JEEM looking to give the consumers THE great experience of giving them THE EASY WAY TO BULID To have all the leaders in the building industry under one umbrella\n- easy\n- many chooses \n- the higher quality\n- the diversity of prices"
 	},

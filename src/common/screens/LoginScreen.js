@@ -25,6 +25,7 @@ import ErrorMessage from '../components/forms/ErrorMessage';
 import Loader from '../components/Loader';
 import persistStore from '../../utils/persistStore';
 import i18n from '../../languages/i18n';
+import { apiUrlImageStatic } from '../../config/config';
 // import { connect } from 'react-redux';
 // import { loginAction } from '../../../store/actions/authActions';
 // import { LOGIN } from '../../../store/actions/actionTypes';
@@ -69,7 +70,7 @@ const LoginScreen = ({ navigation, login }) => {
 		<>
 			{loading && <Loader />}
 			<ImageBackground
-				source={require('../../assets/background.png')}
+			 source={{ uri: apiUrlImageStatic+'signupin.jpg' }}
 				blurRadius={3}
 				style={styles.parentContainer}
 			>

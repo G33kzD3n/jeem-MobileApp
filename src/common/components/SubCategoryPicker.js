@@ -11,6 +11,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Avatar from './Avatar';
 import colors from '../../config/colors';
 import { useNavigation } from '@react-navigation/native';
+import { apiUrlImageStatic } from '../../config/config';
 
 const SubCategoryPicker = ({
 	visible,
@@ -56,7 +57,7 @@ const SubCategoryPicker = ({
 							<TouchableOpacity onPress={() => handelSubCategory(item)}>
 								<Avatar
 									text={item.productSubCategoryName}
-									image={item.productSubCategoryImage}
+									image={apiUrlImageStatic+item.productSubCategoryImage}
 									customStyles={styles.avatar}
 								/>
 							</TouchableOpacity>

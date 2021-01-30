@@ -21,6 +21,7 @@ import {
 	signupAction,
 } from '../../../store/actions/authAction';
 import i18n from '../../languages/i18n';
+import { apiUrlImageStatic } from '../../config/config';
 
 const RegisterScreen = ({ navigation }) => {
 	const [isEnabled, setIsEnabled] = useState(false);
@@ -74,7 +75,7 @@ const RegisterScreen = ({ navigation }) => {
 		<>
 			{loading && <Loader />}
 		<ImageBackground
-			source={require('../../assets/background.png')}
+			 source={{ uri: apiUrlImageStatic+'signupin.jpg' }}
 			blurRadius={3}
 			style={styles.parentContainer}
 		>

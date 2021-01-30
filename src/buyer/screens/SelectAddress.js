@@ -59,7 +59,11 @@ const SelectAddress = () => {
 		navigation.navigate('Payments',{name:i18n.t('appNavigation.PAYMENT')});
 	};
 	const addAddress = () => {
-		navigation.navigate('AddAddress',{name:i18n.t('appNavigation.ADD ADDRESS')});
+		  if(getAddresses.length>=3){
+				appAlert(i18n.t('addresses.ALERT'),i18n.t('addresses.Please remove one of the addresses and try again'));
+			}else{
+		    navigation.navigate('AddAddress',{name:i18n.t('appNavigation.ADD ADDRESS')});
+			}
 	};
 
 	const removeAddress = item => {

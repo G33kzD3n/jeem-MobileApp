@@ -17,6 +17,7 @@ import Loader from '../../common/components/Loader';
 import AppText from '../../common/components/AppText';
 import appAlert from '../../common/components/appAlert';
 import i18n from '../../languages/i18n';
+import { apiUrlImageStatic } from '../../config/config';
 
 const ForgotPassword = ({ navigation }) => {
 	const [loading, setLoading] = useState(false);
@@ -62,7 +63,7 @@ const ForgotPassword = ({ navigation }) => {
 		<>
 			{loading && <Loader />}
 			<ImageBackground
-				source={require('../../assets/background.png')}
+			  source={{ uri: apiUrlImageStatic+'signupin.jpg' }}
 				blurRadius={3}
 				style={styles.parentContainer}
 			>

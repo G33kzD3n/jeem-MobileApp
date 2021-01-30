@@ -23,6 +23,7 @@ const AddAddress = () => {
 		state => state.auth.login && state.auth.login.user.id
 	);
 	const response = useSelector(state => state.address.message);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {

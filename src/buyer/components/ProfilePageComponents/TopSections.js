@@ -8,11 +8,12 @@ import { useDispatch } from 'react-redux';
 import { logoutAction } from '../../../../store/actions';
 import { LOGOUT } from '../../../../store/actions/actionTypes';
 import i18n from '../../../languages/i18n';
+import { apiUrlImageStatic } from '../../../config/config';
 
 const TopSections = ({
 	edit,
 	token,
-	image = 'https://cdn0.iconfinder.com/data/icons/social-media-network-4/48/male_avatar-512.png'
+	image = apiUrlImageStatic+'avatar.jpg'
 }) => {
 	const navigation = useNavigation();
 

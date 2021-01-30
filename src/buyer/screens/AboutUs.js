@@ -5,13 +5,14 @@ import colors from '../../config/colors';
 import { LinearGradient } from 'expo-linear-gradient';
 import i18n from '../../languages/i18n';
 import { useSelector } from 'react-redux';
+import { apiUrlImageStatic } from '../../config/config';
 
 const AboutUs = () => {
 	const currentLanguage = useSelector(state => state.profile.language);
 	return (
 		<View style={styles.parent}>
 			<ImageBackground
-				source={require('../../assets/background.png')}
+				source={{ uri: apiUrlImageStatic+'signupin.jpg' }}
 				blurRadius={3}
 				style={styles.image}
 			>

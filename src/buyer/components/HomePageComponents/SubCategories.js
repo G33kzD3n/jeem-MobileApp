@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { productSubCategoriesAction } from '../../../../store/actions';
 import { GET_PRODUCTSUBCATEGORY } from '../../../../store/actions/actionTypes';
+import { apiUrlImageStatic } from '../../../config/config';
 
 const SubCategories = () => {
 	const navigation = useNavigation();
@@ -91,7 +92,7 @@ const SubCategories = () => {
 							<TouchableOpacity onPress={() => handelSubCategory(item)}>
 								<Avatar
 									text={item.productSubCategoryName}
-									image={item.productSubCategoryImage}
+									image={apiUrlImageStatic+item.productSubCategoryImage}
 								/>
 							</TouchableOpacity>
 						</View>

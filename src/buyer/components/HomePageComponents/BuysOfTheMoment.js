@@ -9,6 +9,7 @@ import ComponentHeading from '../../../common/components/ComponentHeading';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import i18n from '../../../languages/i18n';
+import { apiUrlImageStatic } from '../../../config/config';
 
 
 const BuysOfTheMoment = () => {
@@ -19,7 +20,7 @@ const BuysOfTheMoment = () => {
 			 />
 			<TouchableWithoutFeedback onPress={() => console.log('this is it')}>
 				<ImageBackground
-				source={require('../../../assets/background.png')}
+				 source={{ uri: apiUrlImageStatic+'signupin.jpg' }}
 					// source={{
 					// 	uri:
 					// 		'https://structuralengineeringbasics.com/wp-content/uploads/2019/03/STRUCTURAL-ENGINEERING-MATERIALS.png'

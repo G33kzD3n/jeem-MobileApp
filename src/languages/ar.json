@@ -39,7 +39,8 @@
     "Featured Brands": "العلامات المتميزة",
     "Featured Products": "المنتجات المتميزة",
     "Recommended": "ينصح به",
-    "Top Trends": "الرائج"
+    "Top Trends": "الرائج",
+    "aboutUs3": "We at JEEM looking to give the consumers THE great experience of giving them THE EASY WAY TO BULID To have all the leaders in the building industry under one umbrella"
   },
   "searchScreen": {
     "Search": "بحث",
@@ -78,6 +79,7 @@
     "Mobile No": "رقم الجوال",
     "Pin Code": "الرمز البريدي",
     "Address (House No, Building, Street, Area)": "العنوان",
+    "Please remove one of the addresses and try again":"Please remove one of the addresses and try again",
     "Locality/Town": "المنطقة",
     "City": "المدينة",
     "State": "الحي",

@@ -10,7 +10,8 @@ import i18n from '../../../languages/i18n';
 const SucessCard = ({ orderCode }) => {
 	const navigation = useNavigation();
 	const checkStatus = () => {
-		navigation.navigate('ViewOrders',{name:i18n.t('appNavigation.MY ORDERS')});
+		// navigation.navigate('ViewOrders',{name:i18n.t('appNavigation.MY ORDERS')});
+		navigation.navigate('Home');
 	};
 
 	const handleBackButton = () => {
@@ -52,7 +53,8 @@ const SucessCard = ({ orderCode }) => {
 				<AppButton
 					color2={colors.secondarGreen}
 					color1="mediumseagreen"
-					text={i18n.t('orderScreen.View Order')}
+					// text={i18n.t('orderScreen.View Order')}
+					text={i18n.t('tabNavigation.Home')}
 					borderRadius={3}
 					textColor={colors.white}
 					textTransform="uppercase"

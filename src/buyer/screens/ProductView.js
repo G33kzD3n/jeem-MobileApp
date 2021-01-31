@@ -37,9 +37,16 @@ const ProductView = ({ route }) => {
 	const productData = useSelector(state => state.home.singleProduct);
 	const reviews = useSelector(state => state.product.reviews);
 	const cartMessage = useSelector(state => state.cart.message);
+	const token = useSelector(
+		state => state.auth.login && state.auth.login.token.access_token
+	);
 
 	const addToCart = () => {
+		 if(token){
 		dispatch(addProductsToCartAction(ADD_PRODUCT_TO_CART, id));
+	}else{
+		appAlert(i18n.t('productView.Warning'), i18n.t('productView.Please login first and try again'));
+	}
 		// navigation.navigate('Cart');
 	};
 	if (cartMessage) {

@@ -23,7 +23,6 @@ const ViewOrders = () => {
 	const [loading, setLoading] = useState(false);
 
 	const myOrders = useSelector(state => state.order && state.order.myOrders);
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {

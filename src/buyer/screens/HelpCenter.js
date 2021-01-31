@@ -15,6 +15,7 @@ import { sendQueryAction } from '../../../store/actions';
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
 import i18n from '../../languages/i18n';
+import { apiUrlImageStatic } from '../../config/config';
 
 const HelpCenter = () => {
 	const [loading, setLoading] = useState(false);
@@ -57,7 +58,7 @@ const HelpCenter = () => {
 								<View style={styles.profilePic}>
 									<TopSections
 										edit={true}
-										image="https://st.depositphotos.com/1575949/1392/v/600/depositphotos_13928926-stock-illustration-white-question-mark-on-green.jpg"
+										image={apiUrlImageStatic+'help.jpeg'}
 									/>
 								</View>
 

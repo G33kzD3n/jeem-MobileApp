@@ -130,7 +130,7 @@ const OrderFullDetail = ({ route }) => {
 							size={20}
 							color={colors.primaryShade22}
 						/>
-						<AppText style={styles.subHeading}>{address.phonenumber}</AppText>
+						<AppText style={styles.subHeading}>{address.phoneNumber}</AppText>
 					</View>
 					<View style={styles.contactInfo}>
 						<MaterialCommunityIcons

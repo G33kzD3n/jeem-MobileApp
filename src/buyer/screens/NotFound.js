@@ -3,14 +3,15 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 import AppButton from '../../common/components/AppButton';
 import AppScreen from '../../common/components/AppScreen';
 import colors from '../../config/colors';
+import { apiUrlImageStatic } from '../../config/config';
 
 const NotFound = ({ onClick, name }) => {
 	return (
 		<AppScreen>
 			<View style={styles.parentNotFound}>
-				<View style={{ flex: 0.7 }}></View>
+				<View style={{ flex: 0.1 }}></View>
 				<ImageBackground
-					source={require('../../assets/not-found.jpg')}
+					source={{ uri: apiUrlImageStatic+'not-found.jpeg' }}
 					style={styles.background}
 				/>
 				<AppButton
@@ -18,7 +19,7 @@ const NotFound = ({ onClick, name }) => {
 					color2={colors.primaryShade13}
 					borderRadius={2}
 					textColor={colors.white}
-					width="50%"
+					width="45%"
 					text={name}
 					customStyle={styles.button}
 					textTransform="uppercase"
@@ -39,7 +40,9 @@ const styles = StyleSheet.create({
 	},
 	background: {
 		flex: 2,
-		width: '100%'
+		width: '100%',
+		height:'200%',
+		resizeMode:'center'
 	},
 	button: {
 		flex: 1.3

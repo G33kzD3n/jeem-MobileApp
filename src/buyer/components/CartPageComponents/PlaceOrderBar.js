@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
 		color: 'red',
 		fontSize: 12,
 		textTransform: 'uppercase',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		alignSelf:'flex-start'
 	}
 });

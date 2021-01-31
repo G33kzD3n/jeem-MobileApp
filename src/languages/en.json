@@ -168,7 +168,9 @@
 		"inclusive of all taxes": "inclusive of all taxes",
 		"Seller:": "Seller:",
 		"Product Details": "Product Details",
-		"Add To Cart": "Add To Cart"
+		"Add To Cart": "Add To Cart",
+		"Warning":"Warning",
+		"Please login first and try again":"Please login first and try again"
 	},
 	"loginScreen": {
 		"Log into your account": "Log into\nyour account",

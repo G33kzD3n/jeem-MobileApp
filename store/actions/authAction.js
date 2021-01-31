@@ -23,10 +23,10 @@ export const loginAction = (type, values) => {
 	return async dispatch => {
 		dispatch({ type: LOADER, value: true });
 		const data = await loginUser(values);
-		if (data.status === 200) {
-			// localStorage.setItem('user_token', data.data.token.access_token);
-			// localStorage.setItem('user_type', data.data.role.role);
-			// localStorage.setItem('user_id', data.data.user.id);
+		if(data.status === 200 && data.data.role.role!=="Buyer"){
+			dispatch({ type: type, value: 'sellerAccount' });
+		}
+	  else if (data.status === 200) {
 			dispatch({ type: type, value: data.data });
 		} else if (data.response.status === 401) {
 			dispatch({ type: type, value: 401 });

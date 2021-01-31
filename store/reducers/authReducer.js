@@ -11,6 +11,13 @@ const authReducer = (state = initalState, action) => {
 	switch (action.type) {
 		case actionTypes.LOGIN:
 			switch (action.value) {
+				case 'sellerAccount':
+					return {
+						...state,
+						login: null,
+						error: true,
+						errorMessages: 'Unauthorized'
+					};
 				case 401:
 					return {
 						...state,

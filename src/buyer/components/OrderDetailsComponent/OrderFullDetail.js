@@ -64,11 +64,11 @@ const OrderFullDetail = ({ route }) => {
 							style={{
 								color: colors.primary1,
 								fontSize: 12,
-								alignSelf: 'center'
+								alignSelf: 'center',
 							}}
 						>
 							{' '}
-							{order.seller}
+							{order.sellerName}
 						</AppText>
 					</View>
 				</View>
@@ -95,7 +95,7 @@ const OrderFullDetail = ({ route }) => {
 							</AppText>
 						</View>
 					</View>
-					{order.orderStatus !== 'cancelled' && (
+					{(order.orderStatus === 'ordered' || order.orderStatus === 'confirmed' || order.orderStatus=== 'packed') && (
 						<View style={styles.orderStatus2}>
 							<AppButton
 								color1={colors.primaryShade11}

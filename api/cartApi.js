@@ -33,7 +33,6 @@ export async function getCartCount() {
 }
 export async function placeOrder() {
 	try {
-		console.log('orderrrrrrrrrrrrrrrrrrr');
 		const response = await authAxios.post(apiUrl + 'order/buyer/orders');
 		return response.data;
 	} catch (error) {

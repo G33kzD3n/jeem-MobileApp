@@ -1,3 +1,4 @@
+import i18n from '../../src/languages/i18n';
 import * as actionTypes from '../actions/actionTypes';
 
 const initalState = {
@@ -16,21 +17,21 @@ const authReducer = (state = initalState, action) => {
 						...state,
 						login: null,
 						error: true,
-						errorMessages: 'Unauthorized'
+						errorMessages: i18n.t('loginScreen.Unauthorized')
 					};
 				case 401:
 					return {
 						...state,
 						login: null,
 						error: true,
-						errorMessages: 'Wrong email or password'
+						errorMessages: i18n.t('loginScreen.Wrong email or password')
 					};
 				case 403:
 					return {
 						...state,
 						login: null,
 						error: true,
-						errorMessages: 'Unauthorized / Account Suspended'
+						errorMessages: i18n.t('loginScreen.Unauthorized / Account Suspended')
 					};
 				case 422:
 					return {

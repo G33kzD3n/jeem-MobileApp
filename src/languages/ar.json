@@ -132,7 +132,7 @@
     "Save addresses for hasle-free checkout": "احفظ عنوانك لعملية طلب اسرع",
     "Help Center": "مركز المساعدة",
     "Help regarding your recent purchases": "المساعدة بخصوص طلبكم",
-    "Share": "Share",
+    "Share": "مشاركة",
     "Refer to your friends": "أخبر عن جيم! ",
     "FAQs": "الاسئلة الاكثر شيوعا",
     "ABOUT US": "من نحن",
@@ -169,8 +169,8 @@
     "Seller:": "البائع:",
     "Product Details": "تفاصيل الطلب",
     "Add To Cart": "إضافة الى السلة",
-    "Warning":"Warning",
-		"Please login first and try again":"Please login first and try again"
+    "Warning":"تحذير",
+    "Please login first and try again":"الرجاء تسجيل الدخول والمحاولة لاحقا"
   },
   "loginScreen": {
     "Log into your account": "تسجيل الدخول\nلحسابك",
@@ -180,7 +180,10 @@
     "Log In": "تسجيل الدخول",
     "Don't have an account?": "؟لاتملك حساب ",
     "Sign Up": "إنضم الينا",
-    "Forgot Password":"نسيت كلمة السر "
+    "Forgot Password":"نسيت كلمة السر ",
+    "Unauthorized": "Unauthorized",
+    "Wrong email or password": "إسم مستخدم أو كلمة سر خاطئة",
+    "Unauthorized / Account Suspended": "غير مصرح / الحساب متوقف"
   },
   "registerScreen": {
     "Error": "خطأ",
@@ -191,7 +194,7 @@
     "Please agree on the terms and privacy policy": "الرجاء وافق على الشروط والاحكام اولا ",
     "Password Mismatch": "كلمة مرور غير مطابقة",
     "Create your account": "انشىء\nحسابك",
-    "Your Name": "Your Name",
+    "Your Name": "أسمك",
     "Email": "البريد الالكتروني", 
     "Phone Number": "رقم الهاتف",
     "Password": "الرقم السري",
@@ -215,7 +218,7 @@
   },
   "appAlert": {
     "OK": "حسناً",
-    "Cancel": "الغاء"
+    "Cancel": "إلغاء"
   },
   "validation": {
     "Email": "البريد الالكتروني",
@@ -265,7 +268,7 @@
   },
   "common": {
     "All": "الكل",
-    "Forgot?": "نسيت?",
+    "Forgot?": "نسيت؟",
     "*T&C Apply": "*الموافقة على الوقت والتكلفة",
     "Items": "المنتجات",
     "OFF": "خصم",
@@ -274,22 +277,5 @@
     "global ratings": "التقييمات العامة"
   }
 }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
 

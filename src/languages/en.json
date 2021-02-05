@@ -13,7 +13,7 @@
 		"MY ORDERS": "MY ORDERS",
 		"ADD ADDRESS": "ADD ADDRESS",
 		"ITEM DETAILS": "ITEM DETAILS",
-		"PROFILE": "PROFILE", 
+		"PROFILE": "PROFILE",
 		"HELP": "HELP",
 		"FAQ": "FAQ",
 		"ABOUT US": "ABOUT US",
@@ -84,7 +84,7 @@
 		"State": "State",
 		"ADD": "ADD",
 		"DELETE": "DELETE",
-		"Please remove one of the addresses and try again":"Please remove one of the addresses and try again",
+		"Please remove one of the addresses and try again": "Please remove one of the addresses and try again",
 		"Are you sure you want to delete?": "Are you sure you want to delete?",
 		"Mobile:": "Mobile:",
 		"ALERT": "ALERT",
@@ -92,7 +92,7 @@
 		"Add New Address": "Add New Address",
 		"SELECT ADDRESS": "SELECT ADDRESS",
 		"CONFIRM": "CONFIRM"
-	}, 
+	},
 	"orderScreen": {
 		"ORDER DETAILS": "ORDER DETAILS",
 		"Amount due at the time of delivery": "Amount due at the time of delivery",
@@ -169,8 +169,8 @@
 		"Seller:": "Seller:",
 		"Product Details": "Product Details",
 		"Add To Cart": "Add To Cart",
-		"Warning":"Warning",
-		"Please login first and try again":"Please login first and try again"
+		"Warning": "Warning",
+		"Please login first and try again": "Please login first and try again"
 	},
 	"loginScreen": {
 		"Log into your account": "Log into\nyour account",
@@ -180,7 +180,10 @@
 		"Log In": "Log In",
 		"Don't have an account?": "Don't have an account?",
 		"Sign Up": "Sign Up",
-		"Forgot Password": "Forgot Password"
+		"Forgot Password": "Forgot Password",
+		"Unauthorized": "Unauthorized",
+		"Wrong email or password": "Wrong email or password",
+		"Unauthorized / Account Suspended": "Unauthorized / Account Suspended"
 	},
 	"registerScreen": {
 		"Error": "Error",

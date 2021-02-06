@@ -37,7 +37,7 @@ const PriceDetails = () => {
 					{i18n.t('cart.Total Amount')}
 				</AppText>
 				<AppText style={styles.subHeading}>
-					SAR {priceDetails.totalDiscountPrice}
+					SAR {priceDetails.totalDiscountPrice.toFixed(2)}
 				</AppText>
 			</View>
 		</View>

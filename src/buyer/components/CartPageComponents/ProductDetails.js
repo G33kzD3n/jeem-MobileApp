@@ -1,21 +1,30 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, View } from 'react-native';
 import AppPicker from '../../../common/components/AppPicker';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import i18n from '../../../languages/i18n';
+import { useIsFocused } from '@react-navigation/native';
 
-const pickerItems = [
-	{ value: 1, label: i18n.t('cart.1') },
-	{ value: 2, label: i18n.t('cart.2') },
-	{ value: 3, label: i18n.t('cart.3') },
-	{ value: 4, label: i18n.t('cart.4') },
-	{ value: 5, label: i18n.t('cart.5') },
-	{ value: 6, label: i18n.t('cart.6') }, 
-	{ value: 7, label: i18n.t('cart.7') },
-	{ value: 8, label: i18n.t('cart.8') }
-];
+
 const ProductDetails = ({ data, onQuantityChange }) => {
+
+	const [pickerItems,setPickerItems]=useState()
+	const isFocused = useIsFocused();
+
+	useEffect(() => {
+		setPickerItems([
+			{ value: 1, label: i18n.t('cart.1') },
+			{ value: 2, label: i18n.t('cart.2') },
+			{ value: 3, label: i18n.t('cart.3') },
+			{ value: 4, label: i18n.t('cart.4') },
+			{ value: 5, label: i18n.t('cart.5') },
+			{ value: 6, label: i18n.t('cart.6') }, 
+			{ value: 7, label: i18n.t('cart.7') },
+			{ value: 8, label: i18n.t('cart.8') }
+		])
+	}, [isFocused]);
+
 	// const [selectedItem, setSelectedItem] = useState(data.productQuantity);
 	// console.log(selectedItem,);
 
@@ -54,7 +63,7 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 			</View>
 			<View style={styles.priceContainer}>
 				<AppText style={styles.mainPrice}>
-					SAR {data.productDiscountedPrice * data.productQuantity}{' '}
+					SAR {(data.productDiscountedPrice * data.productQuantity).toFixed(2)}{' '}
 				</AppText>
 				<AppText style={styles.orginalPrice}>
 					SAR {data.productPrice * data.productQuantity}

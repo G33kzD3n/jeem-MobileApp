@@ -33,7 +33,7 @@ const ProductCard = ({ item }) => {
 					style={styles.image}
 				/>
 				<View style={styles.dataContainer}>
-					<AppText style={styles.heading} numberOf={1}>
+					<AppText style={styles.heading} numberOfLines={1}>
 						{item.productName}
 					</AppText>
 					<AppText style={styles.subHeading} numberOfLines={1}>
@@ -65,16 +65,16 @@ const styles = StyleSheet.create({
 	discount: {
 		color: 'red',
 		textTransform: 'uppercase',
-		fontSize: 15
+		fontSize: 9
 	},
 	orginalPrice: {
 		color: colors.primary2,
-		fontSize: 15,
+		fontSize: 11,
 		textDecorationLine: 'line-through'
 	},
 	mainPrice: {
 		color: colors.primary1,
-		fontSize: 18,
+		fontSize: 14,
 		fontWeight: 'bold'
 	},
 	priceContainer: {

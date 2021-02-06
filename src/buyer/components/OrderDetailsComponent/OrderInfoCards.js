@@ -27,8 +27,7 @@ const OrderInfoCards = ({ order }) => {
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
 						  {i18n.t('orderScreen.Sold by:')}
-						</AppText>
-						<AppText
+							<AppText
 							style={{
 								color: colors.primary1,
 								fontSize: 12,
@@ -38,6 +37,8 @@ const OrderInfoCards = ({ order }) => {
 							{' '}
 							{order.sellerName}
 						</AppText>
+						</AppText>
+						
 					</View>
 				</View>
 				<View style={styles.third}>

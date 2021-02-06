@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 	text: {
 		color: colors.primary1,
 		fontWeight: 'bold',
-		fontSize: 30,
+		fontSize: 25,
 		width: '65%'
 	},
 	containerStyle: {

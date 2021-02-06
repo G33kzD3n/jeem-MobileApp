@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import AppPicker from '../../../common/components/AppPicker';
 import AppText from '../../../common/components/AppText';
@@ -6,10 +6,8 @@ import colors from '../../../config/colors';
 import i18n from '../../../languages/i18n';
 import { useIsFocused } from '@react-navigation/native';
 
-
 const ProductDetails = ({ data, onQuantityChange }) => {
-
-	const [pickerItems,setPickerItems]=useState()
+	const [pickerItems, setPickerItems] = useState();
 	const isFocused = useIsFocused();
 
 	useEffect(() => {
@@ -19,10 +17,10 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 			{ value: 3, label: i18n.t('cart.3') },
 			{ value: 4, label: i18n.t('cart.4') },
 			{ value: 5, label: i18n.t('cart.5') },
-			{ value: 6, label: i18n.t('cart.6') }, 
+			{ value: 6, label: i18n.t('cart.6') },
 			{ value: 7, label: i18n.t('cart.7') },
 			{ value: 8, label: i18n.t('cart.8') }
-		])
+		]);
 	}, [isFocused]);
 
 	// const [selectedItem, setSelectedItem] = useState(data.productQuantity);
@@ -39,15 +37,15 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 			<View style={styles.priceContainer}>
 				<AppText style={{ color: colors.primary2, fontSize: 12 }}>
 					{i18n.t('cart.Sold by')}:
-				</AppText>
-				<AppText
-					style={{
-						color: colors.primary1,
-						fontSize: 12,
-						alignSelf: 'center'
-					}}
-				>
-					{data.productSellerName}
+					<AppText
+						style={{
+							color: colors.primary1,
+							fontSize: 12,
+							alignSelf: 'center'
+						}}
+					>
+						{` ${data.productSellerName} `}
+					</AppText>
 				</AppText>
 			</View>
 			<View style={styles.picker}>

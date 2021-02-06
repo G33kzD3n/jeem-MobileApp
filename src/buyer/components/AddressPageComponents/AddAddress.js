@@ -19,6 +19,7 @@ import i18n from '../../../languages/i18n';
 const AddAddress = () => {
 	const navigation = useNavigation();
 	const [loading, setLoading] = useState(false);
+	const currentLanguage = useSelector(state => state.profile.language);
 	const userId = useSelector(
 		state => state.auth.login && state.auth.login.user.id
 	);
@@ -68,6 +69,7 @@ const AddAddress = () => {
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
+									textAlign={currentLanguage==='ar'?'right':'left'}
 								/>
 								<AppFormFeild
 									placeholder={i18n.t('addresses.Mobile No')}
@@ -77,6 +79,7 @@ const AddAddress = () => {
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
 									keyboardType="phone-pad"
+									textAlign={currentLanguage==='ar'?'right':'left'}
 								/>
 							</View>
 							<ComponentHeading text={i18n.t('addresses.ADDRESS')}/>
@@ -89,6 +92,7 @@ const AddAddress = () => {
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
 									keyboardType="number-pad"
+									textAlign={currentLanguage==='ar'?'right':'left'}
 								/>
 								<AppFormFeild
 									placeholder={i18n.t('addresses.Address (House No, Building, Street, Area)')}
@@ -97,6 +101,7 @@ const AddAddress = () => {
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
+									textAlign={currentLanguage==='ar'?'right':'left'}
 								/>
 								<AppFormFeild
 									placeholder={i18n.t('addresses.Locality/Town')}
@@ -105,6 +110,7 @@ const AddAddress = () => {
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
+									textAlign={currentLanguage==='ar'?'right':'left'}
 								/>
 								<AppFormFeild
 									placeholder={i18n.t('addresses.City')}
@@ -113,6 +119,7 @@ const AddAddress = () => {
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
+									textAlign={currentLanguage==='ar'?'right':'left'}
 								/>
 								<AppFormFeild
 									placeholder={i18n.t('addresses.State')}
@@ -121,6 +128,7 @@ const AddAddress = () => {
 									placeholderTextColor={colors.primaryShade22}
 									overrideContainer={styles.outerLayer}
 									overrideTextbox={styles.overrideTextbox}
+									textAlign={currentLanguage==='ar'?'right':'left'}
 								/>
 							</View>
 						</ScrollView>

@@ -39,6 +39,7 @@ const LoginScreen = ({ navigation, login }) => {
 	const loading = useSelector((state) => state.auth.loading);
 	const errorMsg = useSelector((state) => state.auth.errorMessages);
 	const error = useSelector((state) => state.auth.error);
+	const currentLanguage = useSelector(state => state.profile.language);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		return () => dispatch(removeLoginErrorAction(REMOVE_LOGIN_ERROR));
@@ -95,11 +96,13 @@ const LoginScreen = ({ navigation, login }) => {
 								placeholder={i18n.t('loginScreen.Email')}
 								keyboardType="email-address"
 								name="email"
+								textAlign={currentLanguage==='ar'?'right':'left'}
 							/>
 							<AppFormFeild
-								name="password"
 								placeholder={i18n.t('loginScreen.Password')}
+								name="password"
 								secureTextEntry
+								textAlign={currentLanguage==='ar'?'right':'left'}
 							/>
 						</View>
 						<View style={styles.forgotPasswordParent}>

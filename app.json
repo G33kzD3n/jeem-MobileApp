@@ -1,10 +1,11 @@
 {
-  "name": "jeem",
+  "name": "جيم لحلول البناء",
   "displayName": "جيم لحلول البناء",
   "expo": {
-    "name": "jeem",
+    "name": "جيم لحلول البناء",
     "slug": "jeem",
     "version": "1.0.0",
+    "orientation": "portrait",
     "icon": "./src/assets/jeem.png",
     "splash": {
       "image": "./src/assets/jeemGrey.png",

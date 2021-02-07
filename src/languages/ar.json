@@ -221,18 +221,18 @@
     "Cancel": "إلغاء"
   },
   "validation": {
-    "Email": "البريد الالكتروني",
-    "Password": "كلمة المرور",
-    "Name": "الاسم",
-    "Phone": "رقم الجوال ",
-    "Confirm Password": "تأكيد كلمة المرور",
-    "Location": "الموقع",
-    "Query": "استعلام",
-    "Pin Code": "الرمز البريدي",
-    "Address": "العنوان",
-    "Locality": "المنطقة ",
-    "City": "المدينة ",
-    "State": "المحافظة"
+    "Email is a required feild": "البريد الالكتروني حقل مطلوب",
+    "Password must be at least 4 characters": "يستوجب على يجب أن تكون أربع خانات",
+    "Name must be at least 3 characters": "الاسم",
+    "Phone must be at least 10 characters": "رقم الجوال يتوجب أن يكون عشرة أرقام",
+    "Confirm Password must be at least 4 characters": "تأكيد كلمة المرور يجب أن يكون أربع خانات",
+    "Location is a required feild": "الموقع حقل مطلوب",
+    "Query must be at least 4 characters": "الإستعلام يجب أن يكون أربع أحرف على الأقل",
+    "Pin Code is a required feild": "الرمز البريدي حقل مطلوب",
+    "Address is a required feild": "العنوان حقل مطلوب",
+    "Locality is a required feild": "المنطقة حقل مطلوب ",
+    "City is a required feild": "المدينة حقل مطلوب ",
+    "State is a required feild": "المحافظة حقل مطلوب"
   },
   "reviewScreen":{
     "SUCCESS":"نجاح",

@@ -221,18 +221,18 @@
 		"Cancel": "Cancel"
 	},
 	"validation": {
-		"Email": "Email",
-		"Password": "Password",
-		"Name": "Name",
-		"Phone": "Phone",
-		"Confirm Password": "Confirm Password",
-		"Location": "Location",
-		"Query": "Query",
-		"Pin Code": "Pin Code",
-		"Address": "Address",
-		"Locality": "Locality",
-		"City": "City",
-		"State": "State"
+		"Email is a required feild": "Email is a required feild",
+		"Password must be at least 4 characters": "Password must be at least 4 characters",
+		"Name must be at least 3 characters": "Name must be at least 3 characters",
+		"Phone must be at least 10 characters": "Phone must be at least 10 characters",
+		"Confirm Password must be at least 4 characters": "Confirm Password must be at least 4 characters",
+		"Location is a required feild": "Location is a required feild",
+		"Query must be at least 4 characters": "Query must be at least 4 characters",
+		"Pin Code is a required feild": "Pin Code is a required feild",
+		"Address is a required feild": "Address is a required feild",
+		"Locality is a required feild": "Locality is a required feild",
+		"City is a required feild": "City is a required feild",
+		"State is a required feild": "State"
 	},
 	"reviewScreen": {
 		"SUCCESS": "SUCCESS",

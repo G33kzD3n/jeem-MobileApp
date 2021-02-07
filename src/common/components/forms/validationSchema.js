@@ -1,102 +1,90 @@
 import * as Yup from 'yup';
-// import i18n from '../../../languages/i18n';
+import i18n from '../../../languages/i18n';
 
+const validationLogin = () =>
+	Yup.object().shape({
+		email: Yup.string()
+			.email()
+			.required(i18n.t('validation.Email is a required feild')),
+		password: Yup.string()
+			.min(4)
+			.required(i18n.t('validation.Password must be at least 4 characters'))
+	});
 
-const validationLogin = Yup.object().shape({
-	email: Yup.string()
-		.required()
-		.email()
-		.label('Email'),
-	password: Yup.string()
-		.required()
-		.min(4)
-		.label('Password')
-});
+const validationRegister = () =>
+	Yup.object().shape({
+		name: Yup.string()
+			.min(3)
+			.required(i18n.t('validation.Name must be at least 3 characters')),
+		email: Yup.string()
+			.email()
+			.required(i18n.t('validation.Email is a required feild')),
+		phonenumber: Yup.string()
+			.min(10)
+			.required(i18n.t('validation.Phone must be at least 10 characters')),
+		password: Yup.string()
+			.min(4)
+			.required(i18n.t('validation.Password must be at least 4 characters')),
+		password_confirmation: Yup.string()
+			.min(4)
+			.required(
+				i18n.t('validation.Confirm Password must be at least 4 characters')
+			)
+	});
 
-const validationRegister = Yup.object().shape({
-	name: Yup.string()
-		.required()
-		.min(3)
-		.label('Name'),
-	email: Yup.string()
-		.required()
-		.email()
-		.label('Email'),
-	phonenumber: Yup.string()
-		.required()
-		.min(10)
-		.label('Phone'),
-	password: Yup.string()
-		.required()
-		.min(4)
-		.label('Password'),
-	password_confirmation: Yup.string()
-		.required()
-		.min(4)
-		.label('Confirm Password')
-});
+const validationProfile = () =>
+	Yup.object().shape({
+		name: Yup.string()
+			.min(3)
+			.required(i18n.t('validation.Name must be at least 3 characters')),
+		phonenumber: Yup.string()
+			.min(10)
+			.required(i18n.t('validation.Phone must be at least 10 characters')),
+		location: Yup.string().required(
+			i18n.t('validation.Email is a required feild')
+		)
+	});
 
-const validationProfile = Yup.object().shape({
-	name: Yup.string()
-		.required()
-		.min(3)
-		.label('Name'),
-	phonenumber: Yup.string()
-		.required()
-		.min(10)
-		.label('Phone'),
-	location: Yup.string()
-		.required()
-		.label('Location')
-});
+const validationHelp = () =>
+	Yup.object().shape({
+		name: Yup.string()
+			.min(3)
+			.required(i18n.t('validation.Name must be at least 3 characters')),
+		email: Yup.string()
+			.email()
+			.required(i18n.t('validation.Email is a required feild')),
+		message: Yup.string()
+			.min(4)
+			.required(i18n.t('validation.Query must be at least 4 characters'))
+	});
 
-const validationHelp = Yup.object().shape({
-	name: Yup.string()
-		.required()
-		.min(3)
-		.label('Name'),
-	email: Yup.string()
-		.required()
-		.email()
-		.label('Email'),
-	message: Yup.string()
-		.required()
-		.min(4)
-		.label('Query')
-});
+const validationAddress = () =>
+	Yup.object().shape({
+		name: Yup.string()
+			.min(3)
+			.required(i18n.t('validation.Name must be at least 3 characters')),
+		phoneNumber: Yup.string()
+			.min(10)
+			.required(i18n.t('validation.Phone must be at least 10 characters')),
+		pincode: Yup.string().required(
+			i18n.t('validation.Pin Code is a required feild')
+		),
+		address: Yup.string().required(
+			i18n.t('validation.Address is a required feild')
+		),
+		address1: Yup.string().required(
+			i18n.t('validation.Locality is a required feild')
+		),
+		city: Yup.string().required(i18n.t('validation.City is a required feild')),
+		state: Yup.string().required(i18n.t('validation.State is a required feild'))
+	});
 
-const validationAddress = Yup.object().shape({
-	name: Yup.string()
-		.required()
-		.min(3)
-		.label('Name'),
-	phoneNumber: Yup.string()
-		.required()
-		.min(10)
-		.label('Phone'),
-	pincode: Yup.string()
-		.required()
-		.label('Pin Code'),
-	address: Yup.string()
-		.required()
-		.label('Address'),
-	address1: Yup.string()
-		.required()
-		.label('Locality'),
-	city: Yup.string()
-		.required()
-		.label('City'),
-	state: Yup.string()
-		.required()
-		.label('State')
-});
-
-const validationForgotPassword = Yup.object().shape({
-	email: Yup.string()
-		.required()
-		.email()
-		.label('Email')
-});
+const validationForgotPassword = () =>
+	Yup.object().shape({
+		email: Yup.string()
+			.email()
+			.required(i18n.t('validation.Email is a required feild'))
+	});
 
 export default {
 	validationLogin,

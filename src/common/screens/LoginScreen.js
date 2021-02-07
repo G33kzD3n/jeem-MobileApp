@@ -155,7 +155,7 @@ const LoginScreen = ({ navigation, login }) => {
 
 				{!showKeyboard && (
 					<View style={styles.thirdContainer}>
-						<View style={styles.innerThird}>
+						<View style={[styles.innerThird,{flexDirection:currentLanguage === 'ar' ? 'row-reverse' : 'row'}]}>
 							<AppText style={styles.signUp}>{i18n.t('loginScreen.Don\'t have an account?')} </AppText>
 							<TextClick
 								weight="bold"

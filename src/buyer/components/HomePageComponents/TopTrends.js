@@ -34,7 +34,7 @@ const TopTrends = () => {
 	return (
 		<View style={styles.parent}>
 			<ComponentHeading
-				text="top trends"
+				text={i18n.t('homeScreen.Top Trends')}
 				more={topTrends.totalRecords > 6 && i18n.t('homeScreen.View More')}
 				onPress={() => handleClick()}
 			/>

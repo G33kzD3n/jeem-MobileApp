@@ -81,12 +81,11 @@ const styles = StyleSheet.create({
 		borderColor: colors.primary1,
 		borderWidth: 1,
 		borderRadius: 25,
-		width: 50,
 		height: 50,
 		justifyContent: 'center',
 		flex: 1,
 		margin: 5,
-		marginBottom: 10
+		marginBottom: 10,
 	},
 	picker: {
 		marginTop: '10%',

@@ -35,7 +35,7 @@ const BestBuys = () => {
 	return (
 		<View style={styles.parent}>
 			<ComponentHeading
-				text="best buys"
+				text={i18n.t('homeScreen.Best Buys')}
 				more={bestBuys.totalRecords > 4 && i18n.t('homeScreen.View More')}
 				onPress={() => handleClick()}
 			/>

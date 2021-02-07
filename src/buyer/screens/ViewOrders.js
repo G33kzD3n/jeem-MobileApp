@@ -62,13 +62,13 @@ const ViewOrders = () => {
 							<MaterialCommunityIcons
 								style={styles.icon}
 								name={
-									order.orderStatus === 'cancelled'
+									(order.orderStatus === 'cancelled'||order.orderStatus === 'ملغي')
 										? 'close-circle'
 										: 'package-variant-closed'
 								}
 								size={40}
 								color={
-									order.orderStatus === 'cancelled'
+									(order.orderStatus === 'cancelled'||order.orderStatus === 'ملغي')
 										? colors.primaryShade22
 										: 'mediumseagreen'
 								}

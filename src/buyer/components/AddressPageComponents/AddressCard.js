@@ -19,8 +19,7 @@ const AddressCard = ({ data }) => {
 			<View style={styles.priceContainer}>
 				<AppText style={{ color: colors.primary2, fontSize: 14 }}>
 					{i18n.t('addresses.Mobile:')}
-				</AppText>
-				<AppText
+					<AppText
 					style={{
 						color: colors.primary1,
 						fontSize: 14,
@@ -28,8 +27,9 @@ const AddressCard = ({ data }) => {
 						fontWeight: 'bold'
 					}}
 				>
-					{data.phoneNumber}
+					{` ${data.phoneNumber}`}
 					{/* {data.mobile} */}
+				</AppText>
 				</AppText>
 			</View>
 		</>

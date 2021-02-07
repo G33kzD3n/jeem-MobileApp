@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet,  View, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, Image } from 'react-native';
 import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -35,8 +35,10 @@ const OrderFullDetail = ({ route }) => {
 	const dispatch = useDispatch();
 	const handleCancel = id => {
 		// console.log(id,'idddd');
-		appAlert(i18n.t('orderScreen.CANCEL'),i18n.t('orderScreen.Are you sure you want to cancel this order?'), () =>
-			handleOk(id)
+		appAlert(
+			i18n.t('orderScreen.CANCEL'),
+			i18n.t('orderScreen.Are you sure you want to cancel this order?'),
+			() => handleOk(id)
 		);
 	};
 	const handleOk = id => {
@@ -45,7 +47,10 @@ const OrderFullDetail = ({ route }) => {
 	};
 
 	const handleReview = order => {
-		navigation.navigate('AddReview', { order: order,name:i18n.t('appNavigation.RATE AND REVIEW') });
+		navigation.navigate('AddReview', {
+			order: order,
+			name: i18n.t('appNavigation.RATE AND REVIEW')
+		});
 	};
 
 	return (
@@ -58,13 +63,13 @@ const OrderFullDetail = ({ route }) => {
 					<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
-						 {i18n.t('orderScreen.Sold by:')}
+							{i18n.t('orderScreen.Sold by:')}
 						</AppText>
 						<AppText
 							style={{
 								color: colors.primary1,
 								fontSize: 12,
-								alignSelf: 'center',
+								alignSelf: 'center'
 							}}
 						>
 							{' '}
@@ -77,13 +82,15 @@ const OrderFullDetail = ({ route }) => {
 						<MaterialCommunityIcons
 							style={styles.icon}
 							name={
-								order.orderStatus === 'cancelled'
+								order.orderStatus === 'cancelled' ||
+								order.orderStatus === 'ملغي'
 									? 'close-circle'
 									: 'package-variant-closed'
 							}
 							size={40}
 							color={
-								order.orderStatus === 'cancelled'
+								order.orderStatus === 'cancelled' ||
+								order.orderStatus === 'ملغي'
 									? colors.primaryShade22
 									: 'mediumseagreen'
 							}
@@ -91,11 +98,16 @@ const OrderFullDetail = ({ route }) => {
 						<View>
 							<AppText style={styles.text}>{order.orderStatus}</AppText>
 							<AppText style={styles.subHeading}>
-								{i18n.t('orderScreen.On')} {new Date(order.created_at).toDateString()}
+								{i18n.t('orderScreen.On')}{' '}
+								{new Date(order.created_at).toDateString()}
 							</AppText>
 						</View>
 					</View>
-					{(order.orderStatus === 'ordered' || order.orderStatus === 'confirmed' || order.orderStatus=== 'packed') && (
+					{(order.orderStatus === 'ordered waiting for confirmation' ||
+						order.orderStatus === 'confirmed' ||
+						order.orderStatus === 'تم الطلب بإنتظار التأكيد' ||
+						order.orderStatus=== 'طلب مؤكد'
+						) && (
 						<View style={styles.orderStatus2}>
 							<AppButton
 								color1={colors.primaryShade11}
@@ -112,16 +124,19 @@ const OrderFullDetail = ({ route }) => {
 				</View>
 				<View style={styles.parentContainer}>
 					<View style={styles.container}>
-						<AppText style={styles.total}>{i18n.t('orderScreen.Total Order Price')}</AppText>
+						<AppText style={styles.total}>
+							{i18n.t('orderScreen.Total Order Price')}
+						</AppText>
 						<AppText style={styles.total}>SAR {order.orderPrice}</AppText>
 					</View>
 					<AppText style={styles.subHeading}>
-					{i18n.t('orderScreen.You saved')} SAR {order.orderDiscount} {i18n.t('orderScreen.on this order')}
+						{i18n.t('orderScreen.You saved')} SAR {order.orderDiscount}{' '}
+						{i18n.t('orderScreen.on this order')}
 					</AppText>
 				</View>
 				<View style={styles.newView}>
 					<AppText style={[styles.total, { paddingBottom: 6 }]}>
-					{i18n.t('orderScreen.Updates sent to')}
+						{i18n.t('orderScreen.Updates sent to')}
 					</AppText>
 					<View style={styles.contactInfo}>
 						<MaterialCommunityIcons
@@ -148,10 +163,10 @@ const OrderFullDetail = ({ route }) => {
 				</View>
 				<View style={styles.newView}>
 					<AppText style={[styles.subHeading, { textTransform: 'uppercase' }]}>
-					{i18n.t('orderScreen.ORDER ID')} {order.orderCode}
+						{i18n.t('orderScreen.ORDER ID')} {order.orderCode}
 					</AppText>
 				</View>
-				{order.orderStatus === 'delivered' && (
+				{(order.orderStatus === 'delivered' || order.orderStatus === 'تم التوصيل بنجاح') && (
 					<View style={styles.appButton}>
 						<AppButton
 							color1={colors.primaryShade11}

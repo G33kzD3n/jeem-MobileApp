@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 		marginTop: 8
 	},
 	textTop: {
-		paddingLeft: 10,
+		paddingHorizontal: 10,
 		textAlign: 'center',
 		paddingTop: 10
 	},
@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
 	},
 	parent: {
 		backgroundColor: colors.white,
-		margin: 10
+		margin: 10,
+		alignSelf:'center'
 	},
 	topContainer: {
 		flexDirection: 'row',
@@ -92,14 +93,16 @@ const styles = StyleSheet.create({
 		margin: 10,
 		borderBottomWidth: 1,
 		borderColor: colors.primaryShade23,
-		paddingBottom: 20
+		paddingBottom: 20,
+		// alignSelf:'center'
 		// borderWidth:3
 	},
 	text: {
 		color: colors.primary1,
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
-		fontSize: 20
+		fontSize: 20,
+		marginLeft:-10
 	},
 	subHeading: {
 		color: colors.primaryShade21,

@@ -1,10 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-	StyleSheet,
-	View,
-	ScrollView,
-	TouchableOpacity
-} from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
 import AppCarousel from '../../common/components/AppCarousel';
 import AppScreen from '../../common/components/AppScreen';
 import colors from '../../config/colors';
@@ -42,11 +37,14 @@ const ProductView = ({ route }) => {
 	);
 
 	const addToCart = () => {
-		 if(token){
-		dispatch(addProductsToCartAction(ADD_PRODUCT_TO_CART, id));
-	}else{
-		appAlert(i18n.t('productView.Warning'), i18n.t('productView.Please login first and try again'));
-	}
+		if (token) {
+			dispatch(addProductsToCartAction(ADD_PRODUCT_TO_CART, id));
+		} else {
+			appAlert(
+				i18n.t('productView.Warning'),
+				i18n.t('productView.Please login first and try again')
+			);
+		}
 		// navigation.navigate('Cart');
 	};
 	if (cartMessage) {
@@ -110,17 +108,17 @@ const ProductView = ({ route }) => {
 							onPress={() => handleSeller(productData)}
 						>
 							<AppText style={{ color: colors.primary2, fontSize: 16 }}>
-								 {i18n.t('productView.Seller:')}
-							</AppText>
-							<AppText
-								style={{
-									color: colors.primary1,
-									fontSize: 15,
-									alignSelf: 'center'
-								}}
-							>
-								{' '}
-								{productData.productSellerName}
+								{i18n.t('productView.Seller:')}
+								<AppText
+									style={{
+										color: colors.primary1,
+										fontSize: 15,
+										alignSelf: 'center'
+									}}
+								>
+									{' '}
+									{productData.productSellerName}
+								</AppText>
 							</AppText>
 						</TouchableOpacity>
 					</View>

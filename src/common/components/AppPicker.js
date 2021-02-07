@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 	},
 	list: {
 		alignItems: 'center',
-		backgroundColor: colors.white
+		backgroundColor: colors.white,
 	},
 	container: { flexDirection: 'row' },
 	modal: {

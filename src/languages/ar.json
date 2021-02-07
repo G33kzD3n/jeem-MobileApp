@@ -33,7 +33,7 @@
     "Comming Soon": "قريبا على جيم",
     "buys of the moment": "المشتريات في هذه اللحظة",
     "Deals Of The Day": "صفقات اليوم",
-    "Flat": "شقة",
+    "Flat": "صافي",
     "Off": "خصم",
     "Limited Time Offer": "عرض حصري لفترة محدودة",
     "Featured Brands": "العلامات المتميزة",
@@ -92,7 +92,7 @@
     "Add New Address": "اضافة عنوان جديد",
     "SELECT ADDRESS": "يرجى إختيار العنوان",
     "CONFIRM": "تأكيد"
-  },
+  }, 
   "orderScreen": {
     "ORDER DETAILS": "تفاصيل الطلب",
     "Amount due at the time of delivery": "الوقت المتوقع للتوصيل ",
@@ -109,7 +109,7 @@
     "on this order": "على هذا الطلب",
     "Updates sent to": "سنقوم بإرسال التحديثات الى",
     "ORDER ID": "معرف الطلب",
-    "Order placed Sucessfully!": "!لقد تم إرسال الطلب بنجاح الى التاجر",
+    "Order placed Sucessfully!": "لقد تم إرسال الطلب بنجاح الى التاجر !",
     "Order No": "رقم الطلب. ",
     "orderInfo": "طلبك قد تم ارساله سنزودكم برقم الطلب مع وقت التسليم المتوقع حال تأكيده",
     "View Order": "أظهر الطلب",
@@ -178,7 +178,7 @@
     "Password": "الرقم السري",
     "Remember me": "تذكرني",
     "Log In": "تسجيل الدخول",
-    "Don't have an account?": "؟لاتملك حساب ",
+    "Don't have an account?": " لاتملك حساب ؟",
     "Sign Up": "إنضم الينا",
     "Forgot Password":"نسيت كلمة السر ",
     "Unauthorized": "Unauthorized",
@@ -201,7 +201,7 @@
     "Confirm Password": "تاكيد كلمة المرور",
     "You agree the terms and privacy policy": "أنت توافق على الشروط والاحكام",
     "Sign Up": "انضم معنا",
-    "Already have an account?": "لديك حساب ?",
+    "Already have an account?": " لديك حساب ؟ ",
     "Log In": "سجل الدخول"
   },
   "forgotScreen":{

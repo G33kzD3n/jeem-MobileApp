@@ -78,6 +78,10 @@ const RegisterScreen = ({ navigation }) => {
 		navigation.navigate('Login');
 	};
 
+	const handleForgotPassword = () => {
+		navigation.navigate('ForgotPassword');
+	};
+	
 	return (
 		<>
 			{loading && <Loader />}
@@ -141,6 +145,7 @@ const RegisterScreen = ({ navigation }) => {
 										textAlign={currentLanguage === 'ar' ? 'right' : 'left'}
 									/>
 								</View>
+								<View style={styles.forgotPasswordParent}>
 								<AppSwitch
 									isEnabled={isEnabled}
 									toggleSwitch={toggleSwitch}
@@ -148,6 +153,17 @@ const RegisterScreen = ({ navigation }) => {
 										'registerScreen.You agree the terms and privacy policy'
 									)}
 								/>
+								<View style={{paddingTop:5}}>
+								<TextClick
+									weight="bold"
+									textDecorationLine="underline"
+									text={i18n.t('loginScreen.Forgot Password')}
+									onClick={handleForgotPassword}
+									size={16}
+									color={colors.white}
+								/>
+							</View>
+							</View>
 								<SubmitButton text={i18n.t('registerScreen.Sign Up')} />
 							</AppForm>
 
@@ -180,7 +196,7 @@ const RegisterScreen = ({ navigation }) => {
 
 						{!showKeyboard && (
 							<View style={styles.thirdContainer}>
-								<View style={styles.innerThird}>
+								<View style={[styles.innerThird,{flexDirection:currentLanguage === 'ar' ? 'row-reverse' : 'row'}]}>
 									<AppText style={styles.signUp}>
 										{i18n.t('registerScreen.Already have an account?')}{' '}
 									</AppText>
@@ -205,15 +221,18 @@ const RegisterScreen = ({ navigation }) => {
 export default RegisterScreen;
 
 const styles = StyleSheet.create({
+	forgotPasswordParent: {
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
 	innerThird: {
 		flex: 1,
 		paddingBottom: 40,
-		flexDirection: 'row',
 		alignItems: 'flex-end'
 	},
 	signUp: {
 		color: colors.white,
-		fontSize: 16
+		fontSize: 16,
 	},
 	social: {
 		flexDirection: 'row',

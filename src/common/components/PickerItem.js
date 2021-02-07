@@ -16,6 +16,6 @@ export default PickerItem;
 const styles = StyleSheet.create({
 	text: {
 		padding: 20,
-		color: colors.primary1
+		color: colors.primary1,
 	}
 });

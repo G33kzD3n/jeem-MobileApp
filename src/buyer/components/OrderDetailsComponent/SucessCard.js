@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
 	},
 	theory: {
 		color: colors.primary2,
-		fontSize: 15
+		fontSize: 15,
+		textAlign: 'center',
 	},
 	parent: {
 		backgroundColor: colors.white,
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
 		fontSize: 20,
-		marginLeft:-10
+		marginLeft:-15
 	},
 	subHeading: {
 		color: colors.primaryShade21,

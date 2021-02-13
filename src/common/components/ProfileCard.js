@@ -24,7 +24,7 @@ const ProfileCard = ({
 						color={colors.primaryShade21}
 					/>
 					<View>
-						<AppText style={styles.text}>{heading}</AppText>
+						<AppText style={[styles.text,{textAlign:direction==='row'?'left':'right'}]}>{heading}</AppText>
 						{subHeading && (
 							<AppText style={styles.subHeading}>{subHeading}</AppText>
 						)}

@@ -4,9 +4,11 @@ import AppText from '../../../common/components/AppText';
 import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
 import i18n from '../../../languages/i18n';
+import { useSelector } from 'react-redux';
 
 const ThirdSection = () => {
 	const navigation = useNavigation();
+	const currentLanguage = useSelector(state => state.profile.language);
 	const faq = () => {
 		navigation.navigate('Faq',{name:i18n.t('appNavigation.FAQ')});
 	};
@@ -25,16 +27,16 @@ const ThirdSection = () => {
 				<AppText style={styles.text}>{i18n.t('profileScreen.FAQs')}</AppText>
 			</TouchableOpacity> */}
 			<TouchableOpacity style={styles.container} onPress={() => aboutUs()}>
-				<AppText style={styles.text}>{i18n.t('profileScreen.ABOUT US')}</AppText>
+				<AppText style={[styles.text,{textAlign:currentLanguage==='ar'?'right':'left'}]}>{i18n.t('profileScreen.ABOUT US')}</AppText>
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.container} onPress={() => termsOfUse()}>
-				<AppText style={styles.text}>{i18n.t('profileScreen.TERMS OF USE')}</AppText>
+				<AppText style={[styles.text,{textAlign:currentLanguage==='ar'?'right':'left'}]}>{i18n.t('profileScreen.TERMS OF USE')}</AppText>
 			</TouchableOpacity>
 			<TouchableOpacity
 				style={styles.container}
 				onPress={() => privacyPolicy()}
 			>
-				<AppText style={styles.text}>{i18n.t('profileScreen.PRIVACY POLICY')}</AppText>
+				<AppText style={[styles.text,{textAlign:currentLanguage==='ar'?'right':'left'}]}>{i18n.t('profileScreen.PRIVACY POLICY')}</AppText>
 			</TouchableOpacity>
 		</View>
 	);

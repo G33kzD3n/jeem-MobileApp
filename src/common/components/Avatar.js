@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
 	icon: {
 		borderColor: colors.primary2,
 		borderWidth: 1,
-		backgroundColor: colors.primaryShade23,
-		borderRadius: 30,
+		//backgroundColor: colors.primaryShade23,
+		borderRadius: 25,
 		padding: 5,
 		textAlign: 'center',
 		color: colors.primary2

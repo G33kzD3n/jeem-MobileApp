@@ -8,6 +8,7 @@ import {
 import colors from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppText from '../../../common/components/AppText';
+import { apiUrlImageStatic } from '../../../config/config';
 
 const CategoryCard = ({ toggleExpanded, data, collapsedSubCat }) => {
 	// console.log(collapsedSubCat);
@@ -16,7 +17,7 @@ const CategoryCard = ({ toggleExpanded, data, collapsedSubCat }) => {
 			<View style={styles.box1}>
 				<ImageBackground
 					source={{
-						uri: data.categoryImage
+						uri: apiUrlImageStatic +data.categoryImage
 					}}
 					style={styles.containerStyle}
 				>

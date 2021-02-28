@@ -6,7 +6,7 @@ import colors from '../../config/colors';
 const FeaturedCard = ({ title, subTitle, brandLogo, image, sellerName }) => {
 	return (
 		<View style={styles.parent}>
-			<View style={styles.brandImage}>
+			<View style={styles.brandImageContainer}>
 				<Image
 					style={styles.brandImage}
 					resizeMode="contain"
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 		borderRadius: 0
 	},
 	brandImageContainer: {
-		height: 45
+		
 	},
 	brandImage: {
 		height: 45,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 	subTitle: {
 		color: colors.primaryShade21,
 		fontSize: 11,
-		paddingBottom: 12,
+		paddingBottom: 2,
 		textAlign: 'center'
 	}
 });

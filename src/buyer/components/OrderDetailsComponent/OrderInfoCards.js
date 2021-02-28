@@ -6,11 +6,15 @@ import colors from '../../../config/colors';
 import CartImage from '../CartPageComponents/CartImage';
 import { useNavigation } from '@react-navigation/native';
 import i18n from '../../../languages/i18n';
+import { apiUrlImageProducts } from '../../../config/config';
 
 const OrderInfoCards = ({ order }) => {
 	const navigation = useNavigation();
 	const fullDetails = () => {
-		navigation.navigate('ItemDetails', { order: order,name:i18n.t('appNavigation.ITEM DETAILS') });
+		navigation.navigate('ItemDetails', {
+			order: order,
+			name: i18n.t('appNavigation.ITEM DETAILS')
+		});
 	};
 	return (
 		<TouchableWithoutFeedback
@@ -19,26 +23,34 @@ const OrderInfoCards = ({ order }) => {
 		>
 			<View style={styles.secondSection}>
 				<View style={styles.first}>
-					<CartImage image={order.productImage} />
+					<CartImage
+						image={
+							apiUrlImageProducts +
+							order.productName +
+							'-' +
+							order.productSku +
+							'/' +
+							order.productImage
+						}
+					/>
 				</View>
 				<View style={styles.second}>
 					<AppText style={styles.heading}>{order.productName}</AppText>
 					<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
-						  {i18n.t('orderScreen.Sold by:')}
+							{i18n.t('orderScreen.Sold by:')}
 							<AppText
-							style={{
-								color: colors.primary1,
-								fontSize: 12,
-								alignSelf: 'center'
-							}}
-						>
-							{' '}
-							{order.sellerName}
+								style={{
+									color: colors.primary1,
+									fontSize: 12,
+									alignSelf: 'center'
+								}}
+							>
+								{' '}
+								{order.sellerName}
+							</AppText>
 						</AppText>
-						</AppText>
-						
 					</View>
 				</View>
 				<View style={styles.third}>

@@ -14,6 +14,7 @@ import appAlert from '../../../common/components/appAlert';
 import Loader from '../../../common/components/Loader';
 import { useNavigation } from '@react-navigation/native';
 import i18n from '../../../languages/i18n';
+import { apiUrlImageProducts } from '../../../config/config';
 
 const OrderFullDetail = ({ route }) => {
 	const { order } = route.params;
@@ -58,7 +59,18 @@ const OrderFullDetail = ({ route }) => {
 			{loading && <Loader />}
 			<ScrollView style={styles.parent}>
 				<View style={styles.child1}>
-					<Image source={{ uri: order.productImage }} style={styles.image} />
+					<Image
+						source={{
+							uri:
+								apiUrlImageProducts +
+								order.productName +
+								'-' +
+								order.productSku +
+								'/' +
+								order.productImage
+						}}
+						style={styles.image}
+					/>
 					<AppText style={styles.heading}>{order.productName}</AppText>
 					<AppText style={styles.subHeading}>{order.productAddInfo}</AppText>
 					<View style={styles.priceContainer}>
@@ -96,7 +108,7 @@ const OrderFullDetail = ({ route }) => {
 							}
 						/>
 						<View>
-							<AppText style={styles.text}>{order.orderStatus}</AppText>
+							<AppText style={styles.text}>{order.orderStatus==='ordered'?'تم الطلب':order.orderStatus}</AppText>
 							<AppText style={styles.subHeading}>
 								{i18n.t('orderScreen.On')}{' '}
 								{new Date(order.created_at).toDateString()}
@@ -104,10 +116,10 @@ const OrderFullDetail = ({ route }) => {
 						</View>
 					</View>
 					{(order.orderStatus === 'ordered waiting for confirmation' ||
-						order.orderStatus === 'confirmed' ||
+						order.orderStatus === 'ordered' ||
+						order.orderStatus === 'تم الطلب' ||
 						order.orderStatus === 'تم الطلب بإنتظار التأكيد' ||
-						order.orderStatus=== 'طلب مؤكد'
-						) && (
+						order.orderStatus === 'طلب مؤكد') && (
 						<View style={styles.orderStatus2}>
 							<AppButton
 								color1={colors.primaryShade11}
@@ -166,7 +178,8 @@ const OrderFullDetail = ({ route }) => {
 						{i18n.t('orderScreen.ORDER ID')} {order.orderCode}
 					</AppText>
 				</View>
-				{(order.orderStatus === 'delivered' || order.orderStatus === 'تم التوصيل بنجاح') && (
+				{(order.orderStatus === 'delivered' ||
+					order.orderStatus === 'تم التوصيل بنجاح') && (
 					<View style={styles.appButton}>
 						<AppButton
 							color1={colors.primaryShade11}

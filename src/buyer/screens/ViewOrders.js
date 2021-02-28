@@ -58,25 +58,33 @@ const ViewOrders = () => {
 			<ScrollView style={styles.parent}>
 				{myOrders.map((order, index) => (
 					<View style={styles.parentContainer} key={index}>
+						{console.log(order.orderStatus)}
 						<View style={styles.topContainer}>
 							<MaterialCommunityIcons
 								style={styles.icon}
 								name={
-									(order.orderStatus === 'cancelled'||order.orderStatus === 'ملغي')
+									order.orderStatus === 'cancelled' ||
+									order.orderStatus === 'ملغي'
 										? 'close-circle'
 										: 'package-variant-closed'
 								}
 								size={40}
 								color={
-									(order.orderStatus === 'cancelled'||order.orderStatus === 'ملغي')
+									order.orderStatus === 'cancelled' ||
+									order.orderStatus === 'ملغي'
 										? colors.primaryShade22
 										: 'mediumseagreen'
 								}
 							/>
 							<View>
-								<AppText style={styles.text}>{order.orderStatus}</AppText>
+								<AppText style={styles.text}>
+									{order.orderStatus === 'ordered'
+										? 'تم الطلب'
+										: order.orderStatus}
+								</AppText>
 								<AppText style={styles.subHeading}>
-								{i18n.t('orderScreen.On')} {new Date(order.created_at).toDateString()}
+									{i18n.t('orderScreen.On')}{' '}
+									{new Date(order.created_at).toDateString()}
 								</AppText>
 							</View>
 						</View>

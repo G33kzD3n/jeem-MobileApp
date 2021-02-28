@@ -25,6 +25,7 @@ import {
 import Loader from '../../common/components/Loader';
 import appAlert from '../../common/components/appAlert';
 import i18n from '../../languages/i18n';
+import { apiUrlImageProducts } from '../../config/config';
 
 const Cart = ({ navigation }) => {
 	const isFocused = useIsFocused();
@@ -126,7 +127,16 @@ const Cart = ({ navigation }) => {
 						<React.Fragment key={index}>
 							<View style={styles.topContainer}>
 								<View style={styles.cartImage}>
-									<CartImage image={items.productImages[0]} />
+									<CartImage
+										image={
+											apiUrlImageProducts +
+											items.productName +
+											'-' +
+											items.productSku +
+											'/' +
+											items.productImages[0]
+										}
+									/>
 								</View>
 								<View style={styles.dataContainer}>
 									<ProductDetails

@@ -16,12 +16,12 @@
       "**/*"
     ],
     "android": {
-      "package": "com.jeem.jeem",
+      "package": "sa.com.jeemsolutions",
       "versionCode":1
     },
     "ios": {
       "supportsTablet":true,
-      "bundleIdentifier": "com.jeem.jeem",
+      "bundleIdentifier": "sa.com.jeemsolutions",
       "buildNumber":"1.0.0"
     }
   }

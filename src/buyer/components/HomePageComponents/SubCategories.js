@@ -23,8 +23,6 @@ const SubCategories = () => {
 	const productSubCategories = useSelector(
 		state => state.product.productSubCategoriesData
 	);
-
-	//console.log(productSubCategories);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

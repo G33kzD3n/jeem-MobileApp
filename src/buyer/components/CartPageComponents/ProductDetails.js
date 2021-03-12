@@ -23,8 +23,6 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 		]);
 	}, [isFocused]);
 
-	// const [selectedItem, setSelectedItem] = useState(data.productQuantity);
-	// console.log(selectedItem,);
 
 	return (
 		<>

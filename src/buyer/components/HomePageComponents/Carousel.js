@@ -19,7 +19,7 @@ const width = Dimensions.get('window').width;
 _renderItem = ({ item, index }) => {
 	return (
 		<TouchableWithoutFeedback
-			onPress={() => console.log(item)}
+			// onPress={() =>}
 			style={styles.touchOpacity}
 		>
 			<ImageBackground
@@ -41,7 +41,6 @@ _renderItem = ({ item, index }) => {
 };
 
 function pagination(activeIndex, length) {
-	// console.log(length);
 	return (
 		<Pagination
 			dotsLength={length}

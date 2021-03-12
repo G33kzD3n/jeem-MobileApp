@@ -64,7 +64,7 @@ const AppCarousel = ({ height, data }) => {
 			{useMemo(
 				() => (
 					<>
-						{console.log('in carousel Product')}
+						{/* {console.log('in carousel Product')} */}
 						<Carousel
 							containerCustomStyle={[styles.carousel, height]}
 							layout={'default'}

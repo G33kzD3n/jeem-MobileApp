@@ -3,21 +3,24 @@ import { StyleSheet, View, Image } from 'react-native';
 import AppText from './AppText';
 import colors from '../../config/colors';
 import i18n from '../../languages/i18n';
+import { useSelector } from 'react-redux';
 
 const Card = ({ brand, image, title, subTitle }) => {
-	return (
+	const currentLanguage = useSelector(state => state.profile.language);
+	const direction=currentLanguage==='ar'?{textAlign:'right'}:{textAlign:'left'}
+	return ( 
 		<View style={styles.parent}>
 			<Image style={styles.image} source={{ uri: image }} />
 			<View style={styles.textWrapper}>
-				<AppText style={styles.brand}>{brand}</AppText>
-				<AppText style={styles.title}>{title}</AppText>
-				<AppText style={styles.subTitle}>{subTitle}</AppText>
-				<AppText style={styles.terms}>{i18n.t('common.*T&C Apply')}</AppText>
+				<AppText style={[styles.brand,direction]} numberOfLines={2}>{brand}</AppText>
+				<AppText style={[styles.title,direction]}>{title}</AppText>
+				<AppText style={[styles.subTitle,direction]}>{subTitle}</AppText>
+				<AppText style={[styles.terms,direction]}>{i18n.t('common.*T&C Apply')}</AppText>
 			</View>
 		</View>
 	);
 };
-
+// direction={currentLanguage==='ar'?'row-reverse':'row'}
 export default Card;
 
 const styles = StyleSheet.create({
@@ -30,7 +33,7 @@ const styles = StyleSheet.create({
 		borderRadius: 3
 	},
 	textWrapper: {
-		marginLeft: 2
+		marginHorizontal: 2
 	},
 	image: {
 		height: 100,
@@ -42,7 +45,8 @@ const styles = StyleSheet.create({
 		fontSize: 13,
 		color: colors.primary2,
 		paddingTop: 2,
-		textDecorationLine: 'underline'
+		height:42,
+		textDecorationLine: 'underline',
 	},
 	title: {
 		color: colors.primary1,

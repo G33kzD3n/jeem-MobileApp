@@ -44,7 +44,6 @@ const FeaturedBrands = () => {
 	};
 
 	if (!getSellers) return <></>;
-	// console.log(getSellers, '>>>>>>>>>:::::::');
 
 	return (
 		<View>

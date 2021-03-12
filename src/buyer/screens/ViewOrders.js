@@ -58,7 +58,7 @@ const ViewOrders = () => {
 			<ScrollView style={styles.parent}>
 				{myOrders.map((order, index) => (
 					<View style={styles.parentContainer} key={index}>
-						{console.log(order.orderStatus)}
+						{/* {console.log(order.orderStatus)} */}
 						<View style={styles.topContainer}>
 							<MaterialCommunityIcons
 								style={styles.icon}

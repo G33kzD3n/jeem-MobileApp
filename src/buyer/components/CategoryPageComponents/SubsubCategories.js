@@ -5,7 +5,6 @@ import colors from '../../../config/colors';
 import { useNavigation } from '@react-navigation/native';
 
 const SubsubCategories = ({ subsubCategory, subSubCategoryItems }) => {
-	// console.log(subSubCategoryItems)
 	const navigation = useNavigation();
 	const handelSubCategory = (name, id) => {
 		navigation.navigate('SubCategoryProduct', {

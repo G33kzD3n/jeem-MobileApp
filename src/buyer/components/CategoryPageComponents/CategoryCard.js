@@ -11,7 +11,6 @@ import AppText from '../../../common/components/AppText';
 import { apiUrlImageStatic } from '../../../config/config';
 
 const CategoryCard = ({ toggleExpanded, data, collapsedSubCat }) => {
-	// console.log(collapsedSubCat);
 	return (
 		<TouchableWithoutFeedback onPress={() => toggleExpanded(data.categoryName)}>
 			<View style={styles.box1}>
@@ -59,7 +58,9 @@ const styles = StyleSheet.create({
 		color: colors.primary1,
 		fontWeight: 'bold',
 		fontSize: 25,
-		width: '65%'
+		width: '65%',
+		textAlign:'center',
+		alignSelf:'center'
 	},
 	containerStyle: {
 		flexDirection: 'row',
@@ -72,14 +73,14 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.primaryShade23,
 		opacity: 0.8,
 		borderTopEndRadius: 250,
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	innerBoxes2: {
-		flex: 1
+		flex: 1,
 	},
 	box1: {
 		backgroundColor: colors.primaryShade12,
 		flexGrow: 1,
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
 	}
 });

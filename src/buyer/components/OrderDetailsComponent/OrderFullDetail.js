@@ -32,10 +32,8 @@ const OrderFullDetail = ({ route }) => {
 		}
 	}, [myOrdersStatus]);
 
-	// console.log(myOrdersStatus);
 	const dispatch = useDispatch();
 	const handleCancel = id => {
-		// console.log(id,'idddd');
 		appAlert(
 			i18n.t('orderScreen.CANCEL'),
 			i18n.t('orderScreen.Are you sure you want to cancel this order?'),

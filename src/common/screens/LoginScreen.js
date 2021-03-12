@@ -56,7 +56,7 @@ const LoginScreen = ({ navigation, login }) => {
 	}, [loginInfo]);
 
 	const handleLogin = () => {
-		console.log('Login');
+		// console.log('Login');
 	};
 
 	const handleSignUp = () => {

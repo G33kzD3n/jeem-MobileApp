@@ -6,15 +6,15 @@ import persistStore from '../utils/persistStore';
 // const apiUrlImageStatic = 'http://localhost:8000/storage/images/static/';
 // const apiUrlImageProducts = 'http://localhost:8000/storage/images/products/';
 
-const apiUrl = 'https://jeem-backend.brorinfotech.com/api/';
+const apiUrl = 'https://jeem-backend.jeemsolutions.com.sa/api/';
 const apiUrlImage =
-	'https://jeem-backend.brorinfotech.com/public/storage/images/';
+	'https://jeem-backend.jeemsolutions.com.sa/public/storage/images/';
 const apiUrlImageStatic =
-	'https://jeem-backend.brorinfotech.com/public/storage/images/static/';
+	'https://jeem-backend.jeemsolutions.com.sa/public/storage/images/static/';
 const apiUrlImageProducts =
-	'https://jeem-backend.brorinfotech.com/public/storage/images/products/';
+	'https://jeem-backend.jeemsolutions.com.sa/public/storage/images/products/';
 const apiUrlImageCarousels =
-	'https://jeem-backend.brorinfotech.com/public/storage/images/carousels/';
+	'https://jeem-backend.jeemsolutions.com.sa/public/storage/images/carousels/';
 
 const config = {
 	baseURL: apiUrl

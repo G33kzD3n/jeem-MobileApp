@@ -6,6 +6,7 @@ import colors from '../../config/colors';
 import AppText from '../../common/components/AppText';
 import AppButton from '../../common/components/AppButton';
 import TextCard from '../../common/components/TextCard';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Ratings from '../../common/components/Ratings';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
@@ -75,6 +76,12 @@ const ProductView = ({ route }) => {
 	return (
 		<AppScreen>
 			<ScrollView style={{ backgroundColor: colors.primaryShade24 }}>
+			<TouchableOpacity
+					onPress={() => navigation.goBack()}
+					style={styles.touch}
+				>
+					<MaterialCommunityIcons style={styles.icon} name="chevron-left" size={40} />
+				</TouchableOpacity>
 				<AppCarousel
 					height={styles.carouselHeight}
 					data={productData.productImagesMobile}
@@ -153,6 +160,17 @@ const ProductView = ({ route }) => {
 export default ProductView;
 
 const styles = StyleSheet.create({
+	touch: {
+		position:'absolute',
+		backgroundColor: colors.primaryShade22,
+		borderRadius: 20,
+		margin:5,
+		zIndex:9999
+	},
+	icon: {
+		color: colors.primary1,
+		textAlign: 'center'
+	},
 	appButton: {
 		padding: 5,
 		backgroundColor: colors.white

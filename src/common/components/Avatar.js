@@ -4,10 +4,10 @@ import AppText from './AppText';
 import colors from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const Avatar = ({ text, image, customStyles }) => {
+const Avatar = ({ text, image, customStyles,id }) => {
 	return (
 		<View style={styles.parent}>
-			{text !== 'All' ? (
+			{id !== 'All' ? (
 				<Image style={[styles.image, customStyles]} source={{ uri: image }} />
 			) : (
 				<MaterialCommunityIcons

@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { productSubCategoriesAction } from '../../../../store/actions';
 import { GET_PRODUCTSUBCATEGORY } from '../../../../store/actions/actionTypes';
 import { apiUrlImageStatic } from '../../../config/config';
+import i18n from '../../../languages/i18n';
 
 const SubCategories = () => {
 	const navigation = useNavigation();
@@ -44,7 +45,7 @@ const SubCategories = () => {
 	};
 
 	const handelSubCategory = item => {
-		if (item.productSubCategoryName ==='All')
+		if (item.id ==='All')
 			setModalVisible(true);
 		else
 			navigation.navigate('SubCategoryProduct', {
@@ -79,7 +80,7 @@ const SubCategories = () => {
 					data={productSubCategories
 						.slice(0, 7)
 						.concat({
-							productSubCategoryName:'All',
+							productSubCategoryName:i18n.t('homeScreen.All'),
 							id: 'All'
 						})}
 					numColumns={4}
@@ -90,6 +91,7 @@ const SubCategories = () => {
 							<TouchableOpacity onPress={() => handelSubCategory(item)}>
 								<Avatar
 									text={item.productSubCategoryName}
+									id={item.id}
 									image={apiUrlImageStatic+item.productSubCategoryImage}
 								/>
 							</TouchableOpacity>

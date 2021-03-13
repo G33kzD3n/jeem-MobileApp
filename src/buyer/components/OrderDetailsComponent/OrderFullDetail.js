@@ -74,8 +74,7 @@ const OrderFullDetail = ({ route }) => {
 					<View style={styles.priceContainer}>
 						<AppText style={{ color: colors.primary2, fontSize: 12 }}>
 							{i18n.t('orderScreen.Sold by:')}
-						</AppText>
-						<AppText
+							<AppText
 							style={{
 								color: colors.primary1,
 								fontSize: 12,
@@ -84,6 +83,7 @@ const OrderFullDetail = ({ route }) => {
 						>
 							{' '}
 							{order.sellerName}
+						</AppText>
 						</AppText>
 					</View>
 				</View>
@@ -137,10 +137,10 @@ const OrderFullDetail = ({ route }) => {
 						<AppText style={styles.total}>
 							{i18n.t('orderScreen.Total Order Price')}
 						</AppText>
-						<AppText style={styles.total}>SAR {order.orderPrice}</AppText>
+						<AppText style={styles.total}>{i18n.t('common.SAR')} {order.orderPrice}</AppText>
 					</View>
 					<AppText style={styles.subHeading}>
-						{i18n.t('orderScreen.You saved')} SAR {order.orderDiscount}{' '}
+						{i18n.t('orderScreen.You saved')} {i18n.t('common.SAR')} {order.orderDiscount}{' '}
 						{i18n.t('orderScreen.on this order')}
 					</AppText>
 				</View>

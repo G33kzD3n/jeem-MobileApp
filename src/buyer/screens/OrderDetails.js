@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View,ScrollView } from 'react-native';
 import AppDivider from '../../common/components/AppDivider';
 import AppText from '../../common/components/AppText';
 import ComponentHeading from '../../common/components/ComponentHeading';
@@ -33,13 +33,13 @@ const OrderDetails = ({ route }) => {
 		);
 
 	return (
-		<View>
+		<ScrollView>
 			<SucessCard orderCode={orderCode} />
 			<View>
 				<ComponentHeading text={i18n.t('orderScreen.ORDER DETAILS')} />
 				<View style={styles.details}>
 					<View style={styles.totalParent}>
-						<AppText style={styles.total}>SAR {totalPrice}</AppText>
+						<AppText style={styles.total}>{i18n.t('common.SAR')} {totalPrice.toFixed(2)}</AppText>
 						<AppText style={styles.subHeading}>
 							{i18n.t('orderScreen.Amount due at the time of delivery')}
 						</AppText>
@@ -58,7 +58,7 @@ const OrderDetails = ({ route }) => {
 					</AppText>
 				</AppText>
 			</View>
-		</View>
+		</ScrollView>
 	);
 };
 

@@ -39,11 +39,11 @@ const ProductCard = ({ item }) => {
 					<AppText style={styles.subHeading} numberOfLines={1}>
 						{item.productAddInfo}
 					</AppText>
-					<View style={styles.priceContainer}>
-						<AppText style={styles.mainPrice}>
-							SAR {item.productDiscountedPrice}{' '}
+					<AppText style={styles.mainPrice}>
+						{i18n.t('common.SAR')} {item.productDiscountedPrice}{' '}
 						</AppText>
-						<AppText style={styles.orginalPrice}>SAR {item.productPrice}</AppText>
+					<View style={styles.priceContainer}>
+						<AppText style={styles.orginalPrice}>{i18n.t('common.SAR')} {item.productPrice}</AppText>
 						<AppText style={styles.discount}>
 							{' '}
 							{item.productDiscount}% {i18n.t('common.OFF')}
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	priceContainer: {
-		flexDirection: 'row'
+		flexDirection: 'row',
 	},
 	subHeading: {
 		color: colors.primary2,

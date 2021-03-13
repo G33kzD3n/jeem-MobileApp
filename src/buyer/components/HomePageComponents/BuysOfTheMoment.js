@@ -31,7 +31,7 @@ const BuysOfTheMoment = () => {
 						<View style={styles.subContainer}>
 							<AppText
 								style={{
-									fontSize: 30,
+									fontSize: 26,
 									textAlign:'center',
 									color: colors.white,
 									backgroundColor: colors.primary1,
@@ -52,7 +52,7 @@ const BuysOfTheMoment = () => {
 							>
 								{/* {i18n.t('homeScreen.Now On Jeem')} */}
 							</AppText>
-							<AppText
+							{/* <AppText
 								style={{
 									color: 'red',
 									fontSize: 16,
@@ -61,8 +61,8 @@ const BuysOfTheMoment = () => {
 									paddingHorizontal: 10
 								}}
 							>
-								{/* {i18n.t('homeScreen.Comming Soon')} */}
-							</AppText>
+								{i18n.t('homeScreen.Comming Soon')}
+							</AppText> */}
 						</View>
 					</View>
 				</ImageBackground>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 		elevation: 1,
 		shadowColor: 'black',
 		shadowOpacity: 0.9,
-		shadowRadius: 10
+		shadowRadius: 10,
 	},
 	subContainer: {
 		opacity: 1,

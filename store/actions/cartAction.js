@@ -5,6 +5,7 @@ import { addProductToCart } from '../../api/cartApi.js';
 import { changeProductQuan } from '../../api/cartApi.js';
 import { placeOrder } from '../../api/cartApi.js';
 import { reviewOrder } from '../../api/cartApi.js';
+import i18n from '../../src/languages/i18n';
 import persistStore from '../../src/utils/persistStore';
 import { ADD_PRODUCT_TO_CART_ERROR } from './actionTypes';
 // import { toast } from "react-toastify";
@@ -53,13 +54,13 @@ export const addProductsToCartAction = (type, values) => {
 			// console.log('Added to Cart');
 			dispatch({
 				type: type,
-				value: { count: data.count, message: 'Added to Cart' }
+				value: { count: data.count, message:i18n.t('cart.Added to Cart') }
 			});
 		} else {
 			// console.log('Already in Cart');
 			dispatch({
 				type: ADD_PRODUCT_TO_CART_ERROR,
-				value: { message: 'Already in Cart' }
+				value: { message: i18n.t('cart.Already in Cart') }
 			});
 		}
 	};

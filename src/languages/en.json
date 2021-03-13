@@ -70,7 +70,9 @@
 		"8": "8",
 		"Quantity": "Quantity",
 		"Off": "Off",
-		"Sold by": "Sold by"
+		"Sold by": "Sold by",
+		"Added to Cart":"Added to Cart",
+    "Already in Cart":"Already in Cart"
 	},
 	"addresses": {
 		"CONTACT DETAILS": "CONTACT DETAILS",
@@ -274,6 +276,7 @@
 		"OFF": "OFF",
 		"Ratings and Reviews": "Ratings and Reviews",
 		"out of 5": "out of 5",
-		"global ratings": "global ratings"
+		"global ratings": "global ratings",
+		"SAR":"SAR"
 	}
 }

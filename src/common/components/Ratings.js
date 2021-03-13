@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 	topContainer: {
 		marginTop: 8,
 		backgroundColor: colors.white,
-		padding: 10
+		padding: 10,
 	},
 	ratingText: {
 		color: colors.primary1,

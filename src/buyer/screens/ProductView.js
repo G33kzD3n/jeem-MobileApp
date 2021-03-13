@@ -28,7 +28,9 @@ import i18n from '../../languages/i18n';
 const ProductView = ({ route }) => {
 	const navigation = useNavigation();
 	const { id } = route.params;
-
+	const currentLanguage = useSelector(state => state.profile.language);
+	const flexDirection=currentLanguage==='ar'?{flexDirection:'row-reverse'}:{flexDirection:'row'}
+	const textAlign=currentLanguage==='ar'?{textAlign:'right'}:{textAlign:'left'}
 	const productData = useSelector(state => state.home.singleProduct);
 	const reviews = useSelector(state => state.product.reviews);
 	const cartMessage = useSelector(state => state.cart.message);
@@ -79,7 +81,7 @@ const ProductView = ({ route }) => {
 				/>
 				<View style={{ backgroundColor: colors.white, marginBottom: 8 }}>
 					<View style={styles.dataContainer}>
-						<AppText style={styles.heading}>
+						<AppText style={[styles.heading,textAlign]}>
 							{productData.productName}
 							<AppText style={styles.subHeading}>
 								{' '}
@@ -87,12 +89,12 @@ const ProductView = ({ route }) => {
 							</AppText>
 						</AppText>
 
-						<View style={styles.priceContainer}>
+						<View style={flexDirection}>
 							<AppText style={styles.mainPrice}>
-								SAR {productData.productDiscountedPrice}{' '}
+							{i18n.t('common.SAR')} {productData.productDiscountedPrice}{' '}
 							</AppText>
 							<AppText style={styles.orginalPrice}>
-								SAR {productData.productPrice}
+							{i18n.t('common.SAR')} {productData.productPrice}
 							</AppText>
 							<AppText style={styles.discount}>
 								{' '}
@@ -100,11 +102,11 @@ const ProductView = ({ route }) => {
 							</AppText>
 						</View>
 
-						<AppText style={styles.taxesMessage}>
+						<AppText style={[styles.taxesMessage,textAlign]}>
 							{i18n.t('productView.inclusive of all taxes')}
 						</AppText>
 						<TouchableOpacity
-							style={styles.priceContainer}
+							style={[styles.priceContainer,flexDirection]}
 							onPress={() => handleSeller(productData)}
 						>
 							<AppText style={{ color: colors.primary2, fontSize: 16 }}>
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
 	dataContainer: {
 		padding: 10,
 		paddingBottom: 5,
-		flex: 1
+		flex: 1,
 		//  justifyContent:'space-around'
 	},
 	discount: {
@@ -185,10 +187,10 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		fontWeight: 'bold'
 	},
-	priceContainer: {
-		flexDirection: 'row'
-		// alignItems:'center'
-	},
+	// priceContainer: {
+	// 	flexDirection: 'row'
+	// 	// alignItems:'center'
+	// },
 	subHeading: {
 		color: colors.primary2,
 		fontSize: 16,

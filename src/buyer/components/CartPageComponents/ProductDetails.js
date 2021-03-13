@@ -27,7 +27,7 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 	return (
 		<>
 			<AppText style={styles.heading}>{data.productName}</AppText>
-			<AppText style={styles.subHeading} numberOfLines={3}>
+			<AppText style={styles.subHeading} numberOfLines={2}>
 				{data.productCartDesc}
 			</AppText>
 
@@ -57,12 +57,12 @@ const ProductDetails = ({ data, onQuantityChange }) => {
 					pickerStyle={styles.itemPicker}
 				/>
 			</View>
-			<View style={styles.priceContainer}>
-				<AppText style={styles.mainPrice}>
-					SAR {(data.productDiscountedPrice * data.productQuantity).toFixed(2)}{' '}
+			<AppText style={styles.mainPrice}>
+				{i18n.t('common.SAR')} {(data.productDiscountedPrice * data.productQuantity).toFixed(2)}{' '}
 				</AppText>
+			<View style={styles.priceContainer}>
 				<AppText style={styles.orginalPrice}>
-					SAR {data.productPrice * data.productQuantity}
+				{i18n.t('common.SAR')} {data.productPrice * data.productQuantity}
 				</AppText>
 				<AppText style={styles.discount}>
 					{' '}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 	},
 	subHeading: {
 		color: colors.primary2,
-		fontSize: 16,
+		fontSize: 12,
 		paddingBottom: 2
 	},
 	discount: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	priceContainer: {
-		flexDirection: 'row'
+		flexDirection: 'row',
 		// alignItems:'center'
 	},
 	taxesMessage: {

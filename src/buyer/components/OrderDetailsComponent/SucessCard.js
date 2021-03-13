@@ -11,7 +11,10 @@ const SucessCard = ({ orderCode }) => {
 	const navigation = useNavigation();
 	const checkStatus = () => {
 		// navigation.navigate('ViewOrders',{name:i18n.t('appNavigation.MY ORDERS')});
-		navigation.navigate('Home');
+		navigation.reset({
+			index: 0,
+			routes: [{ name: 'Home' }],
+		});
 	};
 
 	const handleBackButton = () => {

@@ -25,7 +25,7 @@ const SimpleCard = ({
 						/>
 					</View>
 				)}
-				<AppText style={[styles.title, textStyle]}>{title}</AppText>
+				<AppText style={[styles.title, textStyle]} numberOfLines={2}>{title}</AppText>
 				{subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
 			</View>
 		</View>

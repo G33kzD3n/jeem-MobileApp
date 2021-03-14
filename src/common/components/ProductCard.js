@@ -10,9 +10,12 @@ import AppText from './AppText';
 import { useNavigation } from '@react-navigation/native';
 import { apiUrlImageProducts } from '../../config/config';
 import i18n from '../../languages/i18n';
+import { useSelector } from 'react-redux';
 
 const ProductCard = ({ item }) => {
 	const navigation = useNavigation();
+	const currentLanguage = useSelector(state => state.profile.language);
+	const flexDirection=currentLanguage==='ar'?{flexDirection:'row-reverse'}:{flexDirection:'row'}
 	const displayProduct = id => {
 		// console.log(item,'>>>>>>>>>>>>>>>>>>>>>');
 		navigation.navigate('ProductDetails', { id });
@@ -42,7 +45,7 @@ const ProductCard = ({ item }) => {
 					<AppText style={styles.mainPrice}>
 						{i18n.t('common.SAR')} {item.productDiscountedPrice}{' '}
 						</AppText>
-					<View style={styles.priceContainer}>
+					<View style={flexDirection}>
 						<AppText style={styles.orginalPrice}>{i18n.t('common.SAR')} {item.productPrice}</AppText>
 						<AppText style={styles.discount}>
 							{' '}
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	priceContainer: {
-		flexDirection: 'row',
+		// flexDirection: 'row',
 	},
 	subHeading: {
 		color: colors.primary2,
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
 		paddingBottom: 2
 	},
 	parent: {
-		height: 290,
+		height: 300,
 		borderRadius: 5,
 		// borderColor: 'green',
 		// borderWidth: 1,

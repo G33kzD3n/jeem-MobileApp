@@ -62,7 +62,8 @@ function AppNavigator() {
 	return (
 		<Stack.Navigator
 			screenOptions={{
-				headerTintColor: colors.primary1
+				headerTintColor: colors.primary1,
+				headerBackTitleVisible: false
 			}}
 		>
 			<Stack.Screen

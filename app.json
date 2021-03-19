@@ -4,7 +4,7 @@
   "expo": {
     "name": "جيم لحلول البناء",
     "slug": "jeem",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./src/assets/jeem.png",
     "splash": {
@@ -22,7 +22,7 @@
     "ios": {
       "supportsTablet":true,
       "bundleIdentifier": "sa.com.jeemsolutions",
-      "buildNumber":"1.0.1"
+      "buildNumber":"1.0.2"
     }
   }
 }
